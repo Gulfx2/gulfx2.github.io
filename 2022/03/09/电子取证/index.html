@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> - Gulf&#39;s World</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="电子取证
+电子数字取证技术常用于网络攻击窃密、反欺诈调查、内部审计、失泄密痕迹发现、恶意网站查处等违法犯罪领域。随着计算机犯罪及网络失泄密案件的频繁发生，电子数字证据作为一种新的证据形式出现在司法活,"> 
+    <meta name="author" content="Gulfx2"> 
+    <link rel="alternative" href="atom.xml" title="Gulf&#39;s World" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content=" - Gulf&#39;s World"/>
+    <meta name="twitter:description" content="电子取证
+电子数字取证技术常用于网络攻击窃密、反欺诈调查、内部审计、失泄密痕迹发现、恶意网站查处等违法犯罪领域。随着计算机犯罪及网络失泄密案件的频繁发生，电子数字证据作为一种新的证据形式出现在司法活,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="Gulf&#39;s World"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content=" - Gulf&#39;s World"/>
+    <meta property="og:description" content="电子取证
+电子数字取证技术常用于网络攻击窃密、反欺诈调查、内部审计、失泄密痕迹发现、恶意网站查处等违法犯罪领域。随着计算机犯罪及网络失泄密案件的频繁发生，电子数字证据作为一种新的证据形式出现在司法活,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Gulf&#39;s World</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://gulfx2.gitee.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title"></h1>
+        <div class="stuff">
+            <span>三月 09, 2022</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>电子取证</p>
+<p>电子数字取证技术常用于网络攻击窃密、反欺诈调查、内部审计、失泄密痕迹发现、恶意网站查处等违法犯罪领域。随着计算机犯罪及网络失泄密案件的频繁发生，电子数字证据作为一种新的证据形式出现在司法活动中。</p>
+<p>Wiki：计算机取证（也称为计算机取证科学）是数字取证科学的一个分支，涉及在计算机和数字存储介质中发现的证据。计算机取证的目标是以合法的方式检查数字媒体，目的是识别、保存、恢复、分析和呈现有关数字信息的事实和观点。</p>
+<p>司法取证过程中常使用到各种专业仪器设备，但在CTF比赛中我们通常使用volatility做题。</p>
+<p>取证方法：</p>
+<p>活取证<br>1、抓取文件metadata、创建时间线、命令历史、分析日志文件、哈希摘要、转存内存信息<br>2、使用未受感染的干净程序执行取证<br>3、U盘/网络 存储收集到的数据</p>
+<p>死取证<br>1、关机后制作硬盘镜像、分析镜像（MBR、GPT、LVM）</p>
+<p>电子取证的证据主要有三种来源</p>
+<p>1、计算机主机系统</p>
+<p>2、网络流量包</p>
+<p>3、其他数字设备（硬盘、U盘、MP3等具有存储数据功能的设备）</p>
+<p>电子取证证据的分类一般分为四种：</p>
+<p>1、以证据来源为标准</p>
+<p>①主机取证、②网络取证、③其他相关设备取证</p>
+<p>2、以信息获取时潜在证据的特征为标准</p>
+<p>①静态信息取证：主要指获取存储在硬盘、光盘等设备中的数据，当断电后数据依然存在</p>
+<p>②动态信息取证：主要指断电后会消失的数据，如操作系统的进程、计算机内存数据、网络数据包等</p>
+<p>3、以信息获取的时间为标准</p>
+<p>①事前信息取证：事件正在发生，如流量包，一般是动态信息</p>
+<p>②事后信息取证：事件已经发生，如存储在硬盘光盘上的信息，一般是静态信息</p>
+<p>4、以调查人员是否需要到现场为标准</p>
+<p>①现场取证、②远程取证</p>
+<p>在进行取证前，首先我们要对各种文件的文件头做充分的了解，一般我们通过支持16进制的文本工具查看文件头，或者利用现有的文件识别工具，这里不再多说。</p>
+<p>本章将依据例题结合volatility工具展示电子取证的过程</p>
+<p>题目：高校战疫MISC ez_mem&amp;usb</p>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/16f7Fi3dCec_ID_lGrSOmNQ">https://pan.baidu.com/s/16f7Fi3dCec_ID_lGrSOmNQ</a>    提取码：dixr</p>
+<p>下载文件得到一个流量包，wireshark打开</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642512582074.png" alt="1642512582074"></p>
+<p>右键追踪tcp流，可以发现http流中有包含文件</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642512648003.png" alt="1642512648003"></p>
+<p>导出http流中的东西，保险起见，全部导出</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642512665042.png" alt="1642512665042"></p>
+<p>将其中最大的upload_file.php放进010查看文件头，可以看出是压缩包文件，修改后缀为zip解压得到vmem文件</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642512838136.png" alt="1642512838136"></p>
+<p>上kali，使用foremost分离一下，得到一堆乱七八糟的东西里有一个加密压缩包里包含usbdata.txt</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642516119333.png" alt="1642516119333"></p>
+<p>用volatility分析文件，执行命令得到系统版本</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642515104881.png" alt="1642515104881"></p>
+<p>之后查看进程，发现一个cmd.exe的进程</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642515185319.png" alt="1642515185319"></p>
+<p>查看cmd进程的内容</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642515240459.png" alt="1642515240459"></p>
+<p>其中有一个passwd的密码，和前面分离出的加密压缩包对应，可以解密了</p>
+<p><img src="C:\Users\dell\AppData\Local\Temp\utools-clipboard\1642516228380.png" alt="1642516228380"></p>
+<p>之后就是常规的usb协议分析，对照着就可以得出flag，链接附上：</p>
+<p><a target="_blank" rel="noopener" href="https://patentimages.storage.googleapis.com/6d/6c/15/46fc9661672590/CN102662431A.pdf">https://patentimages.storage.googleapis.com/6d/6c/15/46fc9661672590/CN102662431A.pdf</a></p>
+<p>或者可以使用脚本，网上资源很多，可以自查，exp附上一个：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">normalkeys = &#123; 0x04:&quot;a&quot;,  0x05:&quot;b&quot;,  0x06:&quot;c&quot;, 0x07:&quot;d&quot;, 0x08:&quot;e&quot;, 0x09:&quot;f&quot;, 0x0A:&quot;g&quot;,  0x0B:&quot;h&quot;, 0x0C:&quot;i&quot;,  0x0D:&quot;j&quot;, 0x0E:&quot;k&quot;, 0x0F:&quot;l&quot;, 0x10:&quot;m&quot;, 0x11:&quot;n&quot;,0x12:&quot;o&quot;,  0x13:&quot;p&quot;, 0x14:&quot;q&quot;, 0x15:&quot;r&quot;, 0x16:&quot;s&quot;, 0x17:&quot;t&quot;, 0x18:&quot;u&quot;,0x19:&quot;v&quot;, 0x1A:&quot;w&quot;, 0x1B:&quot;x&quot;, 0x1C:&quot;y&quot;, 0x1D:&quot;z&quot;,0x1E:&quot;1&quot;, 0x1F:&quot;2&quot;, 0x20:&quot;3&quot;, 0x21:&quot;4&quot;, 0x22:&quot;5&quot;,  0x23:&quot;6&quot;, 0x24:&quot;7&quot;, 0x25:&quot;8&quot;, 0x26:&quot;9&quot;, 0x27:&quot;0&quot;, 0x28:&quot;\n&quot;, 0x2a:&quot;[DEL]&quot;,  0X2B:&quot;    &quot;, 0x2C:&quot; &quot;,  0x2D:&quot;-&quot;, 0x2E:&quot;=&quot;, 0x2F:&quot;[&quot;,  0x30:&quot;]&quot;,  0x31:&quot;\\&quot;, 0x32:&quot;`&quot;, 0x33:&quot;;&quot;,  0x34:&quot;&#x27;&quot;,0x35:&quot;`&quot;, 0x36:&quot;,&quot;,  0x37:&quot;.&quot; , 0x38:&quot;/&quot;&#125;</span><br><span class="line"></span><br><span class="line">shiftkeys = &#123; 0x04:&quot;A&quot;,  0x05:&quot;B&quot;,  0x06:&quot;C&quot;, 0x07:&quot;D&quot;, 0x08:&quot;E&quot;, 0x09:&quot;F&quot;, 0x0A:&quot;G&quot;,  0x0B:&quot;H&quot;, 0x0C:&quot;I&quot;,  0x0D:&quot;J&quot;, 0x0E:&quot;K&quot;, 0x0F:&quot;L&quot;, 0x10:&quot;M&quot;, 0x11:&quot;N&quot;,0x12:&quot;O&quot;,  0x13:&quot;P&quot;, 0x14:&quot;Q&quot;, 0x15:&quot;R&quot;, 0x16:&quot;S&quot;, 0x17:&quot;T&quot;, 0x18:&quot;U&quot;,0x19:&quot;V&quot;, 0x1A:&quot;W&quot;, 0x1B:&quot;X&quot;, 0x1C:&quot;Y&quot;, 0x1D:&quot;Z&quot;, 0x1E:&quot;!&quot;, 0x1F:&quot;@&quot;, 0x20:&quot;#&quot;, 0x21:&quot;$&quot;, 0x22:&quot;%&quot;,  0x23:&quot;^&quot;, 0x24:&quot;&amp;&quot;, 0x25:&quot;*&quot;, 0x26:&quot;(&quot;, 0x27:&quot;)&quot;, 0x28:&quot;\n&quot;, 0x2a:&quot;[DEL]&quot;,  0X2B:&quot;    &quot;, 0x2C:&quot; &quot;,  0x2D:&quot;_&quot;, 0x2E:&quot;+&quot;, 0x2F:&quot;&#123;&quot;,  0x30:&quot;&#125;&quot;,  0x31:&quot;|&quot;, 0x32:&quot;~&quot;, 0x33:&quot;:&quot;,  0x34:&quot;\&quot;&quot;,0x35:&quot;~&quot;, 0x36:&quot;&lt;&quot;,  0x37:&quot;&gt;&quot;, 0x38:&quot;?&quot; &#125;</span><br><span class="line"></span><br><span class="line">nums = []</span><br><span class="line">shift_press = []</span><br><span class="line">keys = open(&#x27;usbdata.txt&#x27;)</span><br><span class="line"></span><br><span class="line">for line in keys:</span><br><span class="line">    shift_press.append(line[1])</span><br><span class="line">    nums.append(int(line[6:8],16))</span><br><span class="line">keys.close()</span><br><span class="line"></span><br><span class="line">output = &quot;&quot;</span><br><span class="line">m = 0</span><br><span class="line">for n in nums:</span><br><span class="line">    if n == 0 :</span><br><span class="line">        m += 1</span><br><span class="line">        continue</span><br><span class="line">    if n in shiftkeys:</span><br><span class="line">        if shift_press[m] == &#x27;2&#x27; : #shift is pressed</span><br><span class="line">            output += shiftkeys[n]</span><br><span class="line">            m += 1 </span><br><span class="line">        elif shift_press[m] == &#x27;0&#x27; :</span><br><span class="line">            output += normalkeys[n]</span><br><span class="line">            m += 1</span><br><span class="line">print &#x27;output :\n&#x27; + output</span><br></pre></td></tr></table></figure>
+
+<p>得到flag：flag{69200835784ec3ed8d2a64e73fe913c0}</p>
+<p>总结：题型并不难，但是考察到的范围很广，包括了流量分析，内存取证，文件分离，等知识，取证近年来的考察不会仅仅局限于考察一个点，而是趋于复杂环境下的取证，结合多个知识点考察，因此工具的使用很关键，但是更重要的是做题的思路。</p>
+<p>第二道题</p>
+<p>题目：[SuSeC CTF]Little</p>
+<p>题目来源：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Bcm9rfcjRDdM3hrVBKySwQ">https://pan.baidu.com/s/1Bcm9rfcjRDdM3hrVBKySwQ</a>        提取码：f1cg</p>
+<p>下载附件是一个压缩包，解压可以得到一个后缀为img的文件</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119204720988.png" alt="image-20220119204720988"></p>
+<p>先binwalk一下，可以看到里面有PNG和KGB文件，得到一半的flag</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119205322779.png" alt="image-20220119205322779"></p>
+<p>去搜一下kgb文件</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119205836672.png"></p>
+<p>使用DiskGenius（一个数据恢复的软件，功能很强大）查看KGB文件并导出</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119211729222.png" alt="image-20220119211729222"></p>
+<p>下载KGB Archiver对文件进行解压出一个音频文件</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119212232861.png" alt="image-20220119212232861"></p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119212743921.png" alt="image-20220119212743921"></p>
+<p>直接打开就可以听到一部分part1: c0me_wi4h_f4t_m4n_，和之前的拼起来但依旧不完整</p>
+<p>使用strings命令查看，还有个mp4文件</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119212553108.png" alt="image-20220119212553108"></p>
+<p>WinHex打开，工具-&gt;磁盘工具-&gt;通过文件类型恢复</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119213123836.png" alt="image-20220119213123836"></p>
+<p>导出的mp4文件，直接打开</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119213321139.png" alt="image-20220119213321139"></p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220119213549044.png" alt="image-20220119213549044"></p>
+<p>最终把三段flag拼起来，得到答案flag: SUSEC{c0me_wi4h_f4t_m4n_tO_7h3_3nd_Of_t4i3_sUsEc_journey}</p>
+<p>总结：本题虽然隶属于取证，但是可以不使用volatility分析，而是利用了文件分离，DiskGenius数据恢复，winhex工具恢复文件的方法，可以说比较特别，本题我没有使用volatility，有兴趣可以试一下本题能否用volatility解出</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="true"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class="side">
+				
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
