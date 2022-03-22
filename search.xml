@@ -1,257 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>信息收集基础</title>
-    <url>/2022/03/10/undefined/</url>
-    <content><![CDATA[<p>打点：基本信息收集（外围）</p>
-<p>Banner        操作系统信息，web容器信息，开发商，cms信息</p>
-<p>主机内部信息收集</p>
-<p>主机存活探测</p>
-<p>win</p>
-<p>for /1 %i in (1,1,254) do @ping -w 1 -n 1 10.0.1.%i|findstr /c:”TTL=”</p>
-<p>linux</p>
-<p>for i in {1..254..1};do ping -w 1 -c 1 121.5.144.$i|grep“ttl”|awk’{print $4}’ |awk -F “:” ‘{print $1}’;done</p>
-<p>主机信息收集</p>
-<p>ipconfig /all         //看网卡配置，判断当前是否存在域环境</p>
-<p>netsh wlan show profiles wifi名 key=clear      //看wifi密码</p>
-<p>net localgroup    //查看分组信息</p>
-<p>net user 用户名    //查看用户基本信息</p>
-<p>net user 用户名 密码 /add</p>
-<p>net user 用户名 密码 /der</p>
-<p>systeminfo | findstr /B /C:”OS 名称” /C:”OS 版本”</p>
-<p>systeminfo | findstr “KB”</p>
-<p>net share        //看共享目录</p>
-<p>net use \192.168.1.130\C$ 密码 /user：用户名 IPC管道连接</p>
-<pre><code>      dir \\192.168.1.130\C$        //查看目录
-
-     copy 本地文件 \\192.168.1.130\C$\windows        //上传文件
-
-    copy \\192.168.1.130\C$\calc.exe c:\        //下载文件
-
-net cofig workstation        //查看工作站
-</code></pre>
-<p>netstat -ano        //查找端口开放情况</p>
-<p>whoami        //查看当前用户</p>
-<p>whoami /user    //获取当前用户的sid</p>
-<p>whoami /all        //查看所有的信息</p>
-<p>whoami /priv        //查看当前用户的权限</p>
-<p>ver  //看操作系统</p>
-<p>wmic:</p>
-<pre><code>    process
-
-            wmic process get Name,ProcessId,ThreadCount     //获取指定进程信息
-
-            wmic process list brief         //列出进程信息
-
-            wmin /node:127.0.0.1 process call create calc    //远程调用
-
-    os
-
-            wmic os get WindowsDirectory, SystemDirectory,CountryCode
-
-    product 
-
-            wmic product get name,version        //慢
-</code></pre>
-<p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-10%20183643.jpg" alt="屏幕截图 2022-03-10 183643"></p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-10%20190445.jpg" alt="屏幕截图 2022-03-10 190445"></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>HTTP协议标准</title>
+      <link href="/2022/03/22/undefined/"/>
+      <url>/2022/03/22/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>[TOC]</p><h2 id="0x01-概述"><a href="#0x01-概述" class="headerlink" title="0x01 概述"></a>0x01 概述</h2><p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p><p>HTTP是一个client-server协议：请求通过一个实体被发出，实体也就是用户代理。大多数情况下，这个用户代理都是指浏览器，当然它也可能是任何东西，比如一个爬取网页生成维护搜索引擎索引的机器爬虫。</p><p>HTTP属于应用层的协议，通过TCP，或者是TLS－加密的TCP连接来发送</p><p>同时，HTTP具有简单、可扩展、无状态，有会话等性质</p><h2 id="0x02-功能"><a href="#0x02-功能" class="headerlink" title="0x02 功能"></a>0x02 功能</h2><p>1、缓存：文档如何缓存能通过HTTP来控制。服务端能告诉代理和客户端哪些文档需要被缓存，缓存多久，而客户端也能够命令中间的缓存代理来忽略存储的文档。</p><p>2、开放同源限制：为了防止网络窥听和其它隐私泄漏，浏览器强制对Web网站做了分割限制。只有来自于相同来源的网页才能够获取网站的全部信息。这样的限制有时反而成了负担，HTTP可以通过修改头部来开放这样的限制，因此Web文档可以是由不同域下的信息拼接成的（某些情况下，这样做还有安全因素考虑）。</p><p>3、认证：一些页面能够被保护起来，仅让特定的用户进行访问。基本的认证功能可以直接通过HTTP提供，使用Authenticate相似的头部即可，或用HTTP Cookies来设置指定的会话。</p><p>4、代理和隧道：通常情况下，服务器和/或客户端是处于内网的，对外网隐藏真实 IP 地址。因此 HTTP 请求就要通过代理越过这个网络屏障。但并非所有的代理都是 HTTP 代理。例如，SOCKS协议的代理就运作在更底层，一些像 FTP 这样的协议也能够被它们处理。</p><p>5、会话：使用HTTP Cookies允许你用一个服务端的状态发起请求，这就创建了会话。虽然基本的HTTP是无状态协议。这很有用，不仅是因为这能应用到像购物车这样的电商业务上，更是因为这使得任何网站都能轻松为用户定制展示内容了。</p><h2 id="0x03-HTTP信息流"><a href="#0x03-HTTP信息流" class="headerlink" title="0x03 HTTP信息流"></a>0x03 HTTP信息流</h2><p>1、打开一个TCP连接TCP连接被用来发送一条或多条请求，以及接受响应消息。客户端可能打开一条新的连接，或重用一个已经存在的连接，或者也可能开几个新的TCP连接连向服务端。</p><p>2、发送一个HTTP报文：HTTP报文（在HTTP/2之前）是语义可读的。在HTTP/2中，这些简单的消息被封装在了帧中，这使得报文不能被直接读取，但是原理仍是相同的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1         //包括请求方法和请求参数和协议版本</span><br><span class="line">Host: developer.mozilla.org       //路径，不包含协议和域名的绝对路径URL</span><br><span class="line">Accept-Language: fr     //</span><br></pre></td></tr></table></figure><p>3、读取返回报文：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page)</span><br></pre></td></tr></table></figure><p>4、关闭连接或请求重新连接：当HTTP流水线启动时，后续请求都可以不用等待第一个请求的成功响应就被发送。然而HTTP流水线已被证明很难在现有的网络中实现，因为现有网络中有很多老旧的软件与现代版本的软件共存。因此，HTTP流水线已被在有多请求下表现得更稳健的HTTP/2的帧所取代。</p><h2 id="0x04-HTTP会话过程"><a href="#0x04-HTTP会话过程" class="headerlink" title="0x04 HTTP会话过程"></a>0x04 HTTP会话过程</h2><h3 id="1、三个阶段"><a href="#1、三个阶段" class="headerlink" title="1、三个阶段"></a>1、三个阶段</h3><p>客户端建立一条TCP连接（如果层传输不是TCP，也可以是其他适合的连接）。</p><p>客户端发送请求并等待接收。</p><p>服务器处理请求并发送状态响应回覆，包括一个数据</p><h3 id="2、建立连接"><a href="#2、建立连接" class="headerlink" title="2、建立连接"></a>2、建立连接</h3><p>由客户端发起，在驱动层启动连接建立，是TCP协议，默认tcp端口为80.</p><h3 id="3、请求方法"><a href="#3、请求方法" class="headerlink" title="3、请求方法"></a>3、请求方法</h3><p>GET：请求方法指定的资源，应该只被获取数据</p><p>POST：方法向服务器发送数据，因此改变服务器状态，通常在HTML表单使用</p><h3 id="4、响应结构"><a href="#4、响应结构" class="headerlink" title="4、响应结构"></a>4、响应结构</h3><p><strong>同样分为三块</strong></p><p>第一行是状态行，包括使用的 HTTP 协议版本、状态码和一个状态描述（可以描述文本）。</p><p>每个行都表示一个 HTTP 首部终端，为客户端关于发送数据的一些信息（如类型，数据请求大小，使用的压缩，缓存指示）。与客户端提供的头部模块类似，HTTP 首部组成一个块，并以一个空行结束。</p><p>这个是数据块，包含了最后的响应数据（如果有的话）。</p><p>实例：</p><p>成功的网页响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (这里是 29769 字节的网页HTML源代码)</span><br></pre></td></tr></table></figure><p>请求资源不存在的网页响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">Date: Sat, 09 Oct 2010 14:33:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 May 2007 14:24:39 GMT</span><br><span class="line">ETag: &quot;499fd34e-29ec-42f695ca96761;48fe7523cfcc1&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 10732</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (包含一个站点自定义404页面, 帮助用户找到丢失的资源)</span><br></pre></td></tr></table></figure><p>请求资源已被永久移动的网页响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: Apache/2.2.3 (Red Hat)</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">Date: Sat, 09 Oct 2010 14:30:24 GMT</span><br><span class="line">Location: https://developer.mozilla.org/ (目标资源的新地址, 服务器期望用户代理去访问它)</span><br><span class="line">Keep-Alive: timeout=15, max=98</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Via: Moz-Cache-zlb05</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">Content-Length: 325 (如果用户代理无法转到新地址，就显示一个默认页面)</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</span><br><span class="line">&lt;html&gt;&lt;head&gt;</span><br><span class="line">&lt;title&gt;301 Moved Permanently&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Moved Permanently&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;The document has moved &lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;address&gt;Apache/2.2.3 (Red Hat) Server at developer.mozilla.org Port 80&lt;/address&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure><h3 id="5、响应状态码"><a href="#5、响应状态码" class="headerlink" title="5、响应状态码"></a>5、响应状态码</h3><p>HTTP响应错误状态码 表示一个HTTP请求是否成功完成。响应被分为5种类型：信息类型响应，成功响应，控制器，客户端错误和服务端。</p><p>200： 好的。请求成功。<br>301: 永久移动。请求资源的URI已被改变。<br>404： 未找到。服务器无法请求找到的资源。</p><h2 id="0x05-常见报文格式、请求头及响应头"><a href="#0x05-常见报文格式、请求头及响应头" class="headerlink" title="0x05 常见报文格式、请求头及响应头"></a>0x05 常见报文格式、请求头及响应头</h2><h3 id="1、报文格式："><a href="#1、报文格式：" class="headerlink" title="1、报文格式："></a>1、报文格式：</h3><p><method><requset-URL><version>  </p><p>/*method是协议动词，常见方法有HEAD/GET/POST/PUT/TRACE/PATCH/OPTIONS/COPY/MOVE/LOCK等</p><p>version代表版本号，格式为HTTP/<major>.<minor></p><p>url：<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag></p><headers><entity-body><h3 id="2、请求头"><a href="#2、请求头" class="headerlink" title="2、请求头"></a>2、请求头</h3><p>Accept        //指定客户端能接收的内容类型；Accept: text/plain,text/html</p><p>Accpet-Charset        //浏览器可以接收的字符编码集；Accept-Charset: iso-8859-5</p><p>Accept-Encoding        //指定浏览器可以支持的web服务器返回内容压缩编码类型; Accept-Encoding: compress, gzip</p><p>Accept-Language        //浏览器可接受的语言; Accept-Language: en,zh</p><p>Accept-Ranges        //可以请求网页实体的一个或者多个子范围字段; Accept-Ranges: bytes</p><p>Authorization        //HTTP授权的授权证书; Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p><p>Cache-Control        //指定请求和响应遵循的缓存机制 ; Cache-Control: no-cache</p><p>Connection        //表示是否需要持久连接 // HTTP 1.1默认进行持久连接; Connection: close</p><p>Cookie        //HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器; Cookie: role=admin;ssid=1</p><p>Content-Length        //请求的内容长度; Content-Length: 348</p><p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p><p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p><p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p><p>From        //发出请求的用户的Email; From: <a class="link"   href="mailto:&#117;&#x73;&#101;&#x72;&#64;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;" >&#117;&#x73;&#101;&#x72;&#64;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a></p><p>Host        //指定请求的服务器的域名和端口号; Host: <a class="link"   href="http://www.github.com/" >www.github.com<i class="fas fa-external-link-alt"></i></a></p><p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p><p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p><p>If-None-Match        //如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变; If-None-Match: “737060cd8c284d8af7ad3082f209582d”</p><p>If-Range        //如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag; If-Range: “737060cd8c284d8af7ad3082f209582d”</p><p>If-Unmodified-Since        //只在实体在指定时间之后未被修改才请求成功; If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT</p><p>Max-Forwards        //限制信息通过代理和网关传送的时间; Max-Forwards: 10</p><p>Pragma        //用来包含实现特定的指令; Pragma: no-cache; </p><p>Proxy-Authorization        //连接到代理的授权证书; Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p><p>Range        //只请求实体的一部分，指定范围; Range: bytes=500-999</p><p>Referer        //先前网页的地址，当前请求网页紧随其后,即来路; Referer: <a class="link"   href="http://www.zcmhi.com/archives/71.html" >http://www.zcmhi.com/archives/71.html<i class="fas fa-external-link-alt"></i></a></p><p>TE        //客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息; TE: trailers,deflate;q=0.5</p><p>Upgrade        //向服务器指定某种传输协议以便服务器进行转换（如果支持）; Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</p><p>User-Agent        //User-Agent的内容包含发出请求的用户信息; User-Agent: Mozilla/5.0 (Linux; X11)</p><p>Via        //通知中间网关或代理服务器地址，通信协议; Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</p><p>Warning        //关于消息实体的警告信息; Warn: 199 Miscellaneous warning</p><h3 id="3、响应头"><a href="#3、响应头" class="headerlink" title="3、响应头"></a>3、响应头</h3><p>Accept-Ranges        //表明服务器是否支持指定范围请求及哪种类型的分段请求； Accept-Ranges: bytes<br>Access-Control-Allow-Origin        //配置有权限访问资源的域；Access-Control-Allow-Origin: <origin>|*<br>Age        //从原始服务器到代理缓存形成的估算时间（以秒计，非负）； Age: 12<br>Allow        //对某网络资源的有效的请求行为，不允许则返回405； Allow: GET, HEAD<br>Cache-Control            //告诉所有的缓存机制是否可以缓存及哪种类型； Cache-Control: no-cache<br>Content-Encoding        //web服务器支持的返回内容压缩编码类型；Content-Encoding: gzip<br>Content-Language        //响应体的语言； Content-Language: en,zh<br>Content-Length        //响应体的长度；Content-Length: 348<br>Content-Location        //；请求资源可替代的备用的另一地址；Content-Location: /index.htm<br>Content-MD5        //返回资源的MD5校验值；Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==<br>Content-Range        //在整个返回体中本部分的字节位置；Content-Range: bytes 21010-47021/47022<br>Content-Type        //返回内容的MIME类型；Content-Type: text/html; charset=utf-8<br>Date        //原始服务器消息发出的时间；Date: Tue, 15 Nov 2010 08:12:31 GMT<br>ETag        //请求变量的实体标签的当前值；ETag: “737060cd8c284d8af7ad3082f209582d”<br>Expires        //响应过期的日期和时间；Expires: Thu, 01 Dec 2010 16:00:00 GMT<br>Last-Modified        //请求资源的最后修改时间；Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT<br>Location        //用来重定向接收方到非请求URL的位置来完成请求或标识新的资源；Location: <a class="link"   href="http://www.zcmhi.com/archives/94.html" >http://www.zcmhi.com/archives/94.html<i class="fas fa-external-link-alt"></i></a><br>Pragma        //包括实现特定的指令，它可应用到响应链上的任何接收方；Pragma: no-cache<br>Proxy-Authenticate            //它指出认证方案和可应用到代理的该URL上的参数；Proxy-Authenticate: Basic<br>Refresh        //应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）；Refresh: 5; url=<a class="link"   href="http://www.zcmhi.com/archives/94.html" >http://www.zcmhi.com/archives/94.html<i class="fas fa-external-link-alt"></i></a><br>Retry-After        //如果实体暂时不可取，通知客户端在指定时间之后再次尝试；Retry-After: 120<br>Server        //web服务器软件名称；Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)<br>Set-Cookie        //设置Http Cookie Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1<br>Strict-Transport-Security            </p><p>/*</p><p>设置浏览器强制使用HTTPS访问<br> max-age: x秒的时间内 访问对应域名都使用HTTPS请求<br> includeSubDomains: 网站的子域名也启用规则<br>Strict-Transport-Security: max-age=1000; includeSubDomains</p><p>*/</p><p>Trailer        //指出头域在分块传输编码的尾部存在 Trailer: Max-Forwards<br>Transfer-Encoding        //文件传输编码；Transfer-Encoding:chunked<br>Vary        //告诉下游代理是使用缓存响应还是从原始服务器请求；Vary: *<br>Via        //告知代理客户端响应是通过哪里发送的；Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)<br>Warning        //警告实体可能存在的问题；Warning: 199 Miscellaneous warning<br>WWW-Authenticate            //表明客户端请求实体应该使用的授权方案；WWW-Authenticate: Basic<br>X-Content-Type-Options        //配置禁止MIME类型嗅探；X-Content-Type-Options: nosniff<br>X-Frame-Options        //配置页面是否能出现在 <frame>, <iframe>, <embed>, <object> 等标签中，防止点击劫持；X-Frame-Options: deny<br>X-XSS-Protection        //配置XSS防护机制；X-XSS-Protection: 1; mode=block</p><br/><p>本文参考链接;</p><p><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session" >https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session<i class="fas fa-external-link-alt"></i></a></p><p><a class="link"   href="https://websec.readthedocs.io/zh/latest/network/http/index.html" >https://websec.readthedocs.io/zh/latest/network/http/index.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+      
+      
       <categories>
-        <category>渗透</category>
+          
+          <category> web </category>
+          
       </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>社工</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP协议标准</title>
-    <url>/2022/03/22/undefined/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h2 id="0x01-概述"><a href="#0x01-概述" class="headerlink" title="0x01 概述"></a>0x01 概述</h2><p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p>
-<p>HTTP是一个client-server协议：请求通过一个实体被发出，实体也就是用户代理。大多数情况下，这个用户代理都是指浏览器，当然它也可能是任何东西，比如一个爬取网页生成维护搜索引擎索引的机器爬虫。</p>
-<p>HTTP属于应用层的协议，通过TCP，或者是TLS－加密的TCP连接来发送</p>
-<p>同时，HTTP具有简单、可扩展、无状态，有会话等性质</p>
-<h2 id="0x02-功能"><a href="#0x02-功能" class="headerlink" title="0x02 功能"></a>0x02 功能</h2><p>1、缓存：文档如何缓存能通过HTTP来控制。服务端能告诉代理和客户端哪些文档需要被缓存，缓存多久，而客户端也能够命令中间的缓存代理来忽略存储的文档。</p>
-<p>2、开放同源限制：为了防止网络窥听和其它隐私泄漏，浏览器强制对Web网站做了分割限制。只有来自于相同来源的网页才能够获取网站的全部信息。这样的限制有时反而成了负担，HTTP可以通过修改头部来开放这样的限制，因此Web文档可以是由不同域下的信息拼接成的（某些情况下，这样做还有安全因素考虑）。</p>
-<p>3、认证：一些页面能够被保护起来，仅让特定的用户进行访问。基本的认证功能可以直接通过HTTP提供，使用Authenticate相似的头部即可，或用HTTP Cookies来设置指定的会话。</p>
-<p>4、代理和隧道：通常情况下，服务器和/或客户端是处于内网的，对外网隐藏真实 IP 地址。因此 HTTP 请求就要通过代理越过这个网络屏障。但并非所有的代理都是 HTTP 代理。例如，SOCKS协议的代理就运作在更底层，一些像 FTP 这样的协议也能够被它们处理。</p>
-<p>5、会话：使用HTTP Cookies允许你用一个服务端的状态发起请求，这就创建了会话。虽然基本的HTTP是无状态协议。这很有用，不仅是因为这能应用到像购物车这样的电商业务上，更是因为这使得任何网站都能轻松为用户定制展示内容了。</p>
-<h2 id="0x03-HTTP信息流"><a href="#0x03-HTTP信息流" class="headerlink" title="0x03 HTTP信息流"></a>0x03 HTTP信息流</h2><p>1、打开一个TCP连接TCP连接被用来发送一条或多条请求，以及接受响应消息。客户端可能打开一条新的连接，或重用一个已经存在的连接，或者也可能开几个新的TCP连接连向服务端。</p>
-<p>2、发送一个HTTP报文：HTTP报文（在HTTP/2之前）是语义可读的。在HTTP/2中，这些简单的消息被封装在了帧中，这使得报文不能被直接读取，但是原理仍是相同的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET / HTTP/1.1         //包括请求方法和请求参数和协议版本</span><br><span class="line">Host: developer.mozilla.org       //路径，不包含协议和域名的绝对路径URL</span><br><span class="line">Accept-Language: fr     //</span><br></pre></td></tr></table></figure>
-
-<p>3、读取返回报文：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page)</span><br></pre></td></tr></table></figure>
-
-<p>4、关闭连接或请求重新连接：当HTTP流水线启动时，后续请求都可以不用等待第一个请求的成功响应就被发送。然而HTTP流水线已被证明很难在现有的网络中实现，因为现有网络中有很多老旧的软件与现代版本的软件共存。因此，HTTP流水线已被在有多请求下表现得更稳健的HTTP/2的帧所取代。</p>
-<h2 id="0x04-HTTP会话过程"><a href="#0x04-HTTP会话过程" class="headerlink" title="0x04 HTTP会话过程"></a>0x04 HTTP会话过程</h2><h3 id="1、三个阶段"><a href="#1、三个阶段" class="headerlink" title="1、三个阶段"></a>1、三个阶段</h3><p>客户端建立一条TCP连接（如果层传输不是TCP，也可以是其他适合的连接）。</p>
-<p>客户端发送请求并等待接收。</p>
-<p>服务器处理请求并发送状态响应回覆，包括一个数据</p>
-<h3 id="2、建立连接"><a href="#2、建立连接" class="headerlink" title="2、建立连接"></a>2、建立连接</h3><p>由客户端发起，在驱动层启动连接建立，是TCP协议，默认tcp端口为80.</p>
-<h3 id="3、请求方法"><a href="#3、请求方法" class="headerlink" title="3、请求方法"></a>3、请求方法</h3><p>GET：请求方法指定的资源，应该只被获取数据</p>
-<p>POST：方法向服务器发送数据，因此改变服务器状态，通常在HTML表单使用</p>
-<h3 id="4、响应结构"><a href="#4、响应结构" class="headerlink" title="4、响应结构"></a>4、响应结构</h3><p><strong>同样分为三块</strong></p>
-<p>第一行是状态行，包括使用的 HTTP 协议版本、状态码和一个状态描述（可以描述文本）。</p>
-<p>每个行都表示一个 HTTP 首部终端，为客户端关于发送数据的一些信息（如类型，数据请求大小，使用的压缩，缓存指示）。与客户端提供的头部模块类似，HTTP 首部组成一个块，并以一个空行结束。</p>
-<p>这个是数据块，包含了最后的响应数据（如果有的话）。</p>
-<p>实例：</p>
-<p>成功的网页响应</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (这里是 29769 字节的网页HTML源代码)</span><br></pre></td></tr></table></figure>
-
-<p>请求资源不存在的网页响应</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">Date: Sat, 09 Oct 2010 14:33:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 May 2007 14:24:39 GMT</span><br><span class="line">ETag: &quot;499fd34e-29ec-42f695ca96761;48fe7523cfcc1&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 10732</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (包含一个站点自定义404页面, 帮助用户找到丢失的资源)</span><br></pre></td></tr></table></figure>
-
-<p>请求资源已被永久移动的网页响应</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: Apache/2.2.3 (Red Hat)</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">Date: Sat, 09 Oct 2010 14:30:24 GMT</span><br><span class="line">Location: https://developer.mozilla.org/ (目标资源的新地址, 服务器期望用户代理去访问它)</span><br><span class="line">Keep-Alive: timeout=15, max=98</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Via: Moz-Cache-zlb05</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">Content-Length: 325 (如果用户代理无法转到新地址，就显示一个默认页面)</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</span><br><span class="line">&lt;html&gt;&lt;head&gt;</span><br><span class="line">&lt;title&gt;301 Moved Permanently&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Moved Permanently&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;The document has moved &lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;address&gt;Apache/2.2.3 (Red Hat) Server at developer.mozilla.org Port 80&lt;/address&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、响应状态码"><a href="#5、响应状态码" class="headerlink" title="5、响应状态码"></a>5、响应状态码</h3><p>HTTP响应错误状态码 表示一个HTTP请求是否成功完成。响应被分为5种类型：信息类型响应，成功响应，控制器，客户端错误和服务端。</p>
-<p>200： 好的。请求成功。<br>301: 永久移动。请求资源的URI已被改变。<br>404： 未找到。服务器无法请求找到的资源。</p>
-<h2 id="0x05-常见报文格式、请求头及响应头"><a href="#0x05-常见报文格式、请求头及响应头" class="headerlink" title="0x05 常见报文格式、请求头及响应头"></a>0x05 常见报文格式、请求头及响应头</h2><h3 id="1、报文格式："><a href="#1、报文格式：" class="headerlink" title="1、报文格式："></a>1、报文格式：</h3><p><method><requset-URL><version>  </p>
-<p>/*method是协议动词，常见方法有HEAD/GET/POST/PUT/TRACE/PATCH/OPTIONS/COPY/MOVE/LOCK等</p>
-<p>version代表版本号，格式为HTTP/<major>.<minor></p>
-<p>url：<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag></p>
-<headers>
-
-<entity-body>
-
-<h3 id="2、请求头"><a href="#2、请求头" class="headerlink" title="2、请求头"></a>2、请求头</h3><p>Accept        //指定客户端能接收的内容类型；Accept: text/plain,text/html</p>
-<p>Accpet-Charset        //浏览器可以接收的字符编码集；Accept-Charset: iso-8859-5</p>
-<p>Accept-Encoding        //指定浏览器可以支持的web服务器返回内容压缩编码类型; Accept-Encoding: compress, gzip</p>
-<p>Accept-Language        //浏览器可接受的语言; Accept-Language: en,zh</p>
-<p>Accept-Ranges        //可以请求网页实体的一个或者多个子范围字段; Accept-Ranges: bytes</p>
-<p>Authorization        //HTTP授权的授权证书; Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
-<p>Cache-Control        //指定请求和响应遵循的缓存机制 ; Cache-Control: no-cache</p>
-<p>Connection        //表示是否需要持久连接 // HTTP 1.1默认进行持久连接; Connection: close</p>
-<p>Cookie        //HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器; Cookie: role=admin;ssid=1</p>
-<p>Content-Length        //请求的内容长度; Content-Length: 348</p>
-<p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
-<p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
-<p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a class="link"   href="mailto:&#117;&#x73;&#101;&#x72;&#64;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;" >&#117;&#x73;&#101;&#x72;&#64;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a></p>
-<p>Host        //指定请求的服务器的域名和端口号; Host: <a class="link"   href="http://www.github.com/" >www.github.com<i class="fas fa-external-link-alt"></i></a></p>
-<p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
-<p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
-<p>If-None-Match        //如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变; If-None-Match: “737060cd8c284d8af7ad3082f209582d”</p>
-<p>If-Range        //如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag; If-Range: “737060cd8c284d8af7ad3082f209582d”</p>
-<p>If-Unmodified-Since        //只在实体在指定时间之后未被修改才请求成功; If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT</p>
-<p>Max-Forwards        //限制信息通过代理和网关传送的时间; Max-Forwards: 10</p>
-<p>Pragma        //用来包含实现特定的指令; Pragma: no-cache; </p>
-<p>Proxy-Authorization        //连接到代理的授权证书; Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
-<p>Range        //只请求实体的一部分，指定范围; Range: bytes=500-999</p>
-<p>Referer        //先前网页的地址，当前请求网页紧随其后,即来路; Referer: <a class="link"   href="http://www.zcmhi.com/archives/71.html" >http://www.zcmhi.com/archives/71.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>TE        //客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息; TE: trailers,deflate;q=0.5</p>
-<p>Upgrade        //向服务器指定某种传输协议以便服务器进行转换（如果支持）; Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</p>
-<p>User-Agent        //User-Agent的内容包含发出请求的用户信息; User-Agent: Mozilla/5.0 (Linux; X11)</p>
-<p>Via        //通知中间网关或代理服务器地址，通信协议; Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</p>
-<p>Warning        //关于消息实体的警告信息; Warn: 199 Miscellaneous warning</p>
-<h3 id="3、响应头"><a href="#3、响应头" class="headerlink" title="3、响应头"></a>3、响应头</h3><p>Accept-Ranges        //表明服务器是否支持指定范围请求及哪种类型的分段请求； Accept-Ranges: bytes<br>Access-Control-Allow-Origin        //配置有权限访问资源的域；Access-Control-Allow-Origin: <origin>|*<br>Age        //从原始服务器到代理缓存形成的估算时间（以秒计，非负）； Age: 12<br>Allow        //对某网络资源的有效的请求行为，不允许则返回405； Allow: GET, HEAD<br>Cache-Control            //告诉所有的缓存机制是否可以缓存及哪种类型； Cache-Control: no-cache<br>Content-Encoding        //web服务器支持的返回内容压缩编码类型；Content-Encoding: gzip<br>Content-Language        //响应体的语言； Content-Language: en,zh<br>Content-Length        //响应体的长度；Content-Length: 348<br>Content-Location        //；请求资源可替代的备用的另一地址；Content-Location: /index.htm<br>Content-MD5        //返回资源的MD5校验值；Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==<br>Content-Range        //在整个返回体中本部分的字节位置；Content-Range: bytes 21010-47021/47022<br>Content-Type        //返回内容的MIME类型；Content-Type: text/html; charset=utf-8<br>Date        //原始服务器消息发出的时间；Date: Tue, 15 Nov 2010 08:12:31 GMT<br>ETag        //请求变量的实体标签的当前值；ETag: “737060cd8c284d8af7ad3082f209582d”<br>Expires        //响应过期的日期和时间；Expires: Thu, 01 Dec 2010 16:00:00 GMT<br>Last-Modified        //请求资源的最后修改时间；Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT<br>Location        //用来重定向接收方到非请求URL的位置来完成请求或标识新的资源；Location: <a class="link"   href="http://www.zcmhi.com/archives/94.html" >http://www.zcmhi.com/archives/94.html<i class="fas fa-external-link-alt"></i></a><br>Pragma        //包括实现特定的指令，它可应用到响应链上的任何接收方；Pragma: no-cache<br>Proxy-Authenticate            //它指出认证方案和可应用到代理的该URL上的参数；Proxy-Authenticate: Basic<br>Refresh        //应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）；Refresh: 5; url=<a class="link"   href="http://www.zcmhi.com/archives/94.html" >http://www.zcmhi.com/archives/94.html<i class="fas fa-external-link-alt"></i></a><br>Retry-After        //如果实体暂时不可取，通知客户端在指定时间之后再次尝试；Retry-After: 120<br>Server        //web服务器软件名称；Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)<br>Set-Cookie        //设置Http Cookie Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1<br>Strict-Transport-Security            </p>
-<p>/*</p>
-<p>设置浏览器强制使用HTTPS访问<br> max-age: x秒的时间内 访问对应域名都使用HTTPS请求<br> includeSubDomains: 网站的子域名也启用规则<br>Strict-Transport-Security: max-age=1000; includeSubDomains</p>
-<p>*/</p>
-<p>Trailer        //指出头域在分块传输编码的尾部存在 Trailer: Max-Forwards<br>Transfer-Encoding        //文件传输编码；Transfer-Encoding:chunked<br>Vary        //告诉下游代理是使用缓存响应还是从原始服务器请求；Vary: *<br>Via        //告知代理客户端响应是通过哪里发送的；Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)<br>Warning        //警告实体可能存在的问题；Warning: 199 Miscellaneous warning<br>WWW-Authenticate            //表明客户端请求实体应该使用的授权方案；WWW-Authenticate: Basic<br>X-Content-Type-Options        //配置禁止MIME类型嗅探；X-Content-Type-Options: nosniff<br>X-Frame-Options        //配置页面是否能出现在 <frame>, <iframe>, <embed>, <object> 等标签中，防止点击劫持；X-Frame-Options: deny<br>X-XSS-Protection        //配置XSS防护机制；X-XSS-Protection: 1; mode=block</p>
-<br/>
-
-<p>本文参考链接;</p>
-<p><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session" >https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://websec.readthedocs.io/zh/latest/network/http/index.html" >https://websec.readthedocs.io/zh/latest/network/http/index.html<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 协议 </tag>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>渗透测试基础</title>
+      <link href="/2022/03/22/undefined/"/>
+      <url>/2022/03/22/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>[TOC]</p><h3 id="0x01-什么是渗透测试"><a href="#0x01-什么是渗透测试" class="headerlink" title="0x01 什么是渗透测试"></a>0x01 什么是渗透测试</h3><p>通过模拟恶意黑客的攻击方法，来评估计算机网络技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p><h3 id="0x02-什么是渗透测试者"><a href="#0x02-什么是渗透测试者" class="headerlink" title="0x02 什么是渗透测试者"></a>0x02 什么是渗透测试者</h3><p>渗透测试者通常由组织机构内部员工或外部实体（例如投职位或按项目的承包商) 的形式雇佣。 不管买取何种雇佣形式。渗透测试者与恶意攻击者的主要不同在于目的以及是否获得所评估系统的所有者的法律许可。</p><h3 id="0x03-渗透测试的分类"><a href="#0x03-渗透测试的分类" class="headerlink" title="0x03 渗透测试的分类"></a>0x03 渗透测试的分类</h3><p>黑盒测试：模拟真实黑客攻击，除了域名，其他信息都需要自行收集</p><p>白盒测试：基本从内部发起，甲方会提供大量已知的信息和源码，测试者以此评估安全风险</p><p>灰盒测试：间于两者之间，只获得系统的部分信息</p><h3 id="0x04-在渗透实战中的一般流程"><a href="#0x04-在渗透实战中的一般流程" class="headerlink" title="0x04 在渗透实战中的一般流程"></a>0x04 在渗透实战中的一般流程</h3><p>1.前期交互：收集客户需求、准备测试计划、定义测试范围和尺度、明确目标以及后期的规划</p><p>2.情报收集：利用所有手段对目标组织的网络拓扑、服务器配置以及防火墙或其他安全配置的相关信息的收集整理，黑客所使用的手段包括但不限于开源信息的查询、Google hacking、社工、网络踩点、扫描探测、被动监听、服务查点等，注意，这个阶段极其重要，它直接关系到你渗透测试的成败。</p><p>3.建模规划：对所收集的目标信息的收集整理，和团队成员讨论并确定一条或几条可行的攻击通道方案，这对接下来的行动会起到非常大的推动作用。</p><p>4.漏洞分析：综合前面的信息，寻找可利用的渗透代码资源，找出可利用的攻击点，并进行验证，一般都可以利用公开的代码资源，但对于一些有特殊要求或网络环境特殊的公司或组织，可能需要自行依据未公开的漏洞开发渗透代码，从而对整个渗透测试打开大门。</p><p>5.攻击阶段：所有黑客最喜欢的环节，针对攻击点和可执行漏洞，对其进行真正的渗透和提权，从而达到入侵和取得访问控制权的目的，在黑盒测试中，测试者还要考虑目标系统检测机制的逃逸，避免被目标的安全相应团队发现。</p><p>6.后渗透阶段：需要黑客根据目标的业务经营模式和其安全规划等不同的特点，自主设计攻击目标，识别关键设施以及寻找有价值的信息和资产，最终达成能对客户组织造成最重要业务影响的攻击途径。</p><p>7.形成报告：渗透测试的结果是向目标组织提供一份合格的渗透报告，该报告要包含有之前所有阶段中所获取到的关键信息，后续探测和挖掘系统安全漏洞，以及最终完成渗透攻击的全过程，还有后续造成业务影响后果的攻击途径，最后要站在防御的角度上，帮助目标组织完成对其安全防御体系的漏洞问题的分析和修补升级技术的方案。</p><h3 id="0x05-渗透测试工具"><a href="#0x05-渗透测试工具" class="headerlink" title="0x05 渗透测试工具"></a>0x05 渗透测试工具</h3><p>测试工具多种多样,通常可以分为漏洞利用类、信息收集类、漏洞扫描类、综合平台等，大多数测试者通过长期的积累，会形成一套自己较熟悉的工具包，也有不少组织会发布一些开源的集成工具包如悬剑等，这里只介绍常见的几种工具，供大家参考</p><p><strong>① Kali Linux</strong>：是一个基于 Debian 的 Linux 发行版，最基本的渗透测试操作系统</p><p>kali本身拥有拥有超过600个预装的渗透测试程序，包括14大类300多个安全测试和渗透软件，包括大名鼎鼎的NMap(端口扫描器)，Wireshark(数据包分析器)，Aircrack-ng(一应用于对无线局域网进行渗透测试的软件)，John the Ripper(密码破解器)等，Kali Linux预装的这些软件基本包括了黑客会使用到的所有工具。</p><p>但是要注意的是，kali本身优化了进攻而非防御，且它默认以root权限运行，这导致它极易被人利用和入侵，因此最好不要将你的敏感信息保存在kali linux系统上</p><p><strong>② Nmap</strong>：网络扫描仪</p><p>使用端口扫描功能和版本检测引擎枚举开放端口，该版本检测引擎用于确定在已标识端口上运行的服务上的应用程序名称和版本号，对测试人员来说，服务器上哪些端口是开放的，哪些端口正在运行什么是非常有必要的。</p><p>此外，Nmap脚本引擎带有170多种NSE脚本和20个库，例如防火墙绕过，超级微型ipmi-conf，oracle-brute-stealth和ssl-heartbleed，</p><p>它提供了更好的IPv6支持，为在CIDR样式的地址范围，空闲扫描，并行反向DNS和更多的NSE脚本覆盖范围内进行更全面的网络扫描铺平了道路，并且，它适用于包括windows，linux在内的绝大多数平台。</p><p><strong>③ Burp Suite Pro</strong>：最流行，功能强大和最先进的笔测试工具之一，它是各种高级工具的“套件”，最适合于Web应用程序的渗透测试。</p><p>提供了更快的暴力破解和模糊测试功能，使笔测试人员能够部署包含有效负载集的HTTP请求的自定义序列，从而大大减少了花在不同任务上的时间。</p><p>可以轻松地为给定请求构造跨站点请求伪造（CSRF）概念证明（POC）攻击。</p><p>它非常昂贵，企业版价格每年3999美元，但是它绝对对的起这个价格。</p><p><strong>④  Wireshark</strong>：网络协议分析器，尽管随着技术的成熟，涌现出了越来越多的分析器，但wireshark的地位从未有过动摇。</p><p>拥有业内最强大的显示过滤器，广泛用于捕获实时网络流量以进行网络故障排除，包括延迟问题，数据包丢失和网络上的恶意活动。它允许测试人员截取和分析通过网络传递的数据，并将其转换为人类可读的格式。</p><p>多平台：在 Windows、Linux、macOS、Solaris、FreeBSD、NetBSD 和许多其他平台上运行</p><p>可以通过 GUI 或通过 TTY 模式 TShark 实用程序浏览捕获的网络数据</p><p>读/写许多不同的捕获文件格式：tcpdump (libpcap)、Pcap NG、Catapult DCT2000、Cisco Secure IDS iplog、Microsoft Network Monitor、Network General Sniffer®（压缩和未压缩）、Sniffer® Pro 和 NetXray®、Network Instruments Observer , NetScreen snoop, Novell LANalyzer, RADCOM WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek 等等</p><p>⑤ Metasploit：是一个渗透测试框架，被网络攻击者和道德黑客广泛使用</p><p>Metasploit包括超过1600个利用25个平台的漏洞利用，metasploit可以自动进行大量以前繁琐的工作，它是“世界上使用最广泛的渗透测试框架”。</p><p>该工具大约有500个有效负载，其中包括：命令外壳有效负载以针对主机运行脚本。动态有效负载可生成独特的有效负载来规避防病毒软件。Meterpreter有效负载可控制设备监视器，会话，上载和下载文件。静态有效负载，用于端口转发并支持网络之间的通信。</p><p>⑥ SQLmap：自动化SQL注入和数据库接管工具</p><p>它适用于所有现代数据库，包括 mysql、postgresql、oracle、microsoft sql server 等</p><p>它有效地搜索整个数据库中的特定数据库名称，表或列，这对于识别包含应用程序凭据的表很有用，这些凭据包含名称和通过等字符串。</p><p>SQLmap支持在数据库服务器和攻击者计算机之间建立带外TCP连接，从而为用户提供交互式命令提示符或仪表计量器会话。</p><p>⑦ Nessus：网络漏洞扫描程序。由于其大量的漏洞签名库，它是漏洞扫描的最佳工具。</p><p>Nessus 扫描涵盖广泛的技术，包括操作系统、网络设备、管理程序、数据库、Web 服务器和关键基础设施。</p><p>扫描结果可以多种格式报告，例如纯文本、XML、HTML和LaTeX。结果也可以保存在知识库中以供调试。在 UNIX 上，可以通过使用命令行客户端自动进行扫描。对于 UNIX 和 Windows，存在许多不同的商业、免费和开源工具来管理单个或分布式 Nessus 扫描仪。</p><p>除了测试已知网络漏洞之外，Nessus 还提供其他功能。例如，它可以使用Windows凭据检查运行 Windows 操作系统的计算机上的补丁级别。Nessus 还可以支持配置和合规性审计、SCADA 审计和 PCI 合规性。</p><p>⑧ 社会工程工具箱：开源的、Python驱动的社会工程学渗透测试工具。</p><p>主要面向对人进行的渗透测试。使用SET可以实现多种攻击，比如：网络钓鱼攻击、网页劫持攻击、格式文件攻击等。</p><p>⑨ Hashcat：开源密码破解工具</p><p>Hashcat猜测一个密码，对其进行哈希处理，然后将生成的哈希值与它试图破解的哈希值进行比较。如果哈希值匹配，则我们知道密码。</p><p>密码表示形式主要与哈希键关联，例如WHIRLPOOL，RiceMD，NTMLv1，NTLMv2 MD5，SHA等。它将可读数据转换为混乱的代码，使其他人难以解密数据。</p><p>它支持分布式破解网络和200多种不同的哈希格式。</p><p>⑩ Hydra：九头蛇，支持众多协议的爆破工具，kali自动集成。</p><p>可在Linux、Windows和OS X中使用。hydra可以用来破解很多种服务，包括IMAP,HTTP,SMB,VNC,MS-SQL,MySQL,SMTP等等。</p><p>本文参考链接：</p><p><a class="link"   href="https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661" >https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661<i class="fas fa-external-link-alt"></i></a></p><p><a class="link"   href="https://www.1024sou.com/article/13620.html" >https://www.1024sou.com/article/13620.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+      
+      
       <categories>
-        <category>web</category>
+          
+          <category> 渗透 </category>
+          
       </categories>
-      <tags>
-        <tag>协议</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>渗透测试基础</title>
-    <url>/2022/03/22/undefined/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h3 id="0x01-什么是渗透测试"><a href="#0x01-什么是渗透测试" class="headerlink" title="0x01 什么是渗透测试"></a>0x01 什么是渗透测试</h3><p>通过模拟恶意黑客的攻击方法，来评估计算机网络技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p>
-<h3 id="0x02-什么是渗透测试者"><a href="#0x02-什么是渗透测试者" class="headerlink" title="0x02 什么是渗透测试者"></a>0x02 什么是渗透测试者</h3><p>渗透测试者通常由组织机构内部员工或外部实体（例如投职位或按项目的承包商) 的形式雇佣。 不管买取何种雇佣形式。渗透测试者与恶意攻击者的主要不同在于目的以及是否获得所评估系统的所有者的法律许可。</p>
-<h3 id="0x03-渗透测试的分类"><a href="#0x03-渗透测试的分类" class="headerlink" title="0x03 渗透测试的分类"></a>0x03 渗透测试的分类</h3><p>黑盒测试：模拟真实黑客攻击，除了域名，其他信息都需要自行收集</p>
-<p>白盒测试：基本从内部发起，甲方会提供大量已知的信息和源码，测试者以此评估安全风险</p>
-<p>灰盒测试：间于两者之间，只获得系统的部分信息</p>
-<h3 id="0x04-在渗透实战中的一般流程"><a href="#0x04-在渗透实战中的一般流程" class="headerlink" title="0x04 在渗透实战中的一般流程"></a>0x04 在渗透实战中的一般流程</h3><p>1.前期交互：收集客户需求、准备测试计划、定义测试范围和尺度、明确目标以及后期的规划</p>
-<p>2.情报收集：利用所有手段对目标组织的网络拓扑、服务器配置以及防火墙或其他安全配置的相关信息的收集整理，黑客所使用的手段包括但不限于开源信息的查询、Google hacking、社工、网络踩点、扫描探测、被动监听、服务查点等，注意，这个阶段极其重要，它直接关系到你渗透测试的成败。</p>
-<p>3.建模规划：对所收集的目标信息的收集整理，和团队成员讨论并确定一条或几条可行的攻击通道方案，这对接下来的行动会起到非常大的推动作用。</p>
-<p>4.漏洞分析：综合前面的信息，寻找可利用的渗透代码资源，找出可利用的攻击点，并进行验证，一般都可以利用公开的代码资源，但对于一些有特殊要求或网络环境特殊的公司或组织，可能需要自行依据未公开的漏洞开发渗透代码，从而对整个渗透测试打开大门。</p>
-<p>5.攻击阶段：所有黑客最喜欢的环节，针对攻击点和可执行漏洞，对其进行真正的渗透和提权，从而达到入侵和取得访问控制权的目的，在黑盒测试中，测试者还要考虑目标系统检测机制的逃逸，避免被目标的安全相应团队发现。</p>
-<p>6.后渗透阶段：需要黑客根据目标的业务经营模式和其安全规划等不同的特点，自主设计攻击目标，识别关键设施以及寻找有价值的信息和资产，最终达成能对客户组织造成最重要业务影响的攻击途径。</p>
-<p>7.形成报告：渗透测试的结果是向目标组织提供一份合格的渗透报告，该报告要包含有之前所有阶段中所获取到的关键信息，后续探测和挖掘系统安全漏洞，以及最终完成渗透攻击的全过程，还有后续造成业务影响后果的攻击途径，最后要站在防御的角度上，帮助目标组织完成对其安全防御体系的漏洞问题的分析和修补升级技术的方案。</p>
-<h3 id="0x05-渗透测试工具"><a href="#0x05-渗透测试工具" class="headerlink" title="0x05 渗透测试工具"></a>0x05 渗透测试工具</h3><p>测试工具多种多样,通常可以分为漏洞利用类、信息收集类、漏洞扫描类、综合平台等，大多数测试者通过长期的积累，会形成一套自己较熟悉的工具包，也有不少组织会发布一些开源的集成工具包如悬剑等，这里只介绍常见的几种工具，供大家参考</p>
-<p><strong>① Kali Linux</strong>：是一个基于 Debian 的 Linux 发行版，最基本的渗透测试操作系统</p>
-<p>kali本身拥有拥有超过600个预装的渗透测试程序，包括14大类300多个安全测试和渗透软件，包括大名鼎鼎的NMap(端口扫描器)，Wireshark(数据包分析器)，Aircrack-ng(一应用于对无线局域网进行渗透测试的软件)，John the Ripper(密码破解器)等，Kali Linux预装的这些软件基本包括了黑客会使用到的所有工具。</p>
-<p>但是要注意的是，kali本身优化了进攻而非防御，且它默认以root权限运行，这导致它极易被人利用和入侵，因此最好不要将你的敏感信息保存在kali linux系统上</p>
-<p><strong>② Nmap</strong>：网络扫描仪</p>
-<p>使用端口扫描功能和版本检测引擎枚举开放端口，该版本检测引擎用于确定在已标识端口上运行的服务上的应用程序名称和版本号，对测试人员来说，服务器上哪些端口是开放的，哪些端口正在运行什么是非常有必要的。</p>
-<p>此外，Nmap脚本引擎带有170多种NSE脚本和20个库，例如防火墙绕过，超级微型ipmi-conf，oracle-brute-stealth和ssl-heartbleed，</p>
-<p>它提供了更好的IPv6支持，为在CIDR样式的地址范围，空闲扫描，并行反向DNS和更多的NSE脚本覆盖范围内进行更全面的网络扫描铺平了道路，并且，它适用于包括windows，linux在内的绝大多数平台。</p>
-<p><strong>③ Burp Suite Pro</strong>：最流行，功能强大和最先进的笔测试工具之一，它是各种高级工具的“套件”，最适合于Web应用程序的渗透测试。</p>
-<p>提供了更快的暴力破解和模糊测试功能，使笔测试人员能够部署包含有效负载集的HTTP请求的自定义序列，从而大大减少了花在不同任务上的时间。</p>
-<p>可以轻松地为给定请求构造跨站点请求伪造（CSRF）概念证明（POC）攻击。</p>
-<p>它非常昂贵，企业版价格每年3999美元，但是它绝对对的起这个价格。</p>
-<p><strong>④  Wireshark</strong>：网络协议分析器，尽管随着技术的成熟，涌现出了越来越多的分析器，但wireshark的地位从未有过动摇。</p>
-<p>拥有业内最强大的显示过滤器，广泛用于捕获实时网络流量以进行网络故障排除，包括延迟问题，数据包丢失和网络上的恶意活动。它允许测试人员截取和分析通过网络传递的数据，并将其转换为人类可读的格式。</p>
-<p>多平台：在 Windows、Linux、macOS、Solaris、FreeBSD、NetBSD 和许多其他平台上运行</p>
-<p>可以通过 GUI 或通过 TTY 模式 TShark 实用程序浏览捕获的网络数据</p>
-<p>读/写许多不同的捕获文件格式：tcpdump (libpcap)、Pcap NG、Catapult DCT2000、Cisco Secure IDS iplog、Microsoft Network Monitor、Network General Sniffer®（压缩和未压缩）、Sniffer® Pro 和 NetXray®、Network Instruments Observer , NetScreen snoop, Novell LANalyzer, RADCOM WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek 等等</p>
-<p>⑤ Metasploit：是一个渗透测试框架，被网络攻击者和道德黑客广泛使用</p>
-<p>Metasploit包括超过1600个利用25个平台的漏洞利用，metasploit可以自动进行大量以前繁琐的工作，它是“世界上使用最广泛的渗透测试框架”。</p>
-<p>该工具大约有500个有效负载，其中包括：命令外壳有效负载以针对主机运行脚本。动态有效负载可生成独特的有效负载来规避防病毒软件。Meterpreter有效负载可控制设备监视器，会话，上载和下载文件。静态有效负载，用于端口转发并支持网络之间的通信。</p>
-<p>⑥ SQLmap：自动化SQL注入和数据库接管工具</p>
-<p>它适用于所有现代数据库，包括 mysql、postgresql、oracle、microsoft sql server 等</p>
-<p>它有效地搜索整个数据库中的特定数据库名称，表或列，这对于识别包含应用程序凭据的表很有用，这些凭据包含名称和通过等字符串。</p>
-<p>SQLmap支持在数据库服务器和攻击者计算机之间建立带外TCP连接，从而为用户提供交互式命令提示符或仪表计量器会话。</p>
-<p>⑦ Nessus：网络漏洞扫描程序。由于其大量的漏洞签名库，它是漏洞扫描的最佳工具。</p>
-<p>Nessus 扫描涵盖广泛的技术，包括操作系统、网络设备、管理程序、数据库、Web 服务器和关键基础设施。</p>
-<p>扫描结果可以多种格式报告，例如纯文本、XML、HTML和LaTeX。结果也可以保存在知识库中以供调试。在 UNIX 上，可以通过使用命令行客户端自动进行扫描。对于 UNIX 和 Windows，存在许多不同的商业、免费和开源工具来管理单个或分布式 Nessus 扫描仪。</p>
-<p>除了测试已知网络漏洞之外，Nessus 还提供其他功能。例如，它可以使用Windows凭据检查运行 Windows 操作系统的计算机上的补丁级别。Nessus 还可以支持配置和合规性审计、SCADA 审计和 PCI 合规性。</p>
-<p>⑧ 社会工程工具箱：开源的、Python驱动的社会工程学渗透测试工具。</p>
-<p>主要面向对人进行的渗透测试。使用SET可以实现多种攻击，比如：网络钓鱼攻击、网页劫持攻击、格式文件攻击等。</p>
-<p>⑨ Hashcat：开源密码破解工具</p>
-<p>Hashcat猜测一个密码，对其进行哈希处理，然后将生成的哈希值与它试图破解的哈希值进行比较。如果哈希值匹配，则我们知道密码。</p>
-<p>密码表示形式主要与哈希键关联，例如WHIRLPOOL，RiceMD，NTMLv1，NTLMv2 MD5，SHA等。它将可读数据转换为混乱的代码，使其他人难以解密数据。</p>
-<p>它支持分布式破解网络和200多种不同的哈希格式。</p>
-<p>⑩ Hydra：九头蛇，支持众多协议的爆破工具，kali自动集成。</p>
-<p>可在Linux、Windows和OS X中使用。hydra可以用来破解很多种服务，包括IMAP,HTTP,SMB,VNC,MS-SQL,MySQL,SMTP等等。</p>
-<p>本文参考链接：</p>
-<p><a class="link"   href="https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661" >https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://www.1024sou.com/article/13620.html" >https://www.1024sou.com/article/13620.html<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>信息收集基础</title>
+      <link href="/2022/03/10/undefined/"/>
+      <url>/2022/03/10/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>打点：基本信息收集（外围）</p><p>Banner        操作系统信息，web容器信息，开发商，cms信息</p><p>主机内部信息收集</p><p>主机存活探测</p><p>win</p><p>for /1 %i in (1,1,254) do @ping -w 1 -n 1 10.0.1.%i|findstr /c:”TTL=”</p><p>linux</p><p>for i in {1..254..1};do ping -w 1 -c 1 121.5.144.$i|grep“ttl”|awk’{print $4}’ |awk -F “:” ‘{print $1}’;done</p><p>主机信息收集</p><p>ipconfig /all         //看网卡配置，判断当前是否存在域环境</p><p>netsh wlan show profiles wifi名 key=clear      //看wifi密码</p><p>net localgroup    //查看分组信息</p><p>net user 用户名    //查看用户基本信息</p><p>net user 用户名 密码 /add</p><p>net user 用户名 密码 /der</p><p>systeminfo | findstr /B /C:”OS 名称” /C:”OS 版本”</p><p>systeminfo | findstr “KB”</p><p>net share        //看共享目录</p><p>net use \192.168.1.130\C$ 密码 /user：用户名 IPC管道连接</p><pre><code>      dir \\192.168.1.130\C$        //查看目录     copy 本地文件 \\192.168.1.130\C$\windows        //上传文件    copy \\192.168.1.130\C$\calc.exe c:\        //下载文件net cofig workstation        //查看工作站</code></pre><p>netstat -ano        //查找端口开放情况</p><p>whoami        //查看当前用户</p><p>whoami /user    //获取当前用户的sid</p><p>whoami /all        //查看所有的信息</p><p>whoami /priv        //查看当前用户的权限</p><p>ver  //看操作系统</p><p>wmic:</p><pre><code>    process            wmic process get Name,ProcessId,ThreadCount     //获取指定进程信息            wmic process list brief         //列出进程信息            wmin /node:127.0.0.1 process call create calc    //远程调用    os            wmic os get WindowsDirectory, SystemDirectory,CountryCode    product             wmic product get name,version        //慢</code></pre><p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p><p><img src="https://gitee.com/gulfx2/public/raw/master/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-10%20183643.jpg" alt="屏幕截图 2022-03-10 183643"></p><p><img src="https://gitee.com/gulfx2/public/raw/master/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-10%20190445.jpg" alt="屏幕截图 2022-03-10 190445"></p>]]></content>
+      
+      
       <categories>
-        <category>渗透</category>
+          
+          <category> 渗透 </category>
+          
       </categories>
-      <tags>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拥抱世界</title>
-    <url>/2022/03/07/undefined/</url>
-    <content><![CDATA[<hr>
-<p>Bitterness is a paralytic，love is a much more vicious motivator.    </p>
-<p>痛苦是种麻醉剂，爱则是更危险的动机</p>
-<hr>
-<p>I love three things in this world. Sun, moon and you. Sun for morning, moon for night, and you forever.</p>
-<p>浮世万千，吾爱有三。日月与卿，日起为昼，月升为暮，卿为朝暮。</p>
-<hr>
-<p>All lives end, all hearts are bro.</p>
-<p>生命终会终结，人心都会破碎。</p>
-<hr>
-<p>Once you’re ruled out the impossible. Whatever remains, however improbable, must be true.</p>
-<p>一旦你排除了所有的不可能，还剩什么，不管多么难以置信，一定就是真相。</p>
-<hr>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+            <tag> 社工 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拥抱世界</title>
+      <link href="/2022/03/07/undefined/"/>
+      <url>/2022/03/07/undefined/</url>
+      
+        <content type="html"><![CDATA[<hr><p>Bitterness is a paralytic，love is a much more vicious motivator.    </p><p>痛苦是种麻醉剂，爱则是更危险的动机</p><hr><p>I love three things in this world. Sun, moon and you. Sun for morning, moon for night, and you forever.</p><p>浮世万千，吾爱有三。日月与卿，日起为昼，月升为暮，卿为朝暮。</p><hr><p>All lives end, all hearts are bro.</p><p>生命终会终结，人心都会破碎。</p><hr><p>Once you’re ruled out the impossible. Whatever remains, however improbable, must be true.</p><p>一旦你排除了所有的不可能，还剩什么，不管多么难以置信，一定就是真相。</p><hr>]]></content>
+      
+      
       <categories>
-        <category>随笔</category>
+          
+          <category> 随笔 </category>
+          
       </categories>
-      <tags>
-        <tag>摘要</tag>
-        <tag>哲学</tag>
-        <tag>文案</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 摘要 </tag>
+            
+            <tag> 哲学 </tag>
+            
+            <tag> 文案 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
