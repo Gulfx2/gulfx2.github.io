@@ -1,223 +1,33 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Gulf">
-    
-    <title>
-        
-            IPsec协议 |
-        
-        Gulf&#39;s World
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <link rel="shortcut icon" href="/images/weblogo.jpg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"gulfx2.github.io","root":"/","language":"zh-CN","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/logo.jfif","favicon":"/images/weblogo.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/soka.jpg","description":"Life is not waiting for the storm to pass,but learning to dance in the rain."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.5"};
-    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-  </script>
-<meta name="generator" content="Hexo 5.4.1"></head>
-
-
-<body>
-<div class="progress-bar-container">
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fas fa-circle-notch fa-spin"></i>
-        </span>
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="header-wrapper">
-
-    <div class="header-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                Gulf&#39;s World
-            </a>
-        </div>
-
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
-                                首页
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                归档
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">首页</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">IPsec协议</span>
-        </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/logo.jfif">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Gulf</span>
-                        
-                            <span class="author-label">Lv1</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-23 15:18:28</span>
-        <span class="mobile">2022-03-23 15:18</span>
-    </span>
-    
-    
-
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>2.9k 字</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>11 分钟</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <h2 id="0x01-简介"><a href="#0x01-简介" class="headerlink" title="0x01 简介"></a>0x01 简介</h2><h3 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h3><p>定义：IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护。IPsec还可以被用于VPN中，来对其他的vpn做保护作用，比如GRE over IPSec、l2tp over ipsec，ipsec的配置相对复杂，不支持组播，消耗的资源比较大</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="Gulf"><meta name="copyright" content="Gulf"><meta name="generator" content="Hexo 5.4.1"><meta name="theme" content="hexo-theme-yun"><title>IPsec协议 | Gulf's World</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.2.4/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="//at.alicdn.com/t/font_1140697_dxory92pb0h.js" async></script><script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"gulfx2.github.io","root":"/","title":"云游君的小站","version":"1.8.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":null},"vendors":{"darken":"https://cdn.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="0x01 简介1、概述定义：IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护。IPsec还可以被用于VPN中，来对其他的vpn做保护作用，比如GRE over IPSec、l2tp over ipsec，ipsec的配置相对复杂，不支持组播，消耗的资">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPsec协议">
+<meta property="og:url" content="https://gulfx2.github.io/2022/03/23/undefined/index.html">
+<meta property="og:site_name" content="Gulf&#39;s World">
+<meta property="og:description" content="0x01 简介1、概述定义：IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护。IPsec还可以被用于VPN中，来对其他的vpn做保护作用，比如GRE over IPSec、l2tp over ipsec，ipsec的配置相对复杂，不支持组播，消耗的资">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153647939.png">
+<meta property="og:image" content="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153719888.png">
+<meta property="og:image" content="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323160546851.png">
+<meta property="article:published_time" content="2022-03-23T07:18:28.000Z">
+<meta property="article:modified_time" content="2022-03-23T08:32:02.085Z">
+<meta property="article:author" content="Gulf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153647939.png"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="Gulf"><img width="96" loading="lazy" src="/yun.png" alt="Gulf"></a><div class="site-author-name"><a href="/about/">Gulf</a></div><span class="site-name">Gulf's World</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">7</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">0x01 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8D%8F%E8%AE%AE%E4%BD%93%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">2、协议体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%BC%98%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">3、优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81IPsec%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.4.</span> <span class="toc-text">4、IPsec的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-IPsec%E7%9A%84%E5%8D%8F%E8%AE%AE%E4%BD%93%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">0x02 IPsec的协议体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text">1、组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%EF%BC%9AAH%E3%80%81ESP"><span class="toc-number">2.1.1.</span> <span class="toc-text">（1）安全协议：AH、ESP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F-%E9%9A%A7%E9%81%93%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">（2）工作模式：传输模式&#x2F;隧道模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%EF%BC%9AIKE"><span class="toc-number">2.1.3.</span> <span class="toc-text">（3）密钥管理：IKE</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E5%85%A8%E8%81%94%E7%9B%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2、安全联盟</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E5%AD%97%E6%AE%B5%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.1.</span> <span class="toc-text">安全协议相关字段介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SA%EF%BC%88%E5%AE%89%E5%85%A8%E8%81%94%E7%9B%9F%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">SA（安全联盟）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-IPsec%E5%8D%8F%E8%AE%AE%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">0x03 IPsec协议实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81IPsec%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-number">3.1.</span> <span class="toc-text">1、IPsec的两个阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81IPsec-VPN-%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">2、IPsec VPN 配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">0x03 配置命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">4.0.1.</span> <span class="toc-text">（1）基础配置：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%9F%A5%E7%9C%8B%E4%B8%8E%E9%AA%8C%E8%AF%81%EF%BC%9A"><span class="toc-number">4.0.2.</span> <span class="toc-text">（2）查看与验证：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%8A%A8%E6%80%81%E5%9C%B0%E5%9D%80%E7%9A%84vpn%E6%8E%A5%E5%85%A5"><span class="toc-number">4.0.3.</span> <span class="toc-text">（3）动态地址的vpn接入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-IPsec-%E8%BF%9B%E9%98%B6"><span class="toc-number">5.</span> <span class="toc-text">0x04 IPsec 进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81IPsec-%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">1、IPsec 的高级应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89IPSec%E7%9A%84%E5%B5%8C%E5%A5%97%EF%BC%8C%E7%94%A8IPSec%E4%BF%9D%E6%8A%A4%E7%8E%B0%E6%9C%89%E7%9A%84%E9%9A%A7%E9%81%93%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">5.0.0.2.</span> <span class="toc-text">1）IPSec的嵌套，用IPSec保护现有的隧道上的数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89IPSec%E5%B5%8C%E5%A5%97%E7%94%B1gre-over-ipsec-%E3%80%81l2tp-over-ipsec"><span class="toc-number">5.0.0.3.</span> <span class="toc-text">2）IPSec嵌套由gre over ipsec 、l2tp over ipsec</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%EF%BC%89GRE-OVER-IPSec"><span class="toc-number">5.0.0.4.</span> <span class="toc-text">3）GRE OVER IPSec</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%EF%BC%89IPSec-profile"><span class="toc-number">5.0.0.5.</span> <span class="toc-text">4）IPSec profile</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81IPSec-VPN%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="toc-number">5.1.</span> <span class="toc-text">1、IPSec VPN的高可用性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89%E5%A6%82%E6%9E%9C%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E7%BD%91%E5%85%B3%E5%BB%BA%E7%AB%8Bipsec-vpn%EF%BC%8C%E5%AD%98%E5%9C%A8%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C"><span class="toc-number">5.1.0.1.</span> <span class="toc-text">1）如果只有一个网关建立ipsec vpn，存在单点故障</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89%E5%86%97%E4%BD%99vpn%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.1.0.2.</span> <span class="toc-text">2）冗余vpn的问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%EF%BC%89ike%E5%AD%98%E6%B4%BB%E6%B6%88%E6%81%AF"><span class="toc-number">5.1.0.3.</span> <span class="toc-text">3）ike存活消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%EF%BC%89%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.0.4.</span> <span class="toc-text">4）配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81nat%E5%AF%B9ipsec%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">5.2.</span> <span class="toc-text">2、nat对ipsec的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E4%BA%86NAT%E6%8A%80%E6%9C%AF%E5%92%8C%E5%BB%BA%E7%AB%8BIPSec-vpn"><span class="toc-number">5.2.0.1.</span> <span class="toc-text">（1）边界网关同时部署了NAT技术和建立IPSec vpn</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89NAT%E7%A9%BF%E8%B6%8A"><span class="toc-number">5.2.0.2.</span> <span class="toc-text">（2）NAT穿越</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://gulfx2.github.io/2022/03/23/undefined/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Gulf"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="Gulf's World"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">IPsec协议</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2022-03-23 15:18:28" itemprop="dateCreated datePublished" datetime="2022-03-23T15:18:28+08:00">2022-03-23</time></div><div class="post-classify"></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h2 id="0x01-简介"><a href="#0x01-简介" class="headerlink" title="0x01 简介"></a>0x01 简介</h2><h3 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h3><p>定义：IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护。IPsec还可以被用于VPN中，来对其他的vpn做保护作用，比如GRE over IPSec、l2tp over ipsec，ipsec的配置相对复杂，不支持组播，消耗的资源比较大</p>
 <h3 id="2、协议体系"><a href="#2、协议体系" class="headerlink" title="2、协议体系"></a>2、协议体系</h3><p>（1）安全协议：AH、ESP</p>
 <p>（2）工作模式：传输模式/隧道模式</p>
 <p>（3）密钥管理：IKE</p>
@@ -247,8 +57,8 @@
 <h4 id="（3）密钥管理：IKE"><a href="#（3）密钥管理：IKE" class="headerlink" title="（3）密钥管理：IKE"></a>（3）密钥管理：IKE</h4><p>​                IKE：互联网密钥交换，是IPsec的信令协议</p>
 <pre><code>                    ① IKE也是一个框架，由多个协议构成
 </code></pre>
-<p>​                                Oakley：<a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE&action=edit&redlink=1" >密钥交换协议<i class="fas fa-external-link-alt"></i></a>，它允许认证过的双方通过不安全的网络交换秘钥的一部                                                分元素，这一过程是通过<a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2%EF%BC%8D%E8%B5%AB%E5%B0%94%E6%9B%BC%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2" >迪菲－赫尔曼密钥交换<i class="fas fa-external-link-alt"></i></a>来实现的。该协议由                                                H.Orman在1998年提交，被广泛用在<a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2" >因特网密钥交换<i class="fas fa-external-link-alt"></i></a>（IKE）中</p>
-<p>​                                SKEME：安全超文本传输协议，是一个<a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTPS" >HTTPS<i class="fas fa-external-link-alt"></i></a> URI scheme的可选方案，也是为                                                <a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91" >互联网<i class="fas fa-external-link-alt"></i></a>的HTTP加密通讯而设计。</p>
+<p>​                                Oakley：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE&action=edit&redlink=1">密钥交换协议</a>，它允许认证过的双方通过不安全的网络交换秘钥的一部                                                分元素，这一过程是通过<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2%EF%BC%8D%E8%B5%AB%E5%B0%94%E6%9B%BC%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2">迪菲－赫尔曼密钥交换</a>来实现的。该协议由                                                H.Orman在1998年提交，被广泛用在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2">因特网密钥交换</a>（IKE）中</p>
+<p>​                                SKEME：安全超文本传输协议，是一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTPS">HTTPS</a> URI scheme的可选方案，也是为                                                <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91">互联网</a>的HTTP加密通讯而设计。</p>
 <p>​                                ISAKMP：IKE的核心协议，它决定了IKE协商的封装格式、交换过程、模式的切                                                 换等。</p>
 <p>​                        ② 基于UDP端口500</p>
 <p>​                        ③ 实现密钥的动态协商，用于提供密钥的安全</p>
@@ -272,12 +82,12 @@
 <p>​                c、IPSec SA是单向的，在两个对等体之间的<strong>双向通信</strong>，<strong>最少需要两个安全联盟</strong>来分别对两个方向的数据                      流进行安全保护。入站数据流和出站数据流分别由入站SA和出站SA进行处理。同时，如果希望同时                      使用AH和ESP来保护对等体间的数据流，则分别需要两个SA，一个用于AH，另一个用于ESP。</p>
 <h2 id="0x03-IPsec协议实现过程"><a href="#0x03-IPsec协议实现过程" class="headerlink" title="0x03 IPsec协议实现过程"></a>0x03 IPsec协议实现过程</h2><h3 id="1、IPsec的两个阶段"><a href="#1、IPsec的两个阶段" class="headerlink" title="1、IPsec的两个阶段"></a>1、IPsec的两个阶段</h3><p>（1）阶段一：</p>
 <p>​                        协商和建立ikesa，为ike的协商以及阶段二的协商提供保护，分为主模式，和野蛮模                        式，完成对等体的策略协商、dh密钥交换以及对等体的验证</p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153647939.png" alt="image-20220323153647939"></p>
+<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153647939.png" alt="image-20220323153647939" loading="lazy"></p>
 <p>​    A、策略协商：协商身份验证的方式，加密算法、验证算法、dh算法、策略有效期</p>
 <p>​    B、DH密钥交换：两个对等体会共同产生3个密钥d、a、e</p>
 <p>​    C、验证对等体：用之前的协商的算法，以及产生的密钥，对对等体的身份做验证</p>
 <p>（2）阶段二</p>
-<p>​    <img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153719888.png" alt="image-20220323153719888"></p>
+<p>​    <img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153719888.png" alt="image-20220323153719888" loading="lazy"></p>
 <p>​    A、在ike sa的基础上，安全协商保护用户业务的具体安全策略</p>
 <p>​    B、只有一个快速模式</p>
 <p>​    C、协商保护的对象：感兴趣流量</p>
@@ -290,7 +100,7 @@
 <p>​    4、定义map，关联上面三个步骤</p>
 <p>​    5、端口调用map</p>
 <h2 id="0x03-配置命令"><a href="#0x03-配置命令" class="headerlink" title="0x03 配置命令"></a>0x03 配置命令</h2><p>拓扑图</p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323160546851.png" alt="image-20220323160546851"></p>
+<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323160546851.png" alt="image-20220323160546851" loading="lazy"></p>
 <h4 id="（1）基础配置："><a href="#（1）基础配置：" class="headerlink" title="（1）基础配置："></a>（1）基础配置：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r1#show run | sec crypto </span><br></pre></td></tr></table></figure>
 
 <p>​    定义阶段一：</p>
@@ -358,347 +168,4 @@
 <h5 id="（2）NAT穿越"><a href="#（2）NAT穿越" class="headerlink" title="（2）NAT穿越"></a>（2）NAT穿越</h5><p>​        1）穿越一个NAT设备与对端建立IPSec VPN</p>
 <p>​        2）NAT-T：会采用UDP 4500来封装ESP报文</p>
 <p>​        3）设备默认开启该功能，无需进行任何配置</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2022/03/22/undefined/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">HTTP协议标准</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
-            <div class="comment-container">
-                <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;评论</i>
-    </div>
-    
-
-        
-            
-    <div class="valine-container">
-        <script data-pjax
-                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
-        <div id="vcomments"></div>
-        <script data-pjax>
-            function loadValine() {
-                new Valine({
-                    el: '#vcomments',
-                    appId: 'wiFfD4G9DInonJWbjJdV3pG7-MdYXbMMI',
-                    appKey: 'CJq37xpmUovfMWTiqwRMXhQT',
-                    meta: ['nick', 'mail', 'link'],
-                    avatar: 'wavatar',
-                    enableQQ: true,
-                    placeholder: '尽情吐槽吧~',
-                    lang: 'zh-CN'.toLowerCase()
-                });
-
-                function getAuthor(language) {
-                    switch (language) {
-                        case 'en':
-                            return 'Author';
-                        case 'zh-CN':
-                            return '博主';
-                        default:
-                            return 'Master';
-                    }
-                }
-
-                // Add "Author" identify
-                const getValineDomTimer = setInterval(() => {
-                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
-                    if (vcards.length > 0) {
-                        let author = 'Gulf';
-
-                        if (author) {
-                            for (let vcard of vcards) {
-                                const vnick_dom = vcard.querySelector('.vhead .vnick');
-                                const vnick = vnick_dom.innerHTML;
-                                if (vnick === author) {
-                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
-                                }
-                            }
-                        }
-                        clearInterval(getValineDomTimer);
-                    } else {
-                        clearInterval(getValineDomTimer);
-                    }
-                }, 2000);
-            }
-
-            if ('true') {
-                const loadValineTimeout = setTimeout(() => {
-                    loadValine();
-                    clearTimeout(loadValineTimeout);
-                }, 1000);
-            } else {
-                window.addEventListener('DOMContentLoaded', loadValine);
-            }
-        </script>
-    </div>
-
-
-
-        
-    
-</div>
-
-            </div>
-        
-    </div>
-</div>
-
-
-                
-            </div>
-
-        </div>
-
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-              <span>2020</span>
-              -
-            
-            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Gulf</a>
-        </div>
-        
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
-        </div>
-        
-        
-    </div>
-</footer>
-
-        </div>
-    </div>
-
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fas fa-comment"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
-    
-
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
-
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
-
-        <li class="tools-item tool-expand-width flex-center">
-            <i class="fas fa-arrows-alt-h"></i>
-        </li>
-
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">0x01 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%8D%8F%E8%AE%AE%E4%BD%93%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">2、协议体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%BC%98%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">3、优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81IPsec%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">4、IPsec的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-IPsec%E7%9A%84%E5%8D%8F%E8%AE%AE%E4%BD%93%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">0x02 IPsec的协议体系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-number">2.1.</span> <span class="nav-text">1、组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%EF%BC%9AAH%E3%80%81ESP"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）安全协议：AH、ESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F-%E9%9A%A7%E9%81%93%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）工作模式：传输模式&#x2F;隧道模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%EF%BC%9AIKE"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）密钥管理：IKE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E5%85%A8%E8%81%94%E7%9B%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2、安全联盟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E5%AD%97%E6%AE%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.2.1.</span> <span class="nav-text">安全协议相关字段介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SA%EF%BC%88%E5%AE%89%E5%85%A8%E8%81%94%E7%9B%9F%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">SA（安全联盟）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-IPsec%E5%8D%8F%E8%AE%AE%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">0x03 IPsec协议实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81IPsec%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-number">3.1.</span> <span class="nav-text">1、IPsec的两个阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81IPsec-VPN-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">2、IPsec VPN 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">0x03 配置命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="nav-number">4.0.1.</span> <span class="nav-text">（1）基础配置：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%9F%A5%E7%9C%8B%E4%B8%8E%E9%AA%8C%E8%AF%81%EF%BC%9A"><span class="nav-number">4.0.2.</span> <span class="nav-text">（2）查看与验证：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%8A%A8%E6%80%81%E5%9C%B0%E5%9D%80%E7%9A%84vpn%E6%8E%A5%E5%85%A5"><span class="nav-number">4.0.3.</span> <span class="nav-text">（3）动态地址的vpn接入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-IPsec-%E8%BF%9B%E9%98%B6"><span class="nav-number">5.</span> <span class="nav-text">0x04 IPsec 进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81IPsec-%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">1、IPsec 的高级应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1%EF%BC%89IPSec%E7%9A%84%E5%B5%8C%E5%A5%97%EF%BC%8C%E7%94%A8IPSec%E4%BF%9D%E6%8A%A4%E7%8E%B0%E6%9C%89%E7%9A%84%E9%9A%A7%E9%81%93%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">1）IPSec的嵌套，用IPSec保护现有的隧道上的数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%EF%BC%89IPSec%E5%B5%8C%E5%A5%97%E7%94%B1gre-over-ipsec-%E3%80%81l2tp-over-ipsec"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">2）IPSec嵌套由gre over ipsec 、l2tp over ipsec</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%EF%BC%89GRE-OVER-IPSec"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">3）GRE OVER IPSec</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%EF%BC%89IPSec-profile"><span class="nav-number">5.0.0.5.</span> <span class="nav-text">4）IPSec profile</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81IPSec-VPN%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="nav-number">5.1.</span> <span class="nav-text">1、IPSec VPN的高可用性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%EF%BC%89%E5%A6%82%E6%9E%9C%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E7%BD%91%E5%85%B3%E5%BB%BA%E7%AB%8Bipsec-vpn%EF%BC%8C%E5%AD%98%E5%9C%A8%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C"><span class="nav-number">5.1.0.1.</span> <span class="nav-text">1）如果只有一个网关建立ipsec vpn，存在单点故障</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%EF%BC%89%E5%86%97%E4%BD%99vpn%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.1.0.2.</span> <span class="nav-text">2）冗余vpn的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%EF%BC%89ike%E5%AD%98%E6%B4%BB%E6%B6%88%E6%81%AF"><span class="nav-number">5.1.0.3.</span> <span class="nav-text">3）ike存活消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%EF%BC%89%E9%85%8D%E7%BD%AE"><span class="nav-number">5.1.0.4.</span> <span class="nav-text">4）配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81nat%E5%AF%B9ipsec%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">5.2.</span> <span class="nav-text">2、nat对ipsec的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E4%BA%86NAT%E6%8A%80%E6%9C%AF%E5%92%8C%E5%BB%BA%E7%AB%8BIPSec-vpn"><span class="nav-number">5.2.0.1.</span> <span class="nav-text">（1）边界网关同时部署了NAT技术和建立IPSec vpn</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89NAT%E7%A9%BF%E8%B6%8A"><span class="nav-number">5.2.0.2.</span> <span class="nav-text">（2）NAT穿越</span></a></li></ol></li></ol></li></ol></li></ol>
-    </div>
-</div>
-        </aside>
-    
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="搜索..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/main.js"></script>
-
-<script src="/js/header-shrink.js"></script>
-
-<script src="/js/back2top.js"></script>
-
-<script src="/js/dark-light-toggle.js"></script>
-
-
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-<div class="post-scripts pjax">
-    
-        
-<script src="/js/left-side-toggle.js"></script>
-
-<script src="/js/libs/anime.min.js"></script>
-
-<script src="/js/toc.js"></script>
-
-    
-</div>
-
-
-    
-<script src="/js/libs/pjax.min.js"></script>
-
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax'
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
-        });
-    });
-</script>
-
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Gulf</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://gulfx2.github.io/2022/03/23/undefined/" title="IPsec协议">https://gulfx2.github.io/2022/03/23/undefined/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2022/03/22/undefined/" rel="next" title="HTTP协议标准"><span class="post-nav-text">HTTP协议标准</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2022 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> Gulf</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.4.1</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.8.11</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
