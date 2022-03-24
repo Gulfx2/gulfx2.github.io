@@ -3,18 +3,17 @@
   <entry>
     <title>HTTP协议标准</title>
     <url>/2022/03/22/undefined/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<!-- HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等 -->
+    <content><![CDATA[<!-- HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等 -->
 
 <h2 id="0x01-概述"><a href="#0x01-概述" class="headerlink" title="0x01 概述"></a>0x01 概述</h2><p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p>
 <p>HTTP是一个client-server协议：请求通过一个实体被发出，实体也就是用户代理。大多数情况下，这个用户代理都是指浏览器，当然它也可能是任何东西，比如一个爬取网页生成维护搜索引擎索引的机器爬虫。</p>
 <p>HTTP属于应用层的协议，通过TCP，或者是TLS－加密的TCP连接来发送</p>
 <p>同时，HTTP具有简单、可扩展、无状态，有会话等性质</p>
-<h2 id="0x02-功能"><a href="#0x02-功能" class="headerlink" title="0x02 功能"></a>0x02 功能</h2><p>1、缓存：文档如何缓存能通过HTTP来控制。服务端能告诉代理和客户端哪些文档需要被缓存，缓存多久，而客户端也能够命令中间的缓存代理来忽略存储的文档。</p>
-<p>2、开放同源限制：为了防止网络窥听和其它隐私泄漏，浏览器强制对Web网站做了分割限制。只有来自于相同来源的网页才能够获取网站的全部信息。这样的限制有时反而成了负担，HTTP可以通过修改头部来开放这样的限制，因此Web文档可以是由不同域下的信息拼接成的（某些情况下，这样做还有安全因素考虑）。</p>
-<p>3、认证：一些页面能够被保护起来，仅让特定的用户进行访问。基本的认证功能可以直接通过HTTP提供，使用Authenticate相似的头部即可，或用HTTP Cookies来设置指定的会话。</p>
-<p>4、代理和隧道：通常情况下，服务器和/或客户端是处于内网的，对外网隐藏真实 IP 地址。因此 HTTP 请求就要通过代理越过这个网络屏障。但并非所有的代理都是 HTTP 代理。例如，SOCKS协议的代理就运作在更底层，一些像 FTP 这样的协议也能够被它们处理。</p>
-<p>5、会话：使用HTTP Cookies允许你用一个服务端的状态发起请求，这就创建了会话。虽然基本的HTTP是无状态协议。这很有用，不仅是因为这能应用到像购物车这样的电商业务上，更是因为这使得任何网站都能轻松为用户定制展示内容了。</p>
+<h2 id="0x02-功能"><a href="#0x02-功能" class="headerlink" title="0x02 功能"></a>0x02 功能</h2><h3 id="1、缓存："><a href="#1、缓存：" class="headerlink" title="1、缓存："></a>1、缓存：</h3><p>文档如何缓存能通过HTTP来控制。服务端能告诉代理和客户端哪些文档需要被缓存，缓存多久，而客户端也能够命令中间的缓存代理来忽略存储的文档。</p>
+<h3 id="2、开放同源限制："><a href="#2、开放同源限制：" class="headerlink" title="2、开放同源限制："></a>2、开放同源限制：</h3><p>为了防止网络窥听和其它隐私泄漏，浏览器强制对Web网站做了分割限制。只有来自于相同来源的网页才能够获取网站的全部信息。这样的限制有时反而成了负担，HTTP可以通过修改头部来开放这样的限制，因此Web文档可以是由不同域下的信息拼接成的（某些情况下，这样做还有安全因素考虑）。</p>
+<h3 id="3、认证："><a href="#3、认证：" class="headerlink" title="3、认证："></a>3、认证：</h3><p>一些页面能够被保护起来，仅让特定的用户进行访问。基本的认证功能可以直接通过HTTP提供，使用Authenticate相似的头部即可，或用HTTP Cookies来设置指定的会话。</p>
+<h3 id="4、代理和隧道："><a href="#4、代理和隧道：" class="headerlink" title="4、代理和隧道："></a>4、代理和隧道：</h3><p>通常情况下，服务器和/或客户端是处于内网的，对外网隐藏真实 IP 地址。因此 HTTP 请求就要通过代理越过这个网络屏障。但并非所有的代理都是 HTTP 代理。例如，SOCKS协议的代理就运作在更底层，一些像 FTP 这样的协议也能够被它们处理。</p>
+<h3 id="5、会话："><a href="#5、会话：" class="headerlink" title="5、会话："></a>5、会话：</h3><p>使用HTTP Cookies允许你用一个服务端的状态发起请求，这就创建了会话。虽然基本的HTTP是无状态协议。这很有用，不仅是因为这能应用到像购物车这样的电商业务上，更是因为这使得任何网站都能轻松为用户定制展示内容了。</p>
 <h2 id="0x03-HTTP信息流"><a href="#0x03-HTTP信息流" class="headerlink" title="0x03 HTTP信息流"></a>0x03 HTTP信息流</h2><p>1、打开一个TCP连接TCP连接被用来发送一条或多条请求，以及接受响应消息。客户端可能打开一条新的连接，或重用一个已经存在的连接，或者也可能开几个新的TCP连接连向服务端。</p>
 <p>2、发送一个HTTP报文：HTTP报文（在HTTP/2之前）是语义可读的。在HTTP/2中，这些简单的消息被封装在了帧中，这使得报文不能被直接读取，但是原理仍是相同的。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET / HTTP/1.1         //包括请求方法和请求参数和协议版本</span><br><span class="line">Host: developer.mozilla.org       //路径，不包含协议和域名的绝对路径URL</span><br><span class="line">Accept-Language: fr     //</span><br></pre></td></tr></table></figure>
@@ -33,8 +32,7 @@
 <p>第一行是状态行，包括使用的 HTTP 协议版本、状态码和一个状态描述（可以描述文本）。</p>
 <p>每个行都表示一个 HTTP 首部终端，为客户端关于发送数据的一些信息（如类型，数据请求大小，使用的压缩，缓存指示）。与客户端提供的头部模块类似，HTTP 首部组成一个块，并以一个空行结束。</p>
 <p>这个是数据块，包含了最后的响应数据（如果有的话）。</p>
-<p>实例：</p>
-<p>成功的网页响应</p>
+<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>成功的网页响应</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (这里是 29769 字节的网页HTML源代码)</span><br></pre></td></tr></table></figure>
 
 <p>请求资源不存在的网页响应</p>
@@ -45,13 +43,11 @@
 
 <h3 id="5、响应状态码"><a href="#5、响应状态码" class="headerlink" title="5、响应状态码"></a>5、响应状态码</h3><p>HTTP响应错误状态码 表示一个HTTP请求是否成功完成。响应被分为5种类型：信息类型响应，成功响应，控制器，客户端错误和服务端。</p>
 <p>200： 好的。请求成功。<br>301: 永久移动。请求资源的URI已被改变。<br>404： 未找到。服务器无法请求找到的资源。</p>
-<h2 id="0x05-常见报文格式、请求头及响应头"><a href="#0x05-常见报文格式、请求头及响应头" class="headerlink" title="0x05 常见报文格式、请求头及响应头"></a>0x05 常见报文格式、请求头及响应头</h2><h3 id="1、报文格式："><a href="#1、报文格式：" class="headerlink" title="1、报文格式："></a>1、报文格式：</h3><p><method><requset-URL><version>  </p>
+<h2 id="0x05-常见报文格式、请求头及响应头"><a href="#0x05-常见报文格式、请求头及响应头" class="headerlink" title="0x05 常见报文格式、请求头及响应头"></a>0x05 常见报文格式、请求头及响应头</h2><h3 id="1、报文格式："><a href="#1、报文格式：" class="headerlink" title="1、报文格式："></a>1、报文格式：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;method&gt;&lt;requset-URL&gt;&lt;version&gt;</span><br></pre></td></tr></table></figure>
+
 <p>/*method是协议动词，常见方法有HEAD/GET/POST/PUT/TRACE/PATCH/OPTIONS/COPY/MOVE/LOCK等</p>
 <p>version代表版本号，格式为HTTP/<major>.<minor></p>
-<p>url：<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag></p>
-<headers>
-
-<entity-body>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">url：&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;`</span><br><span class="line"></span><br><span class="line">`&lt;headers&gt;`</span><br><span class="line"></span><br><span class="line">`&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、请求头"><a href="#2、请求头" class="headerlink" title="2、请求头"></a>2、请求头</h3><p>Accept        //指定客户端能接收的内容类型；Accept: text/plain,text/html</p>
 <p>Accpet-Charset        //浏览器可以接收的字符编码集；Accept-Charset: iso-8859-5</p>
@@ -66,7 +62,7 @@
 <p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
 <p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
 <p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a href="mailto:&#117;&#x73;&#101;&#x72;&#64;&#101;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#117;&#x73;&#101;&#x72;&#64;&#101;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#115;&#x65;&#114;&#64;&#101;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#x75;&#115;&#x65;&#114;&#64;&#101;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p>
 <p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
 <p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
