@@ -254,7 +254,62 @@
     <content><![CDATA[<p>信息收集是指通过各种方式获取所需要的信息，以便我们在后续的渗透过程更好的进行。最简单的比如说目标站点的IP、中间件、脚本语言、端口、邮箱等等。我觉得信息收集在我们渗透测试的过程当中，是最重要的一环，这一环节没做好，没收集到足够多的可利用的信息，我们很难进行下一步的操作。</p>
 <span id="more"></span>
 
-<p>打点：基本信息收集（外围）</p>
+<h2 id="一、踩点"><a href="#一、踩点" class="headerlink" title="一、踩点"></a>一、踩点</h2><h3 id="1、踩点的概念"><a href="#1、踩点的概念" class="headerlink" title="1、踩点的概念"></a>1、踩点的概念</h3><p>踩点指的是预先到某地考察，为后续工作做准备，获取信息的过程就叫踩点，在渗透测试中，第一步要做的就是信息收集，即踩点。这里的踩点主要是尽可能收集关于目标网络的信息以找到各种能有效入侵对方网络的方法，通常我们使用扫描器来实现，通过扫描器我们可以发现各种远程服务的端口，提供哪些服务以及服务器版本等内容。</p>
+<p>当然，在实战中，我们信息收集的过程也要慎用各种扫描器，我们的信息收集过程应该是隐蔽的，悄无声息的，不应该让对方的应急团队察觉到你的意图。</p>
+<h3 id="2、Google-hacking"><a href="#2、Google-hacking" class="headerlink" title="2、Google hacking"></a>2、Google hacking</h3><p>还要学会使用搜索引擎，如Google hacking，善用Google，它的功能很强大，这里列举一些常用的Google语法供大家参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">intext: </span><br><span class="line">这个就是把网页中的正文内容中的某个字符做为搜索条件.例如在google里输入:intext:网络安全. </span><br><span class="line">将返回所有在网页正文部分包含&quot;网络安全&quot;的网页.allintext:使用方法和 intext 类似. </span><br><span class="line">intitle: </span><br><span class="line">和上面那个 intext 差不多,搜索网页标题中是否有我们所要找的字符.例如搜索:intitle:网络安全.将返回所有网页标题中包含&quot;网络安全&quot;的网页.同理 allintitle:也同 intitle 类似. </span><br><span class="line">cache: </span><br><span class="line">搜索 google 里关于某些内容的缓存,有时候也许能找到一些好东西哦. </span><br><span class="line">define: </span><br><span class="line">搜索某个词语的定义,搜索:define:hacker,将返回关于 hacker 的定义. </span><br><span class="line">filetype: </span><br><span class="line">这个我要重点推荐一下,无论是撒网式攻击还是我们后面要说的对特定目标进行信息收集都 </span><br><span class="line">需要用到这个.搜索指定类型的文件.例如输入:filetype:doc.将返回所有以doc结尾的文件URL. </span><br><span class="line">当然如果你找.bak、.mdb 或.inc 也是可以的,获得的信息也许会更丰富:) </span><br><span class="line">info: </span><br><span class="line">查找指定站点的一些基本信息. </span><br><span class="line">inurl: </span><br><span class="line">搜索我们指定的字符是否存在于 URL 中.例如输入:inurl:admin,将返回 N 个类似于这样的连 </span><br><span class="line">接:http://www.xxx.com/xxx/admin,用来找管理员登陆的 URL 不错.allinurl 也同 inurl 类似,可指 </span><br><span class="line">定多个字符. </span><br><span class="line">link:例如搜索:inurl:www.xxx.com 可以返回所有和 www.xxx.com 做了链接的 URL. </span><br><span class="line">site: </span><br><span class="line">这个也很有用,例如:site:www.xxx.com.将返回所有和 xxx.com 这个站有关的 URL. </span><br><span class="line">对了还有一些操作符也是很有用的: </span><br><span class="line">+把 google 可能忽略的字列如查询范围 </span><br><span class="line">-把某个字忽略 </span><br><span class="line">~同意词 </span><br><span class="line">.单一的通配符 </span><br><span class="line">*通配符，可代表多个字母 </span><br><span class="line">&quot;&quot;精确查询 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">下面开始说说实际应用(以下内容均在 google 上搜索), </span><br><span class="line">对于一个居心叵测的攻击者来说,可能他最感兴趣的就是密码文件了.而 google 正因为其强 </span><br><span class="line">大的搜索能力往往会把一些敏感信息透露给他们.用 google 搜索以下内容: </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.sh_history </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.bash_history </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>people.lst </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>pwd.db </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc/shadow </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>spwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>master.passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>htpasswd </span><br><span class="line"><span class="string">&quot;#-FrontPage-&quot;</span>inurl:service.pwd </span><br><span class="line">有时候因为各种各样的原因一些重要的密码文件被毫无保护的暴露在网络上,如果被别有用 </span><br><span class="line">心的人获得,那么危害是很大的。</span><br></pre></td></tr></table></figure>
+
+<p>感兴趣的师傅可以参考google-hacking-database，里面集成了很多语法：<a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
+<h3 id="3、-Github以及其他信息收集途径"><a href="#3、-Github以及其他信息收集途径" class="headerlink" title="3、 Github以及其他信息收集途径"></a>3、 Github以及其他信息收集途径</h3><h4 id="①-Github"><a href="#①-Github" class="headerlink" title="① Github"></a>① Github</h4><p>在Github中，可能会存在源码泄露、AccessKey泄露、密码、服务器配置泄露等情况，常见的搜索技巧有：</p>
+<ul>
+<li><code>@example.com password/pass/pwd/secret/credentials/token</code></li>
+<li><code>@example.com username/user/key/login/ftp/</code></li>
+<li><code>@example.com config/ftp/smtp/pop</code></li>
+<li><code>@example.com security_credentials/connetionstring</code></li>
+<li><code>@example.com JDBC/ssh2_auth_password/send_keys</code></li>
+</ul>
+<h4 id="②-shodan、Zoomeye等在线网站"><a href="#②-shodan、Zoomeye等在线网站" class="headerlink" title="② shodan、Zoomeye等在线网站"></a>② shodan、Zoomeye等在线网站</h4><p><strong>ZoomEye</strong> 拥有两大探测引擎：<strong>Xmap 和 Wmap</strong>，是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
+<p>ZoomEye 支持公网设备指纹检索和 Web 指纹检索</p>
+<p>网站指纹包括应用名、版本、前端框架、后端框架、服务端语言、服务器操作系统、网站容器、内容管理系统和数据库等。设备指纹包括应用名、版本、开放端口、操作系统、服务名、地理位置等</p>
+<p>常见的语法有：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定位国家---           country:US</span><br><span class="line">搜索城市---           city:xx</span><br><span class="line">搜索组件---           app:组件名</span><br><span class="line">搜索版本---           ver:5.0</span><br><span class="line">搜索端口---           port:80</span><br><span class="line">搜索服务名--         service：SSH</span><br><span class="line">搜索操作系统-        OS:Linux</span><br><span class="line">搜索网段---          cidr:1.1.1.1/24</span><br><span class="line">指定网站域名搜索--    site:www.baidu.com</span><br><span class="line">指定主机名---        hostname:www.baidu.com</span><br><span class="line">指定设备名---        device:router </span><br><span class="line">指定首页关键词---     keyword:sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">快捷键：</span><br><span class="line">显示帮助               shift+/  </span><br><span class="line">隐藏该帮助             ESC  </span><br><span class="line">回到首页               shift  </span><br><span class="line">高级搜索               Shift +s  </span><br><span class="line">聚焦搜索框              s  </span><br></pre></td></tr></table></figure>
+
+<p>想了解更多的可以看下这篇文章：</p>
+<p><a href="https://www.programminghunter.com/article/7143642821/">https://www.programminghunter.com/article/7143642821/</a></p>
+<h4 id="③-天眼查，站长工具等"><a href="#③-天眼查，站长工具等" class="headerlink" title="③ 天眼查，站长工具等"></a>③ 天眼查，站长工具等</h4><p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326192658584.png" alt="image-20220326192658584" loading="lazy"></p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326193204069.png" alt="image-20220326193204069" loading="lazy"></p>
+<h4 id="④-绕过CDN获取真实ip"><a href="#④-绕过CDN获取真实ip" class="headerlink" title="④ 绕过CDN获取真实ip"></a>④ 绕过CDN获取真实ip</h4><h5 id="查找子域名"><a href="#查找子域名" class="headerlink" title="查找子域名"></a><strong>查找子域名</strong></h5><p>很多时候，一些重要的站点会做CDN，而一些子域名站点并没有加入CDN，而且跟主站在同一个C段内，这时候，就可以通过查找子域名来查找网站的真实IP。</p>
+<p>常用的子域名查找方法和工具：</p>
+<h6 id="（1）搜索引擎查询："><a href="#（1）搜索引擎查询：" class="headerlink" title="（1）搜索引擎查询："></a>（1）搜索引擎查询：</h6><p>如Google、baidu、Bing等传统搜索引擎，site:baidu.com inurl:baidu.com，搜target.com|公司名字。</p>
+<h6 id="（2）一些在线查询工具"><a href="#（2）一些在线查询工具" class="headerlink" title="（2）一些在线查询工具"></a>（2）一些在线查询工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//tool.chinaz.com/subdomain/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//i.links.cn/subdomain/    </span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//subdomain.chaxun.la/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//searchdns.netcraft.com/</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//www.virustotal.com/</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="（3）子域名爆破工具"><a href="#（3）子域名爆破工具" class="headerlink" title="（3）子域名爆破工具"></a>（3）子域名爆破工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Layer</span>子域名挖掘机</span><br><span class="line">wydomain：<span class="attr">https</span>:<span class="comment">//github.com/ring04h/wydomain    </span></span><br><span class="line"><span class="attr">subDomainsBrute</span>:<span class="attr">https</span>:<span class="comment">//github.com/lijiejie/</span></span><br><span class="line"><span class="title class_">Sublist3</span><span class="attr">r</span>:<span class="attr">https</span>:<span class="comment">//github.com/aboul3la/Sublist3r</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="网站邮件头信息"><a href="#网站邮件头信息" class="headerlink" title="网站邮件头信息"></a><strong>网站邮件头信息</strong></h5><p>比如说，邮箱注册，邮箱找回密码、RSS邮件订阅等功能场景，通过网站给自己发送邮件，从而让目标主动暴露他们的真实的IP，查看邮件头信息，获取到网站的真实IP。</p>
+<h5 id="利用SSL证书寻找真实IP"><a href="#利用SSL证书寻找真实IP" class="headerlink" title="利用SSL证书寻找真实IP"></a><strong>利用</strong><a href="https://cloud.tencent.com/product/ssl?from=10680"><strong>SSL证书</strong></a><strong>寻找真实IP</strong></h5><p>证书颁发机构(CA)必须将他们发布的每个SSL/TLS证书发布到公共日志中，SSL/TLS证书通常包含域名、子域名和电子邮件地址。因此SSL/TLS证书成为了攻击者的切入点。</p>
+<p>SSL证书搜索引擎：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//censys.io/ipv4?q=github.comCensys 证书搜索：</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="扫描全网"><a href="#扫描全网" class="headerlink" title="扫描全网"></a><strong>扫描全网</strong></h5><p>通过Zmap、masscan等工具对整个互联网发起扫描，针对扫描结果进行关键字查找，获取网站真实IP。</p>
+<p>ZMap号称是最快的互联网扫描工具，能够在45分钟扫遍全网。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/zmap/zmap</span></span><br></pre></td></tr></table></figure>
+
+<p>Masscan号称是最快的互联网端口扫描器，最快可以在六分钟内扫遍互联网。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/robertdavidgraham/masscan</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="国外访问"><a href="#国外访问" class="headerlink" title="国外访问"></a>国外访问</h5><p>一般的站点在国内可能会有CDN，但是在国外的用户覆盖率比较低，所以通过国外的节点进行请求往往能获取真实IP</p>
+<h4 id="⑤-端口扫描："><a href="#⑤-端口扫描：" class="headerlink" title="⑤ 端口扫描："></a>⑤ 端口扫描：</h4><p>一个端口就是一个潜在的通信通道，也就是一个入侵通道。对目标计算机进行端口扫描，能得到许多有用的信息。进行扫描的方法很多，可以是手工进行扫描，也可以用端口扫描软件进行扫描。在手工进行扫描时，需要熟悉各种命令。对命令执行后的输出进行分析。用<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6">扫描软件</a>进行扫描时，许多扫描器软件都有分析数据的功能。通过端口扫描，可以得到许多有用的信息，从而发现系统的安全漏洞。以上定义只针对<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1">网络通信</a>端口，端口扫描在某些场合还可以定义为广泛的设备端口扫描，比如某些<a href="https://baike.baidu.com/item/%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6">管理软件</a>可以动态扫描各种计算机<a href="https://baike.baidu.com/item/%E5%A4%96%E8%AE%BE">外设</a>端口的开放状态，并进行管理和监控，这类系统常见的如<a href="https://baike.baidu.com/item/USB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">USB管理系统</a>、各种外设管理系统等。</p>
+<p>（1）可以通过Nmap（Nmap是一个网络连接端口扫描工具，用来扫描网上的电脑具体开放的网络连接端口。可以确定哪些服务运行在哪些的连接端口上，并且可以推断计算机运行哪个操作系统。所以它是网络安全管理人员必用的软件之一，甚至用以评估网络系统安全）；</p>
+<p>（2）通过masscan（masscan是网络安全中常用的技术手段，通过对于特定的IP范围和端口范围进行穷举扫描，发现网络中开放的端口，从而为进一步的探查提供基本信息）</p>
+<h4 id="⑥-旁站查询"><a href="#⑥-旁站查询" class="headerlink" title="⑥ 旁站查询"></a>⑥ 旁站查询</h4><p>C段主机是指与目标服务器在同一C段网络的服务器，攻击目标的C段存活主机是信息收集的重要信息，很多单位企业的内部服务器可能都会在一个C段网络中。</p>
+<p>还可以用NMAP进行C段扫描，使用命令【nmap -sn IP/24】，对目标IP的C段主机存活扫描，根据扫描的结果可以判断目标IP的C段还有哪些主机存活，然后对存活的主机进行渗透，拿到最高权限后进行内网渗透。</p>
+<p>可以通过K8_C段旁注工具、WebRobot、御剑，Cain、Sniffit 、Snoop、Tcpdump、Dsniff等工具进行查询；</p>
+<p>也可以用在线查询地址：<a href="http://www.webscan.cc/">http://www.webscan.cc/</a> 、 <a href="http://www.5kik.com/">http://www.5kik.com/</a></p>
+<h4 id="⑦-WAF查询"><a href="#⑦-WAF查询" class="headerlink" title="⑦ WAF查询"></a>⑦ WAF查询</h4><p>类似的有wafw00f（需要安装），可以识别是否有waf防护，是什么waf。</p>
+<p><a href="https://scan.top15.cn/web/%EF%BC%9A%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%9F%A5%E6%97%81%E7%AB%99%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF">https://scan.top15.cn/web/：还可以查旁站及其他信息</a></p>
+<h2 id="二、WINDOWS和LINUX系统的基础命令"><a href="#二、WINDOWS和LINUX系统的基础命令" class="headerlink" title="二、WINDOWS和LINUX系统的基础命令"></a>二、WINDOWS和LINUX系统的基础命令</h2><p>打点：基本信息收集（外围）</p>
 <p>Banner        操作系统信息，web容器信息，开发商，cms信息</p>
 <p>主机内部信息收集</p>
 <p>主机存活探测</p>
@@ -305,8 +360,6 @@ net cofig workstation        //查看工作站
             wmic product get name,version        //慢
 </code></pre>
 <p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-10%20183643.jpg" alt="屏幕截图 2022-03-10 183643" loading="lazy"></p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-10%20190445.jpg" alt="屏幕截图 2022-03-10 190445" loading="lazy"></p>
 ]]></content>
       <categories>
         <category>渗透</category>
@@ -314,6 +367,7 @@ net cofig workstation        //查看工作站
       <tags>
         <tag>渗透</tag>
         <tag>社工</tag>
+        <tag>信息收集</tag>
       </tags>
   </entry>
   <entry>
