@@ -247,6 +247,13 @@
 <p>​        2）NAT-T：会采用UDP 4500来封装ESP报文</p>
 <p>​        3）设备默认开启该功能，无需进行任何配置</p>
 ]]></content>
+      <categories>
+        <category>网络工程</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>网工</tag>
+      </tags>
   </entry>
   <entry>
     <title>信息收集基础</title>
