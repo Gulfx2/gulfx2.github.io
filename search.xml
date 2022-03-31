@@ -1,499 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>HTTP协议标准</title>
-    <url>/2022/03/22/undefined/</url>
-    <content><![CDATA[<p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p>
-<span id="more"></span>
-
-<h2 id="0x01-概述"><a href="#0x01-概述" class="headerlink" title="0x01 概述"></a>0x01 概述</h2><p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p>
-<p>HTTP是一个client-server协议：请求通过一个实体被发出，实体也就是用户代理。大多数情况下，这个用户代理都是指浏览器，当然它也可能是任何东西，比如一个爬取网页生成维护搜索引擎索引的机器爬虫。</p>
-<p>HTTP属于应用层的协议，通过TCP，或者是TLS－加密的TCP连接来发送</p>
-<p>同时，HTTP具有简单、可扩展、无状态，有会话等性质</p>
-<h2 id="0x02-功能"><a href="#0x02-功能" class="headerlink" title="0x02 功能"></a>0x02 功能</h2><h3 id="1、缓存："><a href="#1、缓存：" class="headerlink" title="1、缓存："></a>1、缓存：</h3><p>文档如何缓存能通过HTTP来控制。服务端能告诉代理和客户端哪些文档需要被缓存，缓存多久，而客户端也能够命令中间的缓存代理来忽略存储的文档。</p>
-<h3 id="2、开放同源限制："><a href="#2、开放同源限制：" class="headerlink" title="2、开放同源限制："></a>2、开放同源限制：</h3><p>为了防止网络窥听和其它隐私泄漏，浏览器强制对Web网站做了分割限制。只有来自于相同来源的网页才能够获取网站的全部信息。这样的限制有时反而成了负担，HTTP可以通过修改头部来开放这样的限制，因此Web文档可以是由不同域下的信息拼接成的（某些情况下，这样做还有安全因素考虑）。</p>
-<h3 id="3、认证："><a href="#3、认证：" class="headerlink" title="3、认证："></a>3、认证：</h3><p>一些页面能够被保护起来，仅让特定的用户进行访问。基本的认证功能可以直接通过HTTP提供，使用Authenticate相似的头部即可，或用HTTP Cookies来设置指定的会话。</p>
-<h3 id="4、代理和隧道："><a href="#4、代理和隧道：" class="headerlink" title="4、代理和隧道："></a>4、代理和隧道：</h3><p>通常情况下，服务器和/或客户端是处于内网的，对外网隐藏真实 IP 地址。因此 HTTP 请求就要通过代理越过这个网络屏障。但并非所有的代理都是 HTTP 代理。例如，SOCKS协议的代理就运作在更底层，一些像 FTP 这样的协议也能够被它们处理。</p>
-<h3 id="5、会话："><a href="#5、会话：" class="headerlink" title="5、会话："></a>5、会话：</h3><p>使用HTTP Cookies允许你用一个服务端的状态发起请求，这就创建了会话。虽然基本的HTTP是无状态协议。这很有用，不仅是因为这能应用到像购物车这样的电商业务上，更是因为这使得任何网站都能轻松为用户定制展示内容了。</p>
-<h2 id="0x03-HTTP信息流"><a href="#0x03-HTTP信息流" class="headerlink" title="0x03 HTTP信息流"></a>0x03 HTTP信息流</h2><p>1、打开一个TCP连接TCP连接被用来发送一条或多条请求，以及接受响应消息。客户端可能打开一条新的连接，或重用一个已经存在的连接，或者也可能开几个新的TCP连接连向服务端。</p>
-<p>2、发送一个HTTP报文：HTTP报文（在HTTP/2之前）是语义可读的。在HTTP/2中，这些简单的消息被封装在了帧中，这使得报文不能被直接读取，但是原理仍是相同的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET / HTTP/1.1         //包括请求方法和请求参数和协议版本</span><br><span class="line">Host: developer.mozilla.org       //路径，不包含协议和域名的绝对路径URL</span><br><span class="line">Accept-Language: fr     //</span><br></pre></td></tr></table></figure>
-
-<p>3、读取返回报文：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page)</span><br></pre></td></tr></table></figure>
-
-<p>4、关闭连接或请求重新连接：当HTTP流水线启动时，后续请求都可以不用等待第一个请求的成功响应就被发送。然而HTTP流水线已被证明很难在现有的网络中实现，因为现有网络中有很多老旧的软件与现代版本的软件共存。因此，HTTP流水线已被在有多请求下表现得更稳健的HTTP/2的帧所取代。</p>
-<h2 id="0x04-HTTP会话过程"><a href="#0x04-HTTP会话过程" class="headerlink" title="0x04 HTTP会话过程"></a>0x04 HTTP会话过程</h2><h3 id="1、三个阶段"><a href="#1、三个阶段" class="headerlink" title="1、三个阶段"></a>1、三个阶段</h3><p>客户端建立一条TCP连接（如果层传输不是TCP，也可以是其他适合的连接）。</p>
-<p>客户端发送请求并等待接收。</p>
-<p>服务器处理请求并发送状态响应回覆，包括一个数据</p>
-<h3 id="2、建立连接"><a href="#2、建立连接" class="headerlink" title="2、建立连接"></a>2、建立连接</h3><p>由客户端发起，在驱动层启动连接建立，是TCP协议，默认tcp端口为80.</p>
-<h3 id="3、请求方法"><a href="#3、请求方法" class="headerlink" title="3、请求方法"></a>3、请求方法</h3><p>GET：请求方法指定的资源，应该只被获取数据</p>
-<p>POST：方法向服务器发送数据，因此改变服务器状态，通常在HTML表单使用</p>
-<h3 id="4、响应结构"><a href="#4、响应结构" class="headerlink" title="4、响应结构"></a>4、响应结构</h3><p><strong>同样分为三块</strong></p>
-<p>第一行是状态行，包括使用的 HTTP 协议版本、状态码和一个状态描述（可以描述文本）。</p>
-<p>每个行都表示一个 HTTP 首部终端，为客户端关于发送数据的一些信息（如类型，数据请求大小，使用的压缩，缓存指示）。与客户端提供的头部模块类似，HTTP 首部组成一个块，并以一个空行结束。</p>
-<p>这个是数据块，包含了最后的响应数据（如果有的话）。</p>
-<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>成功的网页响应</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (这里是 29769 字节的网页HTML源代码)</span><br></pre></td></tr></table></figure>
-
-<p>请求资源不存在的网页响应</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">Date: Sat, 09 Oct 2010 14:33:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 May 2007 14:24:39 GMT</span><br><span class="line">ETag: &quot;499fd34e-29ec-42f695ca96761;48fe7523cfcc1&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 10732</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (包含一个站点自定义404页面, 帮助用户找到丢失的资源)</span><br></pre></td></tr></table></figure>
-
-<p>请求资源已被永久移动的网页响应</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: Apache/2.2.3 (Red Hat)</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">Date: Sat, 09 Oct 2010 14:30:24 GMT</span><br><span class="line">Location: https://developer.mozilla.org/ (目标资源的新地址, 服务器期望用户代理去访问它)</span><br><span class="line">Keep-Alive: timeout=15, max=98</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Via: Moz-Cache-zlb05</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">Content-Length: 325 (如果用户代理无法转到新地址，就显示一个默认页面)</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</span><br><span class="line">&lt;html&gt;&lt;head&gt;</span><br><span class="line">&lt;title&gt;301 Moved Permanently&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Moved Permanently&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;The document has moved &lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;address&gt;Apache/2.2.3 (Red Hat) Server at developer.mozilla.org Port 80&lt;/address&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、响应状态码"><a href="#5、响应状态码" class="headerlink" title="5、响应状态码"></a>5、响应状态码</h3><p>HTTP响应错误状态码 表示一个HTTP请求是否成功完成。响应被分为5种类型：信息类型响应，成功响应，控制器，客户端错误和服务端。</p>
-<p>200： 好的。请求成功。<br>301: 永久移动。请求资源的URI已被改变。<br>404： 未找到。服务器无法请求找到的资源。</p>
-<h2 id="0x05-常见报文格式、请求头及响应头"><a href="#0x05-常见报文格式、请求头及响应头" class="headerlink" title="0x05 常见报文格式、请求头及响应头"></a>0x05 常见报文格式、请求头及响应头</h2><h3 id="1、报文格式："><a href="#1、报文格式：" class="headerlink" title="1、报文格式："></a>1、报文格式：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;method&gt;&lt;requset-URL&gt;&lt;version&gt;</span><br></pre></td></tr></table></figure>
-
-<p>/*method是协议动词，常见方法有HEAD/GET/POST/PUT/TRACE/PATCH/OPTIONS/COPY/MOVE/LOCK等</p>
-<p>version代表版本号，格式为HTTP/<major>.<minor></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">url：&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;`</span><br><span class="line"></span><br><span class="line">`&lt;headers&gt;`</span><br><span class="line"></span><br><span class="line">`&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、请求头"><a href="#2、请求头" class="headerlink" title="2、请求头"></a>2、请求头</h3><p>Accept        //指定客户端能接收的内容类型；Accept: text/plain,text/html</p>
-<p>Accpet-Charset        //浏览器可以接收的字符编码集；Accept-Charset: iso-8859-5</p>
-<p>Accept-Encoding        //指定浏览器可以支持的web服务器返回内容压缩编码类型; Accept-Encoding: compress, gzip</p>
-<p>Accept-Language        //浏览器可接受的语言; Accept-Language: en,zh</p>
-<p>Accept-Ranges        //可以请求网页实体的一个或者多个子范围字段; Accept-Ranges: bytes</p>
-<p>Authorization        //HTTP授权的授权证书; Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
-<p>Cache-Control        //指定请求和响应遵循的缓存机制 ; Cache-Control: no-cache</p>
-<p>Connection        //表示是否需要持久连接 // HTTP 1.1默认进行持久连接; Connection: close</p>
-<p>Cookie        //HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器; Cookie: role=admin;ssid=1</p>
-<p>Content-Length        //请求的内容长度; Content-Length: 348</p>
-<p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
-<p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
-<p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a href="mailto:&#117;&#115;&#101;&#114;&#64;&#101;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#117;&#115;&#101;&#114;&#64;&#101;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
-<p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p>
-<p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
-<p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
-<p>If-None-Match        //如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变; If-None-Match: “737060cd8c284d8af7ad3082f209582d”</p>
-<p>If-Range        //如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag; If-Range: “737060cd8c284d8af7ad3082f209582d”</p>
-<p>If-Unmodified-Since        //只在实体在指定时间之后未被修改才请求成功; If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT</p>
-<p>Max-Forwards        //限制信息通过代理和网关传送的时间; Max-Forwards: 10</p>
-<p>Pragma        //用来包含实现特定的指令; Pragma: no-cache; </p>
-<p>Proxy-Authorization        //连接到代理的授权证书; Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
-<p>Range        //只请求实体的一部分，指定范围; Range: bytes=500-999</p>
-<p>Referer        //先前网页的地址，当前请求网页紧随其后,即来路; Referer: <a href="http://www.zcmhi.com/archives/71.html">http://www.zcmhi.com/archives/71.html</a></p>
-<p>TE        //客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息; TE: trailers,deflate;q=0.5</p>
-<p>Upgrade        //向服务器指定某种传输协议以便服务器进行转换（如果支持）; Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</p>
-<p>User-Agent        //User-Agent的内容包含发出请求的用户信息; User-Agent: Mozilla/5.0 (Linux; X11)</p>
-<p>Via        //通知中间网关或代理服务器地址，通信协议; Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</p>
-<p>Warning        //关于消息实体的警告信息; Warn: 199 Miscellaneous warning</p>
-<h3 id="3、响应头"><a href="#3、响应头" class="headerlink" title="3、响应头"></a>3、响应头</h3><p>Accept-Ranges        //表明服务器是否支持指定范围请求及哪种类型的分段请求； Accept-Ranges: bytes<br>Access-Control-Allow-Origin        //配置有权限访问资源的域；Access-Control-Allow-Origin: <origin>|*<br>Age        //从原始服务器到代理缓存形成的估算时间（以秒计，非负）； Age: 12<br>Allow        //对某网络资源的有效的请求行为，不允许则返回405； Allow: GET, HEAD<br>Cache-Control            //告诉所有的缓存机制是否可以缓存及哪种类型； Cache-Control: no-cache<br>Content-Encoding        //web服务器支持的返回内容压缩编码类型；Content-Encoding: gzip<br>Content-Language        //响应体的语言； Content-Language: en,zh<br>Content-Length        //响应体的长度；Content-Length: 348<br>Content-Location        //；请求资源可替代的备用的另一地址；Content-Location: /index.htm<br>Content-MD5        //返回资源的MD5校验值；Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==<br>Content-Range        //在整个返回体中本部分的字节位置；Content-Range: bytes 21010-47021/47022<br>Content-Type        //返回内容的MIME类型；Content-Type: text/html; charset=utf-8<br>Date        //原始服务器消息发出的时间；Date: Tue, 15 Nov 2010 08:12:31 GMT<br>ETag        //请求变量的实体标签的当前值；ETag: “737060cd8c284d8af7ad3082f209582d”<br>Expires        //响应过期的日期和时间；Expires: Thu, 01 Dec 2010 16:00:00 GMT<br>Last-Modified        //请求资源的最后修改时间；Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT<br>Location        //用来重定向接收方到非请求URL的位置来完成请求或标识新的资源；Location: <a href="http://www.zcmhi.com/archives/94.html">http://www.zcmhi.com/archives/94.html</a><br>Pragma        //包括实现特定的指令，它可应用到响应链上的任何接收方；Pragma: no-cache<br>Proxy-Authenticate            //它指出认证方案和可应用到代理的该URL上的参数；Proxy-Authenticate: Basic<br>Refresh        //应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）；Refresh: 5; url=<a href="http://www.zcmhi.com/archives/94.html">http://www.zcmhi.com/archives/94.html</a><br>Retry-After        //如果实体暂时不可取，通知客户端在指定时间之后再次尝试；Retry-After: 120<br>Server        //web服务器软件名称；Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)<br>Set-Cookie        //设置Http Cookie Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1<br>Strict-Transport-Security            </p>
-<p>/*</p>
-<p>设置浏览器强制使用HTTPS访问<br> max-age: x秒的时间内 访问对应域名都使用HTTPS请求<br> includeSubDomains: 网站的子域名也启用规则<br>Strict-Transport-Security: max-age=1000; includeSubDomains</p>
-<p>*/</p>
-<p>Trailer        //指出头域在分块传输编码的尾部存在 Trailer: Max-Forwards<br>Transfer-Encoding        //文件传输编码；Transfer-Encoding:chunked<br>Vary        //告诉下游代理是使用缓存响应还是从原始服务器请求；Vary: *<br>Via        //告知代理客户端响应是通过哪里发送的；Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)<br>Warning        //警告实体可能存在的问题；Warning: 199 Miscellaneous warning<br>WWW-Authenticate            //表明客户端请求实体应该使用的授权方案；WWW-Authenticate: Basic<br>X-Content-Type-Options        //配置禁止MIME类型嗅探；X-Content-Type-Options: nosniff<br>X-Frame-Options        //配置页面是否能出现在 <frame>, <iframe>, <embed>, <object> 等标签中，防止点击劫持；X-Frame-Options: deny<br>X-XSS-Protection        //配置XSS防护机制；X-XSS-Protection: 1; mode=block</p>
-<br/>
-
-<p>本文参考链接;</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session</a></p>
-<p><a href="https://websec.readthedocs.io/zh/latest/network/http/index.html">https://websec.readthedocs.io/zh/latest/network/http/index.html</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>SQL漏洞学习</title>
+      <link href="/2022/03/30/undefined/"/>
+      <url>/2022/03/30/undefined/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、sql注入基础"><a href="#一、sql注入基础" class="headerlink" title="一、sql注入基础"></a>一、sql注入基础</h2><h3 id="1、漏洞原理："><a href="#1、漏洞原理：" class="headerlink" title="1、漏洞原理："></a>1、漏洞原理：</h3><p>服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而打到执行攻击者所预期的结果。 SQL注入攻击是一种injection attack， SQL命令注入数据平面的投入，以影响执行预定义的SQL命令。一个成功的SQL注入攻击可以从数据库中阅读敏感数据，修改数据库数据（插入/更新/删除） ，执行管理处业务的数据库（如关闭数据库管理系统） ，收回的内容，一个给定的文件现有的数据库管理系统文件系统，在某些情况下，发出命令的作业系统。</p><h3 id="2、产生原因"><a href="#2、产生原因" class="headerlink" title="2、产生原因"></a>2、产生原因</h3><ol><li>服务器没有对用户输入的信息进行严格的过滤</li><li>查询语句与用户输入的内容进行拼接</li></ol><p>eg：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql = “select id, username from user where id = $id”;</span><br></pre></td></tr></table></figure><p>其中$id是用户可控的参数，如果用户传入<code>1 union select 1,database() limit 1,1</code> ,那么拼接后的SQL语义结构就会被改变，变成：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id, username from user where id = 1 union select 1,database() limit 1,1</span><br></pre></td></tr></table></figure><p>当脚本向数据库请求数据时，就会执行这被改变的SQL语句，从而达到攻击者预期的效果</p><p>sql布尔盲注测试：</p><p>1’ and LENGTH(DATABASE())=4#</p><p>1’ and ascii(substr(database(),1,1))=65#</p>]]></content>
+      
+      
       <categories>
-        <category>web</category>
+          
+          <category> 渗透 </category>
+          
       </categories>
-      <tags>
-        <tag>协议</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IPsec协议</title>
-    <url>/2022/03/23/undefined/</url>
-    <content><![CDATA[<p>IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护</p>
-<span id="more"></span>
-
-<h2 id="0x01-简介"><a href="#0x01-简介" class="headerlink" title="0x01 简介"></a>0x01 简介</h2><h3 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h3><p>定义：IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护。IPsec还可以被用于VPN中，来对其他的vpn做保护作用，比如GRE over IPSec、l2tp over ipsec，ipsec的配置相对复杂，不支持组播，消耗的资源比较大</p>
-<h3 id="2、协议体系"><a href="#2、协议体系" class="headerlink" title="2、协议体系"></a>2、协议体系</h3><p>（1）安全协议：AH、ESP</p>
-<p>（2）工作模式：传输模式/隧道模式</p>
-<p>（3）密钥管理：IKE</p>
-<h3 id="3、优点"><a href="#3、优点" class="headerlink" title="3、优点"></a>3、优点</h3><p>（1）支持IKE（Internet Key Exchange，因特网密钥交换），可实现密钥的自动协商功能，减少了密钥协商的开销。可以通过IKE建立和维护SA的服务，简化了IPsec的使用和管理。</p>
-<p>（2）所有使用IP协议进行数据传输的应用系统和服务都可以使用IPsec，而不必对这些应用系统和服务本身做任何修改。 </p>
-<p>（3）对数据的加密是以数据包为单位的，而不是以整个数据流为单位，这不仅灵活而且有助于进一步提高IP数据包的安全性，可以有效防范网络攻击。</p>
-<h3 id="4、IPsec的应用"><a href="#4、IPsec的应用" class="headerlink" title="4、IPsec的应用"></a>4、IPsec的应用</h3><ul>
-<li>加密应用层数据</li>
-<li>在公共互联网上为路由器发送数据提供安全保障</li>
-<li>在不加密的情况下进行身份认证，比如验证来自一个已知发送者的数据报</li>
-<li>通过使用 IPsec 隧道设置电路来保护网络数据，在这些电路中，所有数据在两个端点之间发送时都被加密，就像使用虚拟专用网络(VPN)连接一样</li>
-</ul>
-<h2 id="0x02-IPsec的协议体系"><a href="#0x02-IPsec的协议体系" class="headerlink" title="0x02 IPsec的协议体系"></a>0x02 IPsec的协议体系</h2><h3 id="1、组成部分"><a href="#1、组成部分" class="headerlink" title="1、组成部分"></a>1、组成部分</h3><h4 id="（1）安全协议：AH、ESP"><a href="#（1）安全协议：AH、ESP" class="headerlink" title="（1）安全协议：AH、ESP"></a>（1）安全协议：AH、ESP</h4><p>​               AH：认证头部                </p>
-<p>​                        ① 基于ip协议51的组成部分                </p>
-<p>​                        ② 支持数据的完整性，不支持加密性                 </p>
-<p>​                        ③ 认证头部，是除了可变字段之外的报文头部一起进行哈希计算，不适合nat环境，                             所以使用较少</p>
-<p>​              ESP：封装安全协议</p>
-<p>​                        ① 基于ip协议50的组成部分</p>
-<p>​                        ② 支持数据的完整性，支持加密性</p>
-<h4 id="（2）工作模式：传输模式-隧道模式"><a href="#（2）工作模式：传输模式-隧道模式" class="headerlink" title="（2）工作模式：传输模式/隧道模式"></a>（2）工作模式：传输模式/隧道模式</h4><p>​                传输模式</p>
-<pre><code>                    ① 报文封装：IPSec头部添加到原始IP头部和数据之间；不会额外添加一个新的头部
-</code></pre>
-<p>​                        ② 主要是用在端到端之间</p>
-<p>​                隧道模式</p>
-<p>​                        ① 报文封装：IPSec头部添加在原始IP头部之前；并且会额外添加一个新的头部</p>
-<p>​                        ② 主要是用在站点到站点之间</p>
-<h4 id="（3）密钥管理：IKE"><a href="#（3）密钥管理：IKE" class="headerlink" title="（3）密钥管理：IKE"></a>（3）密钥管理：IKE</h4><p>​                IKE：互联网密钥交换，是IPsec的信令协议</p>
-<pre><code>                    ① IKE也是一个框架，由多个协议构成
-</code></pre>
-<p>​                                Oakley：<a href="https://zh.wikipedia.org/w/index.php?title=%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE&action=edit&redlink=1">密钥交换协议</a>，它允许认证过的双方通过不安全的网络交换秘钥的一部                                                分元素，这一过程是通过<a href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2%EF%BC%8D%E8%B5%AB%E5%B0%94%E6%9B%BC%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2">迪菲－赫尔曼密钥交换</a>来实现的。该协议由                                                H.Orman在1998年提交，被广泛用在<a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2">因特网密钥交换</a>（IKE）中</p>
-<p>​                                SKEME：安全超文本传输协议，是一个<a href="https://zh.wikipedia.org/wiki/HTTPS">HTTPS</a> URI scheme的可选方案，也是为                                                <a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91">互联网</a>的HTTP加密通讯而设计。</p>
-<p>​                                ISAKMP：IKE的核心协议，它决定了IKE协商的封装格式、交换过程、模式的切                                                 换等。</p>
-<p>​                        ② 基于UDP端口500</p>
-<p>​                        ③ 实现密钥的动态协商，用于提供密钥的安全</p>
-<h3 id="2、安全联盟"><a href="#2、安全联盟" class="headerlink" title="2、安全联盟"></a>2、安全联盟</h3><h4 id="安全协议相关字段介绍"><a href="#安全协议相关字段介绍" class="headerlink" title="安全协议相关字段介绍"></a>安全协议相关字段介绍</h4><p>​        1）SPI（安全参数索引）</p>
-<p>​                        ① 安全参数：具体指的就是协商之后的保护策略</p>
-<p>​                        ② 索引：类似目录，由不同的安全编号，不同的编号指向不同的安全策略            </p>
-<p>​                标识和区分SADB（安全关联数据库）中不同的SA信息</p>
-<p>​                        ① 不同的spi标识了与不同对等体之间协商sa信息，这个信息存放在SDDB，每个sa都有通过的spi唯                            一标识</p>
-<p>​                不同对等体之间采用唯一的序列号（spi值）</p>
-<p>​                            ① spi值在两个对等体协商过程中，自动产生的</p>
-<p>​        2）序列号</p>
-<p>​        3）ESP其余字段</p>
-<h4 id="SA（安全联盟）"><a href="#SA（安全联盟）" class="headerlink" title="SA（安全联盟）"></a>SA（安全联盟）</h4><p>​        1）两个IPSec通信实体之间经协商建立起来的一种共同协定，它规定了通信双方使用哪种IPSec协议保护数据 安全、应用的算法标识、加密和验证的密钥取值以及密钥的生存周期等等安全属性值。通过使用安全关联(SA) ， IPSec能够区分对不同的数据流提供的安全服务。</p>
-<p>​        2）种类：</p>
-<p>​                a、IKE SA</p>
-<p>​                        ①保护的对象是IKE的协商数据</p>
-<p>​                        ② 两个对等体之间只有一个IKE SA</p>
-<p>​                b、IPSec SA</p>
-<p>​                        ①保护的对象是用户的实际数据</p>
-<p>​                        ②两个对等体之间有多对的IPSec SA</p>
-<p>​                c、IPSec SA是单向的，在两个对等体之间的<strong>双向通信</strong>，<strong>最少需要两个安全联盟</strong>来分别对两个方向的数据                      流进行安全保护。入站数据流和出站数据流分别由入站SA和出站SA进行处理。同时，如果希望同时                      使用AH和ESP来保护对等体间的数据流，则分别需要两个SA，一个用于AH，另一个用于ESP。</p>
-<h2 id="0x03-IPsec协议实现过程"><a href="#0x03-IPsec协议实现过程" class="headerlink" title="0x03 IPsec协议实现过程"></a>0x03 IPsec协议实现过程</h2><h3 id="1、IPsec的两个阶段"><a href="#1、IPsec的两个阶段" class="headerlink" title="1、IPsec的两个阶段"></a>1、IPsec的两个阶段</h3><p>（1）阶段一：</p>
-<p>​                        协商和建立ikesa，为ike的协商以及阶段二的协商提供保护，分为主模式，和野蛮模                        式，完成对等体的策略协商、dh密钥交换以及对等体的验证</p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153647939.png" alt="image-20220323153647939" loading="lazy"></p>
-<p>​    A、策略协商：协商身份验证的方式，加密算法、验证算法、dh算法、策略有效期</p>
-<p>​    B、DH密钥交换：两个对等体会共同产生3个密钥d、a、e</p>
-<p>​    C、验证对等体：用之前的协商的算法，以及产生的密钥，对对等体的身份做验证</p>
-<p>（2）阶段二</p>
-<p>​    <img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153719888.png" alt="image-20220323153719888" loading="lazy"></p>
-<p>​    A、在ike sa的基础上，安全协商保护用户业务的具体安全策略</p>
-<p>​    B、只有一个快速模式</p>
-<p>​    C、协商保护的对象：感兴趣流量</p>
-<p>​    D、协商的算法：ESP、AH 各类的加密性算法和完整性校验</p>
-<p>​    E、模式：隧道模式和传输模式（默认是隧道模式）</p>
-<h3 id="2、IPsec-VPN-配置"><a href="#2、IPsec-VPN-配置" class="headerlink" title="2、IPsec VPN 配置"></a>2、IPsec VPN 配置</h3><p>保证两边公网地址可达：</p>
-<p>​    1、配置isakmp sa通道，以及身份验证//也就是阶段一</p>
-<p>​    2、配置IPSec sa通道//阶段二，定义数据如何被保护</p>
-<p>​    3、定义感兴趣流量，得使用扩展acl</p>
-<p>​    4、定义map，关联上面三个步骤</p>
-<p>​    5、端口调用map</p>
-<h2 id="0x03-配置命令"><a href="#0x03-配置命令" class="headerlink" title="0x03 配置命令"></a>0x03 配置命令</h2><p>拓扑图</p>
-<p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323160546851.png" alt="image-20220323160546851" loading="lazy"></p>
-<h4 id="（1）基础配置："><a href="#（1）基础配置：" class="headerlink" title="（1）基础配置："></a>（1）基础配置：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r1#show run | sec crypto </span><br></pre></td></tr></table></figure>
-
-<p>​    定义阶段一：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crypto isakmp policy 10</span><br><span class="line">encr aes 256</span><br><span class="line">hash sha256</span><br><span class="line">authentication pre-share</span><br><span class="line">group 5</span><br></pre></td></tr></table></figure>
-
-<p>​    定义预共享密钥信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crypto isakmp key cisco123 address 202.101.23.3 </span><br></pre></td></tr></table></figure>
-
-<p>​    定义阶段二：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crypto ipsec transform-set myset esp-aes 256 esp-sha256-hmac </span><br><span class="line"> mode tunnel</span><br></pre></td></tr></table></figure>
-
-<p>​    关联策略：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crypto map mymap 10 ipsec-isakmp </span><br><span class="line">set peer 202.101.23.3</span><br><span class="line">set transform-set myset </span><br><span class="line">match address 100</span><br></pre></td></tr></table></figure>
-
-<p>​    定义感兴趣流量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r1#show run | sec access-list</span><br><span class="line">access-list 100 permit ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255</span><br><span class="line">r1#show run int e0/0</span><br><span class="line">interface Ethernet0/0</span><br><span class="line">crypto map mymap</span><br></pre></td></tr></table></figure>
-
-<h4 id="（2）查看与验证："><a href="#（2）查看与验证：" class="headerlink" title="（2）查看与验证："></a>（2）查看与验证：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#show crypto isakmp policy </span><br><span class="line">	//查看阶段一的策略信息</span><br><span class="line"></span><br><span class="line">#show crypto isakmp key</span><br><span class="line">	//查看预共享密钥</span><br><span class="line"></span><br><span class="line">#show crypto isakmp sa</span><br><span class="line">	//查看isakmp的SA信息（可判断阶段一的建立是否成功）</span><br><span class="line"></span><br><span class="line">#show crypto ipsec transform-set </span><br><span class="line">	//查看阶段二转换集的策略信息</span><br><span class="line"></span><br><span class="line">#show crypto ipsec sa</span><br><span class="line">	//查看ipsec会话的SA信息</span><br><span class="line"></span><br><span class="line">#show crypto map </span><br><span class="line">	//查看map的关联信息</span><br><span class="line"></span><br><span class="line">#show crypto engine connections active </span><br><span class="line">	//查看加解密的数据数量</span><br><span class="line"></span><br><span class="line">#show crypto session </span><br><span class="line">	//查看会话信息</span><br><span class="line"></span><br><span class="line">#clear crypto isakmp  </span><br><span class="line">	//清除IKE SA</span><br><span class="line"></span><br><span class="line">#clear crypto sa  </span><br><span class="line">	//清除IPSec SA</span><br></pre></td></tr></table></figure>
-
-<h4 id="（3）动态地址的vpn接入"><a href="#（3）动态地址的vpn接入" class="headerlink" title="（3）动态地址的vpn接入"></a>（3）动态地址的vpn接入</h4><p>​    1、动态适用于中心地址固定，分支地址不固定的情况下，使用的动态的ipsec vpn</p>
-<p>​    2、vpn建立之后，只有当分支先行触发我们的vpn的建立，此时才能够实现两边的通信</p>
-<p>​    3、无需定义感兴趣流量</p>
-<p>​        （1）主要类型</p>
-<p>​                1）主机发起到VPN服务器的连接，远程接入VPN，比如L2TP VPN、SSL VPN。</p>
-<p>​                2）边界网关动态地址接入VPN</p>
-<p>​                        ①dynamic map</p>
-<p>​                        ②DVTI</p>
-<p>​                        ③DMVPN</p>
-<p>​        （2）dynamic map应用场景</p>
-<p>​                ①中心是固定，分支是动态接入</p>
-<p>​                ②网络中存在混合厂商的环境</p>
-<p>​        （3）配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r1#show run | sec crypto</span><br><span class="line">crypto isakmp policy 10</span><br><span class="line"> 		 authentication pre-share  </span><br><span class="line">crypto isakmp key cisco124 address 0.0.0.0    </span><br><span class="line">crypto ipsec transform-set myset esp-aes 256 esp-sha256-hmac </span><br><span class="line">	mode tunnel</span><br><span class="line">crypto dynamic-map mydymap 10</span><br><span class="line">	set transform-set myset </span><br><span class="line">crypto map mymap1 10 ipsec-isakmp dynamic mydymap </span><br><span class="line">		//将动态map关联到静态map</span><br><span class="line">interface Ethernet0/0</span><br><span class="line"> crypto map mymap1</span><br><span class="line">		//接口下只能调用静态map，不能调用动态map</span><br></pre></td></tr></table></figure>
-
-<p>​    （4）问题</p>
-<p>​            1）中心站点无法主动发起到分支的连接</p>
-<p>​            2）无虚拟隧道接口，无法运行路由协议</p>
-<h2 id="0x04-IPsec-进阶"><a href="#0x04-IPsec-进阶" class="headerlink" title="0x04 IPsec 进阶"></a>0x04 IPsec 进阶</h2><h5 id="1、IPsec-的高级应用"><a href="#1、IPsec-的高级应用" class="headerlink" title="1、IPsec 的高级应用"></a>1、IPsec 的高级应用</h5><h5 id="1）IPSec的嵌套，用IPSec保护现有的隧道上的数据"><a href="#1）IPSec的嵌套，用IPSec保护现有的隧道上的数据" class="headerlink" title="1）IPSec的嵌套，用IPSec保护现有的隧道上的数据"></a>1）IPSec的嵌套，用IPSec保护现有的隧道上的数据</h5><h5 id="2）IPSec嵌套由gre-over-ipsec-、l2tp-over-ipsec"><a href="#2）IPSec嵌套由gre-over-ipsec-、l2tp-over-ipsec" class="headerlink" title="2）IPSec嵌套由gre over ipsec 、l2tp over ipsec"></a>2）IPSec嵌套由gre over ipsec 、l2tp over ipsec</h5><p>​        ①GRE over IPSec ：先封装GRE，后封装IPSec。公网出口上调用ipsec。</p>
-<p>​        ②IPSec over GRE：先封装IPSec，后封装GRE。tunnel上调用ispec。</p>
-<p>​        ③L2TP over IPSec</p>
-<h5 id="3）GRE-OVER-IPSec"><a href="#3）GRE-OVER-IPSec" class="headerlink" title="3）GRE OVER IPSec"></a>3）GRE OVER IPSec</h5><p>​    ○ 先封装GRE，后封装IPSec</p>
-<p>​        ①用GRE构建隧道tunnel</p>
-<p>​        ②用IPSec对隧道上传输的数据进行保护</p>
-<p>​    ○ IPSec建议采用传输模式，至少可以减少一个IP头部资源的消耗。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crypto isakmp policy 10</span><br><span class="line">	encr 3des</span><br><span class="line">	hash sha256</span><br><span class="line">	authentication pre-share</span><br><span class="line">	group 5</span><br><span class="line">crypto isakmp key cisco123 address 202.101.23.3  </span><br><span class="line">crypto ipsec transform-set myset esp-3des esp-sha256-hmac </span><br><span class="line">	mode transport</span><br><span class="line">ip access-list extended GRE</span><br><span class="line">	permit gre host 202.101.12.1 host 202.101.23.3</span><br><span class="line">crypto map mymap 10 ipsec-isakmp </span><br><span class="line">	set peer 202.101.23.3</span><br><span class="line">	set transform-set myset </span><br><span class="line">	match address GRE</span><br></pre></td></tr></table></figure>
-
-<p>另外一个关联工具，可以在隧道口关联ipsec vpn，可以兼容传统的crypto map</p>
-<h5 id="4）IPSec-profile"><a href="#4）IPSec-profile" class="headerlink" title="4）IPSec profile"></a>4）IPSec profile</h5><p>​    ○ 无需使用crypto map就可以将阶段二的策略直接关联到隧道接口</p>
-<p>​    ○ 简化IPSec配置</p>
-<p>​    ○ 可以与crypto map兼容</p>
-<p>​    ○ 配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">R1(config)#crypto ipsec profile myprofile </span><br><span class="line">R1(ipsec-profile)#set transform-set myset</span><br><span class="line">R1(config)#int tunnel 13</span><br><span class="line">R1(config-if)#tunnel protection ipsec profile myprofile </span><br><span class="line"></span><br><span class="line">crypto ipsec profile yucedu</span><br><span class="line">set transform-set myset</span><br><span class="line">interface Tunnel10</span><br><span class="line"> ip address 192.168.13.1 255.255.255.0</span><br><span class="line"> tunnel source Ethernet0/2</span><br><span class="line"> tunnel destination 202.101.23.3</span><br><span class="line"> tunnel protection ipsec profile yucedu</span><br></pre></td></tr></table></figure>
-
-<h3 id="1、IPSec-VPN的高可用性"><a href="#1、IPSec-VPN的高可用性" class="headerlink" title="1、IPSec VPN的高可用性"></a>1、IPSec VPN的高可用性</h3><h5 id="1）如果只有一个网关建立ipsec-vpn，存在单点故障"><a href="#1）如果只有一个网关建立ipsec-vpn，存在单点故障" class="headerlink" title="1）如果只有一个网关建立ipsec vpn，存在单点故障"></a>1）如果只有一个网关建立ipsec vpn，存在单点故障</h5><h5 id="2）冗余vpn的问题"><a href="#2）冗余vpn的问题" class="headerlink" title="2）冗余vpn的问题"></a>2）冗余vpn的问题</h5><p>​    （1）对于内部设备来说，很难判断应该选择哪个外网网关作为回程报文的出口？</p>
-<p>​    （2）对于分部设备来说，如何判断主网关的sa状态？</p>
-<h5 id="3）ike存活消息"><a href="#3）ike存活消息" class="headerlink" title="3）ike存活消息"></a>3）ike存活消息</h5><p>​    （1）在对等体之间周期性的发送keep alive报文，来探测对端的状态</p>
-<p>​    （2）默认情况下，如果本端发送连续3个keepalive报文，对端都没有进行回应，则认为对端发生故障，就会清除相关的SA信息，并重新触发新SA的协商。</p>
-<p>​    （3）可能会消耗比较高的资源，扩展性较差</p>
-<p>特点：</p>
-<p>​    ①不能检查对端内网环境的可达性，只能检测建立IPSec的对等体的活跃性。</p>
-<p>​    ②如果存在大量的对等体，可能需要消耗较多的资源来处理IKE存活消息。</p>
-<h5 id="4）配置"><a href="#4）配置" class="headerlink" title="4）配置"></a>4）配置</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">spoke(config)#crypto isakmp keepalive 10 ?</span><br><span class="line"> &lt;2-60&gt;   Number of seconds between retries if keepalive fails</span><br><span class="line"> &lt;cr&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、nat对ipsec的影响"><a href="#2、nat对ipsec的影响" class="headerlink" title="2、nat对ipsec的影响"></a>2、nat对ipsec的影响</h3><h5 id="（1）边界网关同时部署了NAT技术和建立IPSec-vpn"><a href="#（1）边界网关同时部署了NAT技术和建立IPSec-vpn" class="headerlink" title="（1）边界网关同时部署了NAT技术和建立IPSec vpn"></a>（1）边界网关同时部署了NAT技术和建立IPSec vpn</h5><p>​        需要执行NAT地址排除，把站点之间互相访问的内网流量从NAT感兴趣流中排除。</p>
-<h5 id="（2）NAT穿越"><a href="#（2）NAT穿越" class="headerlink" title="（2）NAT穿越"></a>（2）NAT穿越</h5><p>​        1）穿越一个NAT设备与对端建立IPSec VPN</p>
-<p>​        2）NAT-T：会采用UDP 4500来封装ESP报文</p>
-<p>​        3）设备默认开启该功能，无需进行任何配置</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> 渗透 </tag>
+            
+            <tag> 漏洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IPsec协议</title>
+      <link href="/2022/03/23/undefined/"/>
+      <url>/2022/03/23/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护</p><span id="more"></span><h2 id="0x01-简介"><a href="#0x01-简介" class="headerlink" title="0x01 简介"></a>0x01 简介</h2><h3 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h3><p>定义：IPesc协议时IETF制定的三层隧道加密协议，它为internet上传输的数据提供了高质量的、可互操作的、基于密码学的安全保证。由一系列安全协议构成的，能够提供机密性、完整性、数据源认证和重放保护。IPsec还可以被用于VPN中，来对其他的vpn做保护作用，比如GRE over IPSec、l2tp over ipsec，ipsec的配置相对复杂，不支持组播，消耗的资源比较大</p><h3 id="2、协议体系"><a href="#2、协议体系" class="headerlink" title="2、协议体系"></a>2、协议体系</h3><p>（1）安全协议：AH、ESP</p><p>（2）工作模式：传输模式/隧道模式</p><p>（3）密钥管理：IKE</p><h3 id="3、优点"><a href="#3、优点" class="headerlink" title="3、优点"></a>3、优点</h3><p>（1）支持IKE（Internet Key Exchange，因特网密钥交换），可实现密钥的自动协商功能，减少了密钥协商的开销。可以通过IKE建立和维护SA的服务，简化了IPsec的使用和管理。</p><p>（2）所有使用IP协议进行数据传输的应用系统和服务都可以使用IPsec，而不必对这些应用系统和服务本身做任何修改。 </p><p>（3）对数据的加密是以数据包为单位的，而不是以整个数据流为单位，这不仅灵活而且有助于进一步提高IP数据包的安全性，可以有效防范网络攻击。</p><h3 id="4、IPsec的应用"><a href="#4、IPsec的应用" class="headerlink" title="4、IPsec的应用"></a>4、IPsec的应用</h3><ul><li>加密应用层数据</li><li>在公共互联网上为路由器发送数据提供安全保障</li><li>在不加密的情况下进行身份认证，比如验证来自一个已知发送者的数据报</li><li>通过使用 IPsec 隧道设置电路来保护网络数据，在这些电路中，所有数据在两个端点之间发送时都被加密，就像使用虚拟专用网络(VPN)连接一样</li></ul><h2 id="0x02-IPsec的协议体系"><a href="#0x02-IPsec的协议体系" class="headerlink" title="0x02 IPsec的协议体系"></a>0x02 IPsec的协议体系</h2><h3 id="1、组成部分"><a href="#1、组成部分" class="headerlink" title="1、组成部分"></a>1、组成部分</h3><h4 id="（1）安全协议：AH、ESP"><a href="#（1）安全协议：AH、ESP" class="headerlink" title="（1）安全协议：AH、ESP"></a>（1）安全协议：AH、ESP</h4><p>​               AH：认证头部                </p><p>​                        ① 基于ip协议51的组成部分                </p><p>​                        ② 支持数据的完整性，不支持加密性                 </p><p>​                        ③ 认证头部，是除了可变字段之外的报文头部一起进行哈希计算，不适合nat环境，                             所以使用较少</p><p>​              ESP：封装安全协议</p><p>​                        ① 基于ip协议50的组成部分</p><p>​                        ② 支持数据的完整性，支持加密性</p><h4 id="（2）工作模式：传输模式-隧道模式"><a href="#（2）工作模式：传输模式-隧道模式" class="headerlink" title="（2）工作模式：传输模式/隧道模式"></a>（2）工作模式：传输模式/隧道模式</h4><p>​                传输模式</p><pre><code>                    ① 报文封装：IPSec头部添加到原始IP头部和数据之间；不会额外添加一个新的头部</code></pre><p>​                        ② 主要是用在端到端之间</p><p>​                隧道模式</p><p>​                        ① 报文封装：IPSec头部添加在原始IP头部之前；并且会额外添加一个新的头部</p><p>​                        ② 主要是用在站点到站点之间</p><h4 id="（3）密钥管理：IKE"><a href="#（3）密钥管理：IKE" class="headerlink" title="（3）密钥管理：IKE"></a>（3）密钥管理：IKE</h4><p>​                IKE：互联网密钥交换，是IPsec的信令协议</p><pre><code>                    ① IKE也是一个框架，由多个协议构成</code></pre><p>​                                Oakley：<a href="https://zh.wikipedia.org/w/index.php?title=%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE&action=edit&redlink=1">密钥交换协议</a>，它允许认证过的双方通过不安全的网络交换秘钥的一部                                                分元素，这一过程是通过<a href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2%EF%BC%8D%E8%B5%AB%E5%B0%94%E6%9B%BC%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2">迪菲－赫尔曼密钥交换</a>来实现的。该协议由                                                H.Orman在1998年提交，被广泛用在<a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2">因特网密钥交换</a>（IKE）中</p><p>​                                SKEME：安全超文本传输协议，是一个<a href="https://zh.wikipedia.org/wiki/HTTPS">HTTPS</a> URI scheme的可选方案，也是为                                                <a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91">互联网</a>的HTTP加密通讯而设计。</p><p>​                                ISAKMP：IKE的核心协议，它决定了IKE协商的封装格式、交换过程、模式的切                                                 换等。</p><p>​                        ② 基于UDP端口500</p><p>​                        ③ 实现密钥的动态协商，用于提供密钥的安全</p><h3 id="2、安全联盟"><a href="#2、安全联盟" class="headerlink" title="2、安全联盟"></a>2、安全联盟</h3><h4 id="安全协议相关字段介绍"><a href="#安全协议相关字段介绍" class="headerlink" title="安全协议相关字段介绍"></a>安全协议相关字段介绍</h4><p>​        1）SPI（安全参数索引）</p><p>​                        ① 安全参数：具体指的就是协商之后的保护策略</p><p>​                        ② 索引：类似目录，由不同的安全编号，不同的编号指向不同的安全策略            </p><p>​                标识和区分SADB（安全关联数据库）中不同的SA信息</p><p>​                        ① 不同的spi标识了与不同对等体之间协商sa信息，这个信息存放在SDDB，每个sa都有通过的spi唯                            一标识</p><p>​                不同对等体之间采用唯一的序列号（spi值）</p><p>​                            ① spi值在两个对等体协商过程中，自动产生的</p><p>​        2）序列号</p><p>​        3）ESP其余字段</p><h4 id="SA（安全联盟）"><a href="#SA（安全联盟）" class="headerlink" title="SA（安全联盟）"></a>SA（安全联盟）</h4><p>​        1）两个IPSec通信实体之间经协商建立起来的一种共同协定，它规定了通信双方使用哪种IPSec协议保护数据 安全、应用的算法标识、加密和验证的密钥取值以及密钥的生存周期等等安全属性值。通过使用安全关联(SA) ， IPSec能够区分对不同的数据流提供的安全服务。</p><p>​        2）种类：</p><p>​                a、IKE SA</p><p>​                        ①保护的对象是IKE的协商数据</p><p>​                        ② 两个对等体之间只有一个IKE SA</p><p>​                b、IPSec SA</p><p>​                        ①保护的对象是用户的实际数据</p><p>​                        ②两个对等体之间有多对的IPSec SA</p><p>​                c、IPSec SA是单向的，在两个对等体之间的<strong>双向通信</strong>，<strong>最少需要两个安全联盟</strong>来分别对两个方向的数据                      流进行安全保护。入站数据流和出站数据流分别由入站SA和出站SA进行处理。同时，如果希望同时                      使用AH和ESP来保护对等体间的数据流，则分别需要两个SA，一个用于AH，另一个用于ESP。</p><h2 id="0x03-IPsec协议实现过程"><a href="#0x03-IPsec协议实现过程" class="headerlink" title="0x03 IPsec协议实现过程"></a>0x03 IPsec协议实现过程</h2><h3 id="1、IPsec的两个阶段"><a href="#1、IPsec的两个阶段" class="headerlink" title="1、IPsec的两个阶段"></a>1、IPsec的两个阶段</h3><p>（1）阶段一：</p><p>​                        协商和建立ikesa，为ike的协商以及阶段二的协商提供保护，分为主模式，和野蛮模                        式，完成对等体的策略协商、dh密钥交换以及对等体的验证</p><p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153647939.png" alt="image-20220323153647939" loading="lazy"></p><p>​    A、策略协商：协商身份验证的方式，加密算法、验证算法、dh算法、策略有效期</p><p>​    B、DH密钥交换：两个对等体会共同产生3个密钥d、a、e</p><p>​    C、验证对等体：用之前的协商的算法，以及产生的密钥，对对等体的身份做验证</p><p>（2）阶段二</p><p>​    <img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323153719888.png" alt="image-20220323153719888" loading="lazy"></p><p>​    A、在ike sa的基础上，安全协商保护用户业务的具体安全策略</p><p>​    B、只有一个快速模式</p><p>​    C、协商保护的对象：感兴趣流量</p><p>​    D、协商的算法：ESP、AH 各类的加密性算法和完整性校验</p><p>​    E、模式：隧道模式和传输模式（默认是隧道模式）</p><h3 id="2、IPsec-VPN-配置"><a href="#2、IPsec-VPN-配置" class="headerlink" title="2、IPsec VPN 配置"></a>2、IPsec VPN 配置</h3><p>保证两边公网地址可达：</p><p>​    1、配置isakmp sa通道，以及身份验证//也就是阶段一</p><p>​    2、配置IPSec sa通道//阶段二，定义数据如何被保护</p><p>​    3、定义感兴趣流量，得使用扩展acl</p><p>​    4、定义map，关联上面三个步骤</p><p>​    5、端口调用map</p><h2 id="0x03-配置命令"><a href="#0x03-配置命令" class="headerlink" title="0x03 配置命令"></a>0x03 配置命令</h2><p>拓扑图</p><p><img src="https://gitee.com/gulfx2/public/raw/master/blog/image-20220323160546851.png" alt="image-20220323160546851" loading="lazy"></p><h4 id="（1）基础配置："><a href="#（1）基础配置：" class="headerlink" title="（1）基础配置："></a>（1）基础配置：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r1#show run | sec crypto </span><br></pre></td></tr></table></figure><p>​    定义阶段一：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">crypto isakmp policy 10</span><br><span class="line">encr aes 256</span><br><span class="line">hash sha256</span><br><span class="line">authentication pre-share</span><br><span class="line">group 5</span><br></pre></td></tr></table></figure><p>​    定义预共享密钥信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crypto isakmp key cisco123 address 202.101.23.3 </span><br></pre></td></tr></table></figure><p>​    定义阶段二：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crypto ipsec transform-set myset esp-aes 256 esp-sha256-hmac </span><br><span class="line"> mode tunnel</span><br></pre></td></tr></table></figure><p>​    关联策略：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crypto map mymap 10 ipsec-isakmp </span><br><span class="line">set peer 202.101.23.3</span><br><span class="line">set transform-set myset </span><br><span class="line">match address 100</span><br></pre></td></tr></table></figure><p>​    定义感兴趣流量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r1#show run | sec access-list</span><br><span class="line">access-list 100 permit ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255</span><br><span class="line">r1#show run int e0/0</span><br><span class="line">interface Ethernet0/0</span><br><span class="line">crypto map mymap</span><br></pre></td></tr></table></figure><h4 id="（2）查看与验证："><a href="#（2）查看与验证：" class="headerlink" title="（2）查看与验证："></a>（2）查看与验证：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#show crypto isakmp policy </span><br><span class="line">//查看阶段一的策略信息</span><br><span class="line"></span><br><span class="line">#show crypto isakmp key</span><br><span class="line">//查看预共享密钥</span><br><span class="line"></span><br><span class="line">#show crypto isakmp sa</span><br><span class="line">//查看isakmp的SA信息（可判断阶段一的建立是否成功）</span><br><span class="line"></span><br><span class="line">#show crypto ipsec transform-set </span><br><span class="line">//查看阶段二转换集的策略信息</span><br><span class="line"></span><br><span class="line">#show crypto ipsec sa</span><br><span class="line">//查看ipsec会话的SA信息</span><br><span class="line"></span><br><span class="line">#show crypto map </span><br><span class="line">//查看map的关联信息</span><br><span class="line"></span><br><span class="line">#show crypto engine connections active </span><br><span class="line">//查看加解密的数据数量</span><br><span class="line"></span><br><span class="line">#show crypto session </span><br><span class="line">//查看会话信息</span><br><span class="line"></span><br><span class="line">#clear crypto isakmp  </span><br><span class="line">//清除IKE SA</span><br><span class="line"></span><br><span class="line">#clear crypto sa  </span><br><span class="line">//清除IPSec SA</span><br></pre></td></tr></table></figure><h4 id="（3）动态地址的vpn接入"><a href="#（3）动态地址的vpn接入" class="headerlink" title="（3）动态地址的vpn接入"></a>（3）动态地址的vpn接入</h4><p>​    1、动态适用于中心地址固定，分支地址不固定的情况下，使用的动态的ipsec vpn</p><p>​    2、vpn建立之后，只有当分支先行触发我们的vpn的建立，此时才能够实现两边的通信</p><p>​    3、无需定义感兴趣流量</p><p>​        （1）主要类型</p><p>​                1）主机发起到VPN服务器的连接，远程接入VPN，比如L2TP VPN、SSL VPN。</p><p>​                2）边界网关动态地址接入VPN</p><p>​                        ①dynamic map</p><p>​                        ②DVTI</p><p>​                        ③DMVPN</p><p>​        （2）dynamic map应用场景</p><p>​                ①中心是固定，分支是动态接入</p><p>​                ②网络中存在混合厂商的环境</p><p>​        （3）配置</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">r1#show run | sec crypto</span><br><span class="line">crypto isakmp policy 10</span><br><span class="line">  authentication pre-share  </span><br><span class="line">crypto isakmp key cisco124 address 0.0.0.0    </span><br><span class="line">crypto ipsec transform-set myset esp-aes 256 esp-sha256-hmac </span><br><span class="line">mode tunnel</span><br><span class="line">crypto dynamic-map mydymap 10</span><br><span class="line">set transform-set myset </span><br><span class="line">crypto map mymap1 10 ipsec-isakmp dynamic mydymap </span><br><span class="line">//将动态map关联到静态map</span><br><span class="line">interface Ethernet0/0</span><br><span class="line"> crypto map mymap1</span><br><span class="line">//接口下只能调用静态map，不能调用动态map</span><br></pre></td></tr></table></figure><p>​    （4）问题</p><p>​            1）中心站点无法主动发起到分支的连接</p><p>​            2）无虚拟隧道接口，无法运行路由协议</p><h2 id="0x04-IPsec-进阶"><a href="#0x04-IPsec-进阶" class="headerlink" title="0x04 IPsec 进阶"></a>0x04 IPsec 进阶</h2><h5 id="1、IPsec-的高级应用"><a href="#1、IPsec-的高级应用" class="headerlink" title="1、IPsec 的高级应用"></a>1、IPsec 的高级应用</h5><h5 id="1）IPSec的嵌套，用IPSec保护现有的隧道上的数据"><a href="#1）IPSec的嵌套，用IPSec保护现有的隧道上的数据" class="headerlink" title="1）IPSec的嵌套，用IPSec保护现有的隧道上的数据"></a>1）IPSec的嵌套，用IPSec保护现有的隧道上的数据</h5><h5 id="2）IPSec嵌套由gre-over-ipsec-、l2tp-over-ipsec"><a href="#2）IPSec嵌套由gre-over-ipsec-、l2tp-over-ipsec" class="headerlink" title="2）IPSec嵌套由gre over ipsec 、l2tp over ipsec"></a>2）IPSec嵌套由gre over ipsec 、l2tp over ipsec</h5><p>​        ①GRE over IPSec ：先封装GRE，后封装IPSec。公网出口上调用ipsec。</p><p>​        ②IPSec over GRE：先封装IPSec，后封装GRE。tunnel上调用ispec。</p><p>​        ③L2TP over IPSec</p><h5 id="3）GRE-OVER-IPSec"><a href="#3）GRE-OVER-IPSec" class="headerlink" title="3）GRE OVER IPSec"></a>3）GRE OVER IPSec</h5><p>​    ○ 先封装GRE，后封装IPSec</p><p>​        ①用GRE构建隧道tunnel</p><p>​        ②用IPSec对隧道上传输的数据进行保护</p><p>​    ○ IPSec建议采用传输模式，至少可以减少一个IP头部资源的消耗。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">crypto isakmp policy 10</span><br><span class="line">encr 3des</span><br><span class="line">hash sha256</span><br><span class="line">authentication pre-share</span><br><span class="line">group 5</span><br><span class="line">crypto isakmp key cisco123 address 202.101.23.3  </span><br><span class="line">crypto ipsec transform-set myset esp-3des esp-sha256-hmac </span><br><span class="line">mode transport</span><br><span class="line">ip access-list extended GRE</span><br><span class="line">permit gre host 202.101.12.1 host 202.101.23.3</span><br><span class="line">crypto map mymap 10 ipsec-isakmp </span><br><span class="line">set peer 202.101.23.3</span><br><span class="line">set transform-set myset </span><br><span class="line">match address GRE</span><br></pre></td></tr></table></figure><p>另外一个关联工具，可以在隧道口关联ipsec vpn，可以兼容传统的crypto map</p><h5 id="4）IPSec-profile"><a href="#4）IPSec-profile" class="headerlink" title="4）IPSec profile"></a>4）IPSec profile</h5><p>​    ○ 无需使用crypto map就可以将阶段二的策略直接关联到隧道接口</p><p>​    ○ 简化IPSec配置</p><p>​    ○ 可以与crypto map兼容</p><p>​    ○ 配置：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">R1(config)#crypto ipsec profile myprofile </span><br><span class="line">R1(ipsec-profile)#set transform-set myset</span><br><span class="line">R1(config)#int tunnel 13</span><br><span class="line">R1(config-if)#tunnel protection ipsec profile myprofile </span><br><span class="line"></span><br><span class="line">crypto ipsec profile yucedu</span><br><span class="line">set transform-set myset</span><br><span class="line">interface Tunnel10</span><br><span class="line"> ip address 192.168.13.1 255.255.255.0</span><br><span class="line"> tunnel source Ethernet0/2</span><br><span class="line"> tunnel destination 202.101.23.3</span><br><span class="line"> tunnel protection ipsec profile yucedu</span><br></pre></td></tr></table></figure><h3 id="1、IPSec-VPN的高可用性"><a href="#1、IPSec-VPN的高可用性" class="headerlink" title="1、IPSec VPN的高可用性"></a>1、IPSec VPN的高可用性</h3><h5 id="1）如果只有一个网关建立ipsec-vpn，存在单点故障"><a href="#1）如果只有一个网关建立ipsec-vpn，存在单点故障" class="headerlink" title="1）如果只有一个网关建立ipsec vpn，存在单点故障"></a>1）如果只有一个网关建立ipsec vpn，存在单点故障</h5><h5 id="2）冗余vpn的问题"><a href="#2）冗余vpn的问题" class="headerlink" title="2）冗余vpn的问题"></a>2）冗余vpn的问题</h5><p>​    （1）对于内部设备来说，很难判断应该选择哪个外网网关作为回程报文的出口？</p><p>​    （2）对于分部设备来说，如何判断主网关的sa状态？</p><h5 id="3）ike存活消息"><a href="#3）ike存活消息" class="headerlink" title="3）ike存活消息"></a>3）ike存活消息</h5><p>​    （1）在对等体之间周期性的发送keep alive报文，来探测对端的状态</p><p>​    （2）默认情况下，如果本端发送连续3个keepalive报文，对端都没有进行回应，则认为对端发生故障，就会清除相关的SA信息，并重新触发新SA的协商。</p><p>​    （3）可能会消耗比较高的资源，扩展性较差</p><p>特点：</p><p>​    ①不能检查对端内网环境的可达性，只能检测建立IPSec的对等体的活跃性。</p><p>​    ②如果存在大量的对等体，可能需要消耗较多的资源来处理IKE存活消息。</p><h5 id="4）配置"><a href="#4）配置" class="headerlink" title="4）配置"></a>4）配置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spoke(config)#crypto isakmp keepalive 10 ?</span><br><span class="line"> &lt;2-60&gt;   Number of seconds between retries if keepalive fails</span><br><span class="line"> &lt;cr&gt;</span><br></pre></td></tr></table></figure><h3 id="2、nat对ipsec的影响"><a href="#2、nat对ipsec的影响" class="headerlink" title="2、nat对ipsec的影响"></a>2、nat对ipsec的影响</h3><h5 id="（1）边界网关同时部署了NAT技术和建立IPSec-vpn"><a href="#（1）边界网关同时部署了NAT技术和建立IPSec-vpn" class="headerlink" title="（1）边界网关同时部署了NAT技术和建立IPSec vpn"></a>（1）边界网关同时部署了NAT技术和建立IPSec vpn</h5><p>​        需要执行NAT地址排除，把站点之间互相访问的内网流量从NAT感兴趣流中排除。</p><h5 id="（2）NAT穿越"><a href="#（2）NAT穿越" class="headerlink" title="（2）NAT穿越"></a>（2）NAT穿越</h5><p>​        1）穿越一个NAT设备与对端建立IPSec VPN</p><p>​        2）NAT-T：会采用UDP 4500来封装ESP报文</p><p>​        3）设备默认开启该功能，无需进行任何配置</p>]]></content>
+      
+      
       <categories>
-        <category>网络工程</category>
+          
+          <category> 网络工程 </category>
+          
       </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>网工</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集基础</title>
-    <url>/2022/03/10/undefined/</url>
-    <content><![CDATA[<p>信息收集是指通过各种方式获取所需要的信息，以便我们在后续的渗透过程更好的进行。最简单的比如说目标站点的IP、中间件、脚本语言、端口、邮箱等等。我觉得信息收集在我们渗透测试的过程当中，是最重要的一环，这一环节没做好，没收集到足够多的可利用的信息，我们很难进行下一步的操作。</p>
-<span id="more"></span>
-
-<h2 id="一、踩点"><a href="#一、踩点" class="headerlink" title="一、踩点"></a>一、踩点</h2><h3 id="1、踩点的概念"><a href="#1、踩点的概念" class="headerlink" title="1、踩点的概念"></a>1、踩点的概念</h3><p>踩点指的是预先到某地考察，为后续工作做准备，获取信息的过程就叫踩点，在渗透测试中，第一步要做的就是信息收集，即踩点。这里的踩点主要是尽可能收集关于目标网络的信息以找到各种能有效入侵对方网络的方法，通常我们使用扫描器来实现，通过扫描器我们可以发现各种远程服务的端口，提供哪些服务以及服务器版本等内容。</p>
-<p>当然，在实战中，我们信息收集的过程也要慎用各种扫描器，我们的信息收集过程应该是隐蔽的，悄无声息的，不应该让对方的应急团队察觉到你的意图。</p>
-<h3 id="2、Google-hacking"><a href="#2、Google-hacking" class="headerlink" title="2、Google hacking"></a>2、Google hacking</h3><p>还要学会使用搜索引擎，如Google hacking，善用Google，它的功能很强大，这里列举一些常用的Google语法供大家参考：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">intext: </span><br><span class="line">这个就是把网页中的正文内容中的某个字符做为搜索条件.例如在google里输入:intext:网络安全. </span><br><span class="line">将返回所有在网页正文部分包含&quot;网络安全&quot;的网页.allintext:使用方法和 intext 类似. </span><br><span class="line">intitle: </span><br><span class="line">和上面那个 intext 差不多,搜索网页标题中是否有我们所要找的字符.例如搜索:intitle:网络安全.将返回所有网页标题中包含&quot;网络安全&quot;的网页.同理 allintitle:也同 intitle 类似. </span><br><span class="line">cache: </span><br><span class="line">搜索 google 里关于某些内容的缓存,有时候也许能找到一些好东西哦. </span><br><span class="line">define: </span><br><span class="line">搜索某个词语的定义,搜索:define:hacker,将返回关于 hacker 的定义. </span><br><span class="line">filetype: </span><br><span class="line">这个我要重点推荐一下,无论是撒网式攻击还是我们后面要说的对特定目标进行信息收集都 </span><br><span class="line">需要用到这个.搜索指定类型的文件.例如输入:filetype:doc.将返回所有以doc结尾的文件URL. </span><br><span class="line">当然如果你找.bak、.mdb 或.inc 也是可以的,获得的信息也许会更丰富:) </span><br><span class="line">info: </span><br><span class="line">查找指定站点的一些基本信息. </span><br><span class="line">inurl: </span><br><span class="line">搜索我们指定的字符是否存在于 URL 中.例如输入:inurl:admin,将返回 N 个类似于这样的连 </span><br><span class="line">接:http://www.xxx.com/xxx/admin,用来找管理员登陆的 URL 不错.allinurl 也同 inurl 类似,可指 </span><br><span class="line">定多个字符. </span><br><span class="line">link:例如搜索:inurl:www.xxx.com 可以返回所有和 www.xxx.com 做了链接的 URL. </span><br><span class="line">site: </span><br><span class="line">这个也很有用,例如:site:www.xxx.com.将返回所有和 xxx.com 这个站有关的 URL. </span><br><span class="line">对了还有一些操作符也是很有用的: </span><br><span class="line">+把 google 可能忽略的字列如查询范围 </span><br><span class="line">-把某个字忽略 </span><br><span class="line">~同意词 </span><br><span class="line">.单一的通配符 </span><br><span class="line">*通配符，可代表多个字母 </span><br><span class="line">&quot;&quot;精确查询 </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">下面开始说说实际应用(以下内容均在 google 上搜索), </span><br><span class="line">对于一个居心叵测的攻击者来说,可能他最感兴趣的就是密码文件了.而 google 正因为其强 </span><br><span class="line">大的搜索能力往往会把一些敏感信息透露给他们.用 google 搜索以下内容: </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.sh_history </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.bash_history </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>people.lst </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>pwd.db </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc/shadow </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>spwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>master.passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>htpasswd </span><br><span class="line"><span class="string">&quot;#-FrontPage-&quot;</span>inurl:service.pwd </span><br><span class="line">有时候因为各种各样的原因一些重要的密码文件被毫无保护的暴露在网络上,如果被别有用 </span><br><span class="line">心的人获得,那么危害是很大的。</span><br></pre></td></tr></table></figure>
-
-<p>感兴趣的师傅可以参考google-hacking-database，里面集成了很多语法：<a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
-<h3 id="3、-Github以及其他信息收集途径"><a href="#3、-Github以及其他信息收集途径" class="headerlink" title="3、 Github以及其他信息收集途径"></a>3、 Github以及其他信息收集途径</h3><h4 id="①-Github"><a href="#①-Github" class="headerlink" title="① Github"></a>① Github</h4><p>在Github中，可能会存在源码泄露、AccessKey泄露、密码、服务器配置泄露等情况，常见的搜索技巧有：</p>
-<ul>
-<li><code>@example.com password/pass/pwd/secret/credentials/token</code></li>
-<li><code>@example.com username/user/key/login/ftp/</code></li>
-<li><code>@example.com config/ftp/smtp/pop</code></li>
-<li><code>@example.com security_credentials/connetionstring</code></li>
-<li><code>@example.com JDBC/ssh2_auth_password/send_keys</code></li>
-</ul>
-<h4 id="②-shodan、Zoomeye等在线网站"><a href="#②-shodan、Zoomeye等在线网站" class="headerlink" title="② shodan、Zoomeye等在线网站"></a>② shodan、Zoomeye等在线网站</h4><p><strong>ZoomEye</strong> 拥有两大探测引擎：<strong>Xmap 和 Wmap</strong>，是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
-<p>ZoomEye 支持公网设备指纹检索和 Web 指纹检索</p>
-<p>网站指纹包括应用名、版本、前端框架、后端框架、服务端语言、服务器操作系统、网站容器、内容管理系统和数据库等。设备指纹包括应用名、版本、开放端口、操作系统、服务名、地理位置等</p>
-<p>常见的语法有：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定位国家---           country:US</span><br><span class="line">搜索城市---           city:xx</span><br><span class="line">搜索组件---           app:组件名</span><br><span class="line">搜索版本---           ver:5.0</span><br><span class="line">搜索端口---           port:80</span><br><span class="line">搜索服务名--         service：SSH</span><br><span class="line">搜索操作系统-        OS:Linux</span><br><span class="line">搜索网段---          cidr:1.1.1.1/24</span><br><span class="line">指定网站域名搜索--    site:www.baidu.com</span><br><span class="line">指定主机名---        hostname:www.baidu.com</span><br><span class="line">指定设备名---        device:router </span><br><span class="line">指定首页关键词---     keyword:sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">快捷键：</span><br><span class="line">显示帮助               shift+/  </span><br><span class="line">隐藏该帮助             ESC  </span><br><span class="line">回到首页               shift  </span><br><span class="line">高级搜索               Shift +s  </span><br><span class="line">聚焦搜索框              s  </span><br></pre></td></tr></table></figure>
-
-<p>想了解更多的可以看下这篇文章：</p>
-<p><a href="https://www.programminghunter.com/article/7143642821/">https://www.programminghunter.com/article/7143642821/</a></p>
-<h4 id="③-天眼查，站长工具等"><a href="#③-天眼查，站长工具等" class="headerlink" title="③ 天眼查，站长工具等"></a>③ 天眼查，站长工具等</h4><p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326192658584.png" alt="image-20220326192658584" loading="lazy"></p>
-<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326193204069.png" alt="image-20220326193204069" loading="lazy"></p>
-<h4 id="④-绕过CDN获取真实ip"><a href="#④-绕过CDN获取真实ip" class="headerlink" title="④ 绕过CDN获取真实ip"></a>④ 绕过CDN获取真实ip</h4><h5 id="查找子域名"><a href="#查找子域名" class="headerlink" title="查找子域名"></a><strong>查找子域名</strong></h5><p>很多时候，一些重要的站点会做CDN，而一些子域名站点并没有加入CDN，而且跟主站在同一个C段内，这时候，就可以通过查找子域名来查找网站的真实IP。</p>
-<p>常用的子域名查找方法和工具：</p>
-<h6 id="（1）搜索引擎查询："><a href="#（1）搜索引擎查询：" class="headerlink" title="（1）搜索引擎查询："></a>（1）搜索引擎查询：</h6><p>如Google、baidu、Bing等传统搜索引擎，site:baidu.com inurl:baidu.com，搜target.com|公司名字。</p>
-<h6 id="（2）一些在线查询工具"><a href="#（2）一些在线查询工具" class="headerlink" title="（2）一些在线查询工具"></a>（2）一些在线查询工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//tool.chinaz.com/subdomain/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//i.links.cn/subdomain/    </span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//subdomain.chaxun.la/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//searchdns.netcraft.com/</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//www.virustotal.com/</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="（3）子域名爆破工具"><a href="#（3）子域名爆破工具" class="headerlink" title="（3）子域名爆破工具"></a>（3）子域名爆破工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Layer</span>子域名挖掘机</span><br><span class="line">wydomain：<span class="attr">https</span>:<span class="comment">//github.com/ring04h/wydomain    </span></span><br><span class="line"><span class="attr">subDomainsBrute</span>:<span class="attr">https</span>:<span class="comment">//github.com/lijiejie/</span></span><br><span class="line"><span class="title class_">Sublist3</span><span class="attr">r</span>:<span class="attr">https</span>:<span class="comment">//github.com/aboul3la/Sublist3r</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="网站邮件头信息"><a href="#网站邮件头信息" class="headerlink" title="网站邮件头信息"></a><strong>网站邮件头信息</strong></h5><p>比如说，邮箱注册，邮箱找回密码、RSS邮件订阅等功能场景，通过网站给自己发送邮件，从而让目标主动暴露他们的真实的IP，查看邮件头信息，获取到网站的真实IP。</p>
-<h5 id="利用SSL证书寻找真实IP"><a href="#利用SSL证书寻找真实IP" class="headerlink" title="利用SSL证书寻找真实IP"></a><strong>利用</strong><a href="https://cloud.tencent.com/product/ssl?from=10680"><strong>SSL证书</strong></a><strong>寻找真实IP</strong></h5><p>证书颁发机构(CA)必须将他们发布的每个SSL/TLS证书发布到公共日志中，SSL/TLS证书通常包含域名、子域名和电子邮件地址。因此SSL/TLS证书成为了攻击者的切入点。</p>
-<p>SSL证书搜索引擎：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//censys.io/ipv4?q=github.comCensys 证书搜索：</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="扫描全网"><a href="#扫描全网" class="headerlink" title="扫描全网"></a><strong>扫描全网</strong></h5><p>通过Zmap、masscan等工具对整个互联网发起扫描，针对扫描结果进行关键字查找，获取网站真实IP。</p>
-<p>ZMap号称是最快的互联网扫描工具，能够在45分钟扫遍全网。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/zmap/zmap</span></span><br></pre></td></tr></table></figure>
-
-<p>Masscan号称是最快的互联网端口扫描器，最快可以在六分钟内扫遍互联网。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/robertdavidgraham/masscan</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="国外访问"><a href="#国外访问" class="headerlink" title="国外访问"></a>国外访问</h5><p>一般的站点在国内可能会有CDN，但是在国外的用户覆盖率比较低，所以通过国外的节点进行请求往往能获取真实IP</p>
-<h4 id="⑤-端口扫描："><a href="#⑤-端口扫描：" class="headerlink" title="⑤ 端口扫描："></a>⑤ 端口扫描：</h4><p>一个端口就是一个潜在的通信通道，也就是一个入侵通道。对目标计算机进行端口扫描，能得到许多有用的信息。进行扫描的方法很多，可以是手工进行扫描，也可以用端口扫描软件进行扫描。在手工进行扫描时，需要熟悉各种命令。对命令执行后的输出进行分析。用<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6">扫描软件</a>进行扫描时，许多扫描器软件都有分析数据的功能。通过端口扫描，可以得到许多有用的信息，从而发现系统的安全漏洞。以上定义只针对<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1">网络通信</a>端口，端口扫描在某些场合还可以定义为广泛的设备端口扫描，比如某些<a href="https://baike.baidu.com/item/%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6">管理软件</a>可以动态扫描各种计算机<a href="https://baike.baidu.com/item/%E5%A4%96%E8%AE%BE">外设</a>端口的开放状态，并进行管理和监控，这类系统常见的如<a href="https://baike.baidu.com/item/USB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">USB管理系统</a>、各种外设管理系统等。</p>
-<p>（1）可以通过Nmap（Nmap是一个网络连接端口扫描工具，用来扫描网上的电脑具体开放的网络连接端口。可以确定哪些服务运行在哪些的连接端口上，并且可以推断计算机运行哪个操作系统。所以它是网络安全管理人员必用的软件之一，甚至用以评估网络系统安全）；</p>
-<p>（2）通过masscan（masscan是网络安全中常用的技术手段，通过对于特定的IP范围和端口范围进行穷举扫描，发现网络中开放的端口，从而为进一步的探查提供基本信息）</p>
-<h4 id="⑥-旁站查询"><a href="#⑥-旁站查询" class="headerlink" title="⑥ 旁站查询"></a>⑥ 旁站查询</h4><p>C段主机是指与目标服务器在同一C段网络的服务器，攻击目标的C段存活主机是信息收集的重要信息，很多单位企业的内部服务器可能都会在一个C段网络中。</p>
-<p>还可以用NMAP进行C段扫描，使用命令【nmap -sn IP/24】，对目标IP的C段主机存活扫描，根据扫描的结果可以判断目标IP的C段还有哪些主机存活，然后对存活的主机进行渗透，拿到最高权限后进行内网渗透。</p>
-<p>可以通过K8_C段旁注工具、WebRobot、御剑，Cain、Sniffit 、Snoop、Tcpdump、Dsniff等工具进行查询；</p>
-<p>也可以用在线查询地址：<a href="http://www.webscan.cc/">http://www.webscan.cc/</a> 、 <a href="http://www.5kik.com/">http://www.5kik.com/</a></p>
-<h4 id="⑦-WAF查询"><a href="#⑦-WAF查询" class="headerlink" title="⑦ WAF查询"></a>⑦ WAF查询</h4><p>类似的有wafw00f（需要安装），可以识别是否有waf防护，是什么waf。</p>
-<p><a href="https://scan.top15.cn/web/%EF%BC%9A%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%9F%A5%E6%97%81%E7%AB%99%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF">https://scan.top15.cn/web/：还可以查旁站及其他信息</a></p>
-<h2 id="二、WINDOWS和LINUX系统的基础命令"><a href="#二、WINDOWS和LINUX系统的基础命令" class="headerlink" title="二、WINDOWS和LINUX系统的基础命令"></a>二、WINDOWS和LINUX系统的基础命令</h2><p>打点：基本信息收集（外围）</p>
-<p>Banner        操作系统信息，web容器信息，开发商，cms信息</p>
-<p>主机内部信息收集</p>
-<p>主机存活探测</p>
-<p>win</p>
-<p>for /1 %i in (1,1,254) do @ping -w 1 -n 1 10.0.1.%i|findstr /c:”TTL=”</p>
-<p>linux</p>
-<p>for i in {1..254..1};do ping -w 1 -c 1 121.5.144.$i|grep“ttl”|awk’{print $4}’ |awk -F “:” ‘{print $1}’;done</p>
-<p>主机信息收集</p>
-<p>ipconfig /all         //看网卡配置，判断当前是否存在域环境</p>
-<p>netsh wlan show profiles wifi名 key=clear      //看wifi密码</p>
-<p>net localgroup    //查看分组信息</p>
-<p>net user 用户名    //查看用户基本信息</p>
-<p>net user 用户名 密码 /add</p>
-<p>net user 用户名 密码 /der</p>
-<p>systeminfo | findstr /B /C:”OS 名称” /C:”OS 版本”</p>
-<p>systeminfo | findstr “KB”</p>
-<p>net share        //看共享目录</p>
-<p>net use \192.168.1.130\C$ 密码 /user：用户名 IPC管道连接</p>
-<pre><code>      dir \\192.168.1.130\C$        //查看目录
-
-     copy 本地文件 \\192.168.1.130\C$\windows        //上传文件
-
-    copy \\192.168.1.130\C$\calc.exe c:\        //下载文件
-
-net cofig workstation        //查看工作站
-</code></pre>
-<p>netstat -ano        //查找端口开放情况</p>
-<p>whoami        //查看当前用户</p>
-<p>whoami /user    //获取当前用户的sid</p>
-<p>whoami /all        //查看所有的信息</p>
-<p>whoami /priv        //查看当前用户的权限</p>
-<p>ver  //看操作系统</p>
-<p>wmic:</p>
-<pre><code>    process
-
-            wmic process get Name,ProcessId,ThreadCount     //获取指定进程信息
-
-            wmic process list brief         //列出进程信息
-
-            wmin /node:127.0.0.1 process call create calc    //远程调用
-
-    os
-
-            wmic os get WindowsDirectory, SystemDirectory,CountryCode
-
-    product 
-
-            wmic product get name,version        //慢
-</code></pre>
-<p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> 网工 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTTP协议标准</title>
+      <link href="/2022/03/22/undefined/"/>
+      <url>/2022/03/22/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p><span id="more"></span><h2 id="0x01-概述"><a href="#0x01-概述" class="headerlink" title="0x01 概述"></a>0x01 概述</h2><p>HTTP是一种能够获取如 HTML 这样的网络资源的 protocol(通讯协议)。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的Web文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等</p><p>HTTP是一个client-server协议：请求通过一个实体被发出，实体也就是用户代理。大多数情况下，这个用户代理都是指浏览器，当然它也可能是任何东西，比如一个爬取网页生成维护搜索引擎索引的机器爬虫。</p><p>HTTP属于应用层的协议，通过TCP，或者是TLS－加密的TCP连接来发送</p><p>同时，HTTP具有简单、可扩展、无状态，有会话等性质</p><h2 id="0x02-功能"><a href="#0x02-功能" class="headerlink" title="0x02 功能"></a>0x02 功能</h2><h3 id="1、缓存："><a href="#1、缓存：" class="headerlink" title="1、缓存："></a>1、缓存：</h3><p>文档如何缓存能通过HTTP来控制。服务端能告诉代理和客户端哪些文档需要被缓存，缓存多久，而客户端也能够命令中间的缓存代理来忽略存储的文档。</p><h3 id="2、开放同源限制："><a href="#2、开放同源限制：" class="headerlink" title="2、开放同源限制："></a>2、开放同源限制：</h3><p>为了防止网络窥听和其它隐私泄漏，浏览器强制对Web网站做了分割限制。只有来自于相同来源的网页才能够获取网站的全部信息。这样的限制有时反而成了负担，HTTP可以通过修改头部来开放这样的限制，因此Web文档可以是由不同域下的信息拼接成的（某些情况下，这样做还有安全因素考虑）。</p><h3 id="3、认证："><a href="#3、认证：" class="headerlink" title="3、认证："></a>3、认证：</h3><p>一些页面能够被保护起来，仅让特定的用户进行访问。基本的认证功能可以直接通过HTTP提供，使用Authenticate相似的头部即可，或用HTTP Cookies来设置指定的会话。</p><h3 id="4、代理和隧道："><a href="#4、代理和隧道：" class="headerlink" title="4、代理和隧道："></a>4、代理和隧道：</h3><p>通常情况下，服务器和/或客户端是处于内网的，对外网隐藏真实 IP 地址。因此 HTTP 请求就要通过代理越过这个网络屏障。但并非所有的代理都是 HTTP 代理。例如，SOCKS协议的代理就运作在更底层，一些像 FTP 这样的协议也能够被它们处理。</p><h3 id="5、会话："><a href="#5、会话：" class="headerlink" title="5、会话："></a>5、会话：</h3><p>使用HTTP Cookies允许你用一个服务端的状态发起请求，这就创建了会话。虽然基本的HTTP是无状态协议。这很有用，不仅是因为这能应用到像购物车这样的电商业务上，更是因为这使得任何网站都能轻松为用户定制展示内容了。</p><h2 id="0x03-HTTP信息流"><a href="#0x03-HTTP信息流" class="headerlink" title="0x03 HTTP信息流"></a>0x03 HTTP信息流</h2><p>1、打开一个TCP连接TCP连接被用来发送一条或多条请求，以及接受响应消息。客户端可能打开一条新的连接，或重用一个已经存在的连接，或者也可能开几个新的TCP连接连向服务端。</p><p>2、发送一个HTTP报文：HTTP报文（在HTTP/2之前）是语义可读的。在HTTP/2中，这些简单的消息被封装在了帧中，这使得报文不能被直接读取，但是原理仍是相同的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1         //包括请求方法和请求参数和协议版本</span><br><span class="line">Host: developer.mozilla.org       //路径，不包含协议和域名的绝对路径URL</span><br><span class="line">Accept-Language: fr     //</span><br></pre></td></tr></table></figure><p>3、读取返回报文：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page)</span><br></pre></td></tr></table></figure><p>4、关闭连接或请求重新连接：当HTTP流水线启动时，后续请求都可以不用等待第一个请求的成功响应就被发送。然而HTTP流水线已被证明很难在现有的网络中实现，因为现有网络中有很多老旧的软件与现代版本的软件共存。因此，HTTP流水线已被在有多请求下表现得更稳健的HTTP/2的帧所取代。</p><h2 id="0x04-HTTP会话过程"><a href="#0x04-HTTP会话过程" class="headerlink" title="0x04 HTTP会话过程"></a>0x04 HTTP会话过程</h2><h3 id="1、三个阶段"><a href="#1、三个阶段" class="headerlink" title="1、三个阶段"></a>1、三个阶段</h3><p>客户端建立一条TCP连接（如果层传输不是TCP，也可以是其他适合的连接）。</p><p>客户端发送请求并等待接收。</p><p>服务器处理请求并发送状态响应回覆，包括一个数据</p><h3 id="2、建立连接"><a href="#2、建立连接" class="headerlink" title="2、建立连接"></a>2、建立连接</h3><p>由客户端发起，在驱动层启动连接建立，是TCP协议，默认tcp端口为80.</p><h3 id="3、请求方法"><a href="#3、请求方法" class="headerlink" title="3、请求方法"></a>3、请求方法</h3><p>GET：请求方法指定的资源，应该只被获取数据</p><p>POST：方法向服务器发送数据，因此改变服务器状态，通常在HTML表单使用</p><h3 id="4、响应结构"><a href="#4、响应结构" class="headerlink" title="4、响应结构"></a>4、响应结构</h3><p><strong>同样分为三块</strong></p><p>第一行是状态行，包括使用的 HTTP 协议版本、状态码和一个状态描述（可以描述文本）。</p><p>每个行都表示一个 HTTP 首部终端，为客户端关于发送数据的一些信息（如类型，数据请求大小，使用的压缩，缓存指示）。与客户端提供的头部模块类似，HTTP 首部组成一个块，并以一个空行结束。</p><p>这个是数据块，包含了最后的响应数据（如果有的话）。</p><h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>成功的网页响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Sat, 09 Oct 2010 14:28:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT</span><br><span class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 29769</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (这里是 29769 字节的网页HTML源代码)</span><br></pre></td></tr></table></figure><p>请求资源不存在的网页响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">Date: Sat, 09 Oct 2010 14:33:02 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">Last-Modified: Tue, 01 May 2007 14:24:39 GMT</span><br><span class="line">ETag: &quot;499fd34e-29ec-42f695ca96761;48fe7523cfcc1&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 10732</span><br><span class="line">Content-Type: text/html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html... (包含一个站点自定义404页面, 帮助用户找到丢失的资源)</span><br></pre></td></tr></table></figure><p>请求资源已被永久移动的网页响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: Apache/2.2.3 (Red Hat)</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">Date: Sat, 09 Oct 2010 14:30:24 GMT</span><br><span class="line">Location: https://developer.mozilla.org/ (目标资源的新地址, 服务器期望用户代理去访问它)</span><br><span class="line">Keep-Alive: timeout=15, max=98</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Via: Moz-Cache-zlb05</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">X-Cache-Info: caching</span><br><span class="line">Content-Length: 325 (如果用户代理无法转到新地址，就显示一个默认页面)</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</span><br><span class="line">&lt;html&gt;&lt;head&gt;</span><br><span class="line">&lt;title&gt;301 Moved Permanently&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Moved Permanently&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;The document has moved &lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;address&gt;Apache/2.2.3 (Red Hat) Server at developer.mozilla.org Port 80&lt;/address&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure><h3 id="5、响应状态码"><a href="#5、响应状态码" class="headerlink" title="5、响应状态码"></a>5、响应状态码</h3><p>HTTP响应错误状态码 表示一个HTTP请求是否成功完成。响应被分为5种类型：信息类型响应，成功响应，控制器，客户端错误和服务端。</p><p>200： 好的。请求成功。<br>301: 永久移动。请求资源的URI已被改变。<br>404： 未找到。服务器无法请求找到的资源。</p><h2 id="0x05-常见报文格式、请求头及响应头"><a href="#0x05-常见报文格式、请求头及响应头" class="headerlink" title="0x05 常见报文格式、请求头及响应头"></a>0x05 常见报文格式、请求头及响应头</h2><h3 id="1、报文格式："><a href="#1、报文格式：" class="headerlink" title="1、报文格式："></a>1、报文格式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;method&gt;&lt;requset-URL&gt;&lt;version&gt;</span><br></pre></td></tr></table></figure><p>/*method是协议动词，常见方法有HEAD/GET/POST/PUT/TRACE/PATCH/OPTIONS/COPY/MOVE/LOCK等</p><p>version代表版本号，格式为HTTP/<major>.<minor></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url：&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;`</span><br><span class="line"></span><br><span class="line">`&lt;headers&gt;`</span><br><span class="line"></span><br><span class="line">`&lt;entity-body&gt;</span><br></pre></td></tr></table></figure><h3 id="2、请求头"><a href="#2、请求头" class="headerlink" title="2、请求头"></a>2、请求头</h3><p>Accept        //指定客户端能接收的内容类型；Accept: text/plain,text/html</p><p>Accpet-Charset        //浏览器可以接收的字符编码集；Accept-Charset: iso-8859-5</p><p>Accept-Encoding        //指定浏览器可以支持的web服务器返回内容压缩编码类型; Accept-Encoding: compress, gzip</p><p>Accept-Language        //浏览器可接受的语言; Accept-Language: en,zh</p><p>Accept-Ranges        //可以请求网页实体的一个或者多个子范围字段; Accept-Ranges: bytes</p><p>Authorization        //HTTP授权的授权证书; Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p><p>Cache-Control        //指定请求和响应遵循的缓存机制 ; Cache-Control: no-cache</p><p>Connection        //表示是否需要持久连接 // HTTP 1.1默认进行持久连接; Connection: close</p><p>Cookie        //HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器; Cookie: role=admin;ssid=1</p><p>Content-Length        //请求的内容长度; Content-Length: 348</p><p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p><p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p><p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p><p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#115;&#x65;&#114;&#64;&#x65;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x75;&#115;&#x65;&#114;&#64;&#x65;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a></p><p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p><p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p><p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p><p>If-None-Match        //如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变; If-None-Match: “737060cd8c284d8af7ad3082f209582d”</p><p>If-Range        //如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag; If-Range: “737060cd8c284d8af7ad3082f209582d”</p><p>If-Unmodified-Since        //只在实体在指定时间之后未被修改才请求成功; If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT</p><p>Max-Forwards        //限制信息通过代理和网关传送的时间; Max-Forwards: 10</p><p>Pragma        //用来包含实现特定的指令; Pragma: no-cache; </p><p>Proxy-Authorization        //连接到代理的授权证书; Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p><p>Range        //只请求实体的一部分，指定范围; Range: bytes=500-999</p><p>Referer        //先前网页的地址，当前请求网页紧随其后,即来路; Referer: <a href="http://www.zcmhi.com/archives/71.html">http://www.zcmhi.com/archives/71.html</a></p><p>TE        //客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息; TE: trailers,deflate;q=0.5</p><p>Upgrade        //向服务器指定某种传输协议以便服务器进行转换（如果支持）; Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</p><p>User-Agent        //User-Agent的内容包含发出请求的用户信息; User-Agent: Mozilla/5.0 (Linux; X11)</p><p>Via        //通知中间网关或代理服务器地址，通信协议; Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</p><p>Warning        //关于消息实体的警告信息; Warn: 199 Miscellaneous warning</p><h3 id="3、响应头"><a href="#3、响应头" class="headerlink" title="3、响应头"></a>3、响应头</h3><p>Accept-Ranges        //表明服务器是否支持指定范围请求及哪种类型的分段请求； Accept-Ranges: bytes<br>Access-Control-Allow-Origin        //配置有权限访问资源的域；Access-Control-Allow-Origin: <origin>|*<br>Age        //从原始服务器到代理缓存形成的估算时间（以秒计，非负）； Age: 12<br>Allow        //对某网络资源的有效的请求行为，不允许则返回405； Allow: GET, HEAD<br>Cache-Control            //告诉所有的缓存机制是否可以缓存及哪种类型； Cache-Control: no-cache<br>Content-Encoding        //web服务器支持的返回内容压缩编码类型；Content-Encoding: gzip<br>Content-Language        //响应体的语言； Content-Language: en,zh<br>Content-Length        //响应体的长度；Content-Length: 348<br>Content-Location        //；请求资源可替代的备用的另一地址；Content-Location: /index.htm<br>Content-MD5        //返回资源的MD5校验值；Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==<br>Content-Range        //在整个返回体中本部分的字节位置；Content-Range: bytes 21010-47021/47022<br>Content-Type        //返回内容的MIME类型；Content-Type: text/html; charset=utf-8<br>Date        //原始服务器消息发出的时间；Date: Tue, 15 Nov 2010 08:12:31 GMT<br>ETag        //请求变量的实体标签的当前值；ETag: “737060cd8c284d8af7ad3082f209582d”<br>Expires        //响应过期的日期和时间；Expires: Thu, 01 Dec 2010 16:00:00 GMT<br>Last-Modified        //请求资源的最后修改时间；Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT<br>Location        //用来重定向接收方到非请求URL的位置来完成请求或标识新的资源；Location: <a href="http://www.zcmhi.com/archives/94.html">http://www.zcmhi.com/archives/94.html</a><br>Pragma        //包括实现特定的指令，它可应用到响应链上的任何接收方；Pragma: no-cache<br>Proxy-Authenticate            //它指出认证方案和可应用到代理的该URL上的参数；Proxy-Authenticate: Basic<br>Refresh        //应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）；Refresh: 5; url=<a href="http://www.zcmhi.com/archives/94.html">http://www.zcmhi.com/archives/94.html</a><br>Retry-After        //如果实体暂时不可取，通知客户端在指定时间之后再次尝试；Retry-After: 120<br>Server        //web服务器软件名称；Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)<br>Set-Cookie        //设置Http Cookie Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1<br>Strict-Transport-Security            </p><p>/*</p><p>设置浏览器强制使用HTTPS访问<br> max-age: x秒的时间内 访问对应域名都使用HTTPS请求<br> includeSubDomains: 网站的子域名也启用规则<br>Strict-Transport-Security: max-age=1000; includeSubDomains</p><p>*/</p><p>Trailer        //指出头域在分块传输编码的尾部存在 Trailer: Max-Forwards<br>Transfer-Encoding        //文件传输编码；Transfer-Encoding:chunked<br>Vary        //告诉下游代理是使用缓存响应还是从原始服务器请求；Vary: *<br>Via        //告知代理客户端响应是通过哪里发送的；Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)<br>Warning        //警告实体可能存在的问题；Warning: 199 Miscellaneous warning<br>WWW-Authenticate            //表明客户端请求实体应该使用的授权方案；WWW-Authenticate: Basic<br>X-Content-Type-Options        //配置禁止MIME类型嗅探；X-Content-Type-Options: nosniff<br>X-Frame-Options        //配置页面是否能出现在 <frame>, <iframe>, <embed>, <object> 等标签中，防止点击劫持；X-Frame-Options: deny<br>X-XSS-Protection        //配置XSS防护机制；X-XSS-Protection: 1; mode=block</p><br/><p>本文参考链接;</p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session</a></p><p><a href="https://websec.readthedocs.io/zh/latest/network/http/index.html">https://websec.readthedocs.io/zh/latest/network/http/index.html</a></p>]]></content>
+      
+      
       <categories>
-        <category>渗透</category>
+          
+          <category> web </category>
+          
       </categories>
-      <tags>
-        <tag>信息收集</tag>
-        <tag>渗透</tag>
-        <tag>社工</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL漏洞学习</title>
-    <url>/2022/03/30/undefined/</url>
-    <content><![CDATA[<h2 id="一、sql注入基础"><a href="#一、sql注入基础" class="headerlink" title="一、sql注入基础"></a>一、sql注入基础</h2><h3 id="1、漏洞原理："><a href="#1、漏洞原理：" class="headerlink" title="1、漏洞原理："></a>1、漏洞原理：</h3><p>服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而打到执行攻击者所预期的结果。 SQL注入攻击是一种injection attack， SQL命令注入数据平面的投入，以影响执行预定义的SQL命令。一个成功的SQL注入攻击可以从数据库中阅读敏感数据，修改数据库数据（插入/更新/删除） ，执行管理处业务的数据库（如关闭数据库管理系统） ，收回的内容，一个给定的文件现有的数据库管理系统文件系统，在某些情况下，发出命令的作业系统。</p>
-<h3 id="2、产生原因"><a href="#2、产生原因" class="headerlink" title="2、产生原因"></a>2、产生原因</h3><ol>
-<li>服务器没有对用户输入的信息进行严格的过滤</li>
-<li>查询语句与用户输入的内容进行拼接</li>
-</ol>
-<p>eg：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = “select id, username from user where id = $id”;</span><br></pre></td></tr></table></figure>
-
-<p>其中$id是用户可控的参数，如果用户传入<code>1 union select 1,database() limit 1,1</code> ,那么拼接后的SQL语义结构就会被改变，变成：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select id, username from user where id = 1 union select 1,database() limit 1,1</span><br></pre></td></tr></table></figure>
-
-<p>当脚本向数据库请求数据时，就会执行这被改变的SQL语句，从而达到攻击者预期的效果</p>
-<p>sql布尔盲注测试：</p>
-<p>1’ and LENGTH(DATABASE())=4#</p>
-<p>1’ and ascii(substr(database(),1,1))=65#</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> 协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>渗透测试基础</title>
+      <link href="/2022/03/22/undefined/"/>
+      <url>/2022/03/22/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>渗透测试是通过模拟恶意黑客的攻击方法，来评估计算机网络系统安全的一种评估方法。 这个过程包括对系统的任何弱点、技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p><span id="more"></span><h2 id="0x01-什么是渗透测试"><a href="#0x01-什么是渗透测试" class="headerlink" title="0x01 什么是渗透测试"></a>0x01 什么是渗透测试</h2><p>通过模拟恶意黑客的攻击方法，来评估计算机网络技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p><h2 id="0x02-什么是渗透测试者"><a href="#0x02-什么是渗透测试者" class="headerlink" title="0x02 什么是渗透测试者"></a>0x02 什么是渗透测试者</h2><p>渗透测试者通常由组织机构内部员工或外部实体（例如投职位或按项目的承包商) 的形式雇佣。 不管买取何种雇佣形式。渗透测试者与恶意攻击者的主要不同在于目的以及是否获得所评估系统的所有者的法律许可。</p><h2 id="0x03-渗透测试的分类"><a href="#0x03-渗透测试的分类" class="headerlink" title="0x03 渗透测试的分类"></a>0x03 渗透测试的分类</h2><p>黑盒测试：模拟真实黑客攻击，除了域名，其他信息都需要自行收集</p><p>白盒测试：基本从内部发起，甲方会提供大量已知的信息和源码，测试者以此评估安全风险</p><p>灰盒测试：间于两者之间，只获得系统的部分信息</p><h2 id="0x04-在渗透实战中的一般流程"><a href="#0x04-在渗透实战中的一般流程" class="headerlink" title="0x04 在渗透实战中的一般流程"></a>0x04 在渗透实战中的一般流程</h2><h3 id="1-前期交互："><a href="#1-前期交互：" class="headerlink" title="1.前期交互："></a>1.前期交互：</h3><p>收集客户需求、准备测试计划、定义测试范围和尺度、明确目标以及后期的规划</p><h3 id="2-情报收集："><a href="#2-情报收集：" class="headerlink" title="2.情报收集："></a>2.情报收集：</h3><p>利用所有手段对目标组织的网络拓扑、服务器配置以及防火墙或其他安全配置的相关信息的收集整理，黑客所使用的手段包括但不限于开源信息的查询、Google hacking、社工、网络踩点、扫描探测、被动监听、服务查点等，注意，这个阶段极其重要，它直接关系到你渗透测试的成败。</p><h3 id="3-建模规划："><a href="#3-建模规划：" class="headerlink" title="3.建模规划："></a>3.建模规划：</h3><p>对所收集的目标信息的收集整理，和团队成员讨论并确定一条或几条可行的攻击通道方案，这对接下来的行动会起到非常大的推动作用。</p><h3 id="4-漏洞分析："><a href="#4-漏洞分析：" class="headerlink" title="4.漏洞分析："></a>4.漏洞分析：</h3><p>综合前面的信息，寻找可利用的渗透代码资源，找出可利用的攻击点，并进行验证，一般都可以利用公开的代码资源，但对于一些有特殊要求或网络环境特殊的公司或组织，可能需要自行依据未公开的漏洞开发渗透代码，从而对整个渗透测试打开大门。</p><h3 id="5-攻击阶段："><a href="#5-攻击阶段：" class="headerlink" title="5.攻击阶段："></a>5.攻击阶段：</h3><p>所有黑客最喜欢的环节，针对攻击点和可执行漏洞，对其进行真正的渗透和提权，从而达到入侵和取得访问控制权的目的，在黑盒测试中，测试者还要考虑目标系统检测机制的逃逸，避免被目标的安全相应团队发现。</p><h3 id="6-后渗透阶段："><a href="#6-后渗透阶段：" class="headerlink" title="6.后渗透阶段："></a>6.后渗透阶段：</h3><p>需要黑客根据目标的业务经营模式和其安全规划等不同的特点，自主设计攻击目标，识别关键设施以及寻找有价值的信息和资产，最终达成能对客户组织造成最重要业务影响的攻击途径。</p><h3 id="7-形成报告："><a href="#7-形成报告：" class="headerlink" title="7.形成报告："></a>7.形成报告：</h3><p>渗透测试的结果是向目标组织提供一份合格的渗透报告，该报告要包含有之前所有阶段中所获取到的关键信息，后续探测和挖掘系统安全漏洞，以及最终完成渗透攻击的全过程，还有后续造成业务影响后果的攻击途径，最后要站在防御的角度上，帮助目标组织完成对其安全防御体系的漏洞问题的分析和修补升级技术的方案。</p><h2 id="0x05-渗透测试工具"><a href="#0x05-渗透测试工具" class="headerlink" title="0x05 渗透测试工具"></a>0x05 渗透测试工具</h2><p>测试工具多种多样,通常可以分为漏洞利用类、信息收集类、漏洞扫描类、综合平台等，大多数测试者通过长期的积累，会形成一套自己较熟悉的工具包，也有不少组织会发布一些开源的集成工具包如悬剑等，这里只介绍常见的几种工具，供大家参考</p><h3 id="①-Kali-Linux："><a href="#①-Kali-Linux：" class="headerlink" title="① Kali Linux："></a><strong>① Kali Linux</strong>：</h3><p>是一个基于 Debian 的 Linux 发行版，最基本的渗透测试操作系统</p><p>kali本身拥有拥有超过600个预装的渗透测试程序，包括14大类300多个安全测试和渗透软件，包括大名鼎鼎的NMap(端口扫描器)，Wireshark(数据包分析器)，Aircrack-ng(一应用于对无线局域网进行渗透测试的软件)，John the Ripper(密码破解器)等，Kali Linux预装的这些软件基本包括了黑客会使用到的所有工具。</p><p>但是要注意的是，kali本身优化了进攻而非防御，且它默认以root权限运行，这导致它极易被人利用和入侵，因此最好不要将你的敏感信息保存在kali linux系统上</p><h3 id="②-Nmap："><a href="#②-Nmap：" class="headerlink" title="② Nmap："></a><strong>② Nmap</strong>：</h3><p>网络扫描仪</p><p>使用端口扫描功能和版本检测引擎枚举开放端口，该版本检测引擎用于确定在已标识端口上运行的服务上的应用程序名称和版本号，对测试人员来说，服务器上哪些端口是开放的，哪些端口正在运行什么是非常有必要的。</p><p>此外，Nmap脚本引擎带有170多种NSE脚本和20个库，例如防火墙绕过，超级微型ipmi-conf，oracle-brute-stealth和ssl-heartbleed，</p><p>它提供了更好的IPv6支持，为在CIDR样式的地址范围，空闲扫描，并行反向DNS和更多的NSE脚本覆盖范围内进行更全面的网络扫描铺平了道路，并且，它适用于包括windows，linux在内的绝大多数平台。</p><h3 id="③-Burp-Suite-Pro："><a href="#③-Burp-Suite-Pro：" class="headerlink" title="③ Burp Suite Pro："></a><strong>③ Burp Suite Pro</strong>：</h3><p>最流行，功能强大和最先进的笔测试工具之一，它是各种高级工具的“套件”，最适合于Web应用程序的渗透测试。</p><p>提供了更快的暴力破解和模糊测试功能，使笔测试人员能够部署包含有效负载集的HTTP请求的自定义序列，从而大大减少了花在不同任务上的时间。</p><p>可以轻松地为给定请求构造跨站点请求伪造（CSRF）概念证明（POC）攻击。</p><p>它非常昂贵，企业版价格每年3999美元，但是它绝对对的起这个价格。</p><h3 id="④-Wireshark："><a href="#④-Wireshark：" class="headerlink" title="④  Wireshark："></a><strong>④  Wireshark</strong>：</h3><p>网络协议分析器，尽管随着技术的成熟，涌现出了越来越多的分析器，但wireshark的地位从未有过动摇。</p><p>拥有业内最强大的显示过滤器，广泛用于捕获实时网络流量以进行网络故障排除，包括延迟问题，数据包丢失和网络上的恶意活动。它允许测试人员截取和分析通过网络传递的数据，并将其转换为人类可读的格式。</p><p>多平台：在 Windows、Linux、macOS、Solaris、FreeBSD、NetBSD 和许多其他平台上运行</p><p>可以通过 GUI 或通过 TTY 模式 TShark 实用程序浏览捕获的网络数据</p><p>读/写许多不同的捕获文件格式：tcpdump (libpcap)、Pcap NG、Catapult DCT2000、Cisco Secure IDS iplog、Microsoft Network Monitor、Network General Sniffer®（压缩和未压缩）、Sniffer® Pro 和 NetXray®、Network Instruments Observer , NetScreen snoop, Novell LANalyzer, RADCOM WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek 等等</p><h3 id="⑤-Metasploit："><a href="#⑤-Metasploit：" class="headerlink" title="⑤ Metasploit："></a>⑤ Metasploit：</h3><p>是一个渗透测试框架，被网络攻击者和道德黑客广泛使用</p><p>Metasploit包括超过1600个利用25个平台的漏洞利用，metasploit可以自动进行大量以前繁琐的工作，它是“世界上使用最广泛的渗透测试框架”。</p><p>该工具大约有500个有效负载，其中包括：命令外壳有效负载以针对主机运行脚本。动态有效负载可生成独特的有效负载来规避防病毒软件。Meterpreter有效负载可控制设备监视器，会话，上载和下载文件。静态有效负载，用于端口转发并支持网络之间的通信。</p><h3 id="⑥-SQLmap："><a href="#⑥-SQLmap：" class="headerlink" title="⑥ SQLmap："></a>⑥ SQLmap：</h3><p>自动化SQL注入和数据库接管工具</p><p>它适用于所有现代数据库，包括 mysql、postgresql、oracle、microsoft sql server 等</p><p>它有效地搜索整个数据库中的特定数据库名称，表或列，这对于识别包含应用程序凭据的表很有用，这些凭据包含名称和通过等字符串。</p><p>SQLmap支持在数据库服务器和攻击者计算机之间建立带外TCP连接，从而为用户提供交互式命令提示符或仪表计量器会话。</p><h3 id="⑦-Nessus："><a href="#⑦-Nessus：" class="headerlink" title="⑦ Nessus："></a>⑦ Nessus：</h3><p>网络漏洞扫描程序。由于其大量的漏洞签名库，它是漏洞扫描的最佳工具。</p><p>Nessus 扫描涵盖广泛的技术，包括操作系统、网络设备、管理程序、数据库、Web 服务器和关键基础设施。</p><p>扫描结果可以多种格式报告，例如纯文本、XML、HTML和LaTeX。结果也可以保存在知识库中以供调试。在 UNIX 上，可以通过使用命令行客户端自动进行扫描。对于 UNIX 和 Windows，存在许多不同的商业、免费和开源工具来管理单个或分布式 Nessus 扫描仪。</p><p>除了测试已知网络漏洞之外，Nessus 还提供其他功能。例如，它可以使用Windows凭据检查运行 Windows 操作系统的计算机上的补丁级别。Nessus 还可以支持配置和合规性审计、SCADA 审计和 PCI 合规性。</p><h3 id="⑧-社会工程工具箱："><a href="#⑧-社会工程工具箱：" class="headerlink" title="⑧ 社会工程工具箱："></a>⑧ 社会工程工具箱：</h3><p>开源的、Python驱动的社会工程学渗透测试工具。</p><p>主要面向对人进行的渗透测试。使用SET可以实现多种攻击，比如：网络钓鱼攻击、网页劫持攻击、格式文件攻击等。</p><h3 id="⑨-Hashcat："><a href="#⑨-Hashcat：" class="headerlink" title="⑨ Hashcat："></a>⑨ Hashcat：</h3><p>开源密码破解工具</p><p>Hashcat猜测一个密码，对其进行哈希处理，然后将生成的哈希值与它试图破解的哈希值进行比较。如果哈希值匹配，则我们知道密码。</p><p>密码表示形式主要与哈希键关联，例如WHIRLPOOL，RiceMD，NTMLv1，NTLMv2 MD5，SHA等。它将可读数据转换为混乱的代码，使其他人难以解密数据。</p><p>它支持分布式破解网络和200多种不同的哈希格式。</p><h3 id="⑩-Hydra："><a href="#⑩-Hydra：" class="headerlink" title="⑩ Hydra："></a>⑩ Hydra：</h3><p>九头蛇，支持众多协议的爆破工具，kali自动集成。</p><p>可在Linux、Windows和OS X中使用。hydra可以用来破解很多种服务，包括IMAP,HTTP,SMB,VNC,MS-SQL,MySQL,SMTP等等。</p><p>本文参考链接：</p><p><a href="https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661">https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661</a></p><p><a href="https://www.1024sou.com/article/13620.html">https://www.1024sou.com/article/13620.html</a></p>]]></content>
+      
+      
       <categories>
-        <category>渗透</category>
+          
+          <category> 渗透 </category>
+          
       </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>渗透</tag>
-        <tag>漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>渗透测试基础</title>
-    <url>/2022/03/22/undefined/</url>
-    <content><![CDATA[<p>渗透测试是通过模拟恶意黑客的攻击方法，来评估计算机网络系统安全的一种评估方法。 这个过程包括对系统的任何弱点、技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p>
-<span id="more"></span>
-
-<h2 id="0x01-什么是渗透测试"><a href="#0x01-什么是渗透测试" class="headerlink" title="0x01 什么是渗透测试"></a>0x01 什么是渗透测试</h2><p>通过模拟恶意黑客的攻击方法，来评估计算机网络技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p>
-<h2 id="0x02-什么是渗透测试者"><a href="#0x02-什么是渗透测试者" class="headerlink" title="0x02 什么是渗透测试者"></a>0x02 什么是渗透测试者</h2><p>渗透测试者通常由组织机构内部员工或外部实体（例如投职位或按项目的承包商) 的形式雇佣。 不管买取何种雇佣形式。渗透测试者与恶意攻击者的主要不同在于目的以及是否获得所评估系统的所有者的法律许可。</p>
-<h2 id="0x03-渗透测试的分类"><a href="#0x03-渗透测试的分类" class="headerlink" title="0x03 渗透测试的分类"></a>0x03 渗透测试的分类</h2><p>黑盒测试：模拟真实黑客攻击，除了域名，其他信息都需要自行收集</p>
-<p>白盒测试：基本从内部发起，甲方会提供大量已知的信息和源码，测试者以此评估安全风险</p>
-<p>灰盒测试：间于两者之间，只获得系统的部分信息</p>
-<h2 id="0x04-在渗透实战中的一般流程"><a href="#0x04-在渗透实战中的一般流程" class="headerlink" title="0x04 在渗透实战中的一般流程"></a>0x04 在渗透实战中的一般流程</h2><h3 id="1-前期交互："><a href="#1-前期交互：" class="headerlink" title="1.前期交互："></a>1.前期交互：</h3><p>收集客户需求、准备测试计划、定义测试范围和尺度、明确目标以及后期的规划</p>
-<h3 id="2-情报收集："><a href="#2-情报收集：" class="headerlink" title="2.情报收集："></a>2.情报收集：</h3><p>利用所有手段对目标组织的网络拓扑、服务器配置以及防火墙或其他安全配置的相关信息的收集整理，黑客所使用的手段包括但不限于开源信息的查询、Google hacking、社工、网络踩点、扫描探测、被动监听、服务查点等，注意，这个阶段极其重要，它直接关系到你渗透测试的成败。</p>
-<h3 id="3-建模规划："><a href="#3-建模规划：" class="headerlink" title="3.建模规划："></a>3.建模规划：</h3><p>对所收集的目标信息的收集整理，和团队成员讨论并确定一条或几条可行的攻击通道方案，这对接下来的行动会起到非常大的推动作用。</p>
-<h3 id="4-漏洞分析："><a href="#4-漏洞分析：" class="headerlink" title="4.漏洞分析："></a>4.漏洞分析：</h3><p>综合前面的信息，寻找可利用的渗透代码资源，找出可利用的攻击点，并进行验证，一般都可以利用公开的代码资源，但对于一些有特殊要求或网络环境特殊的公司或组织，可能需要自行依据未公开的漏洞开发渗透代码，从而对整个渗透测试打开大门。</p>
-<h3 id="5-攻击阶段："><a href="#5-攻击阶段：" class="headerlink" title="5.攻击阶段："></a>5.攻击阶段：</h3><p>所有黑客最喜欢的环节，针对攻击点和可执行漏洞，对其进行真正的渗透和提权，从而达到入侵和取得访问控制权的目的，在黑盒测试中，测试者还要考虑目标系统检测机制的逃逸，避免被目标的安全相应团队发现。</p>
-<h3 id="6-后渗透阶段："><a href="#6-后渗透阶段：" class="headerlink" title="6.后渗透阶段："></a>6.后渗透阶段：</h3><p>需要黑客根据目标的业务经营模式和其安全规划等不同的特点，自主设计攻击目标，识别关键设施以及寻找有价值的信息和资产，最终达成能对客户组织造成最重要业务影响的攻击途径。</p>
-<h3 id="7-形成报告："><a href="#7-形成报告：" class="headerlink" title="7.形成报告："></a>7.形成报告：</h3><p>渗透测试的结果是向目标组织提供一份合格的渗透报告，该报告要包含有之前所有阶段中所获取到的关键信息，后续探测和挖掘系统安全漏洞，以及最终完成渗透攻击的全过程，还有后续造成业务影响后果的攻击途径，最后要站在防御的角度上，帮助目标组织完成对其安全防御体系的漏洞问题的分析和修补升级技术的方案。</p>
-<h2 id="0x05-渗透测试工具"><a href="#0x05-渗透测试工具" class="headerlink" title="0x05 渗透测试工具"></a>0x05 渗透测试工具</h2><p>测试工具多种多样,通常可以分为漏洞利用类、信息收集类、漏洞扫描类、综合平台等，大多数测试者通过长期的积累，会形成一套自己较熟悉的工具包，也有不少组织会发布一些开源的集成工具包如悬剑等，这里只介绍常见的几种工具，供大家参考</p>
-<h3 id="①-Kali-Linux："><a href="#①-Kali-Linux：" class="headerlink" title="① Kali Linux："></a><strong>① Kali Linux</strong>：</h3><p>是一个基于 Debian 的 Linux 发行版，最基本的渗透测试操作系统</p>
-<p>kali本身拥有拥有超过600个预装的渗透测试程序，包括14大类300多个安全测试和渗透软件，包括大名鼎鼎的NMap(端口扫描器)，Wireshark(数据包分析器)，Aircrack-ng(一应用于对无线局域网进行渗透测试的软件)，John the Ripper(密码破解器)等，Kali Linux预装的这些软件基本包括了黑客会使用到的所有工具。</p>
-<p>但是要注意的是，kali本身优化了进攻而非防御，且它默认以root权限运行，这导致它极易被人利用和入侵，因此最好不要将你的敏感信息保存在kali linux系统上</p>
-<h3 id="②-Nmap："><a href="#②-Nmap：" class="headerlink" title="② Nmap："></a><strong>② Nmap</strong>：</h3><p>网络扫描仪</p>
-<p>使用端口扫描功能和版本检测引擎枚举开放端口，该版本检测引擎用于确定在已标识端口上运行的服务上的应用程序名称和版本号，对测试人员来说，服务器上哪些端口是开放的，哪些端口正在运行什么是非常有必要的。</p>
-<p>此外，Nmap脚本引擎带有170多种NSE脚本和20个库，例如防火墙绕过，超级微型ipmi-conf，oracle-brute-stealth和ssl-heartbleed，</p>
-<p>它提供了更好的IPv6支持，为在CIDR样式的地址范围，空闲扫描，并行反向DNS和更多的NSE脚本覆盖范围内进行更全面的网络扫描铺平了道路，并且，它适用于包括windows，linux在内的绝大多数平台。</p>
-<h3 id="③-Burp-Suite-Pro："><a href="#③-Burp-Suite-Pro：" class="headerlink" title="③ Burp Suite Pro："></a><strong>③ Burp Suite Pro</strong>：</h3><p>最流行，功能强大和最先进的笔测试工具之一，它是各种高级工具的“套件”，最适合于Web应用程序的渗透测试。</p>
-<p>提供了更快的暴力破解和模糊测试功能，使笔测试人员能够部署包含有效负载集的HTTP请求的自定义序列，从而大大减少了花在不同任务上的时间。</p>
-<p>可以轻松地为给定请求构造跨站点请求伪造（CSRF）概念证明（POC）攻击。</p>
-<p>它非常昂贵，企业版价格每年3999美元，但是它绝对对的起这个价格。</p>
-<h3 id="④-Wireshark："><a href="#④-Wireshark：" class="headerlink" title="④  Wireshark："></a><strong>④  Wireshark</strong>：</h3><p>网络协议分析器，尽管随着技术的成熟，涌现出了越来越多的分析器，但wireshark的地位从未有过动摇。</p>
-<p>拥有业内最强大的显示过滤器，广泛用于捕获实时网络流量以进行网络故障排除，包括延迟问题，数据包丢失和网络上的恶意活动。它允许测试人员截取和分析通过网络传递的数据，并将其转换为人类可读的格式。</p>
-<p>多平台：在 Windows、Linux、macOS、Solaris、FreeBSD、NetBSD 和许多其他平台上运行</p>
-<p>可以通过 GUI 或通过 TTY 模式 TShark 实用程序浏览捕获的网络数据</p>
-<p>读/写许多不同的捕获文件格式：tcpdump (libpcap)、Pcap NG、Catapult DCT2000、Cisco Secure IDS iplog、Microsoft Network Monitor、Network General Sniffer®（压缩和未压缩）、Sniffer® Pro 和 NetXray®、Network Instruments Observer , NetScreen snoop, Novell LANalyzer, RADCOM WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek 等等</p>
-<h3 id="⑤-Metasploit："><a href="#⑤-Metasploit：" class="headerlink" title="⑤ Metasploit："></a>⑤ Metasploit：</h3><p>是一个渗透测试框架，被网络攻击者和道德黑客广泛使用</p>
-<p>Metasploit包括超过1600个利用25个平台的漏洞利用，metasploit可以自动进行大量以前繁琐的工作，它是“世界上使用最广泛的渗透测试框架”。</p>
-<p>该工具大约有500个有效负载，其中包括：命令外壳有效负载以针对主机运行脚本。动态有效负载可生成独特的有效负载来规避防病毒软件。Meterpreter有效负载可控制设备监视器，会话，上载和下载文件。静态有效负载，用于端口转发并支持网络之间的通信。</p>
-<h3 id="⑥-SQLmap："><a href="#⑥-SQLmap：" class="headerlink" title="⑥ SQLmap："></a>⑥ SQLmap：</h3><p>自动化SQL注入和数据库接管工具</p>
-<p>它适用于所有现代数据库，包括 mysql、postgresql、oracle、microsoft sql server 等</p>
-<p>它有效地搜索整个数据库中的特定数据库名称，表或列，这对于识别包含应用程序凭据的表很有用，这些凭据包含名称和通过等字符串。</p>
-<p>SQLmap支持在数据库服务器和攻击者计算机之间建立带外TCP连接，从而为用户提供交互式命令提示符或仪表计量器会话。</p>
-<h3 id="⑦-Nessus："><a href="#⑦-Nessus：" class="headerlink" title="⑦ Nessus："></a>⑦ Nessus：</h3><p>网络漏洞扫描程序。由于其大量的漏洞签名库，它是漏洞扫描的最佳工具。</p>
-<p>Nessus 扫描涵盖广泛的技术，包括操作系统、网络设备、管理程序、数据库、Web 服务器和关键基础设施。</p>
-<p>扫描结果可以多种格式报告，例如纯文本、XML、HTML和LaTeX。结果也可以保存在知识库中以供调试。在 UNIX 上，可以通过使用命令行客户端自动进行扫描。对于 UNIX 和 Windows，存在许多不同的商业、免费和开源工具来管理单个或分布式 Nessus 扫描仪。</p>
-<p>除了测试已知网络漏洞之外，Nessus 还提供其他功能。例如，它可以使用Windows凭据检查运行 Windows 操作系统的计算机上的补丁级别。Nessus 还可以支持配置和合规性审计、SCADA 审计和 PCI 合规性。</p>
-<h3 id="⑧-社会工程工具箱："><a href="#⑧-社会工程工具箱：" class="headerlink" title="⑧ 社会工程工具箱："></a>⑧ 社会工程工具箱：</h3><p>开源的、Python驱动的社会工程学渗透测试工具。</p>
-<p>主要面向对人进行的渗透测试。使用SET可以实现多种攻击，比如：网络钓鱼攻击、网页劫持攻击、格式文件攻击等。</p>
-<h3 id="⑨-Hashcat："><a href="#⑨-Hashcat：" class="headerlink" title="⑨ Hashcat："></a>⑨ Hashcat：</h3><p>开源密码破解工具</p>
-<p>Hashcat猜测一个密码，对其进行哈希处理，然后将生成的哈希值与它试图破解的哈希值进行比较。如果哈希值匹配，则我们知道密码。</p>
-<p>密码表示形式主要与哈希键关联，例如WHIRLPOOL，RiceMD，NTMLv1，NTLMv2 MD5，SHA等。它将可读数据转换为混乱的代码，使其他人难以解密数据。</p>
-<p>它支持分布式破解网络和200多种不同的哈希格式。</p>
-<h3 id="⑩-Hydra："><a href="#⑩-Hydra：" class="headerlink" title="⑩ Hydra："></a>⑩ Hydra：</h3><p>九头蛇，支持众多协议的爆破工具，kali自动集成。</p>
-<p>可在Linux、Windows和OS X中使用。hydra可以用来破解很多种服务，包括IMAP,HTTP,SMB,VNC,MS-SQL,MySQL,SMTP等等。</p>
-<p>本文参考链接：</p>
-<p><a href="https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661">https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661</a></p>
-<p><a href="https://www.1024sou.com/article/13620.html">https://www.1024sou.com/article/13620.html</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>信息收集基础</title>
+      <link href="/2022/03/10/undefined/"/>
+      <url>/2022/03/10/undefined/</url>
+      
+        <content type="html"><![CDATA[<p>信息收集是指通过各种方式获取所需要的信息，以便我们在后续的渗透过程更好的进行。最简单的比如说目标站点的IP、中间件、脚本语言、端口、邮箱等等。我觉得信息收集在我们渗透测试的过程当中，是最重要的一环，这一环节没做好，没收集到足够多的可利用的信息，我们很难进行下一步的操作。</p><span id="more"></span><h2 id="一、踩点"><a href="#一、踩点" class="headerlink" title="一、踩点"></a>一、踩点</h2><h3 id="1、踩点的概念"><a href="#1、踩点的概念" class="headerlink" title="1、踩点的概念"></a>1、踩点的概念</h3><p>踩点指的是预先到某地考察，为后续工作做准备，获取信息的过程就叫踩点，在渗透测试中，第一步要做的就是信息收集，即踩点。这里的踩点主要是尽可能收集关于目标网络的信息以找到各种能有效入侵对方网络的方法，通常我们使用扫描器来实现，通过扫描器我们可以发现各种远程服务的端口，提供哪些服务以及服务器版本等内容。</p><p>当然，在实战中，我们信息收集的过程也要慎用各种扫描器，我们的信息收集过程应该是隐蔽的，悄无声息的，不应该让对方的应急团队察觉到你的意图。</p><h3 id="2、Google-hacking"><a href="#2、Google-hacking" class="headerlink" title="2、Google hacking"></a>2、Google hacking</h3><p>还要学会使用搜索引擎，如Google hacking，善用Google，它的功能很强大，这里列举一些常用的Google语法供大家参考：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">intext: </span><br><span class="line">这个就是把网页中的正文内容中的某个字符做为搜索条件.例如在google里输入:intext:网络安全. </span><br><span class="line">将返回所有在网页正文部分包含&quot;网络安全&quot;的网页.allintext:使用方法和 intext 类似. </span><br><span class="line">intitle: </span><br><span class="line">和上面那个 intext 差不多,搜索网页标题中是否有我们所要找的字符.例如搜索:intitle:网络安全.将返回所有网页标题中包含&quot;网络安全&quot;的网页.同理 allintitle:也同 intitle 类似. </span><br><span class="line">cache: </span><br><span class="line">搜索 google 里关于某些内容的缓存,有时候也许能找到一些好东西哦. </span><br><span class="line">define: </span><br><span class="line">搜索某个词语的定义,搜索:define:hacker,将返回关于 hacker 的定义. </span><br><span class="line">filetype: </span><br><span class="line">这个我要重点推荐一下,无论是撒网式攻击还是我们后面要说的对特定目标进行信息收集都 </span><br><span class="line">需要用到这个.搜索指定类型的文件.例如输入:filetype:doc.将返回所有以doc结尾的文件URL. </span><br><span class="line">当然如果你找.bak、.mdb 或.inc 也是可以的,获得的信息也许会更丰富:) </span><br><span class="line">info: </span><br><span class="line">查找指定站点的一些基本信息. </span><br><span class="line">inurl: </span><br><span class="line">搜索我们指定的字符是否存在于 URL 中.例如输入:inurl:admin,将返回 N 个类似于这样的连 </span><br><span class="line">接:http://www.xxx.com/xxx/admin,用来找管理员登陆的 URL 不错.allinurl 也同 inurl 类似,可指 </span><br><span class="line">定多个字符. </span><br><span class="line">link:例如搜索:inurl:www.xxx.com 可以返回所有和 www.xxx.com 做了链接的 URL. </span><br><span class="line">site: </span><br><span class="line">这个也很有用,例如:site:www.xxx.com.将返回所有和 xxx.com 这个站有关的 URL. </span><br><span class="line">对了还有一些操作符也是很有用的: </span><br><span class="line">+把 google 可能忽略的字列如查询范围 </span><br><span class="line">-把某个字忽略 </span><br><span class="line">~同意词 </span><br><span class="line">.单一的通配符 </span><br><span class="line">*通配符，可代表多个字母 </span><br><span class="line">&quot;&quot;精确查询 </span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">下面开始说说实际应用(以下内容均在 google 上搜索), </span><br><span class="line">对于一个居心叵测的攻击者来说,可能他最感兴趣的就是密码文件了.而 google 正因为其强 </span><br><span class="line">大的搜索能力往往会把一些敏感信息透露给他们.用 google 搜索以下内容: </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.sh_history </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.bash_history </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>people.lst </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>pwd.db </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc/shadow </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>spwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>master.passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>htpasswd </span><br><span class="line"><span class="string">&quot;#-FrontPage-&quot;</span>inurl:service.pwd </span><br><span class="line">有时候因为各种各样的原因一些重要的密码文件被毫无保护的暴露在网络上,如果被别有用 </span><br><span class="line">心的人获得,那么危害是很大的。</span><br></pre></td></tr></table></figure><p>感兴趣的师傅可以参考google-hacking-database，里面集成了很多语法：<a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p><h3 id="3、-Github以及其他信息收集途径"><a href="#3、-Github以及其他信息收集途径" class="headerlink" title="3、 Github以及其他信息收集途径"></a>3、 Github以及其他信息收集途径</h3><h4 id="①-Github"><a href="#①-Github" class="headerlink" title="① Github"></a>① Github</h4><p>在Github中，可能会存在源码泄露、AccessKey泄露、密码、服务器配置泄露等情况，常见的搜索技巧有：</p><ul><li><code>@example.com password/pass/pwd/secret/credentials/token</code></li><li><code>@example.com username/user/key/login/ftp/</code></li><li><code>@example.com config/ftp/smtp/pop</code></li><li><code>@example.com security_credentials/connetionstring</code></li><li><code>@example.com JDBC/ssh2_auth_password/send_keys</code></li></ul><h4 id="②-shodan、Zoomeye等在线网站"><a href="#②-shodan、Zoomeye等在线网站" class="headerlink" title="② shodan、Zoomeye等在线网站"></a>② shodan、Zoomeye等在线网站</h4><p><strong>ZoomEye</strong> 拥有两大探测引擎：<strong>Xmap 和 Wmap</strong>，是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p><p>ZoomEye 支持公网设备指纹检索和 Web 指纹检索</p><p>网站指纹包括应用名、版本、前端框架、后端框架、服务端语言、服务器操作系统、网站容器、内容管理系统和数据库等。设备指纹包括应用名、版本、开放端口、操作系统、服务名、地理位置等</p><p>常见的语法有：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">定位国家---           country:US</span><br><span class="line">搜索城市---           city:xx</span><br><span class="line">搜索组件---           app:组件名</span><br><span class="line">搜索版本---           ver:5.0</span><br><span class="line">搜索端口---           port:80</span><br><span class="line">搜索服务名--         service：SSH</span><br><span class="line">搜索操作系统-        OS:Linux</span><br><span class="line">搜索网段---          cidr:1.1.1.1/24</span><br><span class="line">指定网站域名搜索--    site:www.baidu.com</span><br><span class="line">指定主机名---        hostname:www.baidu.com</span><br><span class="line">指定设备名---        device:router </span><br><span class="line">指定首页关键词---     keyword:sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">快捷键：</span><br><span class="line">显示帮助               shift+/  </span><br><span class="line">隐藏该帮助             ESC  </span><br><span class="line">回到首页               shift  </span><br><span class="line">高级搜索               Shift +s  </span><br><span class="line">聚焦搜索框              s  </span><br></pre></td></tr></table></figure><p>想了解更多的可以看下这篇文章：</p><p><a href="https://www.programminghunter.com/article/7143642821/">https://www.programminghunter.com/article/7143642821/</a></p><h4 id="③-天眼查，站长工具等"><a href="#③-天眼查，站长工具等" class="headerlink" title="③ 天眼查，站长工具等"></a>③ 天眼查，站长工具等</h4><p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326192658584.png" alt="image-20220326192658584" loading="lazy"></p><p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326193204069.png" alt="image-20220326193204069" loading="lazy"></p><h4 id="④-绕过CDN获取真实ip"><a href="#④-绕过CDN获取真实ip" class="headerlink" title="④ 绕过CDN获取真实ip"></a>④ 绕过CDN获取真实ip</h4><h5 id="查找子域名"><a href="#查找子域名" class="headerlink" title="查找子域名"></a><strong>查找子域名</strong></h5><p>很多时候，一些重要的站点会做CDN，而一些子域名站点并没有加入CDN，而且跟主站在同一个C段内，这时候，就可以通过查找子域名来查找网站的真实IP。</p><p>常用的子域名查找方法和工具：</p><h6 id="（1）搜索引擎查询："><a href="#（1）搜索引擎查询：" class="headerlink" title="（1）搜索引擎查询："></a>（1）搜索引擎查询：</h6><p>如Google、baidu、Bing等传统搜索引擎，site:baidu.com inurl:baidu.com，搜target.com|公司名字。</p><h6 id="（2）一些在线查询工具"><a href="#（2）一些在线查询工具" class="headerlink" title="（2）一些在线查询工具"></a>（2）一些在线查询工具</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//tool.chinaz.com/subdomain/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//i.links.cn/subdomain/    </span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//subdomain.chaxun.la/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//searchdns.netcraft.com/</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//www.virustotal.com/</span></span><br></pre></td></tr></table></figure><h6 id="（3）子域名爆破工具"><a href="#（3）子域名爆破工具" class="headerlink" title="（3）子域名爆破工具"></a>（3）子域名爆破工具</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Layer</span>子域名挖掘机</span><br><span class="line">wydomain：<span class="attr">https</span>:<span class="comment">//github.com/ring04h/wydomain    </span></span><br><span class="line"><span class="attr">subDomainsBrute</span>:<span class="attr">https</span>:<span class="comment">//github.com/lijiejie/</span></span><br><span class="line"><span class="title class_">Sublist3</span><span class="attr">r</span>:<span class="attr">https</span>:<span class="comment">//github.com/aboul3la/Sublist3r</span></span><br></pre></td></tr></table></figure><h5 id="网站邮件头信息"><a href="#网站邮件头信息" class="headerlink" title="网站邮件头信息"></a><strong>网站邮件头信息</strong></h5><p>比如说，邮箱注册，邮箱找回密码、RSS邮件订阅等功能场景，通过网站给自己发送邮件，从而让目标主动暴露他们的真实的IP，查看邮件头信息，获取到网站的真实IP。</p><h5 id="利用SSL证书寻找真实IP"><a href="#利用SSL证书寻找真实IP" class="headerlink" title="利用SSL证书寻找真实IP"></a><strong>利用</strong><a href="https://cloud.tencent.com/product/ssl?from=10680"><strong>SSL证书</strong></a><strong>寻找真实IP</strong></h5><p>证书颁发机构(CA)必须将他们发布的每个SSL/TLS证书发布到公共日志中，SSL/TLS证书通常包含域名、子域名和电子邮件地址。因此SSL/TLS证书成为了攻击者的切入点。</p><p>SSL证书搜索引擎：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//censys.io/ipv4?q=github.comCensys 证书搜索：</span></span><br></pre></td></tr></table></figure><h5 id="扫描全网"><a href="#扫描全网" class="headerlink" title="扫描全网"></a><strong>扫描全网</strong></h5><p>通过Zmap、masscan等工具对整个互联网发起扫描，针对扫描结果进行关键字查找，获取网站真实IP。</p><p>ZMap号称是最快的互联网扫描工具，能够在45分钟扫遍全网。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/zmap/zmap</span></span><br></pre></td></tr></table></figure><p>Masscan号称是最快的互联网端口扫描器，最快可以在六分钟内扫遍互联网。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/robertdavidgraham/masscan</span></span><br></pre></td></tr></table></figure><h5 id="国外访问"><a href="#国外访问" class="headerlink" title="国外访问"></a>国外访问</h5><p>一般的站点在国内可能会有CDN，但是在国外的用户覆盖率比较低，所以通过国外的节点进行请求往往能获取真实IP</p><h4 id="⑤-端口扫描："><a href="#⑤-端口扫描：" class="headerlink" title="⑤ 端口扫描："></a>⑤ 端口扫描：</h4><p>一个端口就是一个潜在的通信通道，也就是一个入侵通道。对目标计算机进行端口扫描，能得到许多有用的信息。进行扫描的方法很多，可以是手工进行扫描，也可以用端口扫描软件进行扫描。在手工进行扫描时，需要熟悉各种命令。对命令执行后的输出进行分析。用<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6">扫描软件</a>进行扫描时，许多扫描器软件都有分析数据的功能。通过端口扫描，可以得到许多有用的信息，从而发现系统的安全漏洞。以上定义只针对<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1">网络通信</a>端口，端口扫描在某些场合还可以定义为广泛的设备端口扫描，比如某些<a href="https://baike.baidu.com/item/%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6">管理软件</a>可以动态扫描各种计算机<a href="https://baike.baidu.com/item/%E5%A4%96%E8%AE%BE">外设</a>端口的开放状态，并进行管理和监控，这类系统常见的如<a href="https://baike.baidu.com/item/USB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">USB管理系统</a>、各种外设管理系统等。</p><p>（1）可以通过Nmap（Nmap是一个网络连接端口扫描工具，用来扫描网上的电脑具体开放的网络连接端口。可以确定哪些服务运行在哪些的连接端口上，并且可以推断计算机运行哪个操作系统。所以它是网络安全管理人员必用的软件之一，甚至用以评估网络系统安全）；</p><p>（2）通过masscan（masscan是网络安全中常用的技术手段，通过对于特定的IP范围和端口范围进行穷举扫描，发现网络中开放的端口，从而为进一步的探查提供基本信息）</p><h4 id="⑥-旁站查询"><a href="#⑥-旁站查询" class="headerlink" title="⑥ 旁站查询"></a>⑥ 旁站查询</h4><p>C段主机是指与目标服务器在同一C段网络的服务器，攻击目标的C段存活主机是信息收集的重要信息，很多单位企业的内部服务器可能都会在一个C段网络中。</p><p>还可以用NMAP进行C段扫描，使用命令【nmap -sn IP/24】，对目标IP的C段主机存活扫描，根据扫描的结果可以判断目标IP的C段还有哪些主机存活，然后对存活的主机进行渗透，拿到最高权限后进行内网渗透。</p><p>可以通过K8_C段旁注工具、WebRobot、御剑，Cain、Sniffit 、Snoop、Tcpdump、Dsniff等工具进行查询；</p><p>也可以用在线查询地址：<a href="http://www.webscan.cc/">http://www.webscan.cc/</a> 、 <a href="http://www.5kik.com/">http://www.5kik.com/</a></p><h4 id="⑦-WAF查询"><a href="#⑦-WAF查询" class="headerlink" title="⑦ WAF查询"></a>⑦ WAF查询</h4><p>类似的有wafw00f（需要安装），可以识别是否有waf防护，是什么waf。</p><p><a href="https://scan.top15.cn/web/%EF%BC%9A%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%9F%A5%E6%97%81%E7%AB%99%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF">https://scan.top15.cn/web/：还可以查旁站及其他信息</a></p><h2 id="二、WINDOWS和LINUX系统的基础命令"><a href="#二、WINDOWS和LINUX系统的基础命令" class="headerlink" title="二、WINDOWS和LINUX系统的基础命令"></a>二、WINDOWS和LINUX系统的基础命令</h2><p>打点：基本信息收集（外围）</p><p>Banner        操作系统信息，web容器信息，开发商，cms信息</p><p>主机内部信息收集</p><p>主机存活探测</p><p>win</p><p>for /1 %i in (1,1,254) do @ping -w 1 -n 1 10.0.1.%i|findstr /c:”TTL=”</p><p>linux</p><p>for i in {1..254..1};do ping -w 1 -c 1 121.5.144.$i|grep“ttl”|awk’{print $4}’ |awk -F “:” ‘{print $1}’;done</p><p>主机信息收集</p><p>ipconfig /all         //看网卡配置，判断当前是否存在域环境</p><p>netsh wlan show profiles wifi名 key=clear      //看wifi密码</p><p>net localgroup    //查看分组信息</p><p>net user 用户名    //查看用户基本信息</p><p>net user 用户名 密码 /add</p><p>net user 用户名 密码 /der</p><p>systeminfo | findstr /B /C:”OS 名称” /C:”OS 版本”</p><p>systeminfo | findstr “KB”</p><p>net share        //看共享目录</p><p>net use \192.168.1.130\C$ 密码 /user：用户名 IPC管道连接</p><pre><code>      dir \\192.168.1.130\C$        //查看目录     copy 本地文件 \\192.168.1.130\C$\windows        //上传文件    copy \\192.168.1.130\C$\calc.exe c:\        //下载文件net cofig workstation        //查看工作站</code></pre><p>netstat -ano        //查找端口开放情况</p><p>whoami        //查看当前用户</p><p>whoami /user    //获取当前用户的sid</p><p>whoami /all        //查看所有的信息</p><p>whoami /priv        //查看当前用户的权限</p><p>ver  //看操作系统</p><p>wmic:</p><pre><code>    process            wmic process get Name,ProcessId,ThreadCount     //获取指定进程信息            wmic process list brief         //列出进程信息            wmin /node:127.0.0.1 process call create calc    //远程调用    os            wmic os get WindowsDirectory, SystemDirectory,CountryCode    product             wmic product get name,version        //慢</code></pre><p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p>]]></content>
+      
+      
       <categories>
-        <category>渗透</category>
+          
+          <category> 渗透 </category>
+          
       </categories>
-      <tags>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拥抱世界</title>
-    <url>/2022/03/07/undefined/</url>
-    <content><![CDATA[<hr>
-<p>Bitterness is a paralytic，love is a much more vicious motivator.    </p>
-<p>痛苦是种麻醉剂，爱则是更危险的动机</p>
-<hr>
-<p>I love three things in this world. Sun, moon and you. Sun for morning, moon for night, and you forever.</p>
-<p>浮世万千，吾爱有三。日月与卿，日起为昼，月升为暮，卿为朝暮。</p>
-<hr>
-<p>All lives end, all hearts are bro.</p>
-<p>生命终会终结，人心都会破碎。</p>
-<hr>
-<p>Once you’re ruled out the impossible. Whatever remains, however improbable, must be true.</p>
-<p>一旦你排除了所有的不可能，还剩什么，不管多么难以置信，一定就是真相。</p>
-<hr>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+            <tag> 信息收集 </tag>
+            
+            <tag> 社工 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拥抱世界</title>
+      <link href="/2022/03/07/undefined/"/>
+      <url>/2022/03/07/undefined/</url>
+      
+        <content type="html"><![CDATA[<hr><p>Bitterness is a paralytic，love is a much more vicious motivator.    </p><p>痛苦是种麻醉剂，爱则是更危险的动机</p><hr><p>I love three things in this world. Sun, moon and you. Sun for morning, moon for night, and you forever.</p><p>浮世万千，吾爱有三。日月与卿，日起为昼，月升为暮，卿为朝暮。</p><hr><p>All lives end, all hearts are bro.</p><p>生命终会终结，人心都会破碎。</p><hr><p>Once you’re ruled out the impossible. Whatever remains, however improbable, must be true.</p><p>一旦你排除了所有的不可能，还剩什么，不管多么难以置信，一定就是真相。</p><hr>]]></content>
+      
+      
       <categories>
-        <category>随笔</category>
+          
+          <category> 随笔 </category>
+          
       </categories>
-      <tags>
-        <tag>摘要</tag>
-        <tag>哲学</tag>
-        <tag>文案</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 摘要 </tag>
+            
+            <tag> 哲学 </tag>
+            
+            <tag> 文案 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
