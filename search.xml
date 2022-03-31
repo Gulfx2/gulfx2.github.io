@@ -63,7 +63,7 @@
 <p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
 <p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
 <p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a href="mailto:&#117;&#115;&#101;&#x72;&#64;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#117;&#115;&#101;&#x72;&#64;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>From        //发出请求的用户的Email; From: <a href="mailto:&#117;&#115;&#101;&#114;&#64;&#101;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#117;&#115;&#101;&#114;&#64;&#101;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p>
 <p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
 <p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
@@ -256,34 +256,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SQL漏洞学习</title>
-    <url>/2022/03/30/undefined/</url>
-    <content><![CDATA[<h2 id="一、sql注入基础"><a href="#一、sql注入基础" class="headerlink" title="一、sql注入基础"></a>一、sql注入基础</h2><h3 id="1、漏洞原理："><a href="#1、漏洞原理：" class="headerlink" title="1、漏洞原理："></a>1、漏洞原理：</h3><p>服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而打到执行攻击者所预期的结果。 SQL注入攻击是一种injection attack， SQL命令注入数据平面的投入，以影响执行预定义的SQL命令。一个成功的SQL注入攻击可以从数据库中阅读敏感数据，修改数据库数据（插入/更新/删除） ，执行管理处业务的数据库（如关闭数据库管理系统） ，收回的内容，一个给定的文件现有的数据库管理系统文件系统，在某些情况下，发出命令的作业系统。</p>
-<h3 id="2、产生原因"><a href="#2、产生原因" class="headerlink" title="2、产生原因"></a>2、产生原因</h3><ol>
-<li>服务器没有对用户输入的信息进行严格的过滤</li>
-<li>查询语句与用户输入的内容进行拼接</li>
-</ol>
-<p>eg：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = “select id, username from user where id = $id”;</span><br></pre></td></tr></table></figure>
-
-<p>其中$id是用户可控的参数，如果用户传入<code>1 union select 1,database() limit 1,1</code> ,那么拼接后的SQL语义结构就会被改变，变成：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select id, username from user where id = 1 union select 1,database() limit 1,1</span><br></pre></td></tr></table></figure>
-
-<p>当脚本向数据库请求数据时，就会执行这被改变的SQL语句，从而达到攻击者预期的效果</p>
-<p>sql布尔盲注测试：</p>
-<p>1’ and LENGTH(DATABASE())=4#</p>
-<p>1’ and ascii(substr(database(),1,1))=65#</p>
-]]></content>
-      <categories>
-        <category>渗透</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>渗透</tag>
-        <tag>漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>信息收集基础</title>
     <url>/2022/03/10/undefined/</url>
     <content><![CDATA[<p>信息收集是指通过各种方式获取所需要的信息，以便我们在后续的渗透过程更好的进行。最简单的比如说目标站点的IP、中间件、脚本语言、端口、邮箱等等。我觉得信息收集在我们渗透测试的过程当中，是最重要的一环，这一环节没做好，没收集到足够多的可利用的信息，我们很难进行下一步的操作。</p>
@@ -400,9 +372,37 @@ net cofig workstation        //查看工作站
         <category>渗透</category>
       </categories>
       <tags>
-        <tag>渗透</tag>
         <tag>信息收集</tag>
+        <tag>渗透</tag>
         <tag>社工</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL漏洞学习</title>
+    <url>/2022/03/30/undefined/</url>
+    <content><![CDATA[<h2 id="一、sql注入基础"><a href="#一、sql注入基础" class="headerlink" title="一、sql注入基础"></a>一、sql注入基础</h2><h3 id="1、漏洞原理："><a href="#1、漏洞原理：" class="headerlink" title="1、漏洞原理："></a>1、漏洞原理：</h3><p>服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而打到执行攻击者所预期的结果。 SQL注入攻击是一种injection attack， SQL命令注入数据平面的投入，以影响执行预定义的SQL命令。一个成功的SQL注入攻击可以从数据库中阅读敏感数据，修改数据库数据（插入/更新/删除） ，执行管理处业务的数据库（如关闭数据库管理系统） ，收回的内容，一个给定的文件现有的数据库管理系统文件系统，在某些情况下，发出命令的作业系统。</p>
+<h3 id="2、产生原因"><a href="#2、产生原因" class="headerlink" title="2、产生原因"></a>2、产生原因</h3><ol>
+<li>服务器没有对用户输入的信息进行严格的过滤</li>
+<li>查询语句与用户输入的内容进行拼接</li>
+</ol>
+<p>eg：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = “select id, username from user where id = $id”;</span><br></pre></td></tr></table></figure>
+
+<p>其中$id是用户可控的参数，如果用户传入<code>1 union select 1,database() limit 1,1</code> ,那么拼接后的SQL语义结构就会被改变，变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select id, username from user where id = 1 union select 1,database() limit 1,1</span><br></pre></td></tr></table></figure>
+
+<p>当脚本向数据库请求数据时，就会执行这被改变的SQL语句，从而达到攻击者预期的效果</p>
+<p>sql布尔盲注测试：</p>
+<p>1’ and LENGTH(DATABASE())=4#</p>
+<p>1’ and ascii(substr(database(),1,1))=65#</p>
+]]></content>
+      <categories>
+        <category>渗透</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>渗透</tag>
+        <tag>漏洞</tag>
       </tags>
   </entry>
   <entry>
