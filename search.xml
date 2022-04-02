@@ -147,107 +147,14 @@
         <category>语言</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>语言</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
-    <title>HTML标签语言学习Ⅰ</title>
-    <url>/2022/04/01/undefined/</url>
-    <content><![CDATA[<p>HTML元素是构建网站的基石。HTML允许嵌入图像与对象，并且可以用于创建交互式表单，它被用来结构化信息——例如标题、段落和列表等等，也可用来在一定程度上描述文档的外观和语义。HTML的语言形式为尖括号包围的HTML元素（如<html>），浏览器使用HTML标签和脚本来诠释网页内容，但不会将它们显示在页面上。</p>
-<span id="more"></span>
-
-<h2 id="一、HTML介绍"><a href="#一、HTML介绍" class="headerlink" title="一、HTML介绍"></a>一、HTML介绍</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/HTML">HTML</a> (HyperText Markup Language)，超文本标记语言，不是一门编程语言，而是一种创建网页的标准标记语言，由浏览器解析。HTML 可复杂、可简单，一切取决于开发者。它由一系列的元素（<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Element">elements</a>）组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。 一对标签（ <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Tag">tags</a>）可以为一段文字或者一张图片添加超链接，将文字设置为斜体，改变字号等</p>
-<p>HTML使用标记标签来描述网页</p>
-<p>HTML文档包含HTML 标签及文本内容</p>
-<p>HTML文档也叫做web页面</p>
-<p><strong>注：</strong>HTML 标签不区分大小写。也就是说，输入标签时既可以使用大写字母也可以使用小写字母。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;title&gt; 可以写作&lt;title&gt;、&lt;TITLE&gt;、&lt;Title&gt;、&lt;TiTlE&gt;</span><br></pre></td></tr></table></figure>
-
-<p>都可以正常工作。不过，从一致性、可读性来说，最好仅使用小写字母(未来版本均使用小写)。</p>
-<h2 id="二、标签部分详解："><a href="#二、标签部分详解：" class="headerlink" title="二、标签部分详解："></a>二、标签部分详解：</h2><p>① HTML 标签是由<em>尖括号</em>包围的关键词，比如 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>② HTML 标签通常是成对出现的，比如 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt; 和 &lt;/b&gt;</span><br></pre></td></tr></table></figure>
-
-<p>③ 标签对中的第一个标签是开始标签，第二个标签是结束标签</p>
-<p>④ 开始和结束标签也被称为开放标签和闭合标签</p>
-<p>⑤ 常见标签用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#&lt;html&gt; 与 &lt;/html&gt; 之间的文本描述网页</span><br><span class="line">#&lt;body&gt; 与 &lt;/body&gt; 之间的文本是可见的页面内容</span><br><span class="line">#&lt;h1&gt; 与 &lt;/h1&gt; 之间的文本被显示为标题，&lt;h1&gt;定义最大标题，&lt;h6&gt;定义最小标题</span><br><span class="line">#&lt;p&gt; 与 &lt;/p&gt; 之间的文本被显示为段落，分段络要多个&lt;p&gt;标签</span><br><span class="line">#&lt;a href=&quot;http://www.xxx.com.cn&quot;&gt;This is link&lt;/a&gt; 添加超链接，在href属性中指定链接的地址</span><br><span class="line">#&lt;img src=&quot;xxx.jpg&quot; width=&quot;104&quot; height=&quot;142&quot; /&gt; 添加图像，图像名称于尺寸以属性的形式提供</span><br><span class="line">#&lt;br&gt;就是没有关闭标签的空元素（&lt;br&gt;标签定义换行，&lt;br /&gt;关闭空元素）</span><br><span class="line">	&lt;p&gt;This is&lt;br /&gt;a para&lt;br /&gt;graph with line breaks&lt;/p&gt;在本段内换行</span><br><span class="line">#&lt;hr /&gt;添加水平线，用来分隔内容</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">#&lt;!-- This is a comment --&gt;为你的代码添加注释</span><br><span class="line">#&lt;p&gt;表示保持原本的格式，在浏览器中会自动移除多余的空格和空行，及时有多个连续的空格，也会被算作一个空格</span><br></pre></td></tr></table></figure>
-
-<p>一般情况下，浏览器会自动给标题前后添加空格，且，HTML默认为块级元素前后额外添加一个空行，如段落，标题元素前后。</p>
-<h3 id="3、HTML元素"><a href="#3、HTML元素" class="headerlink" title="3、HTML元素"></a>3、HTML元素</h3><p>HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。(也称开放标签(opening tag)和闭合标签(closing tag))</p>
-<p>一些HTML元素具有空内容，空元素在开始标签中进行关闭，大部分HTML元素可拥有属性</p>
-<p>大多数HTML元素可以嵌套，HTML文档（web页面）就是由嵌套的HTML元素构成</p>
-<h3 id="4、HTML属性"><a href="#4、HTML属性" class="headerlink" title="4、HTML属性"></a>4、HTML属性</h3><p>HTML标签可以拥有属性，属性会提供更多的元素信息</p>
-<p>属性以名称/值对的形式出现：name=”value”。通常在开始标签中规定</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#&lt;h1 align=&quot;center&quot;&gt;拥有关于对齐方式的附加信息（居中排列标题）。</span><br><span class="line">#&lt;body bgcolor=&quot;yellow&quot;&gt; 拥有关于背景颜色的附加信息。</span><br><span class="line">#&lt;table border=&quot;1&quot;&gt; 拥有关于表格边框的附加信息。</span><br></pre></td></tr></table></figure>
-
-<p>记得始终为属性值加引号，若属性值本身含有双引号，则你必须使用单引号，如：name=’Bill “HelloWorld” Gates’ </p>
-<p>style属性用于改变HTML元素的样式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 style=&quot;font-family:verdana&quot;&gt;A heading&lt;/h1&gt;</span><br><span class="line">&lt;p style=&quot;font-family:arial;color:red;font-size:20px;&quot;&gt;A paragraph.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">#font-family、color 以及 font-size 属性分别定义元素中文本的字体系列、颜色和字体尺寸</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body style=&quot;background-color:yellow&quot;&gt;</span><br><span class="line">&lt;h2 style=&quot;background-color:red&quot;&gt;This is a heading&lt;/h2&gt;</span><br><span class="line">&lt;p style=&quot;background-color:green&quot;&gt;This is a paragraph.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">#background-color属性为元素定义背景颜色</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body style=&quot;background-color:PowderBlue;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;Look! Style and Colors&lt;/h1&gt;</span><br><span class="line">&lt;p style=&quot;font-family:verdana;color:Blue&quot;&gt;</span><br><span class="line">This text is in Verdana and green</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;font-family:times;color:green&quot;&gt;</span><br><span class="line">This text is in Times and green</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;font-size:30px&quot;&gt;</span><br><span class="line">This text is 30 pixels high</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401170802338.png" alt="image-20220401170802338" loading="lazy"></p>
-<p>style提供了一种改变所有HTML元素的样式的通用方法。</p>
-<p><strong>另</strong>：在 HTML 4 中，有若干的标签和属性是被废弃的。在未来版本的 HTML 和 XHTML 中将不支持这些标签和属性，请避免使用这些被废弃的标签和属性！</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401171327106.png" alt="image-20220401171327106" loading="lazy"></p>
-<p>以上标签和属性可以用样式代替</p>
-<h3 id="5、HTML文本格式化"><a href="#5、HTML文本格式化" class="headerlink" title="5、HTML文本格式化"></a>5、HTML文本格式化</h3><p>HTML可以定义很多供格式化输出的元素， 使用标签 <b>(“bold”) 与 <i>(“italic”) 对输出的文本进行格式, 如：<strong>粗体</strong> or <em>斜体</em>。</p>
-<h4 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173601026.png" alt="image-20220401173601026" loading="lazy"></p>
-<h4 id="“计算机输出”标签"><a href="#“计算机输出”标签" class="headerlink" title="“计算机输出”标签"></a>“计算机输出”标签</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173636730.png" alt="image-20220401173636730" loading="lazy"></p>
-<h4 id="引用和术语定义"><a href="#引用和术语定义" class="headerlink" title="引用和术语定义"></a>引用和术语定义</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173721172.png" alt="image-20220401173721172" loading="lazy"></p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;b&gt;This text is bold&lt;/b&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;strong&gt;This text is strong&lt;/strong&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;big&gt;This text is big&lt;/big&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;em&gt;This text is emphasized&lt;/em&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;i&gt;This text is italic&lt;/i&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;small&gt;This text is small&lt;/small&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">This text contains</span><br><span class="line">&lt;sub&gt;subscript&lt;/sub&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">This text contains</span><br><span class="line">&lt;sup&gt;superscript&lt;/sup&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173804322.png" alt="image-20220401173804322" loading="lazy"></p>
-<h3 id="6、HTML的引用"><a href="#6、HTML的引用" class="headerlink" title="6、HTML的引用"></a>6、HTML的引用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">这是长的引用：</span><br><span class="line">&lt;blockquote&gt;</span><br><span class="line">这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。</span><br><span class="line">&lt;/blockquote&gt;</span><br><span class="line"></span><br><span class="line">这是短的引用：</span><br><span class="line">&lt;q&gt;</span><br><span class="line">这是短的引用。</span><br><span class="line">&lt;/q&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;</span><br><span class="line">使用 blockquote 元素的话，浏览器会插入换行和外边距，而 q 元素不会有任何特殊的呈现。</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174749885.png" alt="image-20220401174749885" loading="lazy"></p>
-<h3 id="7、两种缩写"><a href="#7、两种缩写" class="headerlink" title="7、两种缩写"></a>7、两种缩写</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;</span><br><span class="line">&lt;br /&gt;</span><br><span class="line">&lt;acronym title=&quot;World Wide Web&quot;&gt;WWW&lt;/acronym&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;在某些浏览器中，当您把鼠标移至缩略词语上时，title 可用于展示表达的完整版本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;仅对于 IE 5 中的 acronym 元素有效。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;对于 Netscape 6.2 中的 abbr 和 acronym 元素都有效。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174840719.png" alt="image-20220401174840719" loading="lazy"></p>
-<h3 id="8、删除字效果和插入字效果"><a href="#8、删除字效果和插入字效果" class="headerlink" title="8、删除字效果和插入字效果"></a>8、删除字效果和插入字效果</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一打有 &lt;del&gt;二十&lt;/del&gt; &lt;ins&gt;十二&lt;/ins&gt; 件。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;大多数浏览器会改写为删除文本和下划线文本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一些老式的浏览器会把删除文本和下划线文本显示为普通文本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174941325.png" alt="image-20220401174941325" loading="lazy"></p>
-<h3 id="9、HTML图像"><a href="#9、HTML图像" class="headerlink" title="9、HTML图像"></a>9、HTML图像</h3><p>在HTML中，图像由<img>标签定义，<img loading="lazy">标签是空标签，意思是说，它只包含属性，并且没有闭合标签。要在页面上显示图像，你需要使用源属性（src），src指“source”，源属性的值是图像的URL地址。定义图像的语法是：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;url&quot;</span> /&gt;</span>  #url指图像位置</span><br></pre></td></tr></table></figure>
-
-<p>浏览器将图像显示在文档中图像标签出现的地方。如果你将图像标签置于两个段落之间，那么浏览器会首先显示第一个段落，然后显示图片，最后显示第二段。</p>
-<p>alt 属性用来为图像定义一串预备的可替换的文本，替换文本属性的值是用户定义的。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;boat.gif&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Big Boat&quot;</span>&gt;</span>  #在浏览器无法载入图像时，替换文本属性告诉读者她们失去的信息，此时，浏览器将显示这个替代性文本而不是图像</span><br></pre></td></tr></table></figure>
-
-<p><strong>注</strong>：假如某个HTML文件包含十个图像，那么为了正确显示这个页面，需要加载11个文件</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401175431451.png" alt="image-20220401175431451" loading="lazy"></p>
-<h3 id="10、HTML表格"><a href="#10、HTML表格" class="headerlink" title="10、HTML表格"></a>10、HTML表格</h3><p>表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;row 1, cell 1&lt;/td&gt;</span><br><span class="line">&lt;td&gt;row 1, cell 2&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;row 2, cell 1&lt;/td&gt;</span><br><span class="line">&lt;td&gt;row 2, cell 2&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401175643444.png" alt="image-20220401175643444" loading="lazy"></p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401185910141.png" alt="image-20220401185910141" loading="lazy"></p>
-<p>例1：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">创建一个HTML表格</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;每个表格由 table 标签开始。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;每个表格行由 tr 标签开始。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;每个表格数据由 td 标签开始。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一行三列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;5&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;200&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;300&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;两行三列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;10&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;200&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;300&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;400&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;500&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;600&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190049608.png" alt="image-20220401190049608" loading="lazy"></p>
-<p>例2：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">添加各种边框</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有普通的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有粗的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;8&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有很粗的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;15&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190130639.png" alt="image-20220401190130639" loading="lazy"></p>
-<h3 id="11、HTML列表"><a href="#11、HTML列表" class="headerlink" title="11、HTML列表"></a>11、HTML列表</h3><p>HTML文档中，可能需要给你的项目分出列表，html支持有序无序以及自定义三种列表</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190421348.png" alt="image-20220401190421348" loading="lazy"></p>
-<p>① 无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记。</p>
-<p>无序列表始于<ul>标签，每个列表项始于<li>。列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一个无序列表：&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>② 有序列表也是一列项目，列表项目使用数字进行标记。</p>
-<p>有序列表始于<ol>标签，每个列表项始于<li>标签。列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;有序列表样式：&lt;/h4&gt;</span><br><span class="line"></span><br><span class="line">&lt;ol&gt;</span><br><span class="line">  &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>③ 自定义列表不仅仅是一列项目，而是项目及其注释的组合。</p>
-<p>自定义列表以<dl>标签开始，每个自定义列表项以<dt>开始，每个自定义列表项的定义以<dd>开始。定义列表的列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
-<h3 id="12、HTML区块"><a href="#12、HTML区块" class="headerlink" title="12、HTML区块"></a>12、HTML区块</h3><p>HTML文档可以通过<div>和<span>组合起来</p>
+    <title>HTML标签语言学习Ⅱ</title>
+    <url>/2022/04/02/undefined/</url>
+    <content><![CDATA[<h2 id="一、HTML标签拓展"><a href="#一、HTML标签拓展" class="headerlink" title="一、HTML标签拓展"></a>一、HTML标签拓展</h2><h3 id="1、HTML区块"><a href="#1、HTML区块" class="headerlink" title="1、HTML区块"></a>1、HTML区块</h3><p>HTML文档可以通过<div>和<span>组合起来</p>
 <p>大多数元素会被当作块级元素或内联元素，块级元素在浏览器中显示的时候通常以新行来开始和结束</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;</span><br></pre></td></tr></table></figure>
 
@@ -258,6 +165,7 @@
 <p>块级元素，它可用于组合其他 HTML 元素的容器。</p>
 <div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
 
+
 <p>如果与 CSS 一同使用，<div> 元素可用于对大的内容块设置样式属性。</p>
 <p>#<div> 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 <table> 元素进行文档布局不是表格的正确用法。<table> 元素的作用是显示表格化的数据。</p>
 <p>#<span>元素</p>
@@ -265,7 +173,7 @@
 <p><span> 元素也没有特定的含义。</p>
 <p>当与 CSS 一同使用时，<span> 元素可用于为部分文本设置样式属性。</p>
 <p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401191824848.png" alt="image-20220401191824848" loading="lazy"></p>
-<h3 id="13、HTML脚本"><a href="#13、HTML脚本" class="headerlink" title="13、HTML脚本"></a>13、HTML脚本</h3><p>① HTML <script> 标签</p>
+<h3 id="2、HTML脚本"><a href="#2、HTML脚本" class="headerlink" title="2、HTML脚本"></a>2、HTML脚本</h3><p>① HTML <script> 标签</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#&lt;script&gt; 标签用于定义客户端脚本，比如 JavaScript。</span><br><span class="line"></span><br><span class="line">#&lt;script&gt; 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。</span><br></pre></td></tr></table></figure>
 
 <p>JavaScript 最常用于图片操作、表单验证以及内容动态更新。</p>
@@ -288,18 +196,52 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">style</span>.<span class="property">color</span>=<span class="string">&quot;#ff0000&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401192704945.png" alt="image-20220401192704945" loading="lazy"></p>
-<p>HTML更多内容可以自查HTML手册：<a href="https://www.w3cschool.cn/html/dict.html">https://www.w3cschool.cn/html/dict.html</a></p>
-<p>本文参考链接：</p>
-<p><a href="https://www.jianshu.com/p/ee9bfb7183a6">https://www.jianshu.com/p/ee9bfb7183a6</a></p>
-<p><a href="https://www.runoob.com/html/html-summary.html">https://www.runoob.com/html/html-summary.html</a></p>
-<p><a href="https://www.w3school.com.cn/html/html_webserver.asp">https://www.w3school.com.cn/html/html_webserver.asp</a></p>
+<h2 id="二、HTML浏览器应用"><a href="#二、HTML浏览器应用" class="headerlink" title="二、HTML浏览器应用"></a>二、HTML浏览器应用</h2><h3 id="1、搭建框架"><a href="#1、搭建框架" class="headerlink" title="1、搭建框架"></a>1、搭建框架</h3><p>通过使用框架，可以在同一个浏览器窗口中显示不止一个页面</p>
+<p>但同时，它也会有一些坏处：</p>
+<ul>
+<li>开发人员必须同时跟踪更多的HTML文档</li>
+<li>很难打印整张页面</li>
+</ul>
+<h4 id="框架结构标签（）"><a href="#框架结构标签（）" class="headerlink" title="框架结构标签（）"></a>框架结构标签（<frameset>）</h4><ul>
+<li>框架结构标签（<frameset>）定义如何将窗口分割为框架</li>
+<li>每个 frameset 定义了一系列行<em>或</em>列</li>
+<li>rows/columns 的值规定了每行或每列占据屏幕的面积</li>
+</ul>
+<h4 id="框架标签（）"><a href="#框架标签（）" class="headerlink" title="框架标签（）"></a>框架标签（<frame>）</h4><p>Frame 标签定义了放置在每个框架中的 HTML 文档。</p>
+<p>在下面的这个例子中，我们设置了一个两列的框架集。第一列被设置为占据浏览器窗口的 25%。第二列被设置为占据浏览器窗口的 75%。HTML 文档 “frame_a.htm” 被置于第一个列中，而 HTML 文档 “frame_b.htm” 被置于第二个列中：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">&quot;25%,75%&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_a.htm&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_b.htm&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>假如一个框架有可见边框，用户可以拖动边框来改变它的大小。为了避免这种情况发生，可以在 <frame> 标签中加入：noresize=”noresize”。</p>
+<p>为不支持框架的浏览器添加 <noframes> 标签。</p>
+<p>不能将 <body></body> 标签与 <frameset></frameset> 标签同时使用！不过，假如你添加包含一段文本的 <noframes> 标签，就必须将这段文字嵌套于 <body></body> 标签内。（在下面的第一个实例中，可以查看它是如何实现的。）</p>
+<h3 id="2、URL（-Uniform-Resource-Locator）"><a href="#2、URL（-Uniform-Resource-Locator）" class="headerlink" title="2、URL（ Uniform Resource Locator）"></a>2、URL（ Uniform Resource Locator）</h3><p>统一资源定位器，也称为网址</p>
+<p>点击 HTML 页面中的某个链接时，对应的 <a> 标签指向互联网上的一个地址。</p>
+<p>统一资源定位器（URL）用于定位互联网上的文档（或其他数据）。</p>
+<p>它遵守以下语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme://host.domain:port/path/filename</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scheme - 定义因特网服务的类型。最常见的类型是 http</li>
+<li>host - 定义域主机（http 的默认主机是 www）</li>
+<li>domain - 定义因特网域名，比如 w3school.com.cn</li>
+<li>:port - 定义主机上的端口号（http 的默认端口号是 80）</li>
+<li>path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</li>
+<li>filename - 定义文档/资源的名称</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401195024342.png" alt="image-20220401195024342" loading="lazy"></p>
+<h2 id="二、HTML总结"><a href="#二、HTML总结" class="headerlink" title="二、HTML总结"></a>二、HTML总结</h2><h3 id="1、学习其他语言，与HTML搭配使用"><a href="#1、学习其他语言，与HTML搭配使用" class="headerlink" title="1、学习其他语言，与HTML搭配使用"></a>1、学习其他语言，与HTML搭配使用</h3><p>如果你想为自己搭建一个网站，那仅仅学会HTML是远远不够的，你还需要学习CSS、JavaScript等。</p>
+<p>CSS被用来同时控制多重网页的样式和布局。通过使用 CSS，所有的格式化均可从 HTML 中剥离出来，并存储于一个独立的文件中。JavaScript 可以让你的网页更加生动。</p>
+<p>如果你只想展示内容，静态网站是很好的展示形象，如果你想与用户进行交换或者让网页更加生动那就需要使用到Javascript。JavaScript是互联网上最流行的脚本语言，目前所有主流浏览器都支持Javascript。</p>
+<h3 id="2、服务器"><a href="#2、服务器" class="headerlink" title="2、服务器"></a>2、服务器</h3><p>网站服务器（Website Server）是指在互联网数据中心中存放网站的服务器。 网站服务器主要用于网站在互联网中的发布、应用，是网络应用的基础硬件设施。可以选择在自己的服务器上托管自己的网站，要挑一个好的服务器，以及各种软硬件的支出费用</p>
+<h3 id="3、ISP"><a href="#3、ISP" class="headerlink" title="3、ISP"></a>3、ISP</h3><p>为个人和企业客户提供 Internet 访问权限的公司。ISP 使他们的客户可以上网冲浪、在线购物、开展业务以及与家人和朋友联系——所有这些都是收费的。ISP 还可能提供其他服务，包括电子邮件服务、域注册、网络托管和<a href="https://www.investopedia.com/articles/investing/041315/how-mozilla-firefox-and-google-chrome-make-money.asp">浏览器</a>包。根据公司提供的服务，ISP 也可以称为信息服务提供商、存储服务提供商、互联网服务提供商 (INSP) 或这三者的任意组合。</p>
 ]]></content>
       <categories>
         <category>语言</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>语言</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -365,7 +307,7 @@
 <p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
 <p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
 <p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#115;&#101;&#x72;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x75;&#115;&#101;&#x72;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#115;&#x65;&#x72;&#64;&#101;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#x75;&#115;&#x65;&#x72;&#64;&#101;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p>
 <p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
 <p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
@@ -399,179 +341,6 @@
       <tags>
         <tag>web</tag>
         <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML标签语言学习Ⅱ</title>
-    <url>/2022/04/02/undefined/</url>
-    <content><![CDATA[<h2 id="一、HTML浏览器应用"><a href="#一、HTML浏览器应用" class="headerlink" title="一、HTML浏览器应用"></a>一、HTML浏览器应用</h2><h3 id="1、搭建框架"><a href="#1、搭建框架" class="headerlink" title="1、搭建框架"></a>1、搭建框架</h3><p>通过使用框架，可以在同一个浏览器窗口中显示不止一个页面</p>
-<p>但同时，它也会有一些坏处：</p>
-<ul>
-<li>开发人员必须同时跟踪更多的HTML文档</li>
-<li>很难打印整张页面</li>
-</ul>
-<h4 id="框架结构标签（）"><a href="#框架结构标签（）" class="headerlink" title="框架结构标签（）"></a>框架结构标签（<frameset>）</h4><ul>
-<li>框架结构标签（<frameset>）定义如何将窗口分割为框架</li>
-<li>每个 frameset 定义了一系列行<em>或</em>列</li>
-<li>rows/columns 的值规定了每行或每列占据屏幕的面积</li>
-</ul>
-<h4 id="框架标签（）"><a href="#框架标签（）" class="headerlink" title="框架标签（）"></a>框架标签（<frame>）</h4><p>Frame 标签定义了放置在每个框架中的 HTML 文档。</p>
-<p>在下面的这个例子中，我们设置了一个两列的框架集。第一列被设置为占据浏览器窗口的 25%。第二列被设置为占据浏览器窗口的 75%。HTML 文档 “frame_a.htm” 被置于第一个列中，而 HTML 文档 “frame_b.htm” 被置于第二个列中：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">&quot;25%,75%&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_a.htm&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_b.htm&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>注：</p>
-<p>假如一个框架有可见边框，用户可以拖动边框来改变它的大小。为了避免这种情况发生，可以在 <frame> 标签中加入：noresize=”noresize”。</p>
-<p>为不支持框架的浏览器添加 <noframes> 标签。</p>
-<p>不能将 <body></body> 标签与 <frameset></frameset> 标签同时使用！不过，假如你添加包含一段文本的 <noframes> 标签，就必须将这段文字嵌套于 <body></body> 标签内。（在下面的第一个实例中，可以查看它是如何实现的。）</p>
-<h3 id="2、URL（-Uniform-Resource-Locator）"><a href="#2、URL（-Uniform-Resource-Locator）" class="headerlink" title="2、URL（ Uniform Resource Locator）"></a>2、URL（ Uniform Resource Locator）</h3><p>统一资源定位器，也称为网址</p>
-<p>点击 HTML 页面中的某个链接时，对应的 <a> 标签指向互联网上的一个地址。</p>
-<p>统一资源定位器（URL）用于定位互联网上的文档（或其他数据）。</p>
-<p>它遵守以下语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme://host.domain:port/path/filename</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>scheme - 定义因特网服务的类型。最常见的类型是 http</li>
-<li>host - 定义域主机（http 的默认主机是 www）</li>
-<li>domain - 定义因特网域名，比如 w3school.com.cn</li>
-<li>:port - 定义主机上的端口号（http 的默认端口号是 80）</li>
-<li>path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</li>
-<li>filename - 定义文档/资源的名称</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401195024342.png" alt="image-20220401195024342" loading="lazy"></p>
-<h2 id="二、HTML总结"><a href="#二、HTML总结" class="headerlink" title="二、HTML总结"></a>二、HTML总结</h2><h3 id="1、学习其他语言，与HTML搭配使用"><a href="#1、学习其他语言，与HTML搭配使用" class="headerlink" title="1、学习其他语言，与HTML搭配使用"></a>1、学习其他语言，与HTML搭配使用</h3><p>如果你想为自己搭建一个网站，那仅仅学会HTML是远远不够的，你还需要学习CSS、JavaScript等。</p>
-<p>CSS被用来同时控制多重网页的样式和布局。通过使用 CSS，所有的格式化均可从 HTML 中剥离出来，并存储于一个独立的文件中。JavaScript 可以让你的网页更加生动。</p>
-<p>如果你只想展示内容，静态网站是很好的展示形象，如果你想与用户进行交换或者让网页更加生动那就需要使用到Javascript。JavaScript是互联网上最流行的脚本语言，目前所有主流浏览器都支持Javascript。</p>
-<h3 id="2、服务器"><a href="#2、服务器" class="headerlink" title="2、服务器"></a>2、服务器</h3><p>网站服务器（Website Server）是指在互联网数据中心中存放网站的服务器。 网站服务器主要用于网站在互联网中的发布、应用，是网络应用的基础硬件设施。可以选择在自己的服务器上托管自己的网站，要挑一个好的服务器，以及各种软硬件的支出费用</p>
-<h3 id="3、ISP"><a href="#3、ISP" class="headerlink" title="3、ISP"></a>3、ISP</h3><p>为个人和企业客户提供 Internet 访问权限的公司。ISP 使他们的客户可以上网冲浪、在线购物、开展业务以及与家人和朋友联系——所有这些都是收费的。ISP 还可能提供其他服务，包括电子邮件服务、域注册、网络托管和<a href="https://www.investopedia.com/articles/investing/041315/how-mozilla-firefox-and-google-chrome-make-money.asp">浏览器</a>包。根据公司提供的服务，ISP 也可以称为信息服务提供商、存储服务提供商、互联网服务提供商 (INSP) 或这三者的任意组合。</p>
-]]></content>
-      <categories>
-        <category>语言</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集基础</title>
-    <url>/2022/03/10/undefined/</url>
-    <content><![CDATA[<p>信息收集是指通过各种方式获取所需要的信息，以便我们在后续的渗透过程更好的进行。最简单的比如说目标站点的IP、中间件、脚本语言、端口、邮箱等等。我觉得信息收集在我们渗透测试的过程当中，是最重要的一环，这一环节没做好，没收集到足够多的可利用的信息，我们很难进行下一步的操作。</p>
-<span id="more"></span>
-
-<h2 id="一、踩点"><a href="#一、踩点" class="headerlink" title="一、踩点"></a>一、踩点</h2><h3 id="1、踩点的概念"><a href="#1、踩点的概念" class="headerlink" title="1、踩点的概念"></a>1、踩点的概念</h3><p>踩点指的是预先到某地考察，为后续工作做准备，获取信息的过程就叫踩点，在渗透测试中，第一步要做的就是信息收集，即踩点。这里的踩点主要是尽可能收集关于目标网络的信息以找到各种能有效入侵对方网络的方法，通常我们使用扫描器来实现，通过扫描器我们可以发现各种远程服务的端口，提供哪些服务以及服务器版本等内容。</p>
-<p>当然，在实战中，我们信息收集的过程也要慎用各种扫描器，我们的信息收集过程应该是隐蔽的，悄无声息的，不应该让对方的应急团队察觉到你的意图。</p>
-<h3 id="2、Google-hacking"><a href="#2、Google-hacking" class="headerlink" title="2、Google hacking"></a>2、Google hacking</h3><p>还要学会使用搜索引擎，如Google hacking，善用Google，它的功能很强大，这里列举一些常用的Google语法供大家参考：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">intext: </span><br><span class="line">这个就是把网页中的正文内容中的某个字符做为搜索条件.例如在google里输入:intext:网络安全. </span><br><span class="line">将返回所有在网页正文部分包含&quot;网络安全&quot;的网页.allintext:使用方法和 intext 类似. </span><br><span class="line">intitle: </span><br><span class="line">和上面那个 intext 差不多,搜索网页标题中是否有我们所要找的字符.例如搜索:intitle:网络安全.将返回所有网页标题中包含&quot;网络安全&quot;的网页.同理 allintitle:也同 intitle 类似. </span><br><span class="line">cache: </span><br><span class="line">搜索 google 里关于某些内容的缓存,有时候也许能找到一些好东西哦. </span><br><span class="line">define: </span><br><span class="line">搜索某个词语的定义,搜索:define:hacker,将返回关于 hacker 的定义. </span><br><span class="line">filetype: </span><br><span class="line">这个我要重点推荐一下,无论是撒网式攻击还是我们后面要说的对特定目标进行信息收集都 </span><br><span class="line">需要用到这个.搜索指定类型的文件.例如输入:filetype:doc.将返回所有以doc结尾的文件URL. </span><br><span class="line">当然如果你找.bak、.mdb 或.inc 也是可以的,获得的信息也许会更丰富:) </span><br><span class="line">info: </span><br><span class="line">查找指定站点的一些基本信息. </span><br><span class="line">inurl: </span><br><span class="line">搜索我们指定的字符是否存在于 URL 中.例如输入:inurl:admin,将返回 N 个类似于这样的连 </span><br><span class="line">接:http://www.xxx.com/xxx/admin,用来找管理员登陆的 URL 不错.allinurl 也同 inurl 类似,可指 </span><br><span class="line">定多个字符. </span><br><span class="line">link:例如搜索:inurl:www.xxx.com 可以返回所有和 www.xxx.com 做了链接的 URL. </span><br><span class="line">site: </span><br><span class="line">这个也很有用,例如:site:www.xxx.com.将返回所有和 xxx.com 这个站有关的 URL. </span><br><span class="line">对了还有一些操作符也是很有用的: </span><br><span class="line">+把 google 可能忽略的字列如查询范围 </span><br><span class="line">-把某个字忽略 </span><br><span class="line">~同意词 </span><br><span class="line">.单一的通配符 </span><br><span class="line">*通配符，可代表多个字母 </span><br><span class="line">&quot;&quot;精确查询 </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">下面开始说说实际应用(以下内容均在 google 上搜索), </span><br><span class="line">对于一个居心叵测的攻击者来说,可能他最感兴趣的就是密码文件了.而 google 正因为其强 </span><br><span class="line">大的搜索能力往往会把一些敏感信息透露给他们.用 google 搜索以下内容: </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.sh_history </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.bash_history </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>people.lst </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>pwd.db </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc/shadow </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>spwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>master.passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>htpasswd </span><br><span class="line"><span class="string">&quot;#-FrontPage-&quot;</span>inurl:service.pwd </span><br><span class="line">有时候因为各种各样的原因一些重要的密码文件被毫无保护的暴露在网络上,如果被别有用 </span><br><span class="line">心的人获得,那么危害是很大的。</span><br></pre></td></tr></table></figure>
-
-<p>感兴趣的师傅可以参考google-hacking-database，里面集成了很多语法：<a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
-<h3 id="3、-Github以及其他信息收集途径"><a href="#3、-Github以及其他信息收集途径" class="headerlink" title="3、 Github以及其他信息收集途径"></a>3、 Github以及其他信息收集途径</h3><h4 id="①-Github"><a href="#①-Github" class="headerlink" title="① Github"></a>① Github</h4><p>在Github中，可能会存在源码泄露、AccessKey泄露、密码、服务器配置泄露等情况，常见的搜索技巧有：</p>
-<ul>
-<li><code>@example.com password/pass/pwd/secret/credentials/token</code></li>
-<li><code>@example.com username/user/key/login/ftp/</code></li>
-<li><code>@example.com config/ftp/smtp/pop</code></li>
-<li><code>@example.com security_credentials/connetionstring</code></li>
-<li><code>@example.com JDBC/ssh2_auth_password/send_keys</code></li>
-</ul>
-<h4 id="②-shodan、Zoomeye等在线网站"><a href="#②-shodan、Zoomeye等在线网站" class="headerlink" title="② shodan、Zoomeye等在线网站"></a>② shodan、Zoomeye等在线网站</h4><p><strong>ZoomEye</strong> 拥有两大探测引擎：<strong>Xmap 和 Wmap</strong>，是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
-<p>ZoomEye 支持公网设备指纹检索和 Web 指纹检索</p>
-<p>网站指纹包括应用名、版本、前端框架、后端框架、服务端语言、服务器操作系统、网站容器、内容管理系统和数据库等。设备指纹包括应用名、版本、开放端口、操作系统、服务名、地理位置等</p>
-<p>常见的语法有：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定位国家---           country:US</span><br><span class="line">搜索城市---           city:xx</span><br><span class="line">搜索组件---           app:组件名</span><br><span class="line">搜索版本---           ver:5.0</span><br><span class="line">搜索端口---           port:80</span><br><span class="line">搜索服务名--         service：SSH</span><br><span class="line">搜索操作系统-        OS:Linux</span><br><span class="line">搜索网段---          cidr:1.1.1.1/24</span><br><span class="line">指定网站域名搜索--    site:www.baidu.com</span><br><span class="line">指定主机名---        hostname:www.baidu.com</span><br><span class="line">指定设备名---        device:router </span><br><span class="line">指定首页关键词---     keyword:sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">快捷键：</span><br><span class="line">显示帮助               shift+/  </span><br><span class="line">隐藏该帮助             ESC  </span><br><span class="line">回到首页               shift  </span><br><span class="line">高级搜索               Shift +s  </span><br><span class="line">聚焦搜索框              s  </span><br></pre></td></tr></table></figure>
-
-<p>想了解更多的可以看下这篇文章：</p>
-<p><a href="https://www.programminghunter.com/article/7143642821/">https://www.programminghunter.com/article/7143642821/</a></p>
-<h4 id="③-天眼查，站长工具等"><a href="#③-天眼查，站长工具等" class="headerlink" title="③ 天眼查，站长工具等"></a>③ 天眼查，站长工具等</h4><p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326192658584.png" alt="image-20220326192658584" loading="lazy"></p>
-<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326193204069.png" alt="image-20220326193204069" loading="lazy"></p>
-<h4 id="④-绕过CDN获取真实ip"><a href="#④-绕过CDN获取真实ip" class="headerlink" title="④ 绕过CDN获取真实ip"></a>④ 绕过CDN获取真实ip</h4><h5 id="查找子域名"><a href="#查找子域名" class="headerlink" title="查找子域名"></a><strong>查找子域名</strong></h5><p>很多时候，一些重要的站点会做CDN，而一些子域名站点并没有加入CDN，而且跟主站在同一个C段内，这时候，就可以通过查找子域名来查找网站的真实IP。</p>
-<p>常用的子域名查找方法和工具：</p>
-<h6 id="（1）搜索引擎查询："><a href="#（1）搜索引擎查询：" class="headerlink" title="（1）搜索引擎查询："></a>（1）搜索引擎查询：</h6><p>如Google、baidu、Bing等传统搜索引擎，site:baidu.com inurl:baidu.com，搜target.com|公司名字。</p>
-<h6 id="（2）一些在线查询工具"><a href="#（2）一些在线查询工具" class="headerlink" title="（2）一些在线查询工具"></a>（2）一些在线查询工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//tool.chinaz.com/subdomain/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//i.links.cn/subdomain/    </span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//subdomain.chaxun.la/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//searchdns.netcraft.com/</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//www.virustotal.com/</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="（3）子域名爆破工具"><a href="#（3）子域名爆破工具" class="headerlink" title="（3）子域名爆破工具"></a>（3）子域名爆破工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Layer</span>子域名挖掘机</span><br><span class="line">wydomain：<span class="attr">https</span>:<span class="comment">//github.com/ring04h/wydomain    </span></span><br><span class="line"><span class="attr">subDomainsBrute</span>:<span class="attr">https</span>:<span class="comment">//github.com/lijiejie/</span></span><br><span class="line"><span class="title class_">Sublist3</span><span class="attr">r</span>:<span class="attr">https</span>:<span class="comment">//github.com/aboul3la/Sublist3r</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="网站邮件头信息"><a href="#网站邮件头信息" class="headerlink" title="网站邮件头信息"></a><strong>网站邮件头信息</strong></h5><p>比如说，邮箱注册，邮箱找回密码、RSS邮件订阅等功能场景，通过网站给自己发送邮件，从而让目标主动暴露他们的真实的IP，查看邮件头信息，获取到网站的真实IP。</p>
-<h5 id="利用SSL证书寻找真实IP"><a href="#利用SSL证书寻找真实IP" class="headerlink" title="利用SSL证书寻找真实IP"></a><strong>利用</strong><a href="https://cloud.tencent.com/product/ssl?from=10680"><strong>SSL证书</strong></a><strong>寻找真实IP</strong></h5><p>证书颁发机构(CA)必须将他们发布的每个SSL/TLS证书发布到公共日志中，SSL/TLS证书通常包含域名、子域名和电子邮件地址。因此SSL/TLS证书成为了攻击者的切入点。</p>
-<p>SSL证书搜索引擎：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//censys.io/ipv4?q=github.comCensys 证书搜索：</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="扫描全网"><a href="#扫描全网" class="headerlink" title="扫描全网"></a><strong>扫描全网</strong></h5><p>通过Zmap、masscan等工具对整个互联网发起扫描，针对扫描结果进行关键字查找，获取网站真实IP。</p>
-<p>ZMap号称是最快的互联网扫描工具，能够在45分钟扫遍全网。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/zmap/zmap</span></span><br></pre></td></tr></table></figure>
-
-<p>Masscan号称是最快的互联网端口扫描器，最快可以在六分钟内扫遍互联网。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/robertdavidgraham/masscan</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="国外访问"><a href="#国外访问" class="headerlink" title="国外访问"></a>国外访问</h5><p>一般的站点在国内可能会有CDN，但是在国外的用户覆盖率比较低，所以通过国外的节点进行请求往往能获取真实IP</p>
-<h4 id="⑤-端口扫描："><a href="#⑤-端口扫描：" class="headerlink" title="⑤ 端口扫描："></a>⑤ 端口扫描：</h4><p>一个端口就是一个潜在的通信通道，也就是一个入侵通道。对目标计算机进行端口扫描，能得到许多有用的信息。进行扫描的方法很多，可以是手工进行扫描，也可以用端口扫描软件进行扫描。在手工进行扫描时，需要熟悉各种命令。对命令执行后的输出进行分析。用<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6">扫描软件</a>进行扫描时，许多扫描器软件都有分析数据的功能。通过端口扫描，可以得到许多有用的信息，从而发现系统的安全漏洞。以上定义只针对<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1">网络通信</a>端口，端口扫描在某些场合还可以定义为广泛的设备端口扫描，比如某些<a href="https://baike.baidu.com/item/%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6">管理软件</a>可以动态扫描各种计算机<a href="https://baike.baidu.com/item/%E5%A4%96%E8%AE%BE">外设</a>端口的开放状态，并进行管理和监控，这类系统常见的如<a href="https://baike.baidu.com/item/USB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">USB管理系统</a>、各种外设管理系统等。</p>
-<p>（1）可以通过Nmap（Nmap是一个网络连接端口扫描工具，用来扫描网上的电脑具体开放的网络连接端口。可以确定哪些服务运行在哪些的连接端口上，并且可以推断计算机运行哪个操作系统。所以它是网络安全管理人员必用的软件之一，甚至用以评估网络系统安全）；</p>
-<p>（2）通过masscan（masscan是网络安全中常用的技术手段，通过对于特定的IP范围和端口范围进行穷举扫描，发现网络中开放的端口，从而为进一步的探查提供基本信息）</p>
-<h4 id="⑥-旁站查询"><a href="#⑥-旁站查询" class="headerlink" title="⑥ 旁站查询"></a>⑥ 旁站查询</h4><p>C段主机是指与目标服务器在同一C段网络的服务器，攻击目标的C段存活主机是信息收集的重要信息，很多单位企业的内部服务器可能都会在一个C段网络中。</p>
-<p>还可以用NMAP进行C段扫描，使用命令【nmap -sn IP/24】，对目标IP的C段主机存活扫描，根据扫描的结果可以判断目标IP的C段还有哪些主机存活，然后对存活的主机进行渗透，拿到最高权限后进行内网渗透。</p>
-<p>可以通过K8_C段旁注工具、WebRobot、御剑，Cain、Sniffit 、Snoop、Tcpdump、Dsniff等工具进行查询；</p>
-<p>也可以用在线查询地址：<a href="http://www.webscan.cc/">http://www.webscan.cc/</a> 、 <a href="http://www.5kik.com/">http://www.5kik.com/</a></p>
-<h4 id="⑦-WAF查询"><a href="#⑦-WAF查询" class="headerlink" title="⑦ WAF查询"></a>⑦ WAF查询</h4><p>类似的有wafw00f（需要安装），可以识别是否有waf防护，是什么waf。</p>
-<p><a href="https://scan.top15.cn/web/%EF%BC%9A%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%9F%A5%E6%97%81%E7%AB%99%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF">https://scan.top15.cn/web/：还可以查旁站及其他信息</a></p>
-<h2 id="二、WINDOWS和LINUX系统的基础命令"><a href="#二、WINDOWS和LINUX系统的基础命令" class="headerlink" title="二、WINDOWS和LINUX系统的基础命令"></a>二、WINDOWS和LINUX系统的基础命令</h2><p>打点：基本信息收集（外围）</p>
-<p>Banner        操作系统信息，web容器信息，开发商，cms信息</p>
-<p>主机内部信息收集</p>
-<p>主机存活探测</p>
-<p>win</p>
-<p>for /1 %i in (1,1,254) do @ping -w 1 -n 1 10.0.1.%i|findstr /c:”TTL=”</p>
-<p>linux</p>
-<p>for i in {1..254..1};do ping -w 1 -c 1 121.5.144.$i|grep“ttl”|awk’{print $4}’ |awk -F “:” ‘{print $1}’;done</p>
-<p>主机信息收集</p>
-<p>ipconfig /all         //看网卡配置，判断当前是否存在域环境</p>
-<p>netsh wlan show profiles wifi名 key=clear      //看wifi密码</p>
-<p>net localgroup    //查看分组信息</p>
-<p>net user 用户名    //查看用户基本信息</p>
-<p>net user 用户名 密码 /add</p>
-<p>net user 用户名 密码 /der</p>
-<p>systeminfo | findstr /B /C:”OS 名称” /C:”OS 版本”</p>
-<p>systeminfo | findstr “KB”</p>
-<p>net share        //看共享目录</p>
-<p>net use \192.168.1.130\C$ 密码 /user：用户名 IPC管道连接</p>
-<pre><code>      dir \\192.168.1.130\C$        //查看目录
-
-     copy 本地文件 \\192.168.1.130\C$\windows        //上传文件
-
-    copy \\192.168.1.130\C$\calc.exe c:\        //下载文件
-
-net cofig workstation        //查看工作站
-</code></pre>
-<p>netstat -ano        //查找端口开放情况</p>
-<p>whoami        //查看当前用户</p>
-<p>whoami /user    //获取当前用户的sid</p>
-<p>whoami /all        //查看所有的信息</p>
-<p>whoami /priv        //查看当前用户的权限</p>
-<p>ver  //看操作系统</p>
-<p>wmic:</p>
-<pre><code>    process
-
-            wmic process get Name,ProcessId,ThreadCount     //获取指定进程信息
-
-            wmic process list brief         //列出进程信息
-
-            wmin /node:127.0.0.1 process call create calc    //远程调用
-
-    os
-
-            wmic os get WindowsDirectory, SystemDirectory,CountryCode
-
-    product 
-
-            wmic product get name,version        //慢
-</code></pre>
-<p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p>
-]]></content>
-      <categories>
-        <category>渗透</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-        <tag>信息收集</tag>
-        <tag>社工</tag>
       </tags>
   </entry>
   <entry>
@@ -728,6 +497,128 @@ net cofig workstation        //查看工作站
       <tags>
         <tag>web</tag>
         <tag>网工</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息收集基础</title>
+    <url>/2022/03/10/undefined/</url>
+    <content><![CDATA[<p>信息收集是指通过各种方式获取所需要的信息，以便我们在后续的渗透过程更好的进行。最简单的比如说目标站点的IP、中间件、脚本语言、端口、邮箱等等。我觉得信息收集在我们渗透测试的过程当中，是最重要的一环，这一环节没做好，没收集到足够多的可利用的信息，我们很难进行下一步的操作。</p>
+<span id="more"></span>
+
+<h2 id="一、踩点"><a href="#一、踩点" class="headerlink" title="一、踩点"></a>一、踩点</h2><h3 id="1、踩点的概念"><a href="#1、踩点的概念" class="headerlink" title="1、踩点的概念"></a>1、踩点的概念</h3><p>踩点指的是预先到某地考察，为后续工作做准备，获取信息的过程就叫踩点，在渗透测试中，第一步要做的就是信息收集，即踩点。这里的踩点主要是尽可能收集关于目标网络的信息以找到各种能有效入侵对方网络的方法，通常我们使用扫描器来实现，通过扫描器我们可以发现各种远程服务的端口，提供哪些服务以及服务器版本等内容。</p>
+<p>当然，在实战中，我们信息收集的过程也要慎用各种扫描器，我们的信息收集过程应该是隐蔽的，悄无声息的，不应该让对方的应急团队察觉到你的意图。</p>
+<h3 id="2、Google-hacking"><a href="#2、Google-hacking" class="headerlink" title="2、Google hacking"></a>2、Google hacking</h3><p>还要学会使用搜索引擎，如Google hacking，善用Google，它的功能很强大，这里列举一些常用的Google语法供大家参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">intext: </span><br><span class="line">这个就是把网页中的正文内容中的某个字符做为搜索条件.例如在google里输入:intext:网络安全. </span><br><span class="line">将返回所有在网页正文部分包含&quot;网络安全&quot;的网页.allintext:使用方法和 intext 类似. </span><br><span class="line">intitle: </span><br><span class="line">和上面那个 intext 差不多,搜索网页标题中是否有我们所要找的字符.例如搜索:intitle:网络安全.将返回所有网页标题中包含&quot;网络安全&quot;的网页.同理 allintitle:也同 intitle 类似. </span><br><span class="line">cache: </span><br><span class="line">搜索 google 里关于某些内容的缓存,有时候也许能找到一些好东西哦. </span><br><span class="line">define: </span><br><span class="line">搜索某个词语的定义,搜索:define:hacker,将返回关于 hacker 的定义. </span><br><span class="line">filetype: </span><br><span class="line">这个我要重点推荐一下,无论是撒网式攻击还是我们后面要说的对特定目标进行信息收集都 </span><br><span class="line">需要用到这个.搜索指定类型的文件.例如输入:filetype:doc.将返回所有以doc结尾的文件URL. </span><br><span class="line">当然如果你找.bak、.mdb 或.inc 也是可以的,获得的信息也许会更丰富:) </span><br><span class="line">info: </span><br><span class="line">查找指定站点的一些基本信息. </span><br><span class="line">inurl: </span><br><span class="line">搜索我们指定的字符是否存在于 URL 中.例如输入:inurl:admin,将返回 N 个类似于这样的连 </span><br><span class="line">接:http://www.xxx.com/xxx/admin,用来找管理员登陆的 URL 不错.allinurl 也同 inurl 类似,可指 </span><br><span class="line">定多个字符. </span><br><span class="line">link:例如搜索:inurl:www.xxx.com 可以返回所有和 www.xxx.com 做了链接的 URL. </span><br><span class="line">site: </span><br><span class="line">这个也很有用,例如:site:www.xxx.com.将返回所有和 xxx.com 这个站有关的 URL. </span><br><span class="line">对了还有一些操作符也是很有用的: </span><br><span class="line">+把 google 可能忽略的字列如查询范围 </span><br><span class="line">-把某个字忽略 </span><br><span class="line">~同意词 </span><br><span class="line">.单一的通配符 </span><br><span class="line">*通配符，可代表多个字母 </span><br><span class="line">&quot;&quot;精确查询 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">下面开始说说实际应用(以下内容均在 google 上搜索), </span><br><span class="line">对于一个居心叵测的攻击者来说,可能他最感兴趣的就是密码文件了.而 google 正因为其强 </span><br><span class="line">大的搜索能力往往会把一些敏感信息透露给他们.用 google 搜索以下内容: </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.sh_history </span><br><span class="line">intitle:<span class="string">&quot;Indexof&quot;</span>.bash_history </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>people.lst </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>pwd.db </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>etc/shadow </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>spwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>master.passwd </span><br><span class="line">intitle:<span class="string">&quot;indexof&quot;</span>htpasswd </span><br><span class="line"><span class="string">&quot;#-FrontPage-&quot;</span>inurl:service.pwd </span><br><span class="line">有时候因为各种各样的原因一些重要的密码文件被毫无保护的暴露在网络上,如果被别有用 </span><br><span class="line">心的人获得,那么危害是很大的。</span><br></pre></td></tr></table></figure>
+
+<p>感兴趣的师傅可以参考google-hacking-database，里面集成了很多语法：<a href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
+<h3 id="3、-Github以及其他信息收集途径"><a href="#3、-Github以及其他信息收集途径" class="headerlink" title="3、 Github以及其他信息收集途径"></a>3、 Github以及其他信息收集途径</h3><h4 id="①-Github"><a href="#①-Github" class="headerlink" title="① Github"></a>① Github</h4><p>在Github中，可能会存在源码泄露、AccessKey泄露、密码、服务器配置泄露等情况，常见的搜索技巧有：</p>
+<ul>
+<li><code>@example.com password/pass/pwd/secret/credentials/token</code></li>
+<li><code>@example.com username/user/key/login/ftp/</code></li>
+<li><code>@example.com config/ftp/smtp/pop</code></li>
+<li><code>@example.com security_credentials/connetionstring</code></li>
+<li><code>@example.com JDBC/ssh2_auth_password/send_keys</code></li>
+</ul>
+<h4 id="②-shodan、Zoomeye等在线网站"><a href="#②-shodan、Zoomeye等在线网站" class="headerlink" title="② shodan、Zoomeye等在线网站"></a>② shodan、Zoomeye等在线网站</h4><p><strong>ZoomEye</strong> 拥有两大探测引擎：<strong>Xmap 和 Wmap</strong>，是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
+<p>ZoomEye 支持公网设备指纹检索和 Web 指纹检索</p>
+<p>网站指纹包括应用名、版本、前端框架、后端框架、服务端语言、服务器操作系统、网站容器、内容管理系统和数据库等。设备指纹包括应用名、版本、开放端口、操作系统、服务名、地理位置等</p>
+<p>常见的语法有：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定位国家---           country:US</span><br><span class="line">搜索城市---           city:xx</span><br><span class="line">搜索组件---           app:组件名</span><br><span class="line">搜索版本---           ver:5.0</span><br><span class="line">搜索端口---           port:80</span><br><span class="line">搜索服务名--         service：SSH</span><br><span class="line">搜索操作系统-        OS:Linux</span><br><span class="line">搜索网段---          cidr:1.1.1.1/24</span><br><span class="line">指定网站域名搜索--    site:www.baidu.com</span><br><span class="line">指定主机名---        hostname:www.baidu.com</span><br><span class="line">指定设备名---        device:router </span><br><span class="line">指定首页关键词---     keyword:sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">快捷键：</span><br><span class="line">显示帮助               shift+/  </span><br><span class="line">隐藏该帮助             ESC  </span><br><span class="line">回到首页               shift  </span><br><span class="line">高级搜索               Shift +s  </span><br><span class="line">聚焦搜索框              s  </span><br></pre></td></tr></table></figure>
+
+<p>想了解更多的可以看下这篇文章：</p>
+<p><a href="https://www.programminghunter.com/article/7143642821/">https://www.programminghunter.com/article/7143642821/</a></p>
+<h4 id="③-天眼查，站长工具等"><a href="#③-天眼查，站长工具等" class="headerlink" title="③ 天眼查，站长工具等"></a>③ 天眼查，站长工具等</h4><p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326192658584.png" alt="image-20220326192658584" loading="lazy"></p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220326193204069.png" alt="image-20220326193204069" loading="lazy"></p>
+<h4 id="④-绕过CDN获取真实ip"><a href="#④-绕过CDN获取真实ip" class="headerlink" title="④ 绕过CDN获取真实ip"></a>④ 绕过CDN获取真实ip</h4><h5 id="查找子域名"><a href="#查找子域名" class="headerlink" title="查找子域名"></a><strong>查找子域名</strong></h5><p>很多时候，一些重要的站点会做CDN，而一些子域名站点并没有加入CDN，而且跟主站在同一个C段内，这时候，就可以通过查找子域名来查找网站的真实IP。</p>
+<p>常用的子域名查找方法和工具：</p>
+<h6 id="（1）搜索引擎查询："><a href="#（1）搜索引擎查询：" class="headerlink" title="（1）搜索引擎查询："></a>（1）搜索引擎查询：</h6><p>如Google、baidu、Bing等传统搜索引擎，site:baidu.com inurl:baidu.com，搜target.com|公司名字。</p>
+<h6 id="（2）一些在线查询工具"><a href="#（2）一些在线查询工具" class="headerlink" title="（2）一些在线查询工具"></a>（2）一些在线查询工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//tool.chinaz.com/subdomain/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//i.links.cn/subdomain/    </span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//subdomain.chaxun.la/</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//searchdns.netcraft.com/</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//www.virustotal.com/</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="（3）子域名爆破工具"><a href="#（3）子域名爆破工具" class="headerlink" title="（3）子域名爆破工具"></a>（3）子域名爆破工具</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Layer</span>子域名挖掘机</span><br><span class="line">wydomain：<span class="attr">https</span>:<span class="comment">//github.com/ring04h/wydomain    </span></span><br><span class="line"><span class="attr">subDomainsBrute</span>:<span class="attr">https</span>:<span class="comment">//github.com/lijiejie/</span></span><br><span class="line"><span class="title class_">Sublist3</span><span class="attr">r</span>:<span class="attr">https</span>:<span class="comment">//github.com/aboul3la/Sublist3r</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="网站邮件头信息"><a href="#网站邮件头信息" class="headerlink" title="网站邮件头信息"></a><strong>网站邮件头信息</strong></h5><p>比如说，邮箱注册，邮箱找回密码、RSS邮件订阅等功能场景，通过网站给自己发送邮件，从而让目标主动暴露他们的真实的IP，查看邮件头信息，获取到网站的真实IP。</p>
+<h5 id="利用SSL证书寻找真实IP"><a href="#利用SSL证书寻找真实IP" class="headerlink" title="利用SSL证书寻找真实IP"></a><strong>利用</strong><a href="https://cloud.tencent.com/product/ssl?from=10680"><strong>SSL证书</strong></a><strong>寻找真实IP</strong></h5><p>证书颁发机构(CA)必须将他们发布的每个SSL/TLS证书发布到公共日志中，SSL/TLS证书通常包含域名、子域名和电子邮件地址。因此SSL/TLS证书成为了攻击者的切入点。</p>
+<p>SSL证书搜索引擎：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//censys.io/ipv4?q=github.comCensys 证书搜索：</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="扫描全网"><a href="#扫描全网" class="headerlink" title="扫描全网"></a><strong>扫描全网</strong></h5><p>通过Zmap、masscan等工具对整个互联网发起扫描，针对扫描结果进行关键字查找，获取网站真实IP。</p>
+<p>ZMap号称是最快的互联网扫描工具，能够在45分钟扫遍全网。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/zmap/zmap</span></span><br></pre></td></tr></table></figure>
+
+<p>Masscan号称是最快的互联网端口扫描器，最快可以在六分钟内扫遍互联网。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/robertdavidgraham/masscan</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="国外访问"><a href="#国外访问" class="headerlink" title="国外访问"></a>国外访问</h5><p>一般的站点在国内可能会有CDN，但是在国外的用户覆盖率比较低，所以通过国外的节点进行请求往往能获取真实IP</p>
+<h4 id="⑤-端口扫描："><a href="#⑤-端口扫描：" class="headerlink" title="⑤ 端口扫描："></a>⑤ 端口扫描：</h4><p>一个端口就是一个潜在的通信通道，也就是一个入侵通道。对目标计算机进行端口扫描，能得到许多有用的信息。进行扫描的方法很多，可以是手工进行扫描，也可以用端口扫描软件进行扫描。在手工进行扫描时，需要熟悉各种命令。对命令执行后的输出进行分析。用<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6">扫描软件</a>进行扫描时，许多扫描器软件都有分析数据的功能。通过端口扫描，可以得到许多有用的信息，从而发现系统的安全漏洞。以上定义只针对<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1">网络通信</a>端口，端口扫描在某些场合还可以定义为广泛的设备端口扫描，比如某些<a href="https://baike.baidu.com/item/%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6">管理软件</a>可以动态扫描各种计算机<a href="https://baike.baidu.com/item/%E5%A4%96%E8%AE%BE">外设</a>端口的开放状态，并进行管理和监控，这类系统常见的如<a href="https://baike.baidu.com/item/USB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">USB管理系统</a>、各种外设管理系统等。</p>
+<p>（1）可以通过Nmap（Nmap是一个网络连接端口扫描工具，用来扫描网上的电脑具体开放的网络连接端口。可以确定哪些服务运行在哪些的连接端口上，并且可以推断计算机运行哪个操作系统。所以它是网络安全管理人员必用的软件之一，甚至用以评估网络系统安全）；</p>
+<p>（2）通过masscan（masscan是网络安全中常用的技术手段，通过对于特定的IP范围和端口范围进行穷举扫描，发现网络中开放的端口，从而为进一步的探查提供基本信息）</p>
+<h4 id="⑥-旁站查询"><a href="#⑥-旁站查询" class="headerlink" title="⑥ 旁站查询"></a>⑥ 旁站查询</h4><p>C段主机是指与目标服务器在同一C段网络的服务器，攻击目标的C段存活主机是信息收集的重要信息，很多单位企业的内部服务器可能都会在一个C段网络中。</p>
+<p>还可以用NMAP进行C段扫描，使用命令【nmap -sn IP/24】，对目标IP的C段主机存活扫描，根据扫描的结果可以判断目标IP的C段还有哪些主机存活，然后对存活的主机进行渗透，拿到最高权限后进行内网渗透。</p>
+<p>可以通过K8_C段旁注工具、WebRobot、御剑，Cain、Sniffit 、Snoop、Tcpdump、Dsniff等工具进行查询；</p>
+<p>也可以用在线查询地址：<a href="http://www.webscan.cc/">http://www.webscan.cc/</a> 、 <a href="http://www.5kik.com/">http://www.5kik.com/</a></p>
+<h4 id="⑦-WAF查询"><a href="#⑦-WAF查询" class="headerlink" title="⑦ WAF查询"></a>⑦ WAF查询</h4><p>类似的有wafw00f（需要安装），可以识别是否有waf防护，是什么waf。</p>
+<p><a href="https://scan.top15.cn/web/%EF%BC%9A%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%9F%A5%E6%97%81%E7%AB%99%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF">https://scan.top15.cn/web/：还可以查旁站及其他信息</a></p>
+<h2 id="二、WINDOWS和LINUX系统的基础命令"><a href="#二、WINDOWS和LINUX系统的基础命令" class="headerlink" title="二、WINDOWS和LINUX系统的基础命令"></a>二、WINDOWS和LINUX系统的基础命令</h2><p>打点：基本信息收集（外围）</p>
+<p>Banner        操作系统信息，web容器信息，开发商，cms信息</p>
+<p>主机内部信息收集</p>
+<p>主机存活探测</p>
+<p>win</p>
+<p>for /1 %i in (1,1,254) do @ping -w 1 -n 1 10.0.1.%i|findstr /c:”TTL=”</p>
+<p>linux</p>
+<p>for i in {1..254..1};do ping -w 1 -c 1 121.5.144.$i|grep“ttl”|awk’{print $4}’ |awk -F “:” ‘{print $1}’;done</p>
+<p>主机信息收集</p>
+<p>ipconfig /all         //看网卡配置，判断当前是否存在域环境</p>
+<p>netsh wlan show profiles wifi名 key=clear      //看wifi密码</p>
+<p>net localgroup    //查看分组信息</p>
+<p>net user 用户名    //查看用户基本信息</p>
+<p>net user 用户名 密码 /add</p>
+<p>net user 用户名 密码 /der</p>
+<p>systeminfo | findstr /B /C:”OS 名称” /C:”OS 版本”</p>
+<p>systeminfo | findstr “KB”</p>
+<p>net share        //看共享目录</p>
+<p>net use \192.168.1.130\C$ 密码 /user：用户名 IPC管道连接</p>
+<pre><code>      dir \\192.168.1.130\C$        //查看目录
+
+     copy 本地文件 \\192.168.1.130\C$\windows        //上传文件
+
+    copy \\192.168.1.130\C$\calc.exe c:\        //下载文件
+
+net cofig workstation        //查看工作站
+</code></pre>
+<p>netstat -ano        //查找端口开放情况</p>
+<p>whoami        //查看当前用户</p>
+<p>whoami /user    //获取当前用户的sid</p>
+<p>whoami /all        //查看所有的信息</p>
+<p>whoami /priv        //查看当前用户的权限</p>
+<p>ver  //看操作系统</p>
+<p>wmic:</p>
+<pre><code>    process
+
+            wmic process get Name,ProcessId,ThreadCount     //获取指定进程信息
+
+            wmic process list brief         //列出进程信息
+
+            wmin /node:127.0.0.1 process call create calc    //远程调用
+
+    os
+
+            wmic os get WindowsDirectory, SystemDirectory,CountryCode
+
+    product 
+
+            wmic product get name,version        //慢
+</code></pre>
+<p>wmic /node:localhost /namespace:\root\SecurityCenter2 path AntivirusProduct Get displayname /format:list        //远程查找杀软</p>
+]]></content>
+      <categories>
+        <category>渗透</category>
+      </categories>
+      <tags>
+        <tag>信息收集</tag>
+        <tag>渗透</tag>
+        <tag>社工</tag>
       </tags>
   </entry>
   <entry>
