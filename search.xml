@@ -229,8 +229,8 @@
         <category>语言</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>语言</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -296,7 +296,7 @@
 <p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
 <p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
 <p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#x73;&#x65;&#x72;&#64;&#x65;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#x75;&#x73;&#x65;&#x72;&#64;&#x65;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#x73;&#101;&#114;&#64;&#101;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;">&#x75;&#x73;&#101;&#114;&#64;&#101;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;</a></p>
 <p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p>
 <p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
 <p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
@@ -489,29 +489,68 @@
       </tags>
   </entry>
   <entry>
-    <title>拥抱世界</title>
-    <url>/2022/03/07/undefined/</url>
-    <content><![CDATA[<hr>
-<p>Bitterness is a paralytic，love is a much more vicious motivator.    </p>
-<p>痛苦是种麻醉剂，爱则是更危险的动机</p>
-<hr>
-<p>I love three things in this world. Sun, moon and you. Sun for morning, moon for night, and you forever.</p>
-<p>浮世万千，吾爱有三。日月与卿，日起为昼，月升为暮，卿为朝暮。</p>
-<hr>
-<p>All lives end, all hearts are bro.</p>
-<p>生命终会终结，人心都会破碎。</p>
-<hr>
-<p>Once you’re ruled out the impossible. Whatever remains, however improbable, must be true.</p>
-<p>一旦你排除了所有的不可能，还剩什么，不管多么难以置信，一定就是真相。</p>
-<hr>
+    <title>渗透测试基础</title>
+    <url>/2022/03/22/undefined/</url>
+    <content><![CDATA[<p>渗透测试，是为了证明网络防御按照预期计划正常运行而提供的一种机制。不妨假设，你的公司定期更新安全策略和程序，时时给系统打补丁，并采用了漏洞扫描器等工具，以确保所有补丁都已打上。如果你早已做到了这些，为什么还要请外方进行审查或渗透测试呢？因为，渗透测试能够独立地检查你的网络策略，换句话说，就是给你的系统安了一双眼睛。而且，进行这类测试的，都是寻找网络系统安全漏洞的专业人士。</p>
+<span id="more"></span>
+
+<h2 id="0x01-什么是渗透测试"><a href="#0x01-什么是渗透测试" class="headerlink" title="0x01 什么是渗透测试"></a>0x01 什么是渗透测试</h2><p>通过模拟恶意黑客的攻击方法，来评估计算机网络技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p>
+<h2 id="0x02-什么是渗透测试者"><a href="#0x02-什么是渗透测试者" class="headerlink" title="0x02 什么是渗透测试者"></a>0x02 什么是渗透测试者</h2><p>渗透测试者通常由组织机构内部员工或外部实体（例如投职位或按项目的承包商) 的形式雇佣。 不管买取何种雇佣形式。渗透测试者与恶意攻击者的主要不同在于目的以及是否获得所评估系统的所有者的法律许可。</p>
+<h2 id="0x03-渗透测试的分类"><a href="#0x03-渗透测试的分类" class="headerlink" title="0x03 渗透测试的分类"></a>0x03 渗透测试的分类</h2><p>黑盒测试：模拟真实黑客攻击，除了域名，其他信息都需要自行收集</p>
+<p>白盒测试：基本从内部发起，甲方会提供大量已知的信息和源码，测试者以此评估安全风险</p>
+<p>灰盒测试：间于两者之间，只获得系统的部分信息</p>
+<h2 id="0x04-在渗透实战中的一般流程"><a href="#0x04-在渗透实战中的一般流程" class="headerlink" title="0x04 在渗透实战中的一般流程"></a>0x04 在渗透实战中的一般流程</h2><h3 id="1-前期交互："><a href="#1-前期交互：" class="headerlink" title="1.前期交互："></a>1.前期交互：</h3><p>收集客户需求、准备测试计划、定义测试范围和尺度、明确目标以及后期的规划</p>
+<h3 id="2-情报收集："><a href="#2-情报收集：" class="headerlink" title="2.情报收集："></a>2.情报收集：</h3><p>利用所有手段对目标组织的网络拓扑、服务器配置以及防火墙或其他安全配置的相关信息的收集整理，黑客所使用的手段包括但不限于开源信息的查询、Google hacking、社工、网络踩点、扫描探测、被动监听、服务查点等，注意，这个阶段极其重要，它直接关系到你渗透测试的成败。</p>
+<h3 id="3-建模规划："><a href="#3-建模规划：" class="headerlink" title="3.建模规划："></a>3.建模规划：</h3><p>对所收集的目标信息的收集整理，和团队成员讨论并确定一条或几条可行的攻击通道方案，这对接下来的行动会起到非常大的推动作用。</p>
+<h3 id="4-漏洞分析："><a href="#4-漏洞分析：" class="headerlink" title="4.漏洞分析："></a>4.漏洞分析：</h3><p>综合前面的信息，寻找可利用的渗透代码资源，找出可利用的攻击点，并进行验证，一般都可以利用公开的代码资源，但对于一些有特殊要求或网络环境特殊的公司或组织，可能需要自行依据未公开的漏洞开发渗透代码，从而对整个渗透测试打开大门。</p>
+<h3 id="5-攻击阶段："><a href="#5-攻击阶段：" class="headerlink" title="5.攻击阶段："></a>5.攻击阶段：</h3><p>所有黑客最喜欢的环节，针对攻击点和可执行漏洞，对其进行真正的渗透和提权，从而达到入侵和取得访问控制权的目的，在黑盒测试中，测试者还要考虑目标系统检测机制的逃逸，避免被目标的安全相应团队发现。</p>
+<h3 id="6-后渗透阶段："><a href="#6-后渗透阶段：" class="headerlink" title="6.后渗透阶段："></a>6.后渗透阶段：</h3><p>需要黑客根据目标的业务经营模式和其安全规划等不同的特点，自主设计攻击目标，识别关键设施以及寻找有价值的信息和资产，最终达成能对客户组织造成最重要业务影响的攻击途径。</p>
+<h3 id="7-形成报告："><a href="#7-形成报告：" class="headerlink" title="7.形成报告："></a>7.形成报告：</h3><p>渗透测试的结果是向目标组织提供一份合格的渗透报告，该报告要包含有之前所有阶段中所获取到的关键信息，后续探测和挖掘系统安全漏洞，以及最终完成渗透攻击的全过程，还有后续造成业务影响后果的攻击途径，最后要站在防御的角度上，帮助目标组织完成对其安全防御体系的漏洞问题的分析和修补升级技术的方案。</p>
+<h2 id="0x05-渗透测试工具"><a href="#0x05-渗透测试工具" class="headerlink" title="0x05 渗透测试工具"></a>0x05 渗透测试工具</h2><p>测试工具多种多样,通常可以分为漏洞利用类、信息收集类、漏洞扫描类、综合平台等，大多数测试者通过长期的积累，会形成一套自己较熟悉的工具包，也有不少组织会发布一些开源的集成工具包如悬剑等，这里只介绍常见的几种工具，供大家参考</p>
+<h3 id="①-Kali-Linux："><a href="#①-Kali-Linux：" class="headerlink" title="① Kali Linux："></a><strong>① Kali Linux</strong>：</h3><p>是一个基于 Debian 的 Linux 发行版，最基本的渗透测试操作系统</p>
+<p>kali本身拥有拥有超过600个预装的渗透测试程序，包括14大类300多个安全测试和渗透软件，包括大名鼎鼎的NMap(端口扫描器)，Wireshark(数据包分析器)，Aircrack-ng(一应用于对无线局域网进行渗透测试的软件)，John the Ripper(密码破解器)等，Kali Linux预装的这些软件基本包括了黑客会使用到的所有工具。</p>
+<p>但是要注意的是，kali本身优化了进攻而非防御，且它默认以root权限运行，这导致它极易被人利用和入侵，因此最好不要将你的敏感信息保存在kali linux系统上</p>
+<h3 id="②-Nmap："><a href="#②-Nmap：" class="headerlink" title="② Nmap："></a><strong>② Nmap</strong>：</h3><p>网络扫描仪</p>
+<p>使用端口扫描功能和版本检测引擎枚举开放端口，该版本检测引擎用于确定在已标识端口上运行的服务上的应用程序名称和版本号，对测试人员来说，服务器上哪些端口是开放的，哪些端口正在运行什么是非常有必要的。</p>
+<p>此外，Nmap脚本引擎带有170多种NSE脚本和20个库，例如防火墙绕过，超级微型ipmi-conf，oracle-brute-stealth和ssl-heartbleed，</p>
+<p>它提供了更好的IPv6支持，为在CIDR样式的地址范围，空闲扫描，并行反向DNS和更多的NSE脚本覆盖范围内进行更全面的网络扫描铺平了道路，并且，它适用于包括windows，linux在内的绝大多数平台。</p>
+<h3 id="③-Burp-Suite-Pro："><a href="#③-Burp-Suite-Pro：" class="headerlink" title="③ Burp Suite Pro："></a><strong>③ Burp Suite Pro</strong>：</h3><p>最流行，功能强大和最先进的笔测试工具之一，它是各种高级工具的“套件”，最适合于Web应用程序的渗透测试。</p>
+<p>提供了更快的暴力破解和模糊测试功能，使笔测试人员能够部署包含有效负载集的HTTP请求的自定义序列，从而大大减少了花在不同任务上的时间。</p>
+<p>可以轻松地为给定请求构造跨站点请求伪造（CSRF）概念证明（POC）攻击。</p>
+<p>它非常昂贵，企业版价格每年3999美元，但是它绝对对的起这个价格。</p>
+<h3 id="④-Wireshark："><a href="#④-Wireshark：" class="headerlink" title="④  Wireshark："></a><strong>④  Wireshark</strong>：</h3><p>网络协议分析器，尽管随着技术的成熟，涌现出了越来越多的分析器，但wireshark的地位从未有过动摇。</p>
+<p>拥有业内最强大的显示过滤器，广泛用于捕获实时网络流量以进行网络故障排除，包括延迟问题，数据包丢失和网络上的恶意活动。它允许测试人员截取和分析通过网络传递的数据，并将其转换为人类可读的格式。</p>
+<p>多平台：在 Windows、Linux、macOS、Solaris、FreeBSD、NetBSD 和许多其他平台上运行</p>
+<p>可以通过 GUI 或通过 TTY 模式 TShark 实用程序浏览捕获的网络数据</p>
+<p>读/写许多不同的捕获文件格式：tcpdump (libpcap)、Pcap NG、Catapult DCT2000、Cisco Secure IDS iplog、Microsoft Network Monitor、Network General Sniffer®（压缩和未压缩）、Sniffer® Pro 和 NetXray®、Network Instruments Observer , NetScreen snoop, Novell LANalyzer, RADCOM WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek 等等</p>
+<h3 id="⑤-Metasploit："><a href="#⑤-Metasploit：" class="headerlink" title="⑤ Metasploit："></a>⑤ Metasploit：</h3><p>是一个渗透测试框架，被网络攻击者和道德黑客广泛使用</p>
+<p>Metasploit包括超过1600个利用25个平台的漏洞利用，metasploit可以自动进行大量以前繁琐的工作，它是“世界上使用最广泛的渗透测试框架”。</p>
+<p>该工具大约有500个有效负载，其中包括：命令外壳有效负载以针对主机运行脚本。动态有效负载可生成独特的有效负载来规避防病毒软件。Meterpreter有效负载可控制设备监视器，会话，上载和下载文件。静态有效负载，用于端口转发并支持网络之间的通信。</p>
+<h3 id="⑥-SQLmap："><a href="#⑥-SQLmap：" class="headerlink" title="⑥ SQLmap："></a>⑥ SQLmap：</h3><p>自动化SQL注入和数据库接管工具</p>
+<p>它适用于所有现代数据库，包括 mysql、postgresql、oracle、microsoft sql server 等</p>
+<p>它有效地搜索整个数据库中的特定数据库名称，表或列，这对于识别包含应用程序凭据的表很有用，这些凭据包含名称和通过等字符串。</p>
+<p>SQLmap支持在数据库服务器和攻击者计算机之间建立带外TCP连接，从而为用户提供交互式命令提示符或仪表计量器会话。</p>
+<h3 id="⑦-Nessus："><a href="#⑦-Nessus：" class="headerlink" title="⑦ Nessus："></a>⑦ Nessus：</h3><p>网络漏洞扫描程序。由于其大量的漏洞签名库，它是漏洞扫描的最佳工具。</p>
+<p>Nessus 扫描涵盖广泛的技术，包括操作系统、网络设备、管理程序、数据库、Web 服务器和关键基础设施。</p>
+<p>扫描结果可以多种格式报告，例如纯文本、XML、HTML和LaTeX。结果也可以保存在知识库中以供调试。在 UNIX 上，可以通过使用命令行客户端自动进行扫描。对于 UNIX 和 Windows，存在许多不同的商业、免费和开源工具来管理单个或分布式 Nessus 扫描仪。</p>
+<p>除了测试已知网络漏洞之外，Nessus 还提供其他功能。例如，它可以使用Windows凭据检查运行 Windows 操作系统的计算机上的补丁级别。Nessus 还可以支持配置和合规性审计、SCADA 审计和 PCI 合规性。</p>
+<h3 id="⑧-社会工程工具箱："><a href="#⑧-社会工程工具箱：" class="headerlink" title="⑧ 社会工程工具箱："></a>⑧ 社会工程工具箱：</h3><p>开源的、Python驱动的社会工程学渗透测试工具。</p>
+<p>主要面向对人进行的渗透测试。使用SET可以实现多种攻击，比如：网络钓鱼攻击、网页劫持攻击、格式文件攻击等。</p>
+<h3 id="⑨-Hashcat："><a href="#⑨-Hashcat：" class="headerlink" title="⑨ Hashcat："></a>⑨ Hashcat：</h3><p>开源密码破解工具</p>
+<p>Hashcat猜测一个密码，对其进行哈希处理，然后将生成的哈希值与它试图破解的哈希值进行比较。如果哈希值匹配，则我们知道密码。</p>
+<p>密码表示形式主要与哈希键关联，例如WHIRLPOOL，RiceMD，NTMLv1，NTLMv2 MD5，SHA等。它将可读数据转换为混乱的代码，使其他人难以解密数据。</p>
+<p>它支持分布式破解网络和200多种不同的哈希格式。</p>
+<h3 id="⑩-Hydra："><a href="#⑩-Hydra：" class="headerlink" title="⑩ Hydra："></a>⑩ Hydra：</h3><p>九头蛇，支持众多协议的爆破工具，kali自动集成。</p>
+<p>可在Linux、Windows和OS X中使用。hydra可以用来破解很多种服务，包括IMAP,HTTP,SMB,VNC,MS-SQL,MySQL,SMTP等等。</p>
+<p>本文参考链接：</p>
+<p><a href="https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661">https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661</a></p>
+<p><a href="https://www.1024sou.com/article/13620.html">https://www.1024sou.com/article/13620.html</a></p>
 ]]></content>
       <categories>
-        <category>随笔</category>
+        <category>渗透</category>
       </categories>
       <tags>
-        <tag>摘要</tag>
-        <tag>哲学</tag>
-        <tag>文案</tag>
+        <tag>渗透</tag>
       </tags>
   </entry>
   <entry>
@@ -637,68 +676,29 @@ net cofig workstation        //查看工作站
       </tags>
   </entry>
   <entry>
-    <title>渗透测试基础</title>
-    <url>/2022/03/22/undefined/</url>
-    <content><![CDATA[<p>渗透测试，是为了证明网络防御按照预期计划正常运行而提供的一种机制。不妨假设，你的公司定期更新安全策略和程序，时时给系统打补丁，并采用了漏洞扫描器等工具，以确保所有补丁都已打上。如果你早已做到了这些，为什么还要请外方进行审查或渗透测试呢？因为，渗透测试能够独立地检查你的网络策略，换句话说，就是给你的系统安了一双眼睛。而且，进行这类测试的，都是寻找网络系统安全漏洞的专业人士。</p>
-<span id="more"></span>
-
-<h2 id="0x01-什么是渗透测试"><a href="#0x01-什么是渗透测试" class="headerlink" title="0x01 什么是渗透测试"></a>0x01 什么是渗透测试</h2><p>通过模拟恶意黑客的攻击方法，来评估计算机网络技术缺陷或漏洞的主动分析，这个分析是从一个攻击者可能存在的位置来进行的，并且从这个位置有条件主动利用安全漏洞。</p>
-<h2 id="0x02-什么是渗透测试者"><a href="#0x02-什么是渗透测试者" class="headerlink" title="0x02 什么是渗透测试者"></a>0x02 什么是渗透测试者</h2><p>渗透测试者通常由组织机构内部员工或外部实体（例如投职位或按项目的承包商) 的形式雇佣。 不管买取何种雇佣形式。渗透测试者与恶意攻击者的主要不同在于目的以及是否获得所评估系统的所有者的法律许可。</p>
-<h2 id="0x03-渗透测试的分类"><a href="#0x03-渗透测试的分类" class="headerlink" title="0x03 渗透测试的分类"></a>0x03 渗透测试的分类</h2><p>黑盒测试：模拟真实黑客攻击，除了域名，其他信息都需要自行收集</p>
-<p>白盒测试：基本从内部发起，甲方会提供大量已知的信息和源码，测试者以此评估安全风险</p>
-<p>灰盒测试：间于两者之间，只获得系统的部分信息</p>
-<h2 id="0x04-在渗透实战中的一般流程"><a href="#0x04-在渗透实战中的一般流程" class="headerlink" title="0x04 在渗透实战中的一般流程"></a>0x04 在渗透实战中的一般流程</h2><h3 id="1-前期交互："><a href="#1-前期交互：" class="headerlink" title="1.前期交互："></a>1.前期交互：</h3><p>收集客户需求、准备测试计划、定义测试范围和尺度、明确目标以及后期的规划</p>
-<h3 id="2-情报收集："><a href="#2-情报收集：" class="headerlink" title="2.情报收集："></a>2.情报收集：</h3><p>利用所有手段对目标组织的网络拓扑、服务器配置以及防火墙或其他安全配置的相关信息的收集整理，黑客所使用的手段包括但不限于开源信息的查询、Google hacking、社工、网络踩点、扫描探测、被动监听、服务查点等，注意，这个阶段极其重要，它直接关系到你渗透测试的成败。</p>
-<h3 id="3-建模规划："><a href="#3-建模规划：" class="headerlink" title="3.建模规划："></a>3.建模规划：</h3><p>对所收集的目标信息的收集整理，和团队成员讨论并确定一条或几条可行的攻击通道方案，这对接下来的行动会起到非常大的推动作用。</p>
-<h3 id="4-漏洞分析："><a href="#4-漏洞分析：" class="headerlink" title="4.漏洞分析："></a>4.漏洞分析：</h3><p>综合前面的信息，寻找可利用的渗透代码资源，找出可利用的攻击点，并进行验证，一般都可以利用公开的代码资源，但对于一些有特殊要求或网络环境特殊的公司或组织，可能需要自行依据未公开的漏洞开发渗透代码，从而对整个渗透测试打开大门。</p>
-<h3 id="5-攻击阶段："><a href="#5-攻击阶段：" class="headerlink" title="5.攻击阶段："></a>5.攻击阶段：</h3><p>所有黑客最喜欢的环节，针对攻击点和可执行漏洞，对其进行真正的渗透和提权，从而达到入侵和取得访问控制权的目的，在黑盒测试中，测试者还要考虑目标系统检测机制的逃逸，避免被目标的安全相应团队发现。</p>
-<h3 id="6-后渗透阶段："><a href="#6-后渗透阶段：" class="headerlink" title="6.后渗透阶段："></a>6.后渗透阶段：</h3><p>需要黑客根据目标的业务经营模式和其安全规划等不同的特点，自主设计攻击目标，识别关键设施以及寻找有价值的信息和资产，最终达成能对客户组织造成最重要业务影响的攻击途径。</p>
-<h3 id="7-形成报告："><a href="#7-形成报告：" class="headerlink" title="7.形成报告："></a>7.形成报告：</h3><p>渗透测试的结果是向目标组织提供一份合格的渗透报告，该报告要包含有之前所有阶段中所获取到的关键信息，后续探测和挖掘系统安全漏洞，以及最终完成渗透攻击的全过程，还有后续造成业务影响后果的攻击途径，最后要站在防御的角度上，帮助目标组织完成对其安全防御体系的漏洞问题的分析和修补升级技术的方案。</p>
-<h2 id="0x05-渗透测试工具"><a href="#0x05-渗透测试工具" class="headerlink" title="0x05 渗透测试工具"></a>0x05 渗透测试工具</h2><p>测试工具多种多样,通常可以分为漏洞利用类、信息收集类、漏洞扫描类、综合平台等，大多数测试者通过长期的积累，会形成一套自己较熟悉的工具包，也有不少组织会发布一些开源的集成工具包如悬剑等，这里只介绍常见的几种工具，供大家参考</p>
-<h3 id="①-Kali-Linux："><a href="#①-Kali-Linux：" class="headerlink" title="① Kali Linux："></a><strong>① Kali Linux</strong>：</h3><p>是一个基于 Debian 的 Linux 发行版，最基本的渗透测试操作系统</p>
-<p>kali本身拥有拥有超过600个预装的渗透测试程序，包括14大类300多个安全测试和渗透软件，包括大名鼎鼎的NMap(端口扫描器)，Wireshark(数据包分析器)，Aircrack-ng(一应用于对无线局域网进行渗透测试的软件)，John the Ripper(密码破解器)等，Kali Linux预装的这些软件基本包括了黑客会使用到的所有工具。</p>
-<p>但是要注意的是，kali本身优化了进攻而非防御，且它默认以root权限运行，这导致它极易被人利用和入侵，因此最好不要将你的敏感信息保存在kali linux系统上</p>
-<h3 id="②-Nmap："><a href="#②-Nmap：" class="headerlink" title="② Nmap："></a><strong>② Nmap</strong>：</h3><p>网络扫描仪</p>
-<p>使用端口扫描功能和版本检测引擎枚举开放端口，该版本检测引擎用于确定在已标识端口上运行的服务上的应用程序名称和版本号，对测试人员来说，服务器上哪些端口是开放的，哪些端口正在运行什么是非常有必要的。</p>
-<p>此外，Nmap脚本引擎带有170多种NSE脚本和20个库，例如防火墙绕过，超级微型ipmi-conf，oracle-brute-stealth和ssl-heartbleed，</p>
-<p>它提供了更好的IPv6支持，为在CIDR样式的地址范围，空闲扫描，并行反向DNS和更多的NSE脚本覆盖范围内进行更全面的网络扫描铺平了道路，并且，它适用于包括windows，linux在内的绝大多数平台。</p>
-<h3 id="③-Burp-Suite-Pro："><a href="#③-Burp-Suite-Pro：" class="headerlink" title="③ Burp Suite Pro："></a><strong>③ Burp Suite Pro</strong>：</h3><p>最流行，功能强大和最先进的笔测试工具之一，它是各种高级工具的“套件”，最适合于Web应用程序的渗透测试。</p>
-<p>提供了更快的暴力破解和模糊测试功能，使笔测试人员能够部署包含有效负载集的HTTP请求的自定义序列，从而大大减少了花在不同任务上的时间。</p>
-<p>可以轻松地为给定请求构造跨站点请求伪造（CSRF）概念证明（POC）攻击。</p>
-<p>它非常昂贵，企业版价格每年3999美元，但是它绝对对的起这个价格。</p>
-<h3 id="④-Wireshark："><a href="#④-Wireshark：" class="headerlink" title="④  Wireshark："></a><strong>④  Wireshark</strong>：</h3><p>网络协议分析器，尽管随着技术的成熟，涌现出了越来越多的分析器，但wireshark的地位从未有过动摇。</p>
-<p>拥有业内最强大的显示过滤器，广泛用于捕获实时网络流量以进行网络故障排除，包括延迟问题，数据包丢失和网络上的恶意活动。它允许测试人员截取和分析通过网络传递的数据，并将其转换为人类可读的格式。</p>
-<p>多平台：在 Windows、Linux、macOS、Solaris、FreeBSD、NetBSD 和许多其他平台上运行</p>
-<p>可以通过 GUI 或通过 TTY 模式 TShark 实用程序浏览捕获的网络数据</p>
-<p>读/写许多不同的捕获文件格式：tcpdump (libpcap)、Pcap NG、Catapult DCT2000、Cisco Secure IDS iplog、Microsoft Network Monitor、Network General Sniffer®（压缩和未压缩）、Sniffer® Pro 和 NetXray®、Network Instruments Observer , NetScreen snoop, Novell LANalyzer, RADCOM WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek 等等</p>
-<h3 id="⑤-Metasploit："><a href="#⑤-Metasploit：" class="headerlink" title="⑤ Metasploit："></a>⑤ Metasploit：</h3><p>是一个渗透测试框架，被网络攻击者和道德黑客广泛使用</p>
-<p>Metasploit包括超过1600个利用25个平台的漏洞利用，metasploit可以自动进行大量以前繁琐的工作，它是“世界上使用最广泛的渗透测试框架”。</p>
-<p>该工具大约有500个有效负载，其中包括：命令外壳有效负载以针对主机运行脚本。动态有效负载可生成独特的有效负载来规避防病毒软件。Meterpreter有效负载可控制设备监视器，会话，上载和下载文件。静态有效负载，用于端口转发并支持网络之间的通信。</p>
-<h3 id="⑥-SQLmap："><a href="#⑥-SQLmap：" class="headerlink" title="⑥ SQLmap："></a>⑥ SQLmap：</h3><p>自动化SQL注入和数据库接管工具</p>
-<p>它适用于所有现代数据库，包括 mysql、postgresql、oracle、microsoft sql server 等</p>
-<p>它有效地搜索整个数据库中的特定数据库名称，表或列，这对于识别包含应用程序凭据的表很有用，这些凭据包含名称和通过等字符串。</p>
-<p>SQLmap支持在数据库服务器和攻击者计算机之间建立带外TCP连接，从而为用户提供交互式命令提示符或仪表计量器会话。</p>
-<h3 id="⑦-Nessus："><a href="#⑦-Nessus：" class="headerlink" title="⑦ Nessus："></a>⑦ Nessus：</h3><p>网络漏洞扫描程序。由于其大量的漏洞签名库，它是漏洞扫描的最佳工具。</p>
-<p>Nessus 扫描涵盖广泛的技术，包括操作系统、网络设备、管理程序、数据库、Web 服务器和关键基础设施。</p>
-<p>扫描结果可以多种格式报告，例如纯文本、XML、HTML和LaTeX。结果也可以保存在知识库中以供调试。在 UNIX 上，可以通过使用命令行客户端自动进行扫描。对于 UNIX 和 Windows，存在许多不同的商业、免费和开源工具来管理单个或分布式 Nessus 扫描仪。</p>
-<p>除了测试已知网络漏洞之外，Nessus 还提供其他功能。例如，它可以使用Windows凭据检查运行 Windows 操作系统的计算机上的补丁级别。Nessus 还可以支持配置和合规性审计、SCADA 审计和 PCI 合规性。</p>
-<h3 id="⑧-社会工程工具箱："><a href="#⑧-社会工程工具箱：" class="headerlink" title="⑧ 社会工程工具箱："></a>⑧ 社会工程工具箱：</h3><p>开源的、Python驱动的社会工程学渗透测试工具。</p>
-<p>主要面向对人进行的渗透测试。使用SET可以实现多种攻击，比如：网络钓鱼攻击、网页劫持攻击、格式文件攻击等。</p>
-<h3 id="⑨-Hashcat："><a href="#⑨-Hashcat：" class="headerlink" title="⑨ Hashcat："></a>⑨ Hashcat：</h3><p>开源密码破解工具</p>
-<p>Hashcat猜测一个密码，对其进行哈希处理，然后将生成的哈希值与它试图破解的哈希值进行比较。如果哈希值匹配，则我们知道密码。</p>
-<p>密码表示形式主要与哈希键关联，例如WHIRLPOOL，RiceMD，NTMLv1，NTLMv2 MD5，SHA等。它将可读数据转换为混乱的代码，使其他人难以解密数据。</p>
-<p>它支持分布式破解网络和200多种不同的哈希格式。</p>
-<h3 id="⑩-Hydra："><a href="#⑩-Hydra：" class="headerlink" title="⑩ Hydra："></a>⑩ Hydra：</h3><p>九头蛇，支持众多协议的爆破工具，kali自动集成。</p>
-<p>可在Linux、Windows和OS X中使用。hydra可以用来破解很多种服务，包括IMAP,HTTP,SMB,VNC,MS-SQL,MySQL,SMTP等等。</p>
-<p>本文参考链接：</p>
-<p><a href="https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661">https://learnku.com/docs/server-learn/1.0/definition-of-penetration-test/11661</a></p>
-<p><a href="https://www.1024sou.com/article/13620.html">https://www.1024sou.com/article/13620.html</a></p>
+    <title>拥抱世界</title>
+    <url>/2022/03/07/undefined/</url>
+    <content><![CDATA[<hr>
+<p>Bitterness is a paralytic，love is a much more vicious motivator.    </p>
+<p>痛苦是种麻醉剂，爱则是更危险的动机</p>
+<hr>
+<p>I love three things in this world. Sun, moon and you. Sun for morning, moon for night, and you forever.</p>
+<p>浮世万千，吾爱有三。日月与卿，日起为昼，月升为暮，卿为朝暮。</p>
+<hr>
+<p>All lives end, all hearts are bro.</p>
+<p>生命终会终结，人心都会破碎。</p>
+<hr>
+<p>Once you’re ruled out the impossible. Whatever remains, however improbable, must be true.</p>
+<p>一旦你排除了所有的不可能，还剩什么，不管多么难以置信，一定就是真相。</p>
+<hr>
 ]]></content>
       <categories>
-        <category>渗透</category>
+        <category>随笔</category>
       </categories>
       <tags>
-        <tag>渗透</tag>
+        <tag>摘要</tag>
+        <tag>哲学</tag>
+        <tag>文案</tag>
       </tags>
   </entry>
 </search>
