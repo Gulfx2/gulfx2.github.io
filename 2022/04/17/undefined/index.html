@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="Gulf"><meta name="copyright" content="Gulf"><meta name="generator" content="Hexo 5.4.1"><meta name="theme" content="hexo-theme-yun"><title>misc基础隐写 | Gulf's World</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.2.4/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="//at.alicdn.com/t/font_1140697_dxory92pb0h.js" async></script><script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><link rel="icon" type="image/png" href="/weblogo.jpg"><link rel="mask-icon" href="/weblogo.jpg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"gulfx2.github.io","root":"/","title":["Gu","lf","的","小","世","界"],"version":"1.8.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":null},"vendors":{"darken":"https://cdn.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，这两者属于完全不同的概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="misc基础隐写">
+<meta property="og:url" content="https://gulfx2.github.io/2022/04/17/undefined/index.html">
+<meta property="og:site_name" content="Gulf&#39;s World">
+<meta property="og:description" content="隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，这两者属于完全不同的概念。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205410717.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205424184.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131551292.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131807385.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131838806.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416132344071.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416132841047.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134446410.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134657667.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134755606.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416140114876.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551327-197885937.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551913-1164934420.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gulfx2/images/master/1503988-20200222163552252-1998926110.png">
+<meta property="article:published_time" content="2022-04-17T03:27:03.000Z">
+<meta property="article:modified_time" content="2022-04-17T03:31:24.986Z">
+<meta property="article:author" content="Gulf">
+<meta property="article:tag" content="隐写">
+<meta property="article:tag" content="misc">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205410717.png"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><canvas id="trianglifyContainer"></canvas><script defer src="https://cdn.jsdelivr.net/npm/trianglify@4/dist/trianglify.bundle.js"></script><script>document.addEventListener("DOMContentLoaded", () => {
+  const pattern = trianglify({
+    width: 800,
+    height: 600,
+    cellSize: 75,
+    palette: ["YlGnBu", "GnBu", "Purples", "Blues"],
+  });
+  const canvasOpts = {
+    applyCssScaling: false
+  }
+  document.body.appendChild(pattern.toCanvas(trianglifyContainer, canvasOpts));
+});</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info mickey-mouse"><a class="site-author-avatar" href="/about/" title="Gulf"><img width="96" loading="lazy" src="/images/logo.jpg" alt="Gulf"><span class="site-author-status" title="相信自己，就可以拥有一切">😊</span></a><div class="site-author-name"><a href="/about/">Gulf</a></div><a class="site-name" href="/about/site.html">Gulf's World</a><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">6</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">13</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/gulfx2" title="GitHub" target="_blank" style="color:undefined"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/Fenmao6" title="Twitter" target="_blank" style="color:undefined"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="a565405671@gmail.com" title="E-Mail" target="_blank" style="color:undefined"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99"><span class="toc-number">1.</span> <span class="toc-text">一、图片隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81PNG%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1、PNG：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81EXIF%EF%BC%88%E5%8F%AF%E4%BA%A4%E6%8D%A2%E5%9B%BE%E5%83%8F%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2、EXIF（可交换图像文件格式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81LSB%EF%BC%88%E6%9C%80%E4%BD%8E%E6%9C%89%E6%95%88%E4%BD%8D%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">3、LSB（最低有效位）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-number">1.4.</span> <span class="toc-text">4、盲水印</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%AE%97%E6%B3%95%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text">五、算法类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%96%87%E6%9C%AC%E9%9A%90%E5%86%99"><span class="toc-number">2.</span> <span class="toc-text">二、文本隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%A0%BC%E5%BC%8F%E5%BE%AE%E8%B0%83%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">文档格式微调法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E6%A0%BC%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7%E6%B3%95%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">空格标点符号法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E7%89%B9%E5%BE%81%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">字体特征法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">自然语言法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8office%E4%B8%AD%E8%87%AA%E5%B8%A6%E7%9A%84%E9%9A%90%E8%97%8F%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">利用office中自带的隐藏功能：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%A6%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">另：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9F%B3%E9%A2%91%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">三、音频：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A2%E5%BD%A2%E7%9A%84%E9%9A%90%E5%86%99"><span class="toc-number">3.1.</span> <span class="toc-text">基于波形的隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%A2%91%E8%B0%B1%E5%9B%BE%E7%9A%84%E9%9A%90%E5%86%99"><span class="toc-number">3.2.</span> <span class="toc-text">基于频谱图的隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8mp3stego%E7%9A%84%E9%9A%90%E5%86%99"><span class="toc-number">3.3.</span> <span class="toc-text">使用mp3stego的隐写</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">4.</span> <span class="toc-text">四、压缩包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E6%96%B9%E9%9D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">涉及方面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B4%E7%89%B9%E5%BE%81"><span class="toc-number">4.2.</span> <span class="toc-text">文件头特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zip%E5%8A%A0%E5%AF%86"><span class="toc-number">4.3.</span> <span class="toc-text">zip加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ctf%E4%B8%AD%E9%A2%98%E7%9B%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.4.</span> <span class="toc-text">ctf中题目类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-number">4.5.</span> <span class="toc-text">视频隐写</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://gulfx2.github.io/2022/04/17/undefined/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Gulf"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="Gulf's World"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">misc基础隐写</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2022-04-17 11:27:03" itemprop="dateCreated datePublished" datetime="2022-04-17T11:27:03+08:00">2022-04-17</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">2.8k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">9m</span></span></span><span class="post-busuanzi"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读次数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg> <span id="busuanzi_value_page_pv"></span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/MISC/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">MISC</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E9%9A%90%E5%86%99/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">隐写</span></a><a class="tag-item" href="/tags/misc/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">misc</span></a><a class="tag-item" href="/tags/%E5%9F%BA%E7%A1%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">基础</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><p>隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，这两者属于完全不同的概念。</p>
+<span id="more"></span>
+
+<h3 id="一、图片隐写"><a href="#一、图片隐写" class="headerlink" title="一、图片隐写"></a>一、图片隐写</h3><p>大部分的文件都有其固定的格式，比如常见的图片格式PNG，JPG，都是由一系列的特殊的数据块组成</p>
+<h4 id="1、PNG："><a href="#1、PNG：" class="headerlink" title="1、PNG："></a>1、PNG：</h4><p>IHDR（文件头数据块）、PLTE（调色板数据块）、IDAT（图像数据块）、IEND（图像结束数据块）四个标准数据块和一些辅助数据块组成。</p>
+<p>每个数据块由Length(长度)、Chunk Type Code（数据块类型码）、Chunk Data（数据块数据）和CRC（循环校验码）四个部分</p>
+<p>举例：PNG</p>
+<p>固定字节开始（89 50 4E 0D 0A 1A 0A），通过这串字节确定是一个png文件，图像结束数据IEND表示PNG文件结束，它的长度一般是00 00 00 00，数据标识为49 45 4E 44，这之后的数据通常就会被大部分的图片查看软件忽略掉，这就是最基本的隐写，可以直接在最后加内容，一般情况下不会被发现。（无论是字符还是文件都可以）</p>
+<p>最常见的工具：binwalk</p>
+<h4 id="2、EXIF（可交换图像文件格式）"><a href="#2、EXIF（可交换图像文件格式）" class="headerlink" title="2、EXIF（可交换图像文件格式）"></a>2、EXIF（可交换图像文件格式）</h4><p>用来记录数码相机的属性信息和拍摄数据，EXIF可以被附加在JPEG、TIFF（标签图像文件格式）、RIFF（资源互换文件格式）等文件中，为其增加有关数码相机拍摄信息的内容，缩略图获图像处理软件的一些版本信息</p>
+<p>工具：exiftool，photocap</p>
+<h4 id="3、LSB（最低有效位）"><a href="#3、LSB（最低有效位）" class="headerlink" title="3、LSB（最低有效位）"></a>3、LSB（最低有效位）</h4><p>大多数的png图像中，每个像素都是由R、G、B三原色组成，（某些图片还包含A通道表示透明度），每种颜色一般用8位的数据标识（0x00~0xFF）通过修改其最低位隐藏信息，每个像素可以携带3位的信息</p>
+<p>工具：stegsolve，zsteg</p>
+<h4 id="4、盲水印"><a href="#4、盲水印" class="headerlink" title="4、盲水印"></a>4、盲水印</h4><p>数字水印技术，图片中的盲水印可以添加在图片的空域或者频域中，空域技术就是直接在信号空间中嵌入水印信息，LSB就是一种典型的方式，那什么是频域</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205410717.png" alt="image-20220413205410717" loading="lazy"></p>
+<p>如图就是一段音乐的时域，我们听到的音乐就是一段在时域上不断振动的波，这段音乐同样可以表示为下图的乐谱，一段乐谱就可以看作一段音乐在频域中的表示，可以反映音乐频率的变化，如果时域中的波形简化成一段正弦波，那么在频域中用一个音符即可表示</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205424184.png" alt="image-20220413205424184" loading="lazy"></p>
+<p>要将时域或空域中表示的信号转换到频域中，要用傅里叶变换，源自对于傅里叶级数的研究，研究表明，复杂的周期函数可以用一系列简单的正弦波之和代替，将信号函数进行傅里叶变换，可以分离出其中各频率的正弦波，不同成分的频率在频域中以峰值形式表示，就可以得到其频谱，得到图像的频域图像之后，将水印编码后随即分布到各频率，与原频域进行叠加，将叠加后的频域进行逆变换，就得到了添加了盲水印的图片</p>
+<p>提取盲水印就是将原图和带水印的图在频域中相减，再根据原来水印的编码方式解码。就可以提取出水印</p>
+<p>工具：blindwatermark、adobe、audition</p>
+<h4 id="五、算法类型"><a href="#五、算法类型" class="headerlink" title="五、算法类型"></a>五、算法类型</h4><p>LSB、jsteg、f3、f4、f5、jphide、outguess</p>
+<h3 id="二、文本隐写"><a href="#二、文本隐写" class="headerlink" title="二、文本隐写"></a>二、文本隐写</h3><h4 id="文档格式微调法"><a href="#文档格式微调法" class="headerlink" title="文档格式微调法"></a>文档格式微调法</h4><p>​     行移：行移是指调整文本文件中的垂直行距来隐藏信息的方法<br>嵌入信息的行的相邻_上下两行位置不动，作为参考，然后该嵌入信息的行上移，表示嵌入“1”，行下移,表示嵌入信息”0”。<br>​    字移：字移是指通过将某行的字符进行水平移动来隐藏信息<br>如将一个单词左移或右移，而与其相邻的单词则不进行移动，可以作为提取隐藏信息时的参考，如规定左移代表“1”,右移代表“0”。<br>​    修改字符颜色：改变文本字符颜色的十六进制颜色码微调，来嵌入信息。</p>
+<h4 id="空格标点符号法："><a href="#空格标点符号法：" class="headerlink" title="空格标点符号法："></a>空格标点符号法：</h4><p>使用中英文版本的逗号表示01</p>
+<p>添加空格和回车</p>
+<p>基于空格和回车的隐写术是利用人类视觉系统对微小间隔不敏感的特点而设计的<br>与字移、行移等不同的地方在于，字移、行移等操作适用于利用格式化文档(如word)传递信息的过程，而对于纯文本文档(如txt)不能进行微调操作，这时可以考虑利用空格或是回车来隐藏信息。</p>
+<p>与字移相比，字移引起的间隔往往是人类肉眼所捕捉不到的，但空格带来的间隔如果插入为止不当则会引起怀疑(如汉语中汉字与汉字间通常是没有间隔的，过多的间隔会引起注意，因此该方法通常适用于英文文本)，因此插入位置的选择往往是该类隐写术的关键。<br>逗号可为1，句号可为0以此隐藏</p>
+<p>对标点改变字体隐藏信息</p>
+<h4 id="字体特征法"><a href="#字体特征法" class="headerlink" title="字体特征法"></a>字体特征法</h4><p>通过两种不同的字体来实现0和1转换</p>
+<p>汉字结构的间距来隐藏信息，或将两个字符缩小间距使其看起来像一个字符</p>
+<h4 id="自然语言法"><a href="#自然语言法" class="headerlink" title="自然语言法"></a>自然语言法</h4><p>同义词替换（绝对同义词，相对同义词）<br>语法变换（宾语前置，谓语后置，定语后置等实现0,1隐藏）</p>
+<h4 id="利用office中自带的隐藏功能："><a href="#利用office中自带的隐藏功能：" class="headerlink" title="利用office中自带的隐藏功能："></a>利用office中自带的隐藏功能：</h4><p>在word中选中要隐藏的文字，右键，选择字体，选择隐藏，确定后发现这几个字不见了，而word中字数统计也相应减少。<br>通过文件-&gt;选项-&gt;显示-&gt;勾选隐藏文字,即可显示出隐藏的文字</p>
+<h4 id="另："><a href="#另：" class="headerlink" title="另："></a>另：</h4><p>可以对文档设置编辑保护，文档可以打开，无法编辑<br>设置方法：导航栏上的审阅-&gt;限制编辑-&gt;勾选编辑限制-&gt;启动强制保护-&gt;设置密码</p>
+<p>题目：</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131551292.png" alt="image-20220416131551292" loading="lazy"></p>
+<p>从文件-选项，勾选隐藏文字</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131807385.png" alt="image-20220416131807385" loading="lazy"></p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131838806.png" alt="image-20220416131838806" loading="lazy"></p>
+<p>然后替换，用0替换英文逗号，用1替换中文逗号</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416132344071.png" alt="image-20220416132344071" loading="lazy"></p>
+<p>在线转</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416132841047.png" alt="image-20220416132841047" loading="lazy"></p>
+<p>0ffse就是偏转的意思，我们放到winhex里</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134446410.png" alt="image-20220416134446410" loading="lazy"></p>
+<p>拿去base32可以得到一个小提示</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134657667.png" alt="image-20220416134657667" loading="lazy"></p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134755606.png" alt="image-20220416134755606" loading="lazy"></p>
+<p>doc文件（doc和zip的文件头一样，这里给了提示的）修改文件头为50 4B 03 04，复制后面的，另存为</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416140114876.png" alt="image-20220416140114876" loading="lazy"></p>
+<p>这里会发现我们无法编辑里面的任何内容，作者经过加密的，上面给了提示14位的数字密码，但是爆破就太麻烦了，这里题目有个小漏洞，虽然我们无法修改字体颜色，但是可以直接复制粘贴出来到其他编辑器上可以显示</p>
+<p>RmxhZyU3QnNob3dfY3RmX3Rzd19jYyU3RA==</p>
+<p>base64+url解密得flag</p>
+<h3 id="三、音频："><a href="#三、音频：" class="headerlink" title="三、音频："></a>三、音频：</h3><p>1、音频的波形或频谱为某种编码或密码，找到后进行解码解密即得到隐藏信息<br>2、音频文件中嵌入了数据，需要提取出来，得到隐藏信息</p>
+<h4 id="基于波形的隐写"><a href="#基于波形的隐写" class="headerlink" title="基于波形的隐写"></a>基于波形的隐写</h4><p>波形图中横坐标是时间，纵坐标是幅值。通过对图像的控制可以模拟为一种编码或密码<br>可以在波形图中隐藏莫斯电码，隐藏二进制数据</p>
+<h4 id="基于频谱图的隐写"><a href="#基于频谱图的隐写" class="headerlink" title="基于频谱图的隐写"></a>基于频谱图的隐写</h4><p>频谱是波形经过傅里叶变换得到的，横坐标是频率，纵坐标是幅值，表示各某时间点上各频率正弦波的幅值大小，越亮的地方表示这个频率越响<br>若波形图无法看出隐藏信息，可以转换成频谱图</p>
+<h4 id="使用mp3stego的隐写"><a href="#使用mp3stego的隐写" class="headerlink" title="使用mp3stego的隐写"></a>使用mp3stego的隐写</h4><p>在音频文件中嵌入比特流，需要使用密码<br>写入：encode -E 隐藏的文件 -P 口令密码 载体音频文件 生成的文件<br>读取：decode -X -P 口令密码 文件名</p>
+<h3 id="四、压缩包"><a href="#四、压缩包" class="headerlink" title="四、压缩包"></a>四、压缩包</h3><h4 id="涉及方面"><a href="#涉及方面" class="headerlink" title="涉及方面"></a>涉及方面</h4><p>爆破、碰撞、伪加密、已知明文分析</p>
+<h4 id="文件头特征"><a href="#文件头特征" class="headerlink" title="文件头特征"></a>文件头特征</h4><p>压缩包有三种压缩格式rar、7z、zip</p>
+<h4 id="zip加密"><a href="#zip加密" class="headerlink" title="zip加密"></a>zip加密</h4><p>zip加密可以分为真加密，伪加密<br>zip有数据区和目录区，只有两个区的全局方式标志位都为加密位时才是真加密<br>数据区：50 4B 03 04 数据区标志开头 后2个字节为解压文件所需要的版本 后2个字节数据区加密标记位<br>目录区：50 4B 01 02 目录去标志开头 后2个字节为压缩文件所使用的版本 后2个字节解压文件所需要的版本 后2个字节目录区加密标志位<br>加密标志位只要是奇数位就表示加密位 偶数不加密</p>
+<h4 id="ctf中题目类型"><a href="#ctf中题目类型" class="headerlink" title="ctf中题目类型"></a>ctf中题目类型</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特征</th>
+<th>思路</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>压缩包+图片</td>
+<td>压缩包附在图片后，或者图片隐藏压缩包</td>
+<td></td>
+</tr>
+<tr>
+<td>压缩包加密</td>
+<td>密码以注释等其它提示形式给出</td>
+<td></td>
+</tr>
+<tr>
+<td>压缩包伪加密</td>
+<td>密码没有给出，加密标志位异常</td>
+<td>修改对应的标志位</td>
+</tr>
+<tr>
+<td>压缩包爆破</td>
+<td>密码没有给出，加密标志位正常</td>
+<td>archpr进行爆破</td>
+</tr>
+<tr>
+<td>crc32碰撞</td>
+<td>当压缩包被加密，但文件为纯文本文档，且大小很小时</td>
+<td>涉及程序编写，一般用Binascii 和string库string.ascii_letters</td>
+</tr>
+<tr>
+<td>压缩包已知明文攻击</td>
+<td>压缩包为zip格式，给出了其中的一个明文，明文的crc32与压缩包中的密文crc32一致</td>
+<td>archpr进行爆破</td>
+</tr>
+</tbody></table>
+<h4 id="视频隐写"><a href="#视频隐写" class="headerlink" title="视频隐写"></a>视频隐写</h4><p>以题为例<br>首先得到的是一个mp4文件，叫做黄金6年，观看没有发现异常<br>之后用winhex，在结尾处发现可能为base64编码<br><a target="_blank" rel="noopener" href="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551327-197885937.png"><img src="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551327-197885937.png" alt="img" loading="lazy"></a><br>对其解码，发现无法正常显示解码，可能为2进制数据<br>用Python编写程序解码发现rar标记<br><a target="_blank" rel="noopener" href="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551913-1164934420.png"><img src="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551913-1164934420.png" alt="img" loading="lazy"></a></p>
+<p>将其解码的二进制数据另存为rar压缩包</p>
+<p>发现有密码<br><a target="_blank" rel="noopener" href="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163552252-1998926110.png"><img src="https://raw.githubusercontent.com/gulfx2/images/master/1503988-20200222163552252-1998926110.png" alt="img" loading="lazy"></a><br>确认不是伪加密后，试图先从视频中寻找密码<br>用工具potplayer打开，一帧一帧播放，发现<br>四张二维码，扫描，将得到的信息拼接为iwantplayctf，解开数据包得flag</p>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Gulf</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://gulfx2.github.io/2022/04/17/undefined/" title="misc基础隐写">https://gulfx2.github.io/2022/04/17/undefined/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2022/04/01/undefined/" rel="next" title="HTML标签语言学习"><span class="post-nav-text">HTML标签语言学习</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>要不要和我说些什么？</span><br><span>utterances</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/gulfx2/gulfx2.github.io/issues?q=is:issue+misc基础隐写">GitHub Issues</a></div><style>.utterances {
+  max-width: 100%;
+}</style><script src="https://utteranc.es/client.js" repo="gulfx2/utterances" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2022 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> Gulf</span></div><div class="live-time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  setTimeout(blog_live_time, 1000);
+  const start = new Date('2022-03-24T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = ` ${passDay} 天 ${passHour} 小时 ${passMinute} 分 ${passSecond} 秒`;
+}
+blog_live_time();
+</script></div><div id="busuanzi"><span id="busuanzi_container_site_uv" title="总访客量"><span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-user-line"></use></svg></span><span id="busuanzi_value_site_uv"></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv" title="总访问量"><span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg></span><span id="busuanzi_value_site_pv"></span></span><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></footer><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Hits<a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>function initMourn() {
+  const date = new Date();
+  const today = (date.getMonth() + 1) + "-" + date.getDate()
+  const mourn_days = ["4-4","9-18"]
+  if (mourn_days.includes(today)) {
+    document.documentElement.style.filter = "grayscale(1)";
+  }
+}
+initMourn();</script><div class="aplayer no-destroy" id="aplayer" data-id="308168565" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay data-theme="#0078E7" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex data-lrctype="0" data-listfolded data-listmaxheight="340px" data-storagename="metingjs"></div></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body></html>

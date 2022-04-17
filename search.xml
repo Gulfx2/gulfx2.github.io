@@ -1,215 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>HTML标签语言学习</title>
-    <url>/2022/04/01/undefined/</url>
-    <content><![CDATA[<p>HTML元素是构建网站的基石。HTML允许嵌入图像与对象，并且可以用于创建交互式表单，它被用来结构化信息——例如标题、段落和列表等等，也可用来在一定程度上描述文档的外观和语义。HTML的语言形式为尖括号包围的HTML元素（如 &lt; html&gt; (这里由于显示原因多加一个空格)），浏览器使用HTML标签和脚本来诠释网页内容，但不会将它们显示在页面上。</p>
-<span id="more"></span>
-
-<h2 id="一、HTML介绍"><a href="#一、HTML介绍" class="headerlink" title="一、HTML介绍"></a>一、HTML介绍</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/HTML">HTML</a> (HyperText Markup Language)，超文本标记语言，不是一门编程语言，而是一种创建网页的标准标记语言，由浏览器解析。HTML 可复杂、可简单，一切取决于开发者。它由一系列的元素（<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Element">elements</a>）组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。 一对标签（ <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Tag">tags</a>）可以为一段文字或者一张图片添加超链接，将文字设置为斜体，改变字号等</p>
-<p>HTML使用标记标签来描述网页</p>
-<p>HTML文档包含HTML 标签及文本内容</p>
-<p>HTML文档也叫做web页面</p>
-<p><strong>注：</strong>HTML 标签不区分大小写。也就是说，输入标签时既可以使用大写字母也可以使用小写字母。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;title&gt; 可以写作&lt;title&gt;、&lt;TITLE&gt;、&lt;Title&gt;、&lt;TiTlE&gt;</span><br></pre></td></tr></table></figure>
-
-<p>都可以正常工作。不过，从一致性、可读性来说，最好仅使用小写字母(未来版本均使用小写)。</p>
-<h2 id="二、标签部分详解："><a href="#二、标签部分详解：" class="headerlink" title="二、标签部分详解："></a>二、标签部分详解：</h2><p>① HTML 标签是由<em>尖括号</em>包围的关键词，比如 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>② HTML 标签通常是成对出现的，比如 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt; 和 &lt;/b&gt;</span><br></pre></td></tr></table></figure>
-
-<p>③ 标签对中的第一个标签是开始标签，第二个标签是结束标签</p>
-<p>④ 开始和结束标签也被称为开放标签和闭合标签</p>
-<p>⑤ 常见标签用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt; 与 &lt;/html&gt; 之间的文本描述网页</span><br><span class="line">&lt;body&gt; 与 &lt;/body&gt; 之间的文本是可见的页面内容</span><br><span class="line">&lt;h1&gt; 与 &lt;/h1&gt; 之间的文本被显示为标题，&lt;h1&gt;定义最大标题，&lt;h6&gt;定义最小标题</span><br><span class="line">&lt;p&gt; 与 &lt;/p&gt; 之间的文本被显示为段落，分段络要多个&lt;p&gt;标签</span><br><span class="line">&lt;a href=&quot;http://www.xxx.com.cn&quot;&gt;This is link&lt;/a&gt; 添加超链接，在href属性中指定链接的地址</span><br><span class="line">&lt;img src=&quot;xxx.jpg&quot; width=&quot;104&quot; height=&quot;142&quot; /&gt; 添加图像，图像名称于尺寸以属性的形式提供</span><br><span class="line">&lt;br&gt;就是没有关闭标签的空元素（&lt;br&gt;标签定义换行，&lt;br /&gt;关闭空元素）</span><br><span class="line">	&lt;p&gt;This is&lt;br /&gt;a para&lt;br /&gt;graph with line breaks&lt;/p&gt;在本段内换行</span><br><span class="line">&lt;hr /&gt;添加水平线，用来分隔内容</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">&lt;!-- This is a comment --&gt;为你的代码添加注释</span><br><span class="line">&lt;p&gt;表示保持原本的格式，在浏览器中会自动移除多余的空格和空行，及时有多个连续的空格，也会被算作一个空格</span><br></pre></td></tr></table></figure>
-
-<p>一般情况下，浏览器会自动给标题前后添加空格，且，HTML默认为块级元素前后额外添加一个空行，如段落，标题元素前后。</p>
-<h3 id="3、HTML元素"><a href="#3、HTML元素" class="headerlink" title="3、HTML元素"></a>3、HTML元素</h3><p>HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。(也称开放标签(opening tag)和闭合标签(closing tag))</p>
-<p>一些HTML元素具有空内容，空元素在开始标签中进行关闭，大部分HTML元素可拥有属性</p>
-<p>大多数HTML元素可以嵌套，HTML文档（web页面）就是由嵌套的HTML元素构成</p>
-<h3 id="4、HTML属性"><a href="#4、HTML属性" class="headerlink" title="4、HTML属性"></a>4、HTML属性</h3><p>HTML标签可以拥有属性，属性会提供更多的元素信息</p>
-<p>属性以名称/值对的形式出现：name=”value”。通常在开始标签中规定</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#&lt;h1 align=&quot;center&quot;&gt;拥有关于对齐方式的附加信息（居中排列标题）。</span><br><span class="line">#&lt;body bgcolor=&quot;yellow&quot;&gt; 拥有关于背景颜色的附加信息。</span><br><span class="line">#&lt;table border=&quot;1&quot;&gt; 拥有关于表格边框的附加信息。</span><br></pre></td></tr></table></figure>
-
-<p>记得始终为属性值加引号，若属性值本身含有双引号，则你必须使用单引号，如：name=’Bill “HelloWorld” Gates’ </p>
-<p>style属性用于改变HTML元素的样式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 style=&quot;font-family:verdana&quot;&gt;A heading&lt;/h1&gt;</span><br><span class="line">&lt;p style=&quot;font-family:arial;color:red;font-size:20px;&quot;&gt;A paragraph.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">#font-family、color 以及 font-size 属性分别定义元素中文本的字体系列、颜色和字体尺寸</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body style=&quot;background-color:yellow&quot;&gt;</span><br><span class="line">&lt;h2 style=&quot;background-color:red&quot;&gt;This is a heading&lt;/h2&gt;</span><br><span class="line">&lt;p style=&quot;background-color:green&quot;&gt;This is a paragraph.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">#background-color属性为元素定义背景颜色</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body style=&quot;background-color:PowderBlue;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;Look! Style and Colors&lt;/h1&gt;</span><br><span class="line">&lt;p style=&quot;font-family:verdana;color:Blue&quot;&gt;</span><br><span class="line">This text is in Verdana and green</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;font-family:times;color:green&quot;&gt;</span><br><span class="line">This text is in Times and green</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;font-size:30px&quot;&gt;</span><br><span class="line">This text is 30 pixels high</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401170802338.png" alt="image-20220401170802338" loading="lazy"></p>
-<p>style提供了一种改变所有HTML元素的样式的通用方法。</p>
-<p><strong>另</strong>：在 HTML 4 中，有若干的标签和属性是被废弃的。在未来版本的 HTML 和 XHTML 中将不支持这些标签和属性，请避免使用这些被废弃的标签和属性！</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401171327106.png" alt="image-20220401171327106" loading="lazy"></p>
-<p>以上标签和属性可以用样式代替</p>
-<h3 id="5、HTML文本格式化"><a href="#5、HTML文本格式化" class="headerlink" title="5、HTML文本格式化"></a>5、HTML文本格式化</h3><p>HTML可以定义很多供格式化输出的元素， 使用标签 (“bold”) 与 (“italic”) 对输出的文本进行格式, 如：<strong>粗体</strong> or <em>斜体</em>。</p>
-<h4 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173601026.png" alt="image-20220401173601026" loading="lazy"></p>
-<h4 id="“计算机输出”标签"><a href="#“计算机输出”标签" class="headerlink" title="“计算机输出”标签"></a>“计算机输出”标签</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173636730.png" alt="image-20220401173636730" loading="lazy"></p>
-<h4 id="引用和术语定义"><a href="#引用和术语定义" class="headerlink" title="引用和术语定义"></a>引用和术语定义</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173721172.png" alt="image-20220401173721172" loading="lazy"></p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;b&gt;This text is bold&lt;/b&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;strong&gt;This text is strong&lt;/strong&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;big&gt;This text is big&lt;/big&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;em&gt;This text is emphasized&lt;/em&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;i&gt;This text is italic&lt;/i&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;small&gt;This text is small&lt;/small&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">This text contains</span><br><span class="line">&lt;sub&gt;subscript&lt;/sub&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">This text contains</span><br><span class="line">&lt;sup&gt;superscript&lt;/sup&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173804322.png" alt="image-20220401173804322" loading="lazy"></p>
-<h3 id="6、HTML的引用"><a href="#6、HTML的引用" class="headerlink" title="6、HTML的引用"></a>6、HTML的引用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">这是长的引用：</span><br><span class="line">&lt;blockquote&gt;</span><br><span class="line">这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。</span><br><span class="line">&lt;/blockquote&gt;</span><br><span class="line"></span><br><span class="line">这是短的引用：</span><br><span class="line">&lt;q&gt;</span><br><span class="line">这是短的引用。</span><br><span class="line">&lt;/q&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;</span><br><span class="line">使用 blockquote 元素的话，浏览器会插入换行和外边距，而 q 元素不会有任何特殊的呈现。</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174749885.png" alt="image-20220401174749885" loading="lazy"></p>
-<h3 id="7、两种缩写"><a href="#7、两种缩写" class="headerlink" title="7、两种缩写"></a>7、两种缩写</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;</span><br><span class="line">&lt;br /&gt;</span><br><span class="line">&lt;acronym title=&quot;World Wide Web&quot;&gt;WWW&lt;/acronym&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;在某些浏览器中，当您把鼠标移至缩略词语上时，title 可用于展示表达的完整版本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;仅对于 IE 5 中的 acronym 元素有效。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;对于 Netscape 6.2 中的 abbr 和 acronym 元素都有效。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174840719.png" alt="image-20220401174840719" loading="lazy"></p>
-<h3 id="8、删除字效果和插入字效果"><a href="#8、删除字效果和插入字效果" class="headerlink" title="8、删除字效果和插入字效果"></a>8、删除字效果和插入字效果</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一打有 &lt;del&gt;二十&lt;/del&gt; &lt;ins&gt;十二&lt;/ins&gt; 件。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;大多数浏览器会改写为删除文本和下划线文本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一些老式的浏览器会把删除文本和下划线文本显示为普通文本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174941325.png" alt="image-20220401174941325" loading="lazy"></p>
-<h3 id="9、HTML图像"><a href="#9、HTML图像" class="headerlink" title="9、HTML图像"></a>9、HTML图像</h3><p>在HTML中，图像由 img 标签定义， img 标签是空标签，意思是说，它只包含属性，并且没有闭合标签。要在页面上显示图像，你需要使用源属性（src），src指“source”，源属性的值是图像的URL地址。定义图像的语法是：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;url&quot;</span> /&gt;</span>  #url指图像位置</span><br></pre></td></tr></table></figure>
-
-<p>浏览器将图像显示在文档中图像标签出现的地方。如果你将图像标签置于两个段落之间，那么浏览器会首先显示第一个段落，然后显示图片，最后显示第二段。</p>
-<p>alt 属性用来为图像定义一串预备的可替换的文本，替换文本属性的值是用户定义的。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;boat.gif&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Big Boat&quot;</span>&gt;</span>  #在浏览器无法载入图像时，替换文本属性告诉读者她们失去的信息，此时，浏览器将显示这个替代性文本而不是图像</span><br></pre></td></tr></table></figure>
-
-<p><strong>注</strong>：假如某个HTML文件包含十个图像，那么为了正确显示这个页面，需要加载11个文件</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401175431451.png" alt="image-20220401175431451" loading="lazy"></p>
-<h3 id="10、HTML表格"><a href="#10、HTML表格" class="headerlink" title="10、HTML表格"></a>10、HTML表格</h3><p>表格由  table&gt; 标签来定义。每个表格均有若干行（由  tr  标签定义），每行被分割为若干单元格（由  td  标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;row 1, cell 1&lt;/td&gt;</span><br><span class="line">&lt;td&gt;row 1, cell 2&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;row 2, cell 1&lt;/td&gt;</span><br><span class="line">&lt;td&gt;row 2, cell 2&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401175643444.png" alt="image-20220401175643444" loading="lazy"></p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401185910141.png" alt="image-20220401185910141" loading="lazy"></p>
-<p>例1：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">创建一个HTML表格</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;每个表格由 table 标签开始。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;每个表格行由 tr 标签开始。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;每个表格数据由 td 标签开始。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一行三列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;5&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;200&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;300&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;两行三列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;10&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;200&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;300&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;400&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;500&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;600&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190049608.png" alt="image-20220401190049608" loading="lazy"></p>
-<p>例2：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">添加各种边框</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有普通的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有粗的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;8&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有很粗的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;15&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190130639.png" alt="image-20220401190130639" loading="lazy"></p>
-<h3 id="11、HTML列表"><a href="#11、HTML列表" class="headerlink" title="11、HTML列表"></a>11、HTML列表</h3><p>HTML文档中，可能需要给你的项目分出列表，html支持有序无序以及自定义三种列表</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190421348.png" alt="image-20220401190421348" loading="lazy"></p>
-<p>① 无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记。</p>
-<p>无序列表始于 ul 标签，每个列表项始于 li 。列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一个无序列表：&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>② 有序列表也是一列项目，列表项目使用数字进行标记。</p>
-<p>有序列表始于 ol 标签，每个列表项始于 li 标签。列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;有序列表样式：&lt;/h4&gt;</span><br><span class="line"></span><br><span class="line">&lt;ol&gt;</span><br><span class="line">  &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>③ 自定义列表不仅仅是一列项目，而是项目及其注释的组合。</p>
-<p>自定义列表以 dl 标签开始，每个自定义列表项以 dt 开始，每个自定义列表项的定义以 dd 开始。定义列表的列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
-<h3 id="12、HTML区块"><a href="#12、HTML区块" class="headerlink" title="12、HTML区块"></a>12、HTML区块</h3><p>HTML文档可以通过 div 和 span 组合起来</p>
-<p>大多数元素会被当作块级元素或内联元素，块级元素在浏览器中显示的时候通常以新行来开始和结束</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;</span><br></pre></td></tr></table></figure>
-
-<p>而内联元素通常不会</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</span><br></pre></td></tr></table></figure>
-
-<p>div 元素</p>
-<p>块级元素，它可用于组合其他 HTML 元素的容器。</p>
-<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
-
-<p>如果与 CSS 一同使用，div 元素可用于对大的内容块设置样式属性。</p>
-<p>div 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 table&gt;元素进行文档布局不是表格的正确用法。table 元素的作用是显示表格化的数据。</p>
-<p>span元素</p>
-<p>内联元素，可用作文本的容器</p>
-<p>span 元素也没有特定的含义。</p>
-<p>当与 CSS 一同使用时，span 元素可用于为部分文本设置样式属性。</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401191824848.png" alt="image-20220401191824848" loading="lazy"></p>
-<h2 id="三、HTML标签拓展"><a href="#三、HTML标签拓展" class="headerlink" title="三、HTML标签拓展"></a>三、HTML标签拓展</h2><h3 id="1、HTML区块"><a href="#1、HTML区块" class="headerlink" title="1、HTML区块"></a>1、HTML区块</h3><p>HTML文档可以通过 div 和 span 组合起来</p>
-<p>大多数元素会被当作块级元素或内联元素，块级元素在浏览器中显示的时候通常以新行来开始和结束</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;</span><br></pre></td></tr></table></figure>
-
-<p>而内联元素通常不会</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</span><br></pre></td></tr></table></figure>
-
-<p>#div元素</p>
-<p>块级元素，它可用于组合其他 HTML 元素的容器。</p>
-<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
-
-
-
-<p>如果与 CSS 一同使用，<div> 元素可用于对大的内容块设置样式属性。</p>
-<p>#div 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 table 元素进行文档布局不是表格的正确用法。table 元素的作用是显示表格化的数据。</p>
-<p>#span元素</p>
-<p>内联元素，可用作文本的容器</p>
-<p>span 元素也没有特定的含义。</p>
-<p>当与 CSS 一同使用时，span 元素可用于为部分文本设置样式属性。</p>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401191824848.png" alt="image-20220401191824848" loading="lazy"></p>
-<h3 id="2、HTML脚本"><a href="#2、HTML脚本" class="headerlink" title="2、HTML脚本"></a>2、HTML脚本</h3><p>① HTML <script> 标签</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt; 标签用于定义客户端脚本，比如 JavaScript。</span><br><span class="line"></span><br><span class="line">&lt;script&gt; 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript 最常用于图片操作、表单验证以及内容动态更新。</p>
-<p>下面的脚本会向浏览器输出”Hello World!”：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>② HTML noscript  标签</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;noscript&gt; 标签提供无法使用脚本时的替代内容，比方在浏览器禁用脚本时，或浏览器不支持客户端脚本时。</span><br><span class="line">&lt;noscript&gt;元素可包含普通 HTML 页面的 body 元素中能够找到的所有元素。</span><br></pre></td></tr></table></figure>
-
-<p>只有在浏览器不支持脚本或者禁用脚本时，才会显示 noscript 元素中的内容：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span>抱歉，你的浏览器不支持 JavaScript!<span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>③ JS可以直接再HTML输出</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;p&gt;这是一个段落。&lt;/p&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript事件响应:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;button type=<span class="string">&quot;button&quot;</span> onclick=<span class="string">&quot;myFunction()&quot;</span>&gt;点我！&lt;/button&gt;</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript处理 HTML 样式:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">style</span>.<span class="property">color</span>=<span class="string">&quot;#ff0000&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401192704945.png" alt="image-20220401192704945" loading="lazy"></p>
-<h2 id="四、HTML浏览器应用"><a href="#四、HTML浏览器应用" class="headerlink" title="四、HTML浏览器应用"></a>四、HTML浏览器应用</h2><h3 id="1、搭建框架"><a href="#1、搭建框架" class="headerlink" title="1、搭建框架"></a>1、搭建框架</h3><p>通过使用框架，可以在同一个浏览器窗口中显示不止一个页面</p>
-<p>但同时，它也会有一些坏处：</p>
-<ul>
-<li>开发人员必须同时跟踪更多的HTML文档</li>
-<li>很难打印整张页面</li>
-</ul>
-<h4 id="框架结构标签（frameset）"><a href="#框架结构标签（frameset）" class="headerlink" title="框架结构标签（frameset）"></a>框架结构标签（frameset）</h4><ul>
-<li>框架结构标签（frameset）定义如何将窗口分割为框架</li>
-<li>每个 frameset 定义了一系列行<em>或</em>列</li>
-<li>rows/columns 的值规定了每行或每列占据屏幕的面积</li>
-</ul>
-<h4 id="框架标签（frame）"><a href="#框架标签（frame）" class="headerlink" title="框架标签（frame）"></a>框架标签（frame）</h4><p>Frame 标签定义了放置在每个框架中的 HTML 文档。</p>
-<p>在下面的这个例子中，我们设置了一个两列的框架集。第一列被设置为占据浏览器窗口的 25%。第二列被设置为占据浏览器窗口的 75%。HTML 文档 “frame_a.htm” 被置于第一个列中，而 HTML 文档 “frame_b.htm” 被置于第二个列中：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">#<span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">&quot;25%,75%&quot;</span>&gt;</span></span><br><span class="line">#   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_a.htm&quot;</span>&gt;</span></span><br><span class="line">#   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_b.htm&quot;</span>&gt;</span></span><br><span class="line">#<span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>注：</p>
-<p>假如一个框架有可见边框，用户可以拖动边框来改变它的大小。为了避免这种情况发生，可以在 frame 标签中加入：noresize=”noresize”。</p>
-<p>为不支持框架的浏览器添加 noframes 标签。</p>
-<p>不能将 body标签与 frameset 标签同时使用！不过，假如你添加包含一段文本的 noframes 标签，就必须将这段文字嵌套于 body标签内。（在下面的第一个实例中，可以查看它是如何实现的。）</p>
-<h3 id="2、URL（-Uniform-Resource-Locator）"><a href="#2、URL（-Uniform-Resource-Locator）" class="headerlink" title="2、URL（ Uniform Resource Locator）"></a>2、URL（ Uniform Resource Locator）</h3><p>统一资源定位器，也称为网址</p>
-<p>点击 HTML 页面中的某个链接时，对应的 a 标签指向互联网上的一个地址。</p>
-<p>统一资源定位器（URL）用于定位互联网上的文档（或其他数据）。</p>
-<p>它遵守以下语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#scheme://host.domain:port/path/filename</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>scheme - 定义因特网服务的类型。最常见的类型是 http</li>
-<li>host - 定义域主机（http 的默认主机是 www）</li>
-<li>domain - 定义因特网域名，比如 w3school.com.cn</li>
-<li>:port - 定义主机上的端口号（http 的默认端口号是 80）</li>
-<li>path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</li>
-<li>filename - 定义文档/资源的名称</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401195024342.png" alt="image-20220401195024342" loading="lazy"></p>
-<h2 id="五、HTML总结"><a href="#五、HTML总结" class="headerlink" title="五、HTML总结"></a>五、HTML总结</h2><h3 id="1、学习其他语言，与HTML搭配使用"><a href="#1、学习其他语言，与HTML搭配使用" class="headerlink" title="1、学习其他语言，与HTML搭配使用"></a>1、学习其他语言，与HTML搭配使用</h3><p>如果你想为自己搭建一个网站，那仅仅学会HTML是远远不够的，你还需要学习CSS、JavaScript等。</p>
-<p>CSS被用来同时控制多重网页的样式和布局。通过使用 CSS，所有的格式化均可从 HTML 中剥离出来，并存储于一个独立的文件中。JavaScript 可以让你的网页更加生动。</p>
-<p>如果你只想展示内容，静态网站是很好的展示形象，如果你想与用户进行交换或者让网页更加生动那就需要使用到Javascript。JavaScript是互联网上最流行的脚本语言，目前所有主流浏览器都支持Javascript。</p>
-<h3 id="2、服务器"><a href="#2、服务器" class="headerlink" title="2、服务器"></a>2、服务器</h3><p>网站服务器（Website Server）是指在互联网数据中心中存放网站的服务器。 网站服务器主要用于网站在互联网中的发布、应用，是网络应用的基础硬件设施。可以选择在自己的服务器上托管自己的网站，要挑一个好的服务器，以及各种软硬件的支出费用</p>
-<h3 id="3、ISP"><a href="#3、ISP" class="headerlink" title="3、ISP"></a>3、ISP</h3><p>为个人和企业客户提供 Internet 访问权限的公司。ISP 使他们的客户可以上网冲浪、在线购物、开展业务以及与家人和朋友联系——所有这些都是收费的。ISP 还可能提供其他服务，包括电子邮件服务、域注册、网络托管和<a href="https://www.investopedia.com/articles/investing/041315/how-mozilla-firefox-and-google-chrome-make-money.asp">浏览器</a>包。根据公司提供的服务，ISP 也可以称为信息服务提供商、存储服务提供商、互联网服务提供商 (INSP) 或这三者的任意组合。</p>
-<h2 id="本文参考链接："><a href="#本文参考链接：" class="headerlink" title="本文参考链接："></a>本文参考链接：</h2><p>HTML更多内容可以自查HTML手册：<a href="https://www.w3cschool.cn/html/dict.html">https://www.w3cschool.cn/html/dict.html</a></p>
-<p><a href="https://www.jianshu.com/p/ee9bfb7183a6">https://www.jianshu.com/p/ee9bfb7183a6</a></p>
-<p><a href="https://www.runoob.com/html/html-summary.html">https://www.runoob.com/html/html-summary.html</a></p>
-<p><a href="https://www.w3school.com.cn/html/html_webserver.asp">https://www.w3school.com.cn/html/html_webserver.asp</a></p>
-]]></content>
-      <categories>
-        <category>语言</category>
-      </categories>
-      <tags>
-        <tag>语言</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTP协议标准</title>
     <url>/2022/03/22/undefined/</url>
     <content><![CDATA[<p>超文本传输协议（HTTP） 是一个用于传输超媒体文档（例如HTML）的应用层协议。 它是为Web 浏览器与Web 服务器之间的通信而设计的，但也可以用于其他目的。 HTTP 遵循经典的客户端-服务端模型，客户端打开一个连接以发出请求，然后等待直到收到服务器端响应。</p>
@@ -272,7 +63,7 @@
 <p>Content-Type        //请求的与实体对应的MIME信息;  Content-Type: application/x-www-form-urlencoded</p>
 <p>Date        //请求发送的日期和时间; Date: Tue, 15 Nov 2010 08:12:31 GMT</p>
 <p>Expect        //请求的特定的服务器行为; Expect: 100-continue</p>
-<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#x73;&#101;&#114;&#x40;&#101;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x75;&#x73;&#101;&#114;&#x40;&#101;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>From        //发出请求的用户的Email; From: <a href="mailto:&#x75;&#x73;&#101;&#114;&#x40;&#x65;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x75;&#x73;&#101;&#114;&#x40;&#x65;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
 <p>Host        //指定请求的服务器的域名和端口号; Host: <a href="http://www.github.com/">www.github.com</a></p>
 <p>If-Match        //只有请求内容与实体相匹配才有效; If-Match: “737060cd8c284d8af7ad3082f209582d”</p>
 <p>If-Modified-Since        //如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码; If-Modified-Since: Sat, 29 Oct 2018 19:43:31 GMT</p>
@@ -304,8 +95,121 @@
         <category>web</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>协议</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>misc基础隐写</title>
+    <url>/2022/04/17/undefined/</url>
+    <content><![CDATA[<p>隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，这两者属于完全不同的概念。</p>
+<span id="more"></span>
+
+<h3 id="一、图片隐写"><a href="#一、图片隐写" class="headerlink" title="一、图片隐写"></a>一、图片隐写</h3><p>大部分的文件都有其固定的格式，比如常见的图片格式PNG，JPG，都是由一系列的特殊的数据块组成</p>
+<h4 id="1、PNG："><a href="#1、PNG：" class="headerlink" title="1、PNG："></a>1、PNG：</h4><p>IHDR（文件头数据块）、PLTE（调色板数据块）、IDAT（图像数据块）、IEND（图像结束数据块）四个标准数据块和一些辅助数据块组成。</p>
+<p>每个数据块由Length(长度)、Chunk Type Code（数据块类型码）、Chunk Data（数据块数据）和CRC（循环校验码）四个部分</p>
+<p>举例：PNG</p>
+<p>固定字节开始（89 50 4E 0D 0A 1A 0A），通过这串字节确定是一个png文件，图像结束数据IEND表示PNG文件结束，它的长度一般是00 00 00 00，数据标识为49 45 4E 44，这之后的数据通常就会被大部分的图片查看软件忽略掉，这就是最基本的隐写，可以直接在最后加内容，一般情况下不会被发现。（无论是字符还是文件都可以）</p>
+<p>最常见的工具：binwalk</p>
+<h4 id="2、EXIF（可交换图像文件格式）"><a href="#2、EXIF（可交换图像文件格式）" class="headerlink" title="2、EXIF（可交换图像文件格式）"></a>2、EXIF（可交换图像文件格式）</h4><p>用来记录数码相机的属性信息和拍摄数据，EXIF可以被附加在JPEG、TIFF（标签图像文件格式）、RIFF（资源互换文件格式）等文件中，为其增加有关数码相机拍摄信息的内容，缩略图获图像处理软件的一些版本信息</p>
+<p>工具：exiftool，photocap</p>
+<h4 id="3、LSB（最低有效位）"><a href="#3、LSB（最低有效位）" class="headerlink" title="3、LSB（最低有效位）"></a>3、LSB（最低有效位）</h4><p>大多数的png图像中，每个像素都是由R、G、B三原色组成，（某些图片还包含A通道表示透明度），每种颜色一般用8位的数据标识（0x00~0xFF）通过修改其最低位隐藏信息，每个像素可以携带3位的信息</p>
+<p>工具：stegsolve，zsteg</p>
+<h4 id="4、盲水印"><a href="#4、盲水印" class="headerlink" title="4、盲水印"></a>4、盲水印</h4><p>数字水印技术，图片中的盲水印可以添加在图片的空域或者频域中，空域技术就是直接在信号空间中嵌入水印信息，LSB就是一种典型的方式，那什么是频域</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205410717.png" alt="image-20220413205410717" loading="lazy"></p>
+<p>如图就是一段音乐的时域，我们听到的音乐就是一段在时域上不断振动的波，这段音乐同样可以表示为下图的乐谱，一段乐谱就可以看作一段音乐在频域中的表示，可以反映音乐频率的变化，如果时域中的波形简化成一段正弦波，那么在频域中用一个音符即可表示</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220413205424184.png" alt="image-20220413205424184" loading="lazy"></p>
+<p>要将时域或空域中表示的信号转换到频域中，要用傅里叶变换，源自对于傅里叶级数的研究，研究表明，复杂的周期函数可以用一系列简单的正弦波之和代替，将信号函数进行傅里叶变换，可以分离出其中各频率的正弦波，不同成分的频率在频域中以峰值形式表示，就可以得到其频谱，得到图像的频域图像之后，将水印编码后随即分布到各频率，与原频域进行叠加，将叠加后的频域进行逆变换，就得到了添加了盲水印的图片</p>
+<p>提取盲水印就是将原图和带水印的图在频域中相减，再根据原来水印的编码方式解码。就可以提取出水印</p>
+<p>工具：blindwatermark、adobe、audition</p>
+<h4 id="五、算法类型"><a href="#五、算法类型" class="headerlink" title="五、算法类型"></a>五、算法类型</h4><p>LSB、jsteg、f3、f4、f5、jphide、outguess</p>
+<h3 id="二、文本隐写"><a href="#二、文本隐写" class="headerlink" title="二、文本隐写"></a>二、文本隐写</h3><h4 id="文档格式微调法"><a href="#文档格式微调法" class="headerlink" title="文档格式微调法"></a>文档格式微调法</h4><p>​     行移：行移是指调整文本文件中的垂直行距来隐藏信息的方法<br>嵌入信息的行的相邻_上下两行位置不动，作为参考，然后该嵌入信息的行上移，表示嵌入“1”，行下移,表示嵌入信息”0”。<br>​    字移：字移是指通过将某行的字符进行水平移动来隐藏信息<br>如将一个单词左移或右移，而与其相邻的单词则不进行移动，可以作为提取隐藏信息时的参考，如规定左移代表“1”,右移代表“0”。<br>​    修改字符颜色：改变文本字符颜色的十六进制颜色码微调，来嵌入信息。</p>
+<h4 id="空格标点符号法："><a href="#空格标点符号法：" class="headerlink" title="空格标点符号法："></a>空格标点符号法：</h4><p>使用中英文版本的逗号表示01</p>
+<p>添加空格和回车</p>
+<p>基于空格和回车的隐写术是利用人类视觉系统对微小间隔不敏感的特点而设计的<br>与字移、行移等不同的地方在于，字移、行移等操作适用于利用格式化文档(如word)传递信息的过程，而对于纯文本文档(如txt)不能进行微调操作，这时可以考虑利用空格或是回车来隐藏信息。</p>
+<p>与字移相比，字移引起的间隔往往是人类肉眼所捕捉不到的，但空格带来的间隔如果插入为止不当则会引起怀疑(如汉语中汉字与汉字间通常是没有间隔的，过多的间隔会引起注意，因此该方法通常适用于英文文本)，因此插入位置的选择往往是该类隐写术的关键。<br>逗号可为1，句号可为0以此隐藏</p>
+<p>对标点改变字体隐藏信息</p>
+<h4 id="字体特征法"><a href="#字体特征法" class="headerlink" title="字体特征法"></a>字体特征法</h4><p>通过两种不同的字体来实现0和1转换</p>
+<p>汉字结构的间距来隐藏信息，或将两个字符缩小间距使其看起来像一个字符</p>
+<h4 id="自然语言法"><a href="#自然语言法" class="headerlink" title="自然语言法"></a>自然语言法</h4><p>同义词替换（绝对同义词，相对同义词）<br>语法变换（宾语前置，谓语后置，定语后置等实现0,1隐藏）</p>
+<h4 id="利用office中自带的隐藏功能："><a href="#利用office中自带的隐藏功能：" class="headerlink" title="利用office中自带的隐藏功能："></a>利用office中自带的隐藏功能：</h4><p>在word中选中要隐藏的文字，右键，选择字体，选择隐藏，确定后发现这几个字不见了，而word中字数统计也相应减少。<br>通过文件-&gt;选项-&gt;显示-&gt;勾选隐藏文字,即可显示出隐藏的文字</p>
+<h4 id="另："><a href="#另：" class="headerlink" title="另："></a>另：</h4><p>可以对文档设置编辑保护，文档可以打开，无法编辑<br>设置方法：导航栏上的审阅-&gt;限制编辑-&gt;勾选编辑限制-&gt;启动强制保护-&gt;设置密码</p>
+<p>题目：</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131551292.png" alt="image-20220416131551292" loading="lazy"></p>
+<p>从文件-选项，勾选隐藏文字</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131807385.png" alt="image-20220416131807385" loading="lazy"></p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416131838806.png" alt="image-20220416131838806" loading="lazy"></p>
+<p>然后替换，用0替换英文逗号，用1替换中文逗号</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416132344071.png" alt="image-20220416132344071" loading="lazy"></p>
+<p>在线转</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416132841047.png" alt="image-20220416132841047" loading="lazy"></p>
+<p>0ffse就是偏转的意思，我们放到winhex里</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134446410.png" alt="image-20220416134446410" loading="lazy"></p>
+<p>拿去base32可以得到一个小提示</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134657667.png" alt="image-20220416134657667" loading="lazy"></p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416134755606.png" alt="image-20220416134755606" loading="lazy"></p>
+<p>doc文件（doc和zip的文件头一样，这里给了提示的）修改文件头为50 4B 03 04，复制后面的，另存为</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220416140114876.png" alt="image-20220416140114876" loading="lazy"></p>
+<p>这里会发现我们无法编辑里面的任何内容，作者经过加密的，上面给了提示14位的数字密码，但是爆破就太麻烦了，这里题目有个小漏洞，虽然我们无法修改字体颜色，但是可以直接复制粘贴出来到其他编辑器上可以显示</p>
+<p>RmxhZyU3QnNob3dfY3RmX3Rzd19jYyU3RA==</p>
+<p>base64+url解密得flag</p>
+<h3 id="三、音频："><a href="#三、音频：" class="headerlink" title="三、音频："></a>三、音频：</h3><p>1、音频的波形或频谱为某种编码或密码，找到后进行解码解密即得到隐藏信息<br>2、音频文件中嵌入了数据，需要提取出来，得到隐藏信息</p>
+<h4 id="基于波形的隐写"><a href="#基于波形的隐写" class="headerlink" title="基于波形的隐写"></a>基于波形的隐写</h4><p>波形图中横坐标是时间，纵坐标是幅值。通过对图像的控制可以模拟为一种编码或密码<br>可以在波形图中隐藏莫斯电码，隐藏二进制数据</p>
+<h4 id="基于频谱图的隐写"><a href="#基于频谱图的隐写" class="headerlink" title="基于频谱图的隐写"></a>基于频谱图的隐写</h4><p>频谱是波形经过傅里叶变换得到的，横坐标是频率，纵坐标是幅值，表示各某时间点上各频率正弦波的幅值大小，越亮的地方表示这个频率越响<br>若波形图无法看出隐藏信息，可以转换成频谱图</p>
+<h4 id="使用mp3stego的隐写"><a href="#使用mp3stego的隐写" class="headerlink" title="使用mp3stego的隐写"></a>使用mp3stego的隐写</h4><p>在音频文件中嵌入比特流，需要使用密码<br>写入：encode -E 隐藏的文件 -P 口令密码 载体音频文件 生成的文件<br>读取：decode -X -P 口令密码 文件名</p>
+<h3 id="四、压缩包"><a href="#四、压缩包" class="headerlink" title="四、压缩包"></a>四、压缩包</h3><h4 id="涉及方面"><a href="#涉及方面" class="headerlink" title="涉及方面"></a>涉及方面</h4><p>爆破、碰撞、伪加密、已知明文分析</p>
+<h4 id="文件头特征"><a href="#文件头特征" class="headerlink" title="文件头特征"></a>文件头特征</h4><p>压缩包有三种压缩格式rar、7z、zip</p>
+<h4 id="zip加密"><a href="#zip加密" class="headerlink" title="zip加密"></a>zip加密</h4><p>zip加密可以分为真加密，伪加密<br>zip有数据区和目录区，只有两个区的全局方式标志位都为加密位时才是真加密<br>数据区：50 4B 03 04 数据区标志开头 后2个字节为解压文件所需要的版本 后2个字节数据区加密标记位<br>目录区：50 4B 01 02 目录去标志开头 后2个字节为压缩文件所使用的版本 后2个字节解压文件所需要的版本 后2个字节目录区加密标志位<br>加密标志位只要是奇数位就表示加密位 偶数不加密</p>
+<h4 id="ctf中题目类型"><a href="#ctf中题目类型" class="headerlink" title="ctf中题目类型"></a>ctf中题目类型</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特征</th>
+<th>思路</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>压缩包+图片</td>
+<td>压缩包附在图片后，或者图片隐藏压缩包</td>
+<td></td>
+</tr>
+<tr>
+<td>压缩包加密</td>
+<td>密码以注释等其它提示形式给出</td>
+<td></td>
+</tr>
+<tr>
+<td>压缩包伪加密</td>
+<td>密码没有给出，加密标志位异常</td>
+<td>修改对应的标志位</td>
+</tr>
+<tr>
+<td>压缩包爆破</td>
+<td>密码没有给出，加密标志位正常</td>
+<td>archpr进行爆破</td>
+</tr>
+<tr>
+<td>crc32碰撞</td>
+<td>当压缩包被加密，但文件为纯文本文档，且大小很小时</td>
+<td>涉及程序编写，一般用Binascii 和string库string.ascii_letters</td>
+</tr>
+<tr>
+<td>压缩包已知明文攻击</td>
+<td>压缩包为zip格式，给出了其中的一个明文，明文的crc32与压缩包中的密文crc32一致</td>
+<td>archpr进行爆破</td>
+</tr>
+</tbody></table>
+<h4 id="视频隐写"><a href="#视频隐写" class="headerlink" title="视频隐写"></a>视频隐写</h4><p>以题为例<br>首先得到的是一个mp4文件，叫做黄金6年，观看没有发现异常<br>之后用winhex，在结尾处发现可能为base64编码<br><a href="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551327-197885937.png"><img src="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551327-197885937.png" alt="img" loading="lazy"></a><br>对其解码，发现无法正常显示解码，可能为2进制数据<br>用Python编写程序解码发现rar标记<br><a href="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551913-1164934420.png"><img src="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163551913-1164934420.png" alt="img" loading="lazy"></a></p>
+<p>将其解码的二进制数据另存为rar压缩包</p>
+<p>发现有密码<br><a href="https://img2018.cnblogs.com/blog/1503988/202002/1503988-20200222163552252-1998926110.png"><img src="https://raw.githubusercontent.com/gulfx2/images/master/1503988-20200222163552252-1998926110.png" alt="img" loading="lazy"></a><br>确认不是伪加密后，试图先从视频中寻找密码<br>用工具potplayer打开，一帧一帧播放，发现<br>四张二维码，扫描，将得到的信息拼接为iwantplayctf，解开数据包得flag</p>
+]]></content>
+      <categories>
+        <category>MISC</category>
+      </categories>
+      <tags>
+        <tag>隐写</tag>
+        <tag>misc</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -675,6 +579,215 @@ net cofig workstation        //查看工作站
         <tag>摘要</tag>
         <tag>哲学</tag>
         <tag>文案</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML标签语言学习</title>
+    <url>/2022/04/01/undefined/</url>
+    <content><![CDATA[<p>HTML元素是构建网站的基石。HTML允许嵌入图像与对象，并且可以用于创建交互式表单，它被用来结构化信息——例如标题、段落和列表等等，也可用来在一定程度上描述文档的外观和语义。HTML的语言形式为尖括号包围的HTML元素（如 &lt; html&gt; (这里由于显示原因多加一个空格)），浏览器使用HTML标签和脚本来诠释网页内容，但不会将它们显示在页面上。</p>
+<span id="more"></span>
+
+<h2 id="一、HTML介绍"><a href="#一、HTML介绍" class="headerlink" title="一、HTML介绍"></a>一、HTML介绍</h2><h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/HTML">HTML</a> (HyperText Markup Language)，超文本标记语言，不是一门编程语言，而是一种创建网页的标准标记语言，由浏览器解析。HTML 可复杂、可简单，一切取决于开发者。它由一系列的元素（<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Element">elements</a>）组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。 一对标签（ <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Tag">tags</a>）可以为一段文字或者一张图片添加超链接，将文字设置为斜体，改变字号等</p>
+<p>HTML使用标记标签来描述网页</p>
+<p>HTML文档包含HTML 标签及文本内容</p>
+<p>HTML文档也叫做web页面</p>
+<p><strong>注：</strong>HTML 标签不区分大小写。也就是说，输入标签时既可以使用大写字母也可以使用小写字母。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;title&gt; 可以写作&lt;title&gt;、&lt;TITLE&gt;、&lt;Title&gt;、&lt;TiTlE&gt;</span><br></pre></td></tr></table></figure>
+
+<p>都可以正常工作。不过，从一致性、可读性来说，最好仅使用小写字母(未来版本均使用小写)。</p>
+<h2 id="二、标签部分详解："><a href="#二、标签部分详解：" class="headerlink" title="二、标签部分详解："></a>二、标签部分详解：</h2><p>① HTML 标签是由<em>尖括号</em>包围的关键词，比如 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>② HTML 标签通常是成对出现的，比如 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt; 和 &lt;/b&gt;</span><br></pre></td></tr></table></figure>
+
+<p>③ 标签对中的第一个标签是开始标签，第二个标签是结束标签</p>
+<p>④ 开始和结束标签也被称为开放标签和闭合标签</p>
+<p>⑤ 常见标签用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt; 与 &lt;/html&gt; 之间的文本描述网页</span><br><span class="line">&lt;body&gt; 与 &lt;/body&gt; 之间的文本是可见的页面内容</span><br><span class="line">&lt;h1&gt; 与 &lt;/h1&gt; 之间的文本被显示为标题，&lt;h1&gt;定义最大标题，&lt;h6&gt;定义最小标题</span><br><span class="line">&lt;p&gt; 与 &lt;/p&gt; 之间的文本被显示为段落，分段络要多个&lt;p&gt;标签</span><br><span class="line">&lt;a href=&quot;http://www.xxx.com.cn&quot;&gt;This is link&lt;/a&gt; 添加超链接，在href属性中指定链接的地址</span><br><span class="line">&lt;img src=&quot;xxx.jpg&quot; width=&quot;104&quot; height=&quot;142&quot; /&gt; 添加图像，图像名称于尺寸以属性的形式提供</span><br><span class="line">&lt;br&gt;就是没有关闭标签的空元素（&lt;br&gt;标签定义换行，&lt;br /&gt;关闭空元素）</span><br><span class="line">	&lt;p&gt;This is&lt;br /&gt;a para&lt;br /&gt;graph with line breaks&lt;/p&gt;在本段内换行</span><br><span class="line">&lt;hr /&gt;添加水平线，用来分隔内容</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">	&lt;p&gt;This is a paragraph&lt;/p&gt;</span><br><span class="line">&lt;!-- This is a comment --&gt;为你的代码添加注释</span><br><span class="line">&lt;p&gt;表示保持原本的格式，在浏览器中会自动移除多余的空格和空行，及时有多个连续的空格，也会被算作一个空格</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，浏览器会自动给标题前后添加空格，且，HTML默认为块级元素前后额外添加一个空行，如段落，标题元素前后。</p>
+<h3 id="3、HTML元素"><a href="#3、HTML元素" class="headerlink" title="3、HTML元素"></a>3、HTML元素</h3><p>HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。(也称开放标签(opening tag)和闭合标签(closing tag))</p>
+<p>一些HTML元素具有空内容，空元素在开始标签中进行关闭，大部分HTML元素可拥有属性</p>
+<p>大多数HTML元素可以嵌套，HTML文档（web页面）就是由嵌套的HTML元素构成</p>
+<h3 id="4、HTML属性"><a href="#4、HTML属性" class="headerlink" title="4、HTML属性"></a>4、HTML属性</h3><p>HTML标签可以拥有属性，属性会提供更多的元素信息</p>
+<p>属性以名称/值对的形式出现：name=”value”。通常在开始标签中规定</p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#&lt;h1 align=&quot;center&quot;&gt;拥有关于对齐方式的附加信息（居中排列标题）。</span><br><span class="line">#&lt;body bgcolor=&quot;yellow&quot;&gt; 拥有关于背景颜色的附加信息。</span><br><span class="line">#&lt;table border=&quot;1&quot;&gt; 拥有关于表格边框的附加信息。</span><br></pre></td></tr></table></figure>
+
+<p>记得始终为属性值加引号，若属性值本身含有双引号，则你必须使用单引号，如：name=’Bill “HelloWorld” Gates’ </p>
+<p>style属性用于改变HTML元素的样式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 style=&quot;font-family:verdana&quot;&gt;A heading&lt;/h1&gt;</span><br><span class="line">&lt;p style=&quot;font-family:arial;color:red;font-size:20px;&quot;&gt;A paragraph.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">#font-family、color 以及 font-size 属性分别定义元素中文本的字体系列、颜色和字体尺寸</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body style=&quot;background-color:yellow&quot;&gt;</span><br><span class="line">&lt;h2 style=&quot;background-color:red&quot;&gt;This is a heading&lt;/h2&gt;</span><br><span class="line">&lt;p style=&quot;background-color:green&quot;&gt;This is a paragraph.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">#background-color属性为元素定义背景颜色</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body style=&quot;background-color:PowderBlue;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;Look! Style and Colors&lt;/h1&gt;</span><br><span class="line">&lt;p style=&quot;font-family:verdana;color:Blue&quot;&gt;</span><br><span class="line">This text is in Verdana and green</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;font-family:times;color:green&quot;&gt;</span><br><span class="line">This text is in Times and green</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;font-size:30px&quot;&gt;</span><br><span class="line">This text is 30 pixels high</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401170802338.png" alt="image-20220401170802338" loading="lazy"></p>
+<p>style提供了一种改变所有HTML元素的样式的通用方法。</p>
+<p><strong>另</strong>：在 HTML 4 中，有若干的标签和属性是被废弃的。在未来版本的 HTML 和 XHTML 中将不支持这些标签和属性，请避免使用这些被废弃的标签和属性！</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401171327106.png" alt="image-20220401171327106" loading="lazy"></p>
+<p>以上标签和属性可以用样式代替</p>
+<h3 id="5、HTML文本格式化"><a href="#5、HTML文本格式化" class="headerlink" title="5、HTML文本格式化"></a>5、HTML文本格式化</h3><p>HTML可以定义很多供格式化输出的元素， 使用标签 (“bold”) 与 (“italic”) 对输出的文本进行格式, 如：<strong>粗体</strong> or <em>斜体</em>。</p>
+<h4 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173601026.png" alt="image-20220401173601026" loading="lazy"></p>
+<h4 id="“计算机输出”标签"><a href="#“计算机输出”标签" class="headerlink" title="“计算机输出”标签"></a>“计算机输出”标签</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173636730.png" alt="image-20220401173636730" loading="lazy"></p>
+<h4 id="引用和术语定义"><a href="#引用和术语定义" class="headerlink" title="引用和术语定义"></a>引用和术语定义</h4><p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173721172.png" alt="image-20220401173721172" loading="lazy"></p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;b&gt;This text is bold&lt;/b&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;strong&gt;This text is strong&lt;/strong&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;big&gt;This text is big&lt;/big&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;em&gt;This text is emphasized&lt;/em&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;i&gt;This text is italic&lt;/i&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;small&gt;This text is small&lt;/small&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">This text contains</span><br><span class="line">&lt;sub&gt;subscript&lt;/sub&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">This text contains</span><br><span class="line">&lt;sup&gt;superscript&lt;/sup&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401173804322.png" alt="image-20220401173804322" loading="lazy"></p>
+<h3 id="6、HTML的引用"><a href="#6、HTML的引用" class="headerlink" title="6、HTML的引用"></a>6、HTML的引用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">这是长的引用：</span><br><span class="line">&lt;blockquote&gt;</span><br><span class="line">这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。</span><br><span class="line">&lt;/blockquote&gt;</span><br><span class="line"></span><br><span class="line">这是短的引用：</span><br><span class="line">&lt;q&gt;</span><br><span class="line">这是短的引用。</span><br><span class="line">&lt;/q&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;</span><br><span class="line">使用 blockquote 元素的话，浏览器会插入换行和外边距，而 q 元素不会有任何特殊的呈现。</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174749885.png" alt="image-20220401174749885" loading="lazy"></p>
+<h3 id="7、两种缩写"><a href="#7、两种缩写" class="headerlink" title="7、两种缩写"></a>7、两种缩写</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;</span><br><span class="line">&lt;br /&gt;</span><br><span class="line">&lt;acronym title=&quot;World Wide Web&quot;&gt;WWW&lt;/acronym&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;在某些浏览器中，当您把鼠标移至缩略词语上时，title 可用于展示表达的完整版本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;仅对于 IE 5 中的 acronym 元素有效。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;对于 Netscape 6.2 中的 abbr 和 acronym 元素都有效。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174840719.png" alt="image-20220401174840719" loading="lazy"></p>
+<h3 id="8、删除字效果和插入字效果"><a href="#8、删除字效果和插入字效果" class="headerlink" title="8、删除字效果和插入字效果"></a>8、删除字效果和插入字效果</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一打有 &lt;del&gt;二十&lt;/del&gt; &lt;ins&gt;十二&lt;/ins&gt; 件。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;大多数浏览器会改写为删除文本和下划线文本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一些老式的浏览器会把删除文本和下划线文本显示为普通文本。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401174941325.png" alt="image-20220401174941325" loading="lazy"></p>
+<h3 id="9、HTML图像"><a href="#9、HTML图像" class="headerlink" title="9、HTML图像"></a>9、HTML图像</h3><p>在HTML中，图像由 img 标签定义， img 标签是空标签，意思是说，它只包含属性，并且没有闭合标签。要在页面上显示图像，你需要使用源属性（src），src指“source”，源属性的值是图像的URL地址。定义图像的语法是：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;url&quot;</span> /&gt;</span>  #url指图像位置</span><br></pre></td></tr></table></figure>
+
+<p>浏览器将图像显示在文档中图像标签出现的地方。如果你将图像标签置于两个段落之间，那么浏览器会首先显示第一个段落，然后显示图片，最后显示第二段。</p>
+<p>alt 属性用来为图像定义一串预备的可替换的文本，替换文本属性的值是用户定义的。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;boat.gif&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Big Boat&quot;</span>&gt;</span>  #在浏览器无法载入图像时，替换文本属性告诉读者她们失去的信息，此时，浏览器将显示这个替代性文本而不是图像</span><br></pre></td></tr></table></figure>
+
+<p><strong>注</strong>：假如某个HTML文件包含十个图像，那么为了正确显示这个页面，需要加载11个文件</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401175431451.png" alt="image-20220401175431451" loading="lazy"></p>
+<h3 id="10、HTML表格"><a href="#10、HTML表格" class="headerlink" title="10、HTML表格"></a>10、HTML表格</h3><p>表格由  table&gt; 标签来定义。每个表格均有若干行（由  tr  标签定义），每行被分割为若干单元格（由  td  标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;row 1, cell 1&lt;/td&gt;</span><br><span class="line">&lt;td&gt;row 1, cell 2&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;row 2, cell 1&lt;/td&gt;</span><br><span class="line">&lt;td&gt;row 2, cell 2&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401175643444.png" alt="image-20220401175643444" loading="lazy"></p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401185910141.png" alt="image-20220401185910141" loading="lazy"></p>
+<p>例1：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">创建一个HTML表格</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;每个表格由 table 标签开始。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;每个表格行由 tr 标签开始。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;每个表格数据由 td 标签开始。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一行三列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;5&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;200&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;300&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;两行三列：&lt;/h4&gt;</span><br><span class="line">&lt;table border=&quot;10&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;200&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;300&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;400&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;500&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;600&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190049608.png" alt="image-20220401190049608" loading="lazy"></p>
+<p>例2：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">添加各种边框</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有普通的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有粗的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;8&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;带有很粗的边框：&lt;/h4&gt;  </span><br><span class="line">&lt;table border=&quot;15&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190130639.png" alt="image-20220401190130639" loading="lazy"></p>
+<h3 id="11、HTML列表"><a href="#11、HTML列表" class="headerlink" title="11、HTML列表"></a>11、HTML列表</h3><p>HTML文档中，可能需要给你的项目分出列表，html支持有序无序以及自定义三种列表</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401190421348.png" alt="image-20220401190421348" loading="lazy"></p>
+<p>① 无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记。</p>
+<p>无序列表始于 ul 标签，每个列表项始于 li 。列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;一个无序列表：&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>② 有序列表也是一列项目，列表项目使用数字进行标记。</p>
+<p>有序列表始于 ol 标签，每个列表项始于 li 标签。列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h4&gt;有序列表样式：&lt;/h4&gt;</span><br><span class="line"></span><br><span class="line">&lt;ol&gt;</span><br><span class="line">  &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>③ 自定义列表不仅仅是一列项目，而是项目及其注释的组合。</p>
+<p>自定义列表以 dl 标签开始，每个自定义列表项以 dt 开始，每个自定义列表项的定义以 dd 开始。定义列表的列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。</p>
+<h3 id="12、HTML区块"><a href="#12、HTML区块" class="headerlink" title="12、HTML区块"></a>12、HTML区块</h3><p>HTML文档可以通过 div 和 span 组合起来</p>
+<p>大多数元素会被当作块级元素或内联元素，块级元素在浏览器中显示的时候通常以新行来开始和结束</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;</span><br></pre></td></tr></table></figure>
+
+<p>而内联元素通常不会</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</span><br></pre></td></tr></table></figure>
+
+<p>div 元素</p>
+<p>块级元素，它可用于组合其他 HTML 元素的容器。</p>
+<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
+
+<p>如果与 CSS 一同使用，div 元素可用于对大的内容块设置样式属性。</p>
+<p>div 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 table&gt;元素进行文档布局不是表格的正确用法。table 元素的作用是显示表格化的数据。</p>
+<p>span元素</p>
+<p>内联元素，可用作文本的容器</p>
+<p>span 元素也没有特定的含义。</p>
+<p>当与 CSS 一同使用时，span 元素可用于为部分文本设置样式属性。</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401191824848.png" alt="image-20220401191824848" loading="lazy"></p>
+<h2 id="三、HTML标签拓展"><a href="#三、HTML标签拓展" class="headerlink" title="三、HTML标签拓展"></a>三、HTML标签拓展</h2><h3 id="1、HTML区块"><a href="#1、HTML区块" class="headerlink" title="1、HTML区块"></a>1、HTML区块</h3><p>HTML文档可以通过 div 和 span 组合起来</p>
+<p>大多数元素会被当作块级元素或内联元素，块级元素在浏览器中显示的时候通常以新行来开始和结束</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;</span><br></pre></td></tr></table></figure>
+
+<p>而内联元素通常不会</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例: &lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</span><br></pre></td></tr></table></figure>
+
+<p>#div元素</p>
+<p>块级元素，它可用于组合其他 HTML 元素的容器。</p>
+<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
+
+
+
+<p>如果与 CSS 一同使用，<div> 元素可用于对大的内容块设置样式属性。</p>
+<p>#div 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 table 元素进行文档布局不是表格的正确用法。table 元素的作用是显示表格化的数据。</p>
+<p>#span元素</p>
+<p>内联元素，可用作文本的容器</p>
+<p>span 元素也没有特定的含义。</p>
+<p>当与 CSS 一同使用时，span 元素可用于为部分文本设置样式属性。</p>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401191824848.png" alt="image-20220401191824848" loading="lazy"></p>
+<h3 id="2、HTML脚本"><a href="#2、HTML脚本" class="headerlink" title="2、HTML脚本"></a>2、HTML脚本</h3><p>① HTML <script> 标签</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt; 标签用于定义客户端脚本，比如 JavaScript。</span><br><span class="line"></span><br><span class="line">&lt;script&gt; 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript 最常用于图片操作、表单验证以及内容动态更新。</p>
+<p>下面的脚本会向浏览器输出”Hello World!”：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>② HTML noscript  标签</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;noscript&gt; 标签提供无法使用脚本时的替代内容，比方在浏览器禁用脚本时，或浏览器不支持客户端脚本时。</span><br><span class="line">&lt;noscript&gt;元素可包含普通 HTML 页面的 body 元素中能够找到的所有元素。</span><br></pre></td></tr></table></figure>
+
+<p>只有在浏览器不支持脚本或者禁用脚本时，才会显示 noscript 元素中的内容：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span>抱歉，你的浏览器不支持 JavaScript!<span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>③ JS可以直接再HTML输出</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;p&gt;这是一个段落。&lt;/p&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript事件响应:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;button type=<span class="string">&quot;button&quot;</span> onclick=<span class="string">&quot;myFunction()&quot;</span>&gt;点我！&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript处理 HTML 样式:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">style</span>.<span class="property">color</span>=<span class="string">&quot;#ff0000&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401192704945.png" alt="image-20220401192704945" loading="lazy"></p>
+<h2 id="四、HTML浏览器应用"><a href="#四、HTML浏览器应用" class="headerlink" title="四、HTML浏览器应用"></a>四、HTML浏览器应用</h2><h3 id="1、搭建框架"><a href="#1、搭建框架" class="headerlink" title="1、搭建框架"></a>1、搭建框架</h3><p>通过使用框架，可以在同一个浏览器窗口中显示不止一个页面</p>
+<p>但同时，它也会有一些坏处：</p>
+<ul>
+<li>开发人员必须同时跟踪更多的HTML文档</li>
+<li>很难打印整张页面</li>
+</ul>
+<h4 id="框架结构标签（frameset）"><a href="#框架结构标签（frameset）" class="headerlink" title="框架结构标签（frameset）"></a>框架结构标签（frameset）</h4><ul>
+<li>框架结构标签（frameset）定义如何将窗口分割为框架</li>
+<li>每个 frameset 定义了一系列行<em>或</em>列</li>
+<li>rows/columns 的值规定了每行或每列占据屏幕的面积</li>
+</ul>
+<h4 id="框架标签（frame）"><a href="#框架标签（frame）" class="headerlink" title="框架标签（frame）"></a>框架标签（frame）</h4><p>Frame 标签定义了放置在每个框架中的 HTML 文档。</p>
+<p>在下面的这个例子中，我们设置了一个两列的框架集。第一列被设置为占据浏览器窗口的 25%。第二列被设置为占据浏览器窗口的 75%。HTML 文档 “frame_a.htm” 被置于第一个列中，而 HTML 文档 “frame_b.htm” 被置于第二个列中：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">#<span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">&quot;25%,75%&quot;</span>&gt;</span></span><br><span class="line">#   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_a.htm&quot;</span>&gt;</span></span><br><span class="line">#   <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame_b.htm&quot;</span>&gt;</span></span><br><span class="line">#<span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>假如一个框架有可见边框，用户可以拖动边框来改变它的大小。为了避免这种情况发生，可以在 frame 标签中加入：noresize=”noresize”。</p>
+<p>为不支持框架的浏览器添加 noframes 标签。</p>
+<p>不能将 body标签与 frameset 标签同时使用！不过，假如你添加包含一段文本的 noframes 标签，就必须将这段文字嵌套于 body标签内。（在下面的第一个实例中，可以查看它是如何实现的。）</p>
+<h3 id="2、URL（-Uniform-Resource-Locator）"><a href="#2、URL（-Uniform-Resource-Locator）" class="headerlink" title="2、URL（ Uniform Resource Locator）"></a>2、URL（ Uniform Resource Locator）</h3><p>统一资源定位器，也称为网址</p>
+<p>点击 HTML 页面中的某个链接时，对应的 a 标签指向互联网上的一个地址。</p>
+<p>统一资源定位器（URL）用于定位互联网上的文档（或其他数据）。</p>
+<p>它遵守以下语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#scheme://host.domain:port/path/filename</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scheme - 定义因特网服务的类型。最常见的类型是 http</li>
+<li>host - 定义域主机（http 的默认主机是 www）</li>
+<li>domain - 定义因特网域名，比如 w3school.com.cn</li>
+<li>:port - 定义主机上的端口号（http 的默认端口号是 80）</li>
+<li>path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</li>
+<li>filename - 定义文档/资源的名称</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gulfx2/images/master/image-20220401195024342.png" alt="image-20220401195024342" loading="lazy"></p>
+<h2 id="五、HTML总结"><a href="#五、HTML总结" class="headerlink" title="五、HTML总结"></a>五、HTML总结</h2><h3 id="1、学习其他语言，与HTML搭配使用"><a href="#1、学习其他语言，与HTML搭配使用" class="headerlink" title="1、学习其他语言，与HTML搭配使用"></a>1、学习其他语言，与HTML搭配使用</h3><p>如果你想为自己搭建一个网站，那仅仅学会HTML是远远不够的，你还需要学习CSS、JavaScript等。</p>
+<p>CSS被用来同时控制多重网页的样式和布局。通过使用 CSS，所有的格式化均可从 HTML 中剥离出来，并存储于一个独立的文件中。JavaScript 可以让你的网页更加生动。</p>
+<p>如果你只想展示内容，静态网站是很好的展示形象，如果你想与用户进行交换或者让网页更加生动那就需要使用到Javascript。JavaScript是互联网上最流行的脚本语言，目前所有主流浏览器都支持Javascript。</p>
+<h3 id="2、服务器"><a href="#2、服务器" class="headerlink" title="2、服务器"></a>2、服务器</h3><p>网站服务器（Website Server）是指在互联网数据中心中存放网站的服务器。 网站服务器主要用于网站在互联网中的发布、应用，是网络应用的基础硬件设施。可以选择在自己的服务器上托管自己的网站，要挑一个好的服务器，以及各种软硬件的支出费用</p>
+<h3 id="3、ISP"><a href="#3、ISP" class="headerlink" title="3、ISP"></a>3、ISP</h3><p>为个人和企业客户提供 Internet 访问权限的公司。ISP 使他们的客户可以上网冲浪、在线购物、开展业务以及与家人和朋友联系——所有这些都是收费的。ISP 还可能提供其他服务，包括电子邮件服务、域注册、网络托管和<a href="https://www.investopedia.com/articles/investing/041315/how-mozilla-firefox-and-google-chrome-make-money.asp">浏览器</a>包。根据公司提供的服务，ISP 也可以称为信息服务提供商、存储服务提供商、互联网服务提供商 (INSP) 或这三者的任意组合。</p>
+<h2 id="本文参考链接："><a href="#本文参考链接：" class="headerlink" title="本文参考链接："></a>本文参考链接：</h2><p>HTML更多内容可以自查HTML手册：<a href="https://www.w3cschool.cn/html/dict.html">https://www.w3cschool.cn/html/dict.html</a></p>
+<p><a href="https://www.jianshu.com/p/ee9bfb7183a6">https://www.jianshu.com/p/ee9bfb7183a6</a></p>
+<p><a href="https://www.runoob.com/html/html-summary.html">https://www.runoob.com/html/html-summary.html</a></p>
+<p><a href="https://www.w3school.com.cn/html/html_webserver.asp">https://www.w3school.com.cn/html/html_webserver.asp</a></p>
+]]></content>
+      <categories>
+        <category>语言</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>语言</tag>
       </tags>
   </entry>
 </search>
